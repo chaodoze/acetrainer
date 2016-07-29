@@ -12,6 +12,8 @@
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
 #import "RNGoogleSignin.h"
+#import "Firebase.h"
+#import "RNFIRMessaging.h"
 
 @implementation AppDelegate
 
@@ -32,6 +34,7 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  [FIRApp configure];
   return YES;
 }
 
@@ -42,5 +45,9 @@
   return [RNGoogleSignin application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler {
+    [[NSNotificationCenter defaultCenter] postNotificationName:FCMNotificationReceived object:self userInfo:notification];
+    handler(UIBackgroundFetchResultNewData);
+  }
 
 @end

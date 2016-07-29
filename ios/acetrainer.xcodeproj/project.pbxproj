@@ -23,9 +23,12 @@
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		593FF5774C014790A5314EC2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 473B54E001644FBF857147C6 /* libz.tbd */; };
+		6C8F928817CA2D35FA4BA689 /* libPods-acetrainerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 452672AEC3FA2CDB4FFAFBC0 /* libPods-acetrainerTests.a */; };
 		7155C561B79949D286879F8C /* libRNGoogleSignin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C654A1B3782D4A9A99DFCF0A /* libRNGoogleSignin.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		9BD1F8E4C25440DFBB6AAD93 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FB406DEE7A642AAB67FF6BE /* AddressBook.framework */; };
+		DB785DA6BDA749D08879BE11 /* libRNFIRMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD28429BF830447982045FA0 /* libRNFIRMessaging.a */; };
+		E4E9C557C1516A71A6EC85D4 /* libPods-acetrainer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD880A0E47D31F9B1340F3D /* libPods-acetrainer.a */; };
 		E5F88D981D4AE52300F46419 /* GoogleAppUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F88D911D4AE52300F46419 /* GoogleAppUtilities.framework */; };
 		E5F88D991D4AE52300F46419 /* GoogleAuthUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F88D921D4AE52300F46419 /* GoogleAuthUtilities.framework */; };
 		E5F88D9A1D4AE52300F46419 /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F88D931D4AE52300F46419 /* GoogleNetworkingUtilities.framework */; };
@@ -116,6 +119,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		E5E1F1071D4BC98E004B2C68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E16BEA11509F4B8980ACD53D /* RNFIRMessaging.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNFIRMessaging;
+		};
 		E5F88D6A1D4AE4A600F46419 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 211B5A488D124BCCAF9312F7 /* RNGoogleSignin.xcodeproj */;
@@ -145,14 +155,21 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = acetrainer/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = acetrainer/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		1AC8D8C4D8ED2C306EB18379 /* Pods-acetrainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acetrainer.release.xcconfig"; path = "Pods/Target Support Files/Pods-acetrainer/Pods-acetrainer.release.xcconfig"; sourceTree = "<group>"; };
 		211B5A488D124BCCAF9312F7 /* RNGoogleSignin.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNGoogleSignin.xcodeproj; path = "../node_modules/react-native-google-signin/ios/RNGoogleSignin.xcodeproj"; sourceTree = "<group>"; };
 		301318CFB71F4479B4C5345E /* SafariServices.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		452672AEC3FA2CDB4FFAFBC0 /* libPods-acetrainerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-acetrainerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		473B54E001644FBF857147C6 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7EEF94FAAF724FBF9B4E8A53 /* SystemConfiguration.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		9FB406DEE7A642AAB67FF6BE /* AddressBook.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		AA679FFBC320E5FFBD96658E /* Pods-acetrainer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acetrainer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-acetrainer/Pods-acetrainer.debug.xcconfig"; sourceTree = "<group>"; };
+		BFD880A0E47D31F9B1340F3D /* libPods-acetrainer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-acetrainer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C654A1B3782D4A9A99DFCF0A /* libRNGoogleSignin.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGoogleSignin.a; sourceTree = "<group>"; };
+		DBB1D58C04503316E4B39CB8 /* Pods-acetrainerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acetrainerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-acetrainerTests/Pods-acetrainerTests.release.xcconfig"; sourceTree = "<group>"; };
+		E04595A681BF5A3B92003FFB /* Pods-acetrainerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acetrainerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-acetrainerTests/Pods-acetrainerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E16BEA11509F4B8980ACD53D /* RNFIRMessaging.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFIRMessaging.xcodeproj; path = "../node_modules/react-native-fcm/ios/RNFIRMessaging.xcodeproj"; sourceTree = "<group>"; };
 		E5F88D911D4AE52300F46419 /* GoogleAppUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppUtilities.framework; sourceTree = "<group>"; };
 		E5F88D921D4AE52300F46419 /* GoogleAuthUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAuthUtilities.framework; sourceTree = "<group>"; };
 		E5F88D931D4AE52300F46419 /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
@@ -161,6 +178,7 @@
 		E5F88D961D4AE52300F46419 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		E5F88D971D4AE52300F46419 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = "<group>"; };
 		E5F88D9F1D4AE67800F46419 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FD28429BF830447982045FA0 /* libRNFIRMessaging.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFIRMessaging.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
+				6C8F928817CA2D35FA4BA689 /* libPods-acetrainerTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +216,8 @@
 				EFA07E937CE94462B3E20FC7 /* SafariServices.framework in Frameworks */,
 				F07C710776A146ACA2D52596 /* SystemConfiguration.framework in Frameworks */,
 				9BD1F8E4C25440DFBB6AAD93 /* AddressBook.framework in Frameworks */,
+				DB785DA6BDA749D08879BE11 /* libRNFIRMessaging.a in Frameworks */,
+				E4E9C557C1516A71A6EC85D4 /* libPods-acetrainer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +342,7 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				211B5A488D124BCCAF9312F7 /* RNGoogleSignin.xcodeproj */,
+				E16BEA11509F4B8980ACD53D /* RNFIRMessaging.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -341,6 +363,7 @@
 				00E356EF1AD99517003FC87E /* acetrainerTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				FBF11C699EC9407B87354A64 /* Frameworks */,
+				BBC7F3E02C6E5D28FCC8322D /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -351,6 +374,25 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* acetrainer.app */,
 				00E356EE1AD99517003FC87E /* acetrainerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBC7F3E02C6E5D28FCC8322D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA679FFBC320E5FFBD96658E /* Pods-acetrainer.debug.xcconfig */,
+				1AC8D8C4D8ED2C306EB18379 /* Pods-acetrainer.release.xcconfig */,
+				E04595A681BF5A3B92003FFB /* Pods-acetrainerTests.debug.xcconfig */,
+				DBB1D58C04503316E4B39CB8 /* Pods-acetrainerTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E5E1F0FA1D4BC98E004B2C68 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E5E1F1081D4BC98E004B2C68 /* libRNFIRMessaging.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -385,6 +427,8 @@
 				301318CFB71F4479B4C5345E /* SafariServices.framework */,
 				7EEF94FAAF724FBF9B4E8A53 /* SystemConfiguration.framework */,
 				9FB406DEE7A642AAB67FF6BE /* AddressBook.framework */,
+				BFD880A0E47D31F9B1340F3D /* libPods-acetrainer.a */,
+				452672AEC3FA2CDB4FFAFBC0 /* libPods-acetrainerTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -396,9 +440,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "acetrainerTests" */;
 			buildPhases = (
+				B9457C7E96203D6157A6ECC1 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
+				C28F0B34301BD03653A78FCD /* [CP] Embed Pods Frameworks */,
+				3039B2AA0C4DDF3096E521CF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -414,10 +461,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "acetrainer" */;
 			buildPhases = (
+				1D45951CC93BFF9911C37D8A /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				5DE046D672FD10F85A2C021B /* [CP] Embed Pods Frameworks */,
+				E18B8E6B2AA91D920039F29C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -440,6 +490,13 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -494,6 +551,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = E5E1F0FA1D4BC98E004B2C68 /* Products */;
+					ProjectRef = E16BEA11509F4B8980ACD53D /* RNFIRMessaging.xcodeproj */;
 				},
 				{
 					ProductGroup = E5F88D5D1D4AE4A600F46419 /* Products */;
@@ -579,6 +640,13 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		E5E1F1081D4BC98E004B2C68 /* libRNFIRMessaging.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNFIRMessaging.a;
+			remoteRef = E5E1F1071D4BC98E004B2C68 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E5F88D6B1D4AE4A600F46419 /* libRNGoogleSignin.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -623,6 +691,96 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
+		};
+		1D45951CC93BFF9911C37D8A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3039B2AA0C4DDF3096E521CF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-acetrainerTests/Pods-acetrainerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DE046D672FD10F85A2C021B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-acetrainer/Pods-acetrainer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9457C7E96203D6157A6ECC1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C28F0B34301BD03653A78FCD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-acetrainerTests/Pods-acetrainerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E18B8E6B2AA91D920039F29C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-acetrainer/Pods-acetrainer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -669,6 +827,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E04595A681BF5A3B92003FFB /* Pods-acetrainerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -681,6 +840,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/acetrainer.app/acetrainer";
@@ -689,6 +854,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBB1D58C04503316E4B39CB8 /* Pods-acetrainerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -698,6 +864,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/acetrainer.app/acetrainer";
@@ -706,6 +878,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA679FFBC320E5FFBD96658E /* Pods-acetrainer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEAD_CODE_STRIPPING = NO;
@@ -718,6 +891,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
+					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
 				);
 				INFOPLIST_FILE = acetrainer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -733,6 +907,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AC8D8C4D8ED2C306EB18379 /* Pods-acetrainer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -744,6 +919,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
+					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
 				);
 				INFOPLIST_FILE = acetrainer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -796,6 +972,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
+					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -837,6 +1014,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
+					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
