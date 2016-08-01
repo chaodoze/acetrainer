@@ -15,6 +15,7 @@ import {
 
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import FCM from 'react-native-fcm';
+import { MapView } from 'react-native';
 
 class acetrainer extends Component {
   componentDidMount() {
@@ -94,13 +95,10 @@ class acetrainer extends Component {
             <Text>Log out</Text>
           </View>
         </TouchableOpacity>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <MapView
+          style={{width:375, height: 200, margin: 40}}
+          showsUserLocation={true}
+        />
       </View>
     );
   }
