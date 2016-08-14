@@ -16,7 +16,7 @@ import {
 import {GoogleSignin, GoogleSigninButton} from 'react-native-google-signin';
 import FCM from 'react-native-fcm';
 import { MapView } from 'react-native';
-import Wrapper from './app/components/wrapper'
+import App from './app/components/app'
 
 class acetrainer extends Component {
   componentDidMount() {
@@ -83,7 +83,7 @@ class acetrainer extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Wrapper />
+        <App />
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
