@@ -111,7 +111,6 @@ class MonsDetails extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-
           <TouchableHighlight  onPress={ () => this.gotoNext() }>
             <View style={ styles.mon }>
               <View style={styles.cp}>

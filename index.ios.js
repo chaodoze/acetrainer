@@ -8,6 +8,7 @@ import App from './app/components/app'
 import Mons from './app/components/Mons'
 import PokeMap from './app/components/PokeMap'
 import Login from './app/components/Login'
+import LinkDetails from './app/components/LinkDetails'
 import Options from './app/components/Options'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -56,7 +57,7 @@ class acetrainer extends Component {
                   selectedTab: 'login'
             });
           }}>
-          <Login/>
+          <LinkDetails/>
         </Icon.TabBarItemIOS>
         <Icon.TabBarItemIOS
           selected={this.state.selectedTab === 'app'}
