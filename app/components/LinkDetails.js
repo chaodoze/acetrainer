@@ -25,7 +25,7 @@ class LinkDetails extends Component {
               size={20}
               color='#ffffff'
               style={styles.btnIcon}/>
-            <Text style={styles.buttonText}>Sign In with Google</Text>
+            <Text style={styles.buttonText}>Login with Google</Text>
           </View>
         </TouchableHighlight>
         <View style={styles.orContainer}>
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
 
   orText: {
     fontSize:14, 
-    color:'#999',
+    color:'#333',
   }
 });
 
