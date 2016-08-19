@@ -7,18 +7,21 @@ const subscribeToReminders = (dispatch)=> {
     console.log('child_added', reminder.val())
     dispatch({
       type: 'REMINDER_ADDED',
+      val:reminder.val(),
       reminder,
     })
   })
   ref.on('child_changed', (reminder)=>{
     dispatch({
       type:'REMINDER_CHANGED',
+      val:reminder.val(),
       reminder
     })
   })
   ref.on('child_removed', (reminder)=>{
     dispatch({
       type:'REMINDER_REMOVED',
+      val:reminder.val(),
       reminder
     })
   })
