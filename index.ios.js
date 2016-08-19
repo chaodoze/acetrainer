@@ -5,61 +5,83 @@ import {
 } from 'react-native';
 
 import App from './app/components/app'
+import Mons from './app/components/Mons'
 import PokeMap from './app/components/PokeMap'
 import Login from './app/components/Login'
 import Options from './app/components/Options'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 class acetrainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        selectedTab: 'pokemap'
+        selectedTab: 'mons'
     };
   }
 
   render() {
     return (
       <TabBarIOS selectedTab={this.state.selectedTab}>
-        <TabBarIOS.Item
+        <Icon.TabBarItemIOS
+          selected={this.state.selectedTab === 'mons'}
+          title="My Pokemons"
+          iconName="bug"
+          selectedIconName="bug"
+          onPress={() => {
+              this.setState({
+                  selectedTab: 'mons'
+            });
+          }}>
+          <Mons/>
+        </Icon.TabBarItemIOS>
+        <Icon.TabBarItemIOS
           selected={this.state.selectedTab === 'pokemap'}
-          systemIcon="featured"
+          title="Map"
+          iconName="map-marker"
+          selectedIconName="map-marker"
           onPress={() => {
               this.setState({
                   selectedTab: 'pokemap'
             });
           }}>
           <PokeMap/>
-        </TabBarIOS.Item>
-        <TabBarIOS.Item
+        </Icon.TabBarItemIOS>
+        <Icon.TabBarItemIOS
           selected={this.state.selectedTab === 'login'}
-          systemIcon="contacts"
+          title="Account"
+          iconName="user"
+          selectedIconName="user"
           onPress={() => {
               this.setState({
                   selectedTab: 'login'
             });
           }}>
           <Login/>
-        </TabBarIOS.Item>
-        <TabBarIOS.Item
+        </Icon.TabBarItemIOS>
+        <Icon.TabBarItemIOS
           selected={this.state.selectedTab === 'app'}
-          systemIcon="search"
+          title="Tasks"
+          iconName="tasks"
+          selectedIconName="tasks"
           onPress={() => {
               this.setState({
                   selectedTab: 'app'
             });
           }}>
           <App/>
-        </TabBarIOS.Item>        
-        <TabBarIOS.Item
+        </Icon.TabBarItemIOS>        
+        <Icon.TabBarItemIOS
           selected={this.state.selectedTab === 'options'}
-          systemIcon="more"
+          title="Options"
+          iconName="gear"
+          selectedIconName="gear"
           onPress={() => {
               this.setState({
                   selectedTab: 'options'
               });
           }}>
           <Options/>
-        </TabBarIOS.Item>
+        </Icon.TabBarItemIOS>
       </TabBarIOS>
     );
   }
