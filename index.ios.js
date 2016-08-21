@@ -19,7 +19,6 @@ class acetrainer extends Component {
         selectedTab: 'mons'
     };
   }
-
   render() {
     return (
       <TabBarIOS selectedTab={this.state.selectedTab}>
@@ -33,7 +32,7 @@ class acetrainer extends Component {
                   selectedTab: 'mons'
             });
           }}>
-          <Mons/>
+          <Mons />
         </Icon.TabBarItemIOS>
         <Icon.TabBarItemIOS
           selected={this.state.selectedTab === 'pokemap'}
@@ -70,7 +69,7 @@ class acetrainer extends Component {
             });
           }}>
           <App/>
-        </Icon.TabBarItemIOS>        
+        </Icon.TabBarItemIOS>
         <Icon.TabBarItemIOS
           selected={this.state.selectedTab === 'options'}
           title="Options"
@@ -87,5 +86,5 @@ class acetrainer extends Component {
     );
   }
 }
- 
+
 AppRegistry.registerComponent('acetrainer', () => acetrainer);

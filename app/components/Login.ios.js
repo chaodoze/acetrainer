@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  NavigatorIOS
+  NavigatorIOS,
+  Text
 } from 'react-native';
 
-import LoginDetails from './LoginDetails'
+import PogoGoogleAuth from './PogoGoogleAuth'
 
 
 var styles = StyleSheet.create({
@@ -12,7 +13,7 @@ var styles = StyleSheet.create({
       flex: 1
   }
 });
- 
+
 class Login extends Component {
   render() {
     return (
@@ -20,10 +21,10 @@ class Login extends Component {
             style={styles.container}
             initialRoute={{
         title: 'Login',
-        component: LoginDetails
-        }}/>            
+        component: PogoGoogleAuth
+        }}/>
     );
   }
 }
- 
+
 module.exports = Login;
