@@ -56,7 +56,7 @@ class acetrainer extends Component {
                   selectedTab: 'login'
             });
           }}>
-          <LinkDetails/>
+          <Login />
         </Icon.TabBarItemIOS>
         <Icon.TabBarItemIOS
           selected={this.state.selectedTab === 'app'}
