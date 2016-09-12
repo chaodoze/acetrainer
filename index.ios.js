@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {
+import RN,{
   AppRegistry,
-  TabBarIOS
+  TabBarIOS,
+  NativeAppEventEmitter,
 } from 'react-native';
 
 import App from './app/components/app'
@@ -12,6 +13,9 @@ import LinkDetails from './app/components/LinkDetails'
 import Options from './app/components/Options'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import {CalendarManager} from 'NativeModules'
+const Permissions = require('react-native-permissions')
+
 class acetrainer extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +23,13 @@ class acetrainer extends Component {
         selectedTab: 'mons'
     };
   }
+  componentDidMount() {
+    console.log('zz',CalendarManager);  // ← add this line
+    CalendarManager.addEvent('abc', 'def', 123, (o)=>console.log(o))
+    Permissions.getPermissionStatus('photo').then((r)=>console.log('photo perm', r))
+    var subscription = NativeAppEventEmitter.addListener('EventReminder', (reminder)=>console.log(reminder,'evt e'))
+  }
+
   render() {
     return (
       <TabBarIOS selectedTab={this.state.selectedTab}>

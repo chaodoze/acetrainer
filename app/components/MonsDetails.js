@@ -9,6 +9,7 @@ import {
   TouchableHighlight, TouchableOpacity
 
 } from 'react-native';
+import {CalendarManager} from 'NativeModules'
 
 
 var styles = StyleSheet.create({
@@ -35,7 +36,7 @@ var styles = StyleSheet.create({
   },
 
   cp: {
-    flex:1, 
+    flex:1,
     flexDirection: 'row',
     alignItems:'flex-end',
   },
@@ -43,7 +44,7 @@ var styles = StyleSheet.create({
   mon_cp: {
     fontSize:11,
     marginRight:2,
-    color:'#999999',    
+    color:'#999999',
     fontFamily: 'Roboto',
 
   },
@@ -93,18 +94,20 @@ var styles = StyleSheet.create({
    },
   listView: {
     backgroundColor: '#F5FCFF'
-  } 
+  }
 });
 
 class MonsDetails extends Component {
 
   gotoNext() {
-   this.props.navigator.push({
-      component: OptionOne,
-      passProps: {
-        id: 'MY ID',
-      },
-    })
+    CalendarManager.fetchPhotos()
+    console.log('clicked')
+  //  this.props.navigator.push({
+  //     component: OptionOne,
+  //     passProps: {
+  //       id: 'MY ID',
+  //     },
+  //   })
   }
 
   render() {
@@ -180,6 +183,5 @@ class MonsDetails extends Component {
     );
   }
 }
- 
-module.exports = MonsDetails;
 
+module.exports = MonsDetails;

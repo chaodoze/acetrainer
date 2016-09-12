@@ -12,7 +12,7 @@ var styles = StyleSheet.create({
       flex: 1
   }
 });
- 
+
 class PokeMap extends Component {
   render() {
     return (
@@ -21,9 +21,9 @@ class PokeMap extends Component {
           initialRoute={{
       title: 'PokeMap',
       component: MapDetail
-      }}/>            
+      }}/>
     );
   }
 }
- 
+
 module.exports = PokeMap;
