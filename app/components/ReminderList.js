@@ -8,7 +8,7 @@ let ReminderList = ({reminders})=>(
   <ReminderListP reminders={reminders} onReminderChanged={db.updateReminder} />
 )
 const mapStateToProps = ({reminders}) => {
-  reminders = _.map(reminders)
+  reminders = _.values(reminders)
   return {
     reminders
   }

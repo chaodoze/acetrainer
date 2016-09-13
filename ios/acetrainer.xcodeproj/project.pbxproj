@@ -43,8 +43,8 @@
 		E50992041D87450200115F41 /* UIImagePixelColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50992001D87450200115F41 /* UIImagePixelColor.swift */; };
 		E50992491D87A86E00115F41 /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E50992291D87A7E500115F41 /* libRCTCameraRoll.a */; };
 		E524D7A21D6783860082DF29 /* libReact-Native-Webview-Bridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E524D79E1D6783670082DF29 /* libReact-Native-Webview-Bridge.a */; };
-		E59C7DB91D7644F900419870 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59C7DB81D7644F900419870 /* CalendarManager.swift */; };
-		E59C7DC91D76456200419870 /* CalendarManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E59C7DC81D76456200419870 /* CalendarManagerBridge.m */; };
+		E59C7DB91D7644F900419870 /* PokemonImager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59C7DB81D7644F900419870 /* PokemonImager.swift */; };
+		E59C7DC91D76456200419870 /* PokemonImagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E59C7DC81D76456200419870 /* PokemonImagerBridge.m */; };
 		E59C7DF71D77A5B000419870 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = E59C7DF61D77A5B000419870 /* tessdata */; };
 		E59C7E071D77A7CF00419870 /* chansey.png in Resources */ = {isa = PBXBuildFile; fileRef = E59C7E061D77A7CF00419870 /* chansey.png */; };
 		E5F88D981D4AE52300F46419 /* GoogleAppUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F88D911D4AE52300F46419 /* GoogleAppUtilities.framework */; };
@@ -236,8 +236,8 @@
 		E50992231D87A7E400115F41 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		E524D7901D6783660082DF29 /* React-Native-Webview-Bridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "React-Native-Webview-Bridge.xcodeproj"; path = "../node_modules/react-native-webview-bridge/ios/React-Native-Webview-Bridge.xcodeproj"; sourceTree = "<group>"; };
 		E59C7DB71D7644F800419870 /* acetrainer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "acetrainer-Bridging-Header.h"; sourceTree = "<group>"; };
-		E59C7DB81D7644F900419870 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
-		E59C7DC81D76456200419870 /* CalendarManagerBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarManagerBridge.m; sourceTree = "<group>"; };
+		E59C7DB81D7644F900419870 /* PokemonImager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonImager.swift; sourceTree = "<group>"; };
+		E59C7DC81D76456200419870 /* PokemonImagerBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PokemonImagerBridge.m; sourceTree = "<group>"; };
 		E59C7DF61D77A5B000419870 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; name = tessdata; path = ../tessdata; sourceTree = "<group>"; };
 		E59C7E061D77A7CF00419870 /* chansey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chansey.png; sourceTree = "<group>"; };
 		E5F88D911D4AE52300F46419 /* GoogleAppUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppUtilities.framework; sourceTree = "<group>"; };
@@ -394,9 +394,9 @@
 				E5F88D9F1D4AE67800F46419 /* GoogleService-Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				E59C7DB81D7644F900419870 /* CalendarManager.swift */,
+				E59C7DB81D7644F900419870 /* PokemonImager.swift */,
 				E59C7DB71D7644F800419870 /* acetrainer-Bridging-Header.h */,
-				E59C7DC81D76456200419870 /* CalendarManagerBridge.m */,
+				E59C7DC81D76456200419870 /* PokemonImagerBridge.m */,
 				E59C7DF61D77A5B000419870 /* tessdata */,
 			);
 			name = acetrainer;
@@ -1023,9 +1023,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E59C7DC91D76456200419870 /* CalendarManagerBridge.m in Sources */,
+				E59C7DC91D76456200419870 /* PokemonImagerBridge.m in Sources */,
 				E50992011D87450200115F41 /* PokemonLevelGuesser.swift in Sources */,
-				E59C7DB91D7644F900419870 /* CalendarManager.swift in Sources */,
+				E59C7DB91D7644F900419870 /* PokemonImager.swift in Sources */,
 				E50992021D87450200115F41 /* PokemonScreenshot.swift in Sources */,
 				E50992041D87450200115F41 /* UIImagePixelColor.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,

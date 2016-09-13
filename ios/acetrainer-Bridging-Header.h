@@ -5,3 +5,4 @@
 #import "RCTBridgeModule.h"
 #import "RCTBridge.h"
 #import "RCTEventDispatcher.h"
+#import "RCTConvert.h"

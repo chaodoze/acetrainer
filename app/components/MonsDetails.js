@@ -9,7 +9,6 @@ import {
   NativeAppEventEmitter,
   TouchableHighlight, TouchableOpacity
 } from 'react-native';
-import {CalendarManager} from 'NativeModules'
 
 
 var styles = StyleSheet.create({
@@ -110,7 +109,6 @@ class MonsDetails extends Component {
   }
 
   gotoNext() {
-    CalendarManager.fetchPhotos()
     console.log('clicked')
   //  this.props.navigator.push({
   //     component: OptionOne,
@@ -121,8 +119,6 @@ class MonsDetails extends Component {
   }
 
   render() {
-    const urls = this.state.mons.map(stats=>stats.url.replace('file://',''))
-    console.log('rendering images', urls)
     const imageNodes = this.state.mons.map((stats)=>{
       return (<TouchableHighlight  key={stats.url} onPress={ () => this.gotoNext() }>
         <View style={ styles.mon }>

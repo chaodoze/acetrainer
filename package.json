@@ -8,6 +8,7 @@
   "dependencies": {
     "firebase": "^3.2.1",
     "lodash-es": "^4.15.0",
+    "moment": "^2.15.0",
     "querystring": "^0.2.0",
     "react": "15.2.1",
     "react-native": "^0.31.0",

@@ -37,7 +37,6 @@ struct ScreenshotsMgr {
 //    })
 //    return result
     let identifier = asset.localIdentifier
-    let identifier32 = identifier.substringToIndex(identifier.startIndex.advancedBy(32))
     let url = "ph://\(identifier)"
     return url
   }

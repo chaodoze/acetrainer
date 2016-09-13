@@ -1,3 +1,4 @@
+import moment from 'moment'
 import React, { Component } from 'react';
 import RN,{
   AppRegistry,
@@ -13,9 +14,8 @@ import LinkDetails from './app/components/LinkDetails'
 import Options from './app/components/Options'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import {CalendarManager} from 'NativeModules'
+import {PokemonImager} from 'NativeModules'
 const Permissions = require('react-native-permissions')
-
 class acetrainer extends Component {
   constructor(props) {
     super(props);
@@ -24,9 +24,8 @@ class acetrainer extends Component {
     };
   }
   componentDidMount() {
-    CalendarManager.addEvent('abc', 'def', 123, (o)=>console.log(o))
+    PokemonImager.scan(moment().subtract(3, 'days').unix())
     Permissions.getPermissionStatus('photo').then((r)=>console.log('photo perm', r))
-    var subscription = NativeAppEventEmitter.addListener('EventReminder', (reminder)=>console.log(reminder,'evt e'))
   }
 
   render() {
