@@ -32,6 +32,22 @@ class CalendarManager: NSObject {
       "text" : tesseract.recognizedText,
       ]
     callback([ret])
+    let RFC3339DateFormatter = NSDateFormatter()
+    RFC3339DateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+    RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+    RFC3339DateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+    if let date = RFC3339DateFormatter.dateFromString("2016-09-07T00:53:23+00:00") {
+      
+      let screenshots = ScreenshotsMgr.fetch(date)
+      for ss in screenshots {
+        print("got screenshot", ss.image, ss.url)
+        let pokemon = PokemonScreenshot(screenshot: ss, trainerLevel: 21)
+        pokemon.fetchData().then { stats->Void in
+          print("pstats", stats)
+          self.bridge.eventDispatcher().sendAppEventWithName("Pokemon", body: stats)
+        }
+      }
+    }
     self.bridge.eventDispatcher().sendAppEventWithName("EventReminder", body:ret)
   }
   

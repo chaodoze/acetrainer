@@ -6,8 +6,8 @@ import {
   View,
   ScrollView,
   Image,
+  NativeAppEventEmitter,
   TouchableHighlight, TouchableOpacity
-
 } from 'react-native';
 import {CalendarManager} from 'NativeModules'
 
@@ -98,6 +98,16 @@ var styles = StyleSheet.create({
 });
 
 class MonsDetails extends Component {
+  constructor() {
+    super()
+    this.state = {mons:[]}
+  }
+  componentDidMount() {
+    var subscription = NativeAppEventEmitter.addListener('Pokemon', (stats)=>{
+      console.log(stats,'stats',stats.url)
+      this.setState({mons:this.state.mons.concat([stats])})
+    })
+  }
 
   gotoNext() {
     CalendarManager.fetchPhotos()
@@ -111,9 +121,26 @@ class MonsDetails extends Component {
   }
 
   render() {
+    const urls = this.state.mons.map(stats=>stats.url.replace('file://',''))
+    console.log('rendering images', urls)
+    const imageNodes = this.state.mons.map((stats)=>{
+      return (<TouchableHighlight  key={stats.url} onPress={ () => this.gotoNext() }>
+        <View style={ styles.mon }>
+          <View style={styles.cp}>
+            <Text style={ styles.mon_cp }>cp</Text>
+            <Text style={ styles.mon_cp_value }>{stats.CP.trim()}</Text>
+            <Text style={ styles.mon_cp }>IV</Text>
+            <Text style={ styles.mon_cp_value }>98%</Text>
+          </View>
+          <Image style={ styles.mon_icon } source={{uri:stats.url}} resizeMode='cover' />
+          <Text style={ styles.mon_label }>Vaporeon</Text>
+        </View>
+      </TouchableHighlight>)
+    })
     return (
       <ScrollView>
         <View style={styles.container}>
+          {imageNodes}
           <TouchableHighlight  onPress={ () => this.gotoNext() }>
             <View style={ styles.mon }>
               <View style={styles.cp}>

@@ -24,7 +24,6 @@ class acetrainer extends Component {
     };
   }
   componentDidMount() {
-    console.log('zz',CalendarManager);  // ← add this line
     CalendarManager.addEvent('abc', 'def', 123, (o)=>console.log(o))
     Permissions.getPermissionStatus('photo').then((r)=>console.log('photo perm', r))
     var subscription = NativeAppEventEmitter.addListener('EventReminder', (reminder)=>console.log(reminder,'evt e'))

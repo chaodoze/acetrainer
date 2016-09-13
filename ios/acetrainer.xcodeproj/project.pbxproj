@@ -37,6 +37,11 @@
 		DB785DA6BDA749D08879BE11 /* libRNFIRMessaging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD28429BF830447982045FA0 /* libRNFIRMessaging.a */; };
 		DBA4369711EA88FFC6EEC920 /* Pods_acetrainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 025FFF98A6857DCA55B7D354 /* Pods_acetrainer.framework */; };
 		DBAAE0A5C7CE42C7AFA4F2DC /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 417E4C7D8AC84E5C88F97DEF /* Foundation.ttf */; };
+		E50992011D87450200115F41 /* PokemonLevelGuesser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50991FD1D87450200115F41 /* PokemonLevelGuesser.swift */; };
+		E50992021D87450200115F41 /* PokemonScreenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50991FE1D87450200115F41 /* PokemonScreenshot.swift */; };
+		E50992031D87450200115F41 /* ScreenshotsMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50991FF1D87450200115F41 /* ScreenshotsMgr.swift */; };
+		E50992041D87450200115F41 /* UIImagePixelColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50992001D87450200115F41 /* UIImagePixelColor.swift */; };
+		E50992491D87A86E00115F41 /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E50992291D87A7E500115F41 /* libRCTCameraRoll.a */; };
 		E524D7A21D6783860082DF29 /* libReact-Native-Webview-Bridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E524D79E1D6783670082DF29 /* libReact-Native-Webview-Bridge.a */; };
 		E59C7DB91D7644F900419870 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59C7DB81D7644F900419870 /* CalendarManager.swift */; };
 		E59C7DC91D76456200419870 /* CalendarManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E59C7DC81D76456200419870 /* CalendarManagerBridge.m */; };
@@ -135,6 +140,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		E50992281D87A7E500115F41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E50992231D87A7E400115F41 /* RCTCameraRoll.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58B5115D1A9E6B3D00147676;
+			remoteInfo = RCTCameraRoll;
+		};
 		E524D79D1D6783670082DF29 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E524D7901D6783660082DF29 /* React-Native-Webview-Bridge.xcodeproj */;
@@ -217,6 +229,11 @@
 		DCF95CE756B24B97A2DB871D /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		E04595A681BF5A3B92003FFB /* Pods-acetrainerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-acetrainerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-acetrainerTests/Pods-acetrainerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E16BEA11509F4B8980ACD53D /* RNFIRMessaging.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFIRMessaging.xcodeproj; path = "../node_modules/react-native-fcm/ios/RNFIRMessaging.xcodeproj"; sourceTree = "<group>"; };
+		E50991FD1D87450200115F41 /* PokemonLevelGuesser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PokemonLevelGuesser.swift; path = acetrainer/poke/PokemonLevelGuesser.swift; sourceTree = "<group>"; };
+		E50991FE1D87450200115F41 /* PokemonScreenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PokemonScreenshot.swift; path = acetrainer/poke/PokemonScreenshot.swift; sourceTree = "<group>"; };
+		E50991FF1D87450200115F41 /* ScreenshotsMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScreenshotsMgr.swift; path = acetrainer/poke/ScreenshotsMgr.swift; sourceTree = "<group>"; };
+		E50992001D87450200115F41 /* UIImagePixelColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIImagePixelColor.swift; path = acetrainer/poke/UIImagePixelColor.swift; sourceTree = "<group>"; };
+		E50992231D87A7E400115F41 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		E524D7901D6783660082DF29 /* React-Native-Webview-Bridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "React-Native-Webview-Bridge.xcodeproj"; path = "../node_modules/react-native-webview-bridge/ios/React-Native-Webview-Bridge.xcodeproj"; sourceTree = "<group>"; };
 		E59C7DB71D7644F800419870 /* acetrainer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "acetrainer-Bridging-Header.h"; sourceTree = "<group>"; };
 		E59C7DB81D7644F900419870 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
@@ -258,6 +275,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E50992491D87A86E00115F41 /* libRCTCameraRoll.a in Frameworks */,
 				FC89878D1D665F0B004D4930 /* libRNVectorIcons.a in Frameworks */,
 				E524D7A21D6783860082DF29 /* libReact-Native-Webview-Bridge.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -366,6 +384,7 @@
 		13B07FAE1A68108700A75B9A /* acetrainer */ = {
 			isa = PBXGroup;
 			children = (
+				E50991FC1D8744ED00115F41 /* poke */,
 				E59C7E061D77A7CF00419870 /* chansey.png */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -417,6 +436,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				E50992231D87A7E400115F41 /* RCTCameraRoll.xcodeproj */,
 				FC8987871D665EE8004D4930 /* RNVectorIcons.xcodeproj */,
 				E524D7901D6783660082DF29 /* React-Native-Webview-Bridge.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -447,8 +467,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				FC89876A1D650BCA004D4930 /* Fonts */,
 				13B07FAE1A68108700A75B9A /* acetrainer */,
+				FC89876A1D650BCA004D4930 /* Fonts */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* acetrainerTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -478,6 +498,25 @@
 				DBB1D58C04503316E4B39CB8 /* Pods-acetrainerTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E50991FC1D8744ED00115F41 /* poke */ = {
+			isa = PBXGroup;
+			children = (
+				E50991FD1D87450200115F41 /* PokemonLevelGuesser.swift */,
+				E50991FE1D87450200115F41 /* PokemonScreenshot.swift */,
+				E50991FF1D87450200115F41 /* ScreenshotsMgr.swift */,
+				E50992001D87450200115F41 /* UIImagePixelColor.swift */,
+			);
+			name = poke;
+			sourceTree = "<group>";
+		};
+		E50992241D87A7E400115F41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E50992291D87A7E500115F41 /* libRCTCameraRoll.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		E524D7911D6783660082DF29 /* Products */ = {
@@ -649,6 +688,10 @@
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
 				},
 				{
+					ProductGroup = E50992241D87A7E400115F41 /* Products */;
+					ProjectRef = E50992231D87A7E400115F41 /* RCTCameraRoll.xcodeproj */;
+				},
+				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
 					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
 				},
@@ -782,6 +825,13 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E50992291D87A7E500115F41 /* libRCTCameraRoll.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTCameraRoll.a;
+			remoteRef = E50992281D87A7E500115F41 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		E524D79E1D6783670082DF29 /* libReact-Native-Webview-Bridge.a */ = {
@@ -974,8 +1024,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E59C7DC91D76456200419870 /* CalendarManagerBridge.m in Sources */,
+				E50992011D87450200115F41 /* PokemonLevelGuesser.swift in Sources */,
 				E59C7DB91D7644F900419870 /* CalendarManager.swift in Sources */,
+				E50992021D87450200115F41 /* PokemonScreenshot.swift in Sources */,
+				E50992041D87450200115F41 /* UIImagePixelColor.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				E50992031D87450200115F41 /* ScreenshotsMgr.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

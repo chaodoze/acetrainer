@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  NavigatorIOS
+  NavigatorIOS,
 } from 'react-native';
 
 import MonsDetails from './MonsDetails'
@@ -12,7 +12,7 @@ var styles = StyleSheet.create({
       flex: 1
   }
 });
- 
+
 class Mons extends Component {
   render() {
     return (
@@ -22,10 +22,9 @@ class Mons extends Component {
       title: 'My Pokemons',
       component: MonsDetails,
       rightButtonTitle: 'Sort by',
-      }}/>            
+      }}/>
     );
   }
 }
- 
-module.exports = Mons;
 
+module.exports = Mons;
