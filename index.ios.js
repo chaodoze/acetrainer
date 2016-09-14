@@ -13,8 +13,6 @@ import LinkDetails from './app/components/LinkDetails'
 import Options from './app/components/Options'
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import {PokemonImager} from 'NativeModules'
-const Permissions = require('react-native-permissions')
 class acetrainer extends Component {
   constructor(props) {
     super(props);
@@ -22,11 +20,6 @@ class acetrainer extends Component {
         selectedTab: 'mons'
     };
   }
-  componentDidMount() {
-    PokemonImager.scan(21, moment().subtract(20, 'days').unix()*1000)
-    Permissions.getPermissionStatus('photo').then((r)=>console.log('photo perm', r))
-  }
-
   render() {
     return (
       <TabBarIOS selectedTab={this.state.selectedTab}>

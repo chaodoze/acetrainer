@@ -1,4 +1,8 @@
 import firebase from 'firebase'
+import DeviceInfo from 'react-native-device-info'
+
+const uuid = DeviceInfo.getUniqueID()
+const monPath = `/${uuid}/mons`
 
 export const init = (dispatch) => {
   console.log('db init')
@@ -12,9 +16,8 @@ export const init = (dispatch) => {
   subscribeToMons(dispatch)
 }
 
-let user
 export const subscribeToMons = (dispatch)=> {
-  const ref = firebase.database().ref('/mons')
+  const ref = firebase.database().ref(monPath)
   ref.on('child_added', (mon)=> {
     dispatch({
       type: 'MON_ADDED',
@@ -40,12 +43,12 @@ export const subscribeToMons = (dispatch)=> {
 
 export const addMon = (mon)=> {
   console.log('addMon', {[mon.url]:mon})
-  const ref = firebase.database().ref('/mons')
+  const ref = firebase.database().ref(monPath)
   const key = mon.url.replace(/\//g,'')
   ref.update({[key]:mon})
 }
 
 export const updateMon = (mon)=> {
-  const ref = firebase.database().ref('/mons')
+  const ref = firebase.database().ref(monPath)
   ref.update({[mon.url]:mon.val()})
 }
