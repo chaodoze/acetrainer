@@ -4,13 +4,14 @@ import React, { Component, PropTypes } from 'react';
 import {
   Text,
   AppState,
+  AsyncStorage,
   NativeAppEventEmitter,
 } from 'react-native';
 const Permissions = require('react-native-permissions')
 import { connect } from 'react-redux';
 import {MonList} from './MonList'
-import * as db from '../db'
 import {PokemonImager} from 'NativeModules'
+import Pokemon from '../db/pokemon'
 
 class MonListP extends Component {
   constructor(props) {
@@ -19,6 +20,21 @@ class MonListP extends Component {
         status: 'checking'
     };
   }
+  reactToAppStates() {
+    AppState.addEventListener('change', appState=>{
+      if (appState == 'inactive') {
+        AsyncStorage.setItem('MonListP:inactive', ''+Date.now())
+      }
+      else if (appState == 'active') {
+        AsyncStorage.getItem('MonListP:inactive').then( lastScan=>{
+          lastScan = parseInt(lastScan,10)
+          if (lastScan) {
+            PokemonImager.scan(21, lastScan)
+          }
+        })
+      }
+    })
+  }
   componentDidMount() {
     Permissions.getPermissionStatus('photo').then((r)=>console.log('photo perm', r))
     Permissions.requestPermission('photo').then(response=>{
@@ -26,6 +42,7 @@ class MonListP extends Component {
       if (response == 'authorized') {
         console.log('got perm',response)
         PokemonImager.scan(21, moment().subtract(20, 'days').unix()*1000)
+        this.reactToAppStates()
         this.setState({status:'good'})
       }
       else {
@@ -34,10 +51,10 @@ class MonListP extends Component {
     })
     this.pokeSubscription = NativeAppEventEmitter.addListener('Pokemon', (stats)=>{
       console.log('stats', stats)
-      db.addMon(stats)
+      Pokemon.addFromScan(stats)
     })
-    AppState.addEventListener('change', appState=>console.log('new app state', appState))
   }
+
   render() {
     const status = this.state.status
     if (status == 'checking') {
@@ -47,7 +64,6 @@ class MonListP extends Component {
       return (<Text>Sorry, we don't have permission to access your photos</Text>)
     }
     const {mons} = this.props
-    console.log('status', status, mons.length)
     return <MonList mons={mons} />
   }
 }

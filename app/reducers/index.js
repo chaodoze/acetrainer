@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux'
+import Pokemon from '../db/pokemon'
 
 function mons(state={}, action) {
   const mon = action.val
@@ -7,7 +8,7 @@ function mons(state={}, action) {
     case 'MON_ADDED':
     case 'MON_CHANGED':
       newState = {...state}
-      newState[mon.url] = mon
+      newState[mon.url] = new Pokemon(mon)
       return newState
     case 'MON_REMOVED':
       newState = {...state}
