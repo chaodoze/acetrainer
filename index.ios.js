@@ -7,7 +7,6 @@ import RN,{
 } from 'react-native';
 
 import App from './app/components/app'
-import Mons from './app/components/Mons'
 import PokeMap from './app/components/PokeMap'
 import Login from './app/components/Login'
 import LinkDetails from './app/components/LinkDetails'
@@ -24,7 +23,7 @@ class acetrainer extends Component {
     };
   }
   componentDidMount() {
-    PokemonImager.scan(moment().subtract(3, 'days').unix())
+    PokemonImager.scan(21, moment().subtract(20, 'days').unix()*1000)
     Permissions.getPermissionStatus('photo').then((r)=>console.log('photo perm', r))
   }
 
@@ -41,7 +40,7 @@ class acetrainer extends Component {
                   selectedTab: 'mons'
             });
           }}>
-          <Mons />
+          <App />
         </Icon.TabBarItemIOS>
         <Icon.TabBarItemIOS
           selected={this.state.selectedTab === 'pokemap'}
@@ -66,18 +65,6 @@ class acetrainer extends Component {
             });
           }}>
           <Login />
-        </Icon.TabBarItemIOS>
-        <Icon.TabBarItemIOS
-          selected={this.state.selectedTab === 'app'}
-          title="Tasks"
-          iconName="tasks"
-          selectedIconName="tasks"
-          onPress={() => {
-              this.setState({
-                  selectedTab: 'app'
-            });
-          }}>
-          <App/>
         </Icon.TabBarItemIOS>
         <Icon.TabBarItemIOS
           selected={this.state.selectedTab === 'options'}

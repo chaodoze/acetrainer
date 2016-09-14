@@ -1,32 +1,5 @@
 import firebase from 'firebase'
 
-const subscribeToReminders = (dispatch)=> {
-  const ref = firebase.database().ref('/reminders')
-  console.log('subscribing to reminders')
-  ref.on('child_added', (reminder)=> {
-    console.log('child_added', reminder.val())
-    dispatch({
-      type: 'REMINDER_ADDED',
-      val:reminder.val(),
-      reminder,
-    })
-  })
-  ref.on('child_changed', (reminder)=>{
-    dispatch({
-      type:'REMINDER_CHANGED',
-      val:reminder.val(),
-      reminder
-    })
-  })
-  ref.on('child_removed', (reminder)=>{
-    dispatch({
-      type:'REMINDER_REMOVED',
-      val:reminder.val(),
-      reminder
-    })
-  })
-}
-
 export const init = (dispatch) => {
   console.log('db init')
   const config = {
@@ -36,16 +9,43 @@ export const init = (dispatch) => {
     storageBucket: "acetrainer-ce9c9.appspot.com",
   }
   firebase.initializeApp(config)
-  subscribeToReminders(dispatch)
+  subscribeToMons(dispatch)
 }
 
-export const addReminder = (reminder)=> {
-  const ref = firebase.database().ref('/reminders')
-  ref.push(reminder)
+let user
+export const subscribeToMons = (dispatch)=> {
+  const ref = firebase.database().ref('/mons')
+  ref.on('child_added', (mon)=> {
+    dispatch({
+      type: 'MON_ADDED',
+      val:mon.val(),
+      mon,
+    })
+  })
+  ref.on('child_changed', (mon)=>{
+    dispatch({
+      type:'MON_CHANGED',
+      val:mon.val(),
+      mon
+    })
+  })
+  ref.on('child_removed', (mon)=>{
+    dispatch({
+      type:'MON_REMOVED',
+      val:mon.val(),
+      mon
+    })
+  })
 }
 
-export const updateReminder = (reminder, newText)=> {
-  console.log('updateReminder', newText,{[reminder.key]:Object.assign(reminder.val(), {newText})})
-  const ref = firebase.database().ref('/reminders')
-  ref.update({[reminder.key]:Object.assign(reminder.val(), {text:newText})})
+export const addMon = (mon)=> {
+  console.log('addMon', {[mon.url]:mon})
+  const ref = firebase.database().ref('/mons')
+  const key = mon.url.replace(/\//g,'')
+  ref.update({[key]:mon})
+}
+
+export const updateMon = (mon)=> {
+  const ref = firebase.database().ref('/mons')
+  ref.update({[mon.url]:mon.val()})
 }

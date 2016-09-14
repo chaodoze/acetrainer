@@ -1,23 +1,23 @@
 import {combineReducers} from 'redux'
 
-function reminders(state=[], action) {
-  const {reminder} = action
+function mons(state={}, action) {
+  const mon = action.val
   let newState
   switch (action.type) {
-    case 'REMINDER_ADDED':
-    case 'REMINDER_CHANGED':
+    case 'MON_ADDED':
+    case 'MON_CHANGED':
       newState = {...state}
-      newState[reminder.key] = reminder
+      newState[mon.url] = mon
       return newState
-    case 'REMINDER_REMOVED':
+    case 'MON_REMOVED':
       newState = {...state}
-      if (newState[reminder.key]) {
-        delete newState[reminder.key]
+      if (newState[mon.url]) {
+        delete newState[mon.url]
       }
       return newState
     default:
       return state
   }
 }
-const rootReducer = combineReducers({reminders})
+const rootReducer = combineReducers({mons})
 export default rootReducer
