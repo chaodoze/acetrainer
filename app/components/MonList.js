@@ -19,7 +19,11 @@ var styles = StyleSheet.create({
       alignItems: 'flex-start',
       justifyContent: 'space-around',
       flexWrap:'wrap',
-      paddingTop:10,
+      paddingTop:30,
+  },
+
+  scroll: {
+      marginTop: 64, marginBottom: 49,
   },
 
   mon: {
@@ -97,7 +101,7 @@ var styles = StyleSheet.create({
 });
 
 export const MonList = ({mons})=> (
-  <ScrollView>
+  <ScrollView style={styles.scroll}>
     <View style={styles.container}>
       {mons.map(mon=><Mon stats={mon} key={mon.url} />)}
     </View>

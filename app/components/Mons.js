@@ -4,7 +4,7 @@ import {
   NavigatorIOS,
 } from 'react-native';
 
-import MonsDetails from './MonsDetails'
+import MonListP from './MonListP'
 
 
 var styles = StyleSheet.create({
@@ -20,7 +20,7 @@ class Mons extends Component {
           style={styles.container}
           initialRoute={{
       title: 'My Pokemons',
-      component: MonsDetails,
+      component: MonListP,
       rightButtonTitle: 'Sort by',
       }}/>
     );
