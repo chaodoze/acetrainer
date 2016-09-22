@@ -21,12 +21,12 @@ class Screenshot {
 }
 
 struct ScreenshotsMgr {
-  enum Err: ErrorType {
-    case ImageNotFound
+  enum Err: Error {
+    case imageNotFound
   }
-  static let manager = PHImageManager.defaultManager()
+  static let manager = PHImageManager.default()
   
-  static func requestUrlForAsset(asset:PHAsset)->String {
+  static func requestUrlForAsset(_ asset:PHAsset)->String {
 //    let options = PHImageRequestOptions()
 //    options.synchronous = true
 //    var result = "unknown"
@@ -41,11 +41,12 @@ struct ScreenshotsMgr {
     return url
   }
   
-  static func requestImageForAsset(asset:PHAsset)->UIImage {
+  static func requestImageForAsset(_ asset:PHAsset)->UIImage {
     let options = PHImageRequestOptions()
-    options.synchronous = true
+    options.isSynchronous = true
+    options.resizeMode = .exact
     var image = UIImage()
-    manager.requestImageForAsset(asset, targetSize: CGSize(width:asset.pixelWidth, height:asset.pixelHeight), contentMode: .AspectFit, options: options, resultHandler: {(result,info) in
+    manager.requestImage(for: asset, targetSize: CGSize(width:asset.pixelWidth, height:asset.pixelHeight), contentMode: .aspectFit, options: options, resultHandler: {(result,info) in
       if let img=result {
         image = img
       }
@@ -53,22 +54,20 @@ struct ScreenshotsMgr {
     return image
   }
   
-  static func fetch(after:NSDate)->[Screenshot] {
+  static func fetch(_ after:Date)->[Screenshot] {
     let options = PHFetchOptions()
-    let ssPredicate =  NSPredicate(format:"mediaSubtype == %ld", PHAssetMediaSubtype.PhotoScreenshot.rawValue)
+    let ssPredicate =  NSPredicate(format:"mediaSubtype == %ld", PHAssetMediaSubtype.photoScreenshot.rawValue)
     
-    let datePredicate = NSPredicate(format:"creationDate > %@", after)
-    options.predicate = NSCompoundPredicate(type:.AndPredicateType, subpredicates:[ssPredicate, datePredicate])
-    let result = PHAsset.fetchAssetsWithMediaType(.Image, options: options)
+    let datePredicate = NSPredicate(format:"creationDate > %@", after as CVarArg)
+    options.predicate = NSCompoundPredicate(type:.and, subpredicates:[ssPredicate, datePredicate])
+    let result = PHAsset.fetchAssets(with: .image, options: options)
     print("@@@", result.count)
     var screens = [Screenshot]()
-    result.enumerateObjectsUsingBlock{(object, count, stop) in
-      if let asset = object as? PHAsset {
-        let url = requestUrlForAsset(asset)
-        let image = requestImageForAsset(asset)
-        screens.append(Screenshot(image:image, url:url))
-      }
-    }
+    result.enumerateObjects({(asset, count, stop) in
+      let url = requestUrlForAsset(asset)
+      let image = requestImageForAsset(asset)
+      screens.append(Screenshot(image:image, url:url))
+    })
     return screens
   }
 }

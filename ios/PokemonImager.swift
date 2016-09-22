@@ -14,7 +14,7 @@ import Photos
 class PokemonImager: NSObject {
   var bridge: RCTBridge!
   
-  @objc func scan(trainerLevel: NSNumber, date: NSDate) -> Void {
+  @objc func scan(_ trainerLevel: NSNumber, date: Date) -> Void {
 //    let after = RCTConvert.NSDate(date)
     print("date after", date, trainerLevel)
     let screenshots = ScreenshotsMgr.fetch(date)
@@ -22,7 +22,7 @@ class PokemonImager: NSObject {
       let pokemon = PokemonScreenshot(screenshot: ss, trainerLevel: trainerLevel as Int)
       pokemon.fetchData().then { stats->Void in
         print("pstats", stats)
-        self.bridge.eventDispatcher().sendAppEventWithName("Pokemon", body: stats)
+        self.bridge.eventDispatcher().sendAppEvent(withName: "Pokemon", body: stats)
       }
     }
   }
