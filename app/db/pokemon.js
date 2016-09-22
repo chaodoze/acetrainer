@@ -32,7 +32,7 @@ const cleanup = {
 }
 
 const findBasePokemon = name=>{
-  return _.find(pokemonDB, poke=>poke.Name == name)
+  return _.find(pokemonDB, poke=>name.toLowerCase().indexOf(poke.Name.toLowerCase()) >= 0)
 }
 
 export default class Pokemon {
@@ -59,15 +59,17 @@ export default class Pokemon {
       const cpMSquaredTenth = Math.pow(cpM, 2)*0.1
       const reportedHP = this['HP']
       const reportedCP = this['CP']
-      console.log('looking for', this.Name, reportedHP, reportedCP)
+      console.log('looking for', mon.Name, reportedHP, reportedCP)
       let minStaminaIV = Math.floor(reportedHP/cpM - mon.baseStamina)
       _.range(minStaminaIV, 15).find( staminaIV=>{
-        let hp = Math.max(Math.floor((mon.baseStamina + staminaIV) * cpM), 10);
-        console.log('considering stamina', staminaIV, hp, reportedHP, mon.baseStamina, cpM, level)
+        const stamina = mon.baseStamina + staminaIV
+        let hp = Math.max(Math.floor((stamina) * cpM), 10);
         if (hp == reportedHP) {
-          _.range(0,15).each(attackIV=>{
-            _.range(0,15).each(defenseIV=>{
-              const cp = Math.floor((mon.baseAttack+attackIV)*Math.sqrt(mon.baseDefense+defenseIV)*cpMSquaredTenth)
+          console.log('considering stamina', staminaIV, hp, reportedHP, mon.baseStamina, cpM, level)
+          _.range(0,16).forEach(attackIV=>{
+            _.range(0,16).forEach(defenseIV=>{
+              const cp = Math.floor((mon.baseAttack+attackIV)*Math.sqrt(mon.baseDefense+defenseIV)*Math.sqrt(stamina)*cpMSquaredTenth)
+              // console.log('candidate CP', cp, attackIV, defenseIV, mon.baseAttack, mon.baseDefense, cpMSquaredTenth, level)
               if (cp == reportedCP) {
                 console.log('found combo', attackIV, defenseIV, staminaIV)
                 possibilities.push([attackIV, defenseIV, staminaIV])

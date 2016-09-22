@@ -20,7 +20,7 @@ class PokemonImager: NSObject {
     let screenshots = ScreenshotsMgr.fetch(date)
     for ss in screenshots {
       let pokemon = PokemonScreenshot(screenshot: ss, trainerLevel: trainerLevel as Int)
-      pokemon.fetchData().then { stats->Void in
+      _ = pokemon.fetchData().then { stats->Void in
         print("pstats", stats)
         self.bridge.eventDispatcher().sendAppEvent(withName: "Pokemon", body: stats)
       }

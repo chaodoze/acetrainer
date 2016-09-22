@@ -8,8 +8,8 @@
     "Sp. Attack": 65,
     "Sp. Defense": 65,
     "Speed": 45,
-    "baseAttack": 34,
-    "baseDefense": 34,
+    "baseAttack": 126,
+    "baseDefense": 126,
     "baseStamina": 90
   },
   {
@@ -21,8 +21,8 @@
     "Sp. Attack": 80,
     "Sp. Defense": 80,
     "Speed": 60,
-    "baseAttack": 40,
-    "baseDefense": 40,
+    "baseAttack": 156,
+    "baseDefense": 158,
     "baseStamina": 120
   },
   {
@@ -34,8 +34,8 @@
     "Sp. Attack": 100,
     "Sp. Defense": 100,
     "Speed": 80,
-    "baseAttack": 44,
-    "baseDefense": 44,
+    "baseAttack": 198,
+    "baseDefense": 200,
     "baseStamina": 160
   },
   {
@@ -47,8 +47,8 @@
     "Sp. Attack": 60,
     "Sp. Defense": 50,
     "Speed": 65,
-    "baseAttack": 38,
-    "baseDefense": 36,
+    "baseAttack": 128,
+    "baseDefense": 108,
     "baseStamina": 78
   },
   {
@@ -60,8 +60,8 @@
     "Sp. Attack": 80,
     "Sp. Defense": 65,
     "Speed": 80,
-    "baseAttack": 42,
-    "baseDefense": 40,
+    "baseAttack": 160,
+    "baseDefense": 140,
     "baseStamina": 116
   },
   {
@@ -73,8 +73,8 @@
     "Sp. Attack": 109,
     "Sp. Defense": 85,
     "Speed": 100,
-    "baseAttack": 48,
-    "baseDefense": 46,
+    "baseAttack": 212,
+    "baseDefense": 182,
     "baseStamina": 156
   },
   {
@@ -86,8 +86,8 @@
     "Sp. Attack": 50,
     "Sp. Defense": 64,
     "Speed": 43,
-    "baseAttack": 32,
-    "baseDefense": 36,
+    "baseAttack": 112,
+    "baseDefense": 142,
     "baseStamina": 88
   },
   {
@@ -99,8 +99,8 @@
     "Sp. Attack": 65,
     "Sp. Defense": 80,
     "Speed": 58,
-    "baseAttack": 38,
-    "baseDefense": 40,
+    "baseAttack": 144,
+    "baseDefense": 176,
     "baseStamina": 118
   },
   {
@@ -112,8 +112,8 @@
     "Sp. Attack": 85,
     "Sp. Defense": 105,
     "Speed": 78,
-    "baseAttack": 44,
-    "baseDefense": 46,
+    "baseAttack": 186,
+    "baseDefense": 222,
     "baseStamina": 158
   },
   {
@@ -125,8 +125,8 @@
     "Sp. Attack": 20,
     "Sp. Defense": 20,
     "Speed": 45,
-    "baseAttack": 28,
-    "baseDefense": 28,
+    "baseAttack": 62,
+    "baseDefense": 66,
     "baseStamina": 90
   },
   {
@@ -138,8 +138,8 @@
     "Sp. Attack": 25,
     "Sp. Defense": 25,
     "Speed": 30,
-    "baseAttack": 24,
-    "baseDefense": 28,
+    "baseAttack": 56,
+    "baseDefense": 86,
     "baseStamina": 100
   },
   {
@@ -151,8 +151,8 @@
     "Sp. Attack": 90,
     "Sp. Defense": 80,
     "Speed": 70,
-    "baseAttack": 40,
-    "baseDefense": 40,
+    "baseAttack": 144,
+    "baseDefense": 144,
     "baseStamina": 120
   },
   {
@@ -164,8 +164,8 @@
     "Sp. Attack": 20,
     "Sp. Defense": 20,
     "Speed": 50,
-    "baseAttack": 28,
-    "baseDefense": 28,
+    "baseAttack": 68,
+    "baseDefense": 64,
     "baseStamina": 80
   },
   {
@@ -177,8 +177,8 @@
     "Sp. Attack": 25,
     "Sp. Defense": 25,
     "Speed": 35,
-    "baseAttack": 26,
-    "baseDefense": 30,
+    "baseAttack": 62,
+    "baseDefense": 82,
     "baseStamina": 90
   },
   {
@@ -190,8 +190,8 @@
     "Sp. Attack": 45,
     "Sp. Defense": 80,
     "Speed": 75,
-    "baseAttack": 40,
-    "baseDefense": 40,
+    "baseAttack": 144,
+    "baseDefense": 130,
     "baseStamina": 130
   },
   {
@@ -203,8 +203,8 @@
     "Sp. Attack": 35,
     "Sp. Defense": 35,
     "Speed": 56,
-    "baseAttack": 32,
-    "baseDefense": 32,
+    "baseAttack": 94,
+    "baseDefense": 90,
     "baseStamina": 80
   },
   {
@@ -216,8 +216,8 @@
     "Sp. Attack": 50,
     "Sp. Defense": 50,
     "Speed": 71,
-    "baseAttack": 38,
-    "baseDefense": 38,
+    "baseAttack": 126,
+    "baseDefense": 122,
     "baseStamina": 126
   },
   {
@@ -229,8 +229,8 @@
     "Sp. Attack": 70,
     "Sp. Defense": 70,
     "Speed": 101,
-    "baseAttack": 44,
-    "baseDefense": 44,
+    "baseAttack": 170,
+    "baseDefense": 166,
     "baseStamina": 166
   },
   {
@@ -242,8 +242,8 @@
     "Sp. Attack": 25,
     "Sp. Defense": 35,
     "Speed": 72,
-    "baseAttack": 34,
-    "baseDefense": 34,
+    "baseAttack": 92,
+    "baseDefense": 86,
     "baseStamina": 60
   },
   {
@@ -255,8 +255,8 @@
     "Sp. Attack": 50,
     "Sp. Defense": 70,
     "Speed": 97,
-    "baseAttack": 42,
-    "baseDefense": 42,
+    "baseAttack": 146,
+    "baseDefense": 150,
     "baseStamina": 110
   },
   {
@@ -268,8 +268,8 @@
     "Sp. Attack": 31,
     "Sp. Defense": 31,
     "Speed": 70,
-    "baseAttack": 36,
-    "baseDefense": 32,
+    "baseAttack": 102,
+    "baseDefense": 78,
     "baseStamina": 80
   },
   {
@@ -281,8 +281,8 @@
     "Sp. Attack": 61,
     "Sp. Defense": 61,
     "Speed": 100,
-    "baseAttack": 44,
-    "baseDefense": 42,
+    "baseAttack": 168,
+    "baseDefense": 146,
     "baseStamina": 130
   },
   {
@@ -294,8 +294,8 @@
     "Sp. Attack": 40,
     "Sp. Defense": 54,
     "Speed": 55,
-    "baseAttack": 34,
-    "baseDefense": 34,
+    "baseAttack": 112,
+    "baseDefense": 112,
     "baseStamina": 70
   },
   {
@@ -307,8 +307,8 @@
     "Sp. Attack": 65,
     "Sp. Defense": 79,
     "Speed": 80,
-    "baseAttack": 42,
-    "baseDefense": 42,
+    "baseAttack": 166,
+    "baseDefense": 166,
     "baseStamina": 120
   },
   {
@@ -320,8 +320,8 @@
     "Sp. Attack": 50,
     "Sp. Defense": 50,
     "Speed": 90,
-    "baseAttack": 40,
-    "baseDefense": 38,
+    "baseAttack": 124,
+    "baseDefense": 108,
     "baseStamina": 70
   },
   {
@@ -333,8 +333,8 @@
     "Sp. Attack": 90,
     "Sp. Defense": 80,
     "Speed": 110,
-    "baseAttack": 48,
-    "baseDefense": 44,
+    "baseAttack": 200,
+    "baseDefense": 154,
     "baseStamina": 120
   },
   {
@@ -346,8 +346,8 @@
     "Sp. Attack": 20,
     "Sp. Defense": 30,
     "Speed": 40,
-    "baseAttack": 32,
-    "baseDefense": 34,
+    "baseAttack": 90,
+    "baseDefense": 114,
     "baseStamina": 100
   },
   {
@@ -359,8 +359,8 @@
     "Sp. Attack": 45,
     "Sp. Defense": 55,
     "Speed": 65,
-    "baseAttack": 40,
-    "baseDefense": 42,
+    "baseAttack": 150,
+    "baseDefense": 172,
     "baseStamina": 150
   },
   {
@@ -372,8 +372,8 @@
     "Sp. Attack": 40,
     "Sp. Defense": 40,
     "Speed": 41,
-    "baseAttack": 32,
-    "baseDefense": 32,
+    "baseAttack": 100,
+    "baseDefense": 104,
     "baseStamina": 110
   },
   {
@@ -385,8 +385,8 @@
     "Sp. Attack": 55,
     "Sp. Defense": 55,
     "Speed": 56,
-    "baseAttack": 36,
-    "baseDefense": 38,
+    "baseAttack": 132,
+    "baseDefense": 136,
     "baseStamina": 140
   },
   {
@@ -398,8 +398,8 @@
     "Sp. Attack": 75,
     "Sp. Defense": 85,
     "Speed": 76,
-    "baseAttack": 44,
-    "baseDefense": 44,
+    "baseAttack": 184,
+    "baseDefense": 190,
     "baseStamina": 180
   },
   {
@@ -411,8 +411,8 @@
     "Sp. Attack": 40,
     "Sp. Defense": 40,
     "Speed": 50,
-    "baseAttack": 34,
-    "baseDefense": 32,
+    "baseAttack": 110,
+    "baseDefense": 94,
     "baseStamina": 92
   },
   {
@@ -424,8 +424,8 @@
     "Sp. Attack": 55,
     "Sp. Defense": 55,
     "Speed": 65,
-    "baseAttack": 38,
-    "baseDefense": 38,
+    "baseAttack": 142,
+    "baseDefense": 128,
     "baseStamina": 122
   },
   {
@@ -437,8 +437,8 @@
     "Sp. Attack": 85,
     "Sp. Defense": 75,
     "Speed": 85,
-    "baseAttack": 46,
-    "baseDefense": 44,
+    "baseAttack": 204,
+    "baseDefense": 170,
     "baseStamina": 162
   },
   {
@@ -450,8 +450,8 @@
     "Sp. Attack": 60,
     "Sp. Defense": 65,
     "Speed": 35,
-    "baseAttack": 32,
-    "baseDefense": 34,
+    "baseAttack": 116,
+    "baseDefense": 124,
     "baseStamina": 140
   },
   {
@@ -463,8 +463,8 @@
     "Sp. Attack": 95,
     "Sp. Defense": 90,
     "Speed": 60,
-    "baseAttack": 42,
-    "baseDefense": 42,
+    "baseAttack": 178,
+    "baseDefense": 178,
     "baseStamina": 190
   },
   {
@@ -476,8 +476,8 @@
     "Sp. Attack": 50,
     "Sp. Defense": 65,
     "Speed": 65,
-    "baseAttack": 36,
-    "baseDefense": 36,
+    "baseAttack": 106,
+    "baseDefense": 118,
     "baseStamina": 76
   },
   {
@@ -489,8 +489,8 @@
     "Sp. Attack": 81,
     "Sp. Defense": 100,
     "Speed": 100,
-    "baseAttack": 46,
-    "baseDefense": 46,
+    "baseAttack": 176,
+    "baseDefense": 194,
     "baseStamina": 146
   },
   {
@@ -502,8 +502,8 @@
     "Sp. Attack": 45,
     "Sp. Defense": 25,
     "Speed": 20,
-    "baseAttack": 28,
-    "baseDefense": 22,
+    "baseAttack": 98,
+    "baseDefense": 54,
     "baseStamina": 230
   },
   {
@@ -515,8 +515,8 @@
     "Sp. Attack": 85,
     "Sp. Defense": 50,
     "Speed": 45,
-    "baseAttack": 38,
-    "baseDefense": 32,
+    "baseAttack": 168,
+    "baseDefense": 108,
     "baseStamina": 280
   },
   {
@@ -528,8 +528,8 @@
     "Sp. Attack": 30,
     "Sp. Defense": 40,
     "Speed": 55,
-    "baseAttack": 32,
-    "baseDefense": 32,
+    "baseAttack": 88,
+    "baseDefense": 90,
     "baseStamina": 80
   },
   {
@@ -541,8 +541,8 @@
     "Sp. Attack": 65,
     "Sp. Defense": 75,
     "Speed": 90,
-    "baseAttack": 44,
-    "baseDefense": 44,
+    "baseAttack": 164,
+    "baseDefense": 164,
     "baseStamina": 150
   },
   {
@@ -554,8 +554,8 @@
     "Sp. Attack": 75,
     "Sp. Defense": 65,
     "Speed": 30,
-    "baseAttack": 34,
-    "baseDefense": 32,
+    "baseAttack": 134,
+    "baseDefense": 130,
     "baseStamina": 90
   },
   {
@@ -567,8 +567,8 @@
     "Sp. Attack": 85,
     "Sp. Defense": 75,
     "Speed": 40,
-    "baseAttack": 38,
-    "baseDefense": 36,
+    "baseAttack": 162,
+    "baseDefense": 158,
     "baseStamina": 120
   },
   {
@@ -580,8 +580,8 @@
     "Sp. Attack": 110,
     "Sp. Defense": 90,
     "Speed": 50,
-    "baseAttack": 42,
-    "baseDefense": 40,
+    "baseAttack": 202,
+    "baseDefense": 190,
     "baseStamina": 150
   },
   {
@@ -593,8 +593,8 @@
     "Sp. Attack": 45,
     "Sp. Defense": 55,
     "Speed": 25,
-    "baseAttack": 32,
-    "baseDefense": 30,
+    "baseAttack": 122,
+    "baseDefense": 120,
     "baseStamina": 70
   },
   {
@@ -606,8 +606,8 @@
     "Sp. Attack": 60,
     "Sp. Defense": 80,
     "Speed": 30,
-    "baseAttack": 36,
-    "baseDefense": 36,
+    "baseAttack": 162,
+    "baseDefense": 170,
     "baseStamina": 120
   },
   {
@@ -619,8 +619,8 @@
     "Sp. Attack": 40,
     "Sp. Defense": 55,
     "Speed": 45,
-    "baseAttack": 32,
-    "baseDefense": 34,
+    "baseAttack": 108,
+    "baseDefense": 118,
     "baseStamina": 120
   },
   {
@@ -632,8 +632,8 @@
     "Sp. Attack": 90,
     "Sp. Defense": 75,
     "Speed": 90,
-    "baseAttack": 44,
-    "baseDefense": 42,
+    "baseAttack": 172,
+    "baseDefense": 154,
     "baseStamina": 140
   },
   {
@@ -645,8 +645,8 @@
     "Sp. Attack": 35,
     "Sp. Defense": 45,
     "Speed": 95,
-    "baseAttack": 38,
-    "baseDefense": 36,
+    "baseAttack": 108,
+    "baseDefense": 86,
     "baseStamina": 20
   },
   {
@@ -658,8 +658,8 @@
     "Sp. Attack": 50,
     "Sp. Defense": 70,
     "Speed": 120,
-    "baseAttack": 44,
-    "baseDefense": 44,
+    "baseAttack": 148,
+    "baseDefense": 140,
     "baseStamina": 70
   },
   {
@@ -671,8 +671,8 @@
     "Sp. Attack": 40,
     "Sp. Defense": 40,
     "Speed": 90,
-    "baseAttack": 38,
-    "baseDefense": 36,
+    "baseAttack": 104,
+    "baseDefense": 94,
     "baseStamina": 80
   },
   {
@@ -684,8 +684,8 @@
     "Sp. Attack": 65,
     "Sp. Defense": 65,
     "Speed": 115,
-    "baseAttack": 44,
-    "baseDefense": 44,
+    "baseAttack": 156,
+    "baseDefense": 146,
     "baseStamina": 130
   },
   {
@@ -697,8 +697,8 @@
     "Sp. Attack": 65,
     "Sp. Defense": 50,
     "Speed": 55,
-    "baseAttack": 36,
-    "baseDefense": 34,
+    "baseAttack": 132,
+    "baseDefense": 112,
     "baseStamina": 100
   },
   {
@@ -710,8 +710,8 @@
     "Sp. Attack": 95,
     "Sp. Defense": 80,
     "Speed": 85,
-    "baseAttack": 46,
-    "baseDefense": 44,
+    "baseAttack": 194,
+    "baseDefense": 176,
     "baseStamina": 160
   },
   {
@@ -723,8 +723,8 @@
     "Sp. Attack": 35,
     "Sp. Defense": 45,
     "Speed": 70,
-    "baseAttack": 38,
-    "baseDefense": 34,
+    "baseAttack": 122,
+    "baseDefense": 96,
     "baseStamina": 80
   },
   {
@@ -736,8 +736,8 @@
     "Sp. Attack": 60,
     "Sp. Defense": 70,
     "Speed": 95,
-    "baseAttack": 46,
-    "baseDefense": 42,
+    "baseAttack": 178,
+    "baseDefense": 150,
     "baseStamina": 130
   },
   {
@@ -749,8 +749,8 @@
     "Sp. Attack": 70,
     "Sp. Defense": 50,
     "Speed": 60,
-    "baseAttack": 40,
-    "baseDefense": 34,
+    "baseAttack": 156,
+    "baseDefense": 110,
     "baseStamina": 110
   },
   {
@@ -762,8 +762,8 @@
     "Sp. Attack": 100,
     "Sp. Defense": 80,
     "Speed": 95,
-    "baseAttack": 48,
-    "baseDefense": 44,
+    "baseAttack": 230,
+    "baseDefense": 180,
     "baseStamina": 180
   },
   {
@@ -775,8 +775,8 @@
     "Sp. Attack": 40,
     "Sp. Defense": 40,
     "Speed": 90,
-    "baseAttack": 38,
-    "baseDefense": 36,
+    "baseAttack": 108,
+    "baseDefense": 98,
     "baseStamina": 80
   },
   {
@@ -788,8 +788,8 @@
     "Sp. Attack": 50,
     "Sp. Defense": 50,
     "Speed": 90,
-    "baseAttack": 40,
-    "baseDefense": 40,
+    "baseAttack": 132,
+    "baseDefense": 132,
     "baseStamina": 130
   },
   {
@@ -801,8 +801,8 @@
     "Sp. Attack": 70,
     "Sp. Defense": 90,
     "Speed": 70,
-    "baseAttack": 42,
-    "baseDefense": 44,
+    "baseAttack": 180,
+    "baseDefense": 202,
     "baseStamina": 180
   },
   {
@@ -814,8 +814,8 @@
     "Sp. Attack": 105,
     "Sp. Defense": 55,
     "Speed": 90,
-    "baseAttack": 42,
-    "baseDefense": 36,
+    "baseAttack": 110,
+    "baseDefense": 76,
     "baseStamina": 50
   },
   {
@@ -827,8 +827,8 @@
     "Sp. Attack": 120,
     "Sp. Defense": 70,
     "Speed": 105,
-    "baseAttack": 46,
-    "baseDefense": 40,
+    "baseAttack": 150,
+    "baseDefense": 112,
     "baseStamina": 80
   },
   {
@@ -840,8 +840,8 @@
     "Sp. Attack": 135,
     "Sp. Defense": 95,
     "Speed": 120,
-    "baseAttack": 50,
-    "baseDefense": 46,
+    "baseAttack": 186,
+    "baseDefense": 152,
     "baseStamina": 110
   },
   {
@@ -853,8 +853,8 @@
     "Sp. Attack": 35,
     "Sp. Defense": 35,
     "Speed": 35,
-    "baseAttack": 34,
-    "baseDefense": 30,
+    "baseAttack": 118,
+    "baseDefense": 96,
     "baseStamina": 140
   },
   {
@@ -866,8 +866,8 @@
     "Sp. Attack": 50,
     "Sp. Defense": 60,
     "Speed": 45,
-    "baseAttack": 38,
-    "baseDefense": 36,
+    "baseAttack": 154,
+    "baseDefense": 144,
     "baseStamina": 160
   },
   {
@@ -879,8 +879,8 @@
     "Sp. Attack": 65,
     "Sp. Defense": 85,
     "Speed": 55,
-    "baseAttack": 42,
-    "baseDefense": 40,
+    "baseAttack": 198,
+    "baseDefense": 180,
     "baseStamina": 180
   },
   {
@@ -892,8 +892,8 @@
     "Sp. Attack": 70,
     "Sp. Defense": 30,
     "Speed": 40,
-    "baseAttack": 36,
-    "baseDefense": 28,
+    "baseAttack": 158,
+    "baseDefense": 78,
     "baseStamina": 100
   },
   {
@@ -905,8 +905,8 @@
     "Sp. Attack": 85,
     "Sp. Defense": 45,
     "Speed": 55,
-    "baseAttack": 42,
-    "baseDefense": 34,
+    "baseAttack": 190,
+    "baseDefense": 110,
     "baseStamina": 130
   },
   {
@@ -918,8 +918,8 @@
     "Sp. Attack": 100,
     "Sp. Defense": 70,
     "Speed": 70,
-    "baseAttack": 46,
-    "baseDefense": 40,
+    "baseAttack": 222,
+    "baseDefense": 152,
     "baseStamina": 160
   },
   {
@@ -931,8 +931,8 @@
     "Sp. Attack": 50,
     "Sp. Defense": 100,
     "Speed": 70,
-    "baseAttack": 36,
-    "baseDefense": 40,
+    "baseAttack": 106,
+    "baseDefense": 136,
     "baseStamina": 80
   },
   {
@@ -944,8 +944,8 @@
     "Sp. Attack": 80,
     "Sp. Defense": 120,
     "Speed": 100,
-    "baseAttack": 44,
-    "baseDefense": 48,
+    "baseAttack": 170,
+    "baseDefense": 196,
     "baseStamina": 160
   },
   {
@@ -957,8 +957,8 @@
     "Sp. Attack": 30,
     "Sp. Defense": 30,
     "Speed": 20,
-    "baseAttack": 30,
-    "baseDefense": 32,
+    "baseAttack": 106,
+    "baseDefense": 118,
     "baseStamina": 80
   },
   {
@@ -970,8 +970,8 @@
     "Sp. Attack": 45,
     "Sp. Defense": 45,
     "Speed": 35,
-    "baseAttack": 36,
-    "baseDefense": 38,
+    "baseAttack": 142,
+    "baseDefense": 156,
     "baseStamina": 110
   },
   {
@@ -983,8 +983,8 @@
     "Sp. Attack": 55,
     "Sp. Defense": 65,
     "Speed": 45,
-    "baseAttack": 40,
-    "baseDefense": 42,
+    "baseAttack": 176,
+    "baseDefense": 198,
     "baseStamina": 160
   },
   {
@@ -996,8 +996,8 @@
     "Sp. Attack": 65,
     "Sp. Defense": 65,
     "Speed": 90,
-    "baseAttack": 44,
-    "baseDefense": 40,
+    "baseAttack": 168,
+    "baseDefense": 138,
     "baseStamina": 100
   },
   {
@@ -1009,8 +1009,8 @@
     "Sp. Attack": 80,
     "Sp. Defense": 80,
     "Speed": 105,
-    "baseAttack": 48,
-    "baseDefense": 44,
+    "baseAttack": 200,
+    "baseDefense": 170,
     "baseStamina": 130
   },
   {
@@ -1022,8 +1022,8 @@
     "Sp. Attack": 40,
     "Sp. Defense": 40,
     "Speed": 15,
-    "baseAttack": 28,
-    "baseDefense": 28,
+    "baseAttack": 110,
+    "baseDefense": 110,
     "baseStamina": 180
   },
   {
@@ -1035,8 +1035,8 @@
     "Sp. Attack": 100,
     "Sp. Defense": 80,
     "Speed": 30,
-    "baseAttack": 38,
-    "baseDefense": 38,
+    "baseAttack": 184,
+    "baseDefense": 198,
     "baseStamina": 190
   },
   {
@@ -1048,8 +1048,8 @@
     "Sp. Attack": 95,
     "Sp. Defense": 55,
     "Speed": 45,
-    "baseAttack": 36,
-    "baseDefense": 36,
+    "baseAttack": 128,
+    "baseDefense": 138,
     "baseStamina": 50
   },
   {
@@ -1061,8 +1061,8 @@
     "Sp. Attack": 120,
     "Sp. Defense": 70,
     "Speed": 70,
-    "baseAttack": 44,
-    "baseDefense": 42,
+    "baseAttack": 186,
+    "baseDefense": 180,
     "baseStamina": 100
   },
   {
@@ -1074,8 +1074,8 @@
     "Sp. Attack": 58,
     "Sp. Defense": 62,
     "Speed": 60,
-    "baseAttack": 38,
-    "baseDefense": 38,
+    "baseAttack": 138,
+    "baseDefense": 132,
     "baseStamina": 104
   },
   {
@@ -1087,8 +1087,8 @@
     "Sp. Attack": 35,
     "Sp. Defense": 35,
     "Speed": 75,
-    "baseAttack": 40,
-    "baseDefense": 36,
+    "baseAttack": 126,
+    "baseDefense": 96,
     "baseStamina": 70
   },
   {
@@ -1100,8 +1100,8 @@
     "Sp. Attack": 60,
     "Sp. Defense": 60,
     "Speed": 100,
-    "baseAttack": 46,
-    "baseDefense": 42,
+    "baseAttack": 182,
+    "baseDefense": 150,
     "baseStamina": 120
   },
   {
@@ -1113,8 +1113,8 @@
     "Sp. Attack": 45,
     "Sp. Defense": 70,
     "Speed": 45,
-    "baseAttack": 32,
-    "baseDefense": 36,
+    "baseAttack": 104,
+    "baseDefense": 138,
     "baseStamina": 130
   },
   {
@@ -1126,8 +1126,8 @@
     "Sp. Attack": 70,
     "Sp. Defense": 95,
     "Speed": 70,
-    "baseAttack": 40,
-    "baseDefense": 44,
+    "baseAttack": 156,
+    "baseDefense": 192,
     "baseStamina": 180
   },
   {
@@ -1139,8 +1139,8 @@
     "Sp. Attack": 40,
     "Sp. Defense": 50,
     "Speed": 25,
-    "baseAttack": 32,
-    "baseDefense": 30,
+    "baseAttack": 124,
+    "baseDefense": 110,
     "baseStamina": 160
   },
   {
@@ -1152,8 +1152,8 @@
     "Sp. Attack": 65,
     "Sp. Defense": 100,
     "Speed": 50,
-    "baseAttack": 40,
-    "baseDefense": 40,
+    "baseAttack": 180,
+    "baseDefense": 188,
     "baseStamina": 210
   },
   {
@@ -1165,8 +1165,8 @@
     "Sp. Attack": 45,
     "Sp. Defense": 25,
     "Speed": 40,
-    "baseAttack": 34,
-    "baseDefense": 36,
+    "baseAttack": 120,
+    "baseDefense": 112,
     "baseStamina": 60
   },
   {
@@ -1178,8 +1178,8 @@
     "Sp. Attack": 85,
     "Sp. Defense": 45,
     "Speed": 70,
-    "baseAttack": 44,
-    "baseDefense": 46,
+    "baseAttack": 196,
+    "baseDefense": 196,
     "baseStamina": 100
   },
   {
@@ -1191,8 +1191,8 @@
     "Sp. Attack": 100,
     "Sp. Defense": 35,
     "Speed": 80,
-    "baseAttack": 42,
-    "baseDefense": 34,
+    "baseAttack": 136,
+    "baseDefense": 82,
     "baseStamina": 60
   },
   {
@@ -1204,8 +1204,8 @@
     "Sp. Attack": 115,
     "Sp. Defense": 55,
     "Speed": 95,
-    "baseAttack": 46,
-    "baseDefense": 40,
+    "baseAttack": 172,
+    "baseDefense": 118,
     "baseStamina": 90
   },
   {
@@ -1217,8 +1217,8 @@
     "Sp. Attack": 130,
     "Sp. Defense": 75,
     "Speed": 110,
-    "baseAttack": 48,
-    "baseDefense": 44,
+    "baseAttack": 204,
+    "baseDefense": 156,
     "baseStamina": 120
   },
   {
@@ -1230,8 +1230,8 @@
     "Sp. Attack": 30,
     "Sp. Defense": 45,
     "Speed": 70,
-    "baseAttack": 34,
-    "baseDefense": 46,
+    "baseAttack": 90,
+    "baseDefense": 186,
     "baseStamina": 70
   },
   {
@@ -1243,8 +1243,8 @@
     "Sp. Attack": 43,
     "Sp. Defense": 90,
     "Speed": 42,
-    "baseAttack": 32,
-    "baseDefense": 36,
+    "baseAttack": 104,
+    "baseDefense": 140,
     "baseStamina": 120
   },
   {
@@ -1256,8 +1256,8 @@
     "Sp. Attack": 73,
     "Sp. Defense": 115,
     "Speed": 67,
-    "baseAttack": 40,
-    "baseDefense": 44,
+    "baseAttack": 162,
+    "baseDefense": 196,
     "baseStamina": 170
   },
   {
@@ -1269,8 +1269,8 @@
     "Sp. Attack": 25,
     "Sp. Defense": 25,
     "Speed": 50,
-    "baseAttack": 36,
-    "baseDefense": 36,
+    "baseAttack": 116,
+    "baseDefense": 110,
     "baseStamina": 60
   },
   {
@@ -1282,8 +1282,8 @@
     "Sp. Attack": 50,
     "Sp. Defense": 50,
     "Speed": 75,
-    "baseAttack": 44,
-    "baseDefense": 44,
+    "baseAttack": 178,
+    "baseDefense": 168,
     "baseStamina": 110
   },
   {
@@ -1295,8 +1295,8 @@
     "Sp. Attack": 55,
     "Sp. Defense": 55,
     "Speed": 100,
-    "baseAttack": 38,
-    "baseDefense": 40,
+    "baseAttack": 102,
+    "baseDefense": 124,
     "baseStamina": 80
   },
   {
@@ -1308,8 +1308,8 @@
     "Sp. Attack": 80,
     "Sp. Defense": 80,
     "Speed": 140,
-    "baseAttack": 46,
-    "baseDefense": 48,
+    "baseAttack": 150,
+    "baseDefense": 174,
     "baseStamina": 120
   },
   {
@@ -1321,8 +1321,8 @@
     "Sp. Attack": 60,
     "Sp. Defense": 45,
     "Speed": 40,
-    "baseAttack": 32,
-    "baseDefense": 36,
+    "baseAttack": 110,
+    "baseDefense": 132,
     "baseStamina": 120
   },
   {
@@ -1334,8 +1334,8 @@
     "Sp. Attack": 125,
     "Sp. Defense": 65,
     "Speed": 55,
-    "baseAttack": 44,
-    "baseDefense": 40,
+    "baseAttack": 232,
+    "baseDefense": 164,
     "baseStamina": 190
   },
   {
@@ -1347,8 +1347,8 @@
     "Sp. Attack": 40,
     "Sp. Defense": 50,
     "Speed": 35,
-    "baseAttack": 30,
-    "baseDefense": 36,
+    "baseAttack": 102,
+    "baseDefense": 150,
     "baseStamina": 100
   },
   {
@@ -1360,8 +1360,8 @@
     "Sp. Attack": 50,
     "Sp. Defense": 80,
     "Speed": 45,
-    "baseAttack": 36,
-    "baseDefense": 40,
+    "baseAttack": 140,
+    "baseDefense": 202,
     "baseStamina": 120
   },
   {
@@ -1373,8 +1373,8 @@
     "Sp. Attack": 35,
     "Sp. Defense": 110,
     "Speed": 87,
-    "baseAttack": 44,
-    "baseDefense": 44,
+    "baseAttack": 148,
+    "baseDefense": 172,
     "baseStamina": 100
   },
   {
@@ -1386,8 +1386,8 @@
     "Sp. Attack": 35,
     "Sp. Defense": 110,
     "Speed": 76,
-    "baseAttack": 42,
-    "baseDefense": 44,
+    "baseAttack": 138,
+    "baseDefense": 204,
     "baseStamina": 100
   },
   {
@@ -1399,8 +1399,8 @@
     "Sp. Attack": 60,
     "Sp. Defense": 75,
     "Speed": 30,
-    "baseAttack": 32,
-    "baseDefense": 36,
+    "baseAttack": 126,
+    "baseDefense": 160,
     "baseStamina": 180
   },
   {
@@ -1412,8 +1412,8 @@
     "Sp. Attack": 60,
     "Sp. Defense": 45,
     "Speed": 35,
-    "baseAttack": 34,
-    "baseDefense": 36,
+    "baseAttack": 136,
+    "baseDefense": 142,
     "baseStamina": 80
   },
   {
@@ -1425,8 +1425,8 @@
     "Sp. Attack": 85,
     "Sp. Defense": 70,
     "Speed": 60,
-    "baseAttack": 42,
-    "baseDefense": 44,
+    "baseAttack": 190,
+    "baseDefense": 198,
     "baseStamina": 130
   },
   {
@@ -1438,8 +1438,8 @@
     "Sp. Attack": 30,
     "Sp. Defense": 30,
     "Speed": 25,
-    "baseAttack": 32,
-    "baseDefense": 32,
+    "baseAttack": 110,
+    "baseDefense": 116,
     "baseStamina": 160
   },
   {
@@ -1451,8 +1451,8 @@
     "Sp. Attack": 45,
     "Sp. Defense": 45,
     "Speed": 40,
-    "baseAttack": 40,
-    "baseDefense": 38,
+    "baseAttack": 166,
+    "baseDefense": 160,
     "baseStamina": 210
   },
   {
@@ -1464,8 +1464,8 @@
     "Sp. Attack": 35,
     "Sp. Defense": 105,
     "Speed": 50,
-    "baseAttack": 26,
-    "baseDefense": 36,
+    "baseAttack": 40,
+    "baseDefense": 60,
     "baseStamina": 500
   },
   {
@@ -1477,8 +1477,8 @@
     "Sp. Attack": 100,
     "Sp. Defense": 40,
     "Speed": 60,
-    "baseAttack": 40,
-    "baseDefense": 40,
+    "baseAttack": 164,
+    "baseDefense": 152,
     "baseStamina": 130
   },
   {
@@ -1490,8 +1490,8 @@
     "Sp. Attack": 40,
     "Sp. Defense": 80,
     "Speed": 90,
-    "baseAttack": 42,
-    "baseDefense": 44,
+    "baseAttack": 142,
+    "baseDefense": 178,
     "baseStamina": 210
   },
   {
@@ -1503,8 +1503,8 @@
     "Sp. Attack": 70,
     "Sp. Defense": 25,
     "Speed": 60,
-    "baseAttack": 36,
-    "baseDefense": 34,
+    "baseAttack": 122,
+    "baseDefense": 100,
     "baseStamina": 60
   },
   {
@@ -1516,8 +1516,8 @@
     "Sp. Attack": 95,
     "Sp. Defense": 45,
     "Speed": 85,
-    "baseAttack": 44,
-    "baseDefense": 42,
+    "baseAttack": 176,
+    "baseDefense": 150,
     "baseStamina": 110
   },
   {
@@ -1529,8 +1529,8 @@
     "Sp. Attack": 35,
     "Sp. Defense": 50,
     "Speed": 63,
-    "baseAttack": 36,
-    "baseDefense": 36,
+    "baseAttack": 112,
+    "baseDefense": 126,
     "baseStamina": 90
   },
   {
@@ -1542,8 +1542,8 @@
     "Sp. Attack": 65,
     "Sp. Defense": 80,
     "Speed": 68,
-    "baseAttack": 42,
-    "baseDefense": 40,
+    "baseAttack": 172,
+    "baseDefense": 160,
     "baseStamina": 160
   },
   {
@@ -1555,8 +1555,8 @@
     "Sp. Attack": 70,
     "Sp. Defense": 55,
     "Speed": 85,
-    "baseAttack": 40,
-    "baseDefense": 40,
+    "baseAttack": 130,
+    "baseDefense": 128,
     "baseStamina": 60
   },
   {
@@ -1568,8 +1568,8 @@
     "Sp. Attack": 100,
     "Sp. Defense": 85,
     "Speed": 115,
-    "baseAttack": 48,
-    "baseDefense": 48,
+    "baseAttack": 194,
+    "baseDefense": 192,
     "baseStamina": 120
   },
   {
@@ -1581,8 +1581,8 @@
     "Sp. Attack": 100,
     "Sp. Defense": 120,
     "Speed": 90,
-    "baseAttack": 44,
-    "baseDefense": 46,
+    "baseAttack": 154,
+    "baseDefense": 196,
     "baseStamina": 80
   },
   {
@@ -1594,8 +1594,8 @@
     "Sp. Attack": 55,
     "Sp. Defense": 80,
     "Speed": 105,
-    "baseAttack": 46,
-    "baseDefense": 46,
+    "baseAttack": 176,
+    "baseDefense": 180,
     "baseStamina": 140
   },
   {
@@ -1607,8 +1607,8 @@
     "Sp. Attack": 115,
     "Sp. Defense": 95,
     "Speed": 95,
-    "baseAttack": 46,
-    "baseDefense": 42,
+    "baseAttack": 172,
+    "baseDefense": 134,
     "baseStamina": 130
   },
   {
@@ -1620,8 +1620,8 @@
     "Sp. Attack": 95,
     "Sp. Defense": 85,
     "Speed": 105,
-    "baseAttack": 48,
-    "baseDefense": 44,
+    "baseAttack": 198,
+    "baseDefense": 160,
     "baseStamina": 130
   },
   {
@@ -1633,8 +1633,8 @@
     "Sp. Attack": 100,
     "Sp. Defense": 85,
     "Speed": 93,
-    "baseAttack": 48,
-    "baseDefense": 44,
+    "baseAttack": 214,
+    "baseDefense": 158,
     "baseStamina": 130
   },
   {
@@ -1646,8 +1646,8 @@
     "Sp. Attack": 55,
     "Sp. Defense": 70,
     "Speed": 85,
-    "baseAttack": 46,
-    "baseDefense": 44,
+    "baseAttack": 184,
+    "baseDefense": 186,
     "baseStamina": 130
   },
   {
@@ -1659,8 +1659,8 @@
     "Sp. Attack": 40,
     "Sp. Defense": 70,
     "Speed": 110,
-    "baseAttack": 44,
-    "baseDefense": 46,
+    "baseAttack": 148,
+    "baseDefense": 184,
     "baseStamina": 150
   },
   {
@@ -1672,8 +1672,8 @@
     "Sp. Attack": 15,
     "Sp. Defense": 20,
     "Speed": 80,
-    "baseAttack": 28,
-    "baseDefense": 36,
+    "baseAttack": 42,
+    "baseDefense": 84,
     "baseStamina": 40
   },
   {
@@ -1685,8 +1685,8 @@
     "Sp. Attack": 60,
     "Sp. Defense": 100,
     "Speed": 81,
-    "baseAttack": 46,
-    "baseDefense": 44,
+    "baseAttack": 192,
+    "baseDefense": 196,
     "baseStamina": 190
   },
   {
@@ -1698,8 +1698,8 @@
     "Sp. Attack": 85,
     "Sp. Defense": 95,
     "Speed": 60,
-    "baseAttack": 42,
-    "baseDefense": 42,
+    "baseAttack": 186,
+    "baseDefense": 190,
     "baseStamina": 260
   },
   {
@@ -1711,8 +1711,8 @@
     "Sp. Attack": 48,
     "Sp. Defense": 48,
     "Speed": 48,
-    "baseAttack": 34,
-    "baseDefense": 34,
+    "baseAttack": 110,
+    "baseDefense": 110,
     "baseStamina": 96
   },
   {
@@ -1724,8 +1724,8 @@
     "Sp. Attack": 45,
     "Sp. Defense": 65,
     "Speed": 55,
-    "baseAttack": 34,
-    "baseDefense": 36,
+    "baseAttack": 114,
+    "baseDefense": 128,
     "baseStamina": 110
   },
   {
@@ -1737,8 +1737,8 @@
     "Sp. Attack": 110,
     "Sp. Defense": 95,
     "Speed": 65,
-    "baseAttack": 42,
-    "baseDefense": 42,
+    "baseAttack": 186,
+    "baseDefense": 168,
     "baseStamina": 260
   },
   {
@@ -1750,8 +1750,8 @@
     "Sp. Attack": 110,
     "Sp. Defense": 95,
     "Speed": 130,
-    "baseAttack": 50,
-    "baseDefense": 48,
+    "baseAttack": 192,
+    "baseDefense": 174,
     "baseStamina": 130
   },
   {
@@ -1763,8 +1763,8 @@
     "Sp. Attack": 95,
     "Sp. Defense": 110,
     "Speed": 65,
-    "baseAttack": 46,
-    "baseDefense": 42,
+    "baseAttack": 238,
+    "baseDefense": 178,
     "baseStamina": 130
   },
   {
@@ -1776,8 +1776,8 @@
     "Sp. Attack": 85,
     "Sp. Defense": 75,
     "Speed": 40,
-    "baseAttack": 36,
-    "baseDefense": 36,
+    "baseAttack": 156,
+    "baseDefense": 158,
     "baseStamina": 130
   },
   {
@@ -1789,8 +1789,8 @@
     "Sp. Attack": 90,
     "Sp. Defense": 55,
     "Speed": 35,
-    "baseAttack": 34,
-    "baseDefense": 36,
+    "baseAttack": 132,
+    "baseDefense": 160,
     "baseStamina": 70
   },
   {
@@ -1802,8 +1802,8 @@
     "Sp. Attack": 115,
     "Sp. Defense": 70,
     "Speed": 55,
-    "baseAttack": 42,
-    "baseDefense": 42,
+    "baseAttack": 180,
+    "baseDefense": 202,
     "baseStamina": 140
   },
   {
@@ -1815,8 +1815,8 @@
     "Sp. Attack": 55,
     "Sp. Defense": 45,
     "Speed": 55,
-    "baseAttack": 38,
-    "baseDefense": 38,
+    "baseAttack": 148,
+    "baseDefense": 142,
     "baseStamina": 60
   },
   {
@@ -1828,8 +1828,8 @@
     "Sp. Attack": 65,
     "Sp. Defense": 70,
     "Speed": 80,
-    "baseAttack": 44,
-    "baseDefense": 44,
+    "baseAttack": 190,
+    "baseDefense": 190,
     "baseStamina": 120
   },
   {
@@ -1841,8 +1841,8 @@
     "Sp. Attack": 60,
     "Sp. Defense": 75,
     "Speed": 130,
-    "baseAttack": 48,
-    "baseDefense": 46,
+    "baseAttack": 182,
+    "baseDefense": 162,
     "baseStamina": 160
   },
   {
@@ -1854,8 +1854,8 @@
     "Sp. Attack": 65,
     "Sp. Defense": 110,
     "Speed": 30,
-    "baseAttack": 38,
-    "baseDefense": 38,
+    "baseAttack": 180,
+    "baseDefense": 180,
     "baseStamina": 320
   },
   {
@@ -1867,8 +1867,8 @@
     "Sp. Attack": 95,
     "Sp. Defense": 125,
     "Speed": 85,
-    "baseAttack": 46,
-    "baseDefense": 48,
+    "baseAttack": 198,
+    "baseDefense": 242,
     "baseStamina": 180
   },
   {
@@ -1880,8 +1880,8 @@
     "Sp. Attack": 125,
     "Sp. Defense": 90,
     "Speed": 100,
-    "baseAttack": 50,
-    "baseDefense": 46,
+    "baseAttack": 232,
+    "baseDefense": 194,
     "baseStamina": 180
   },
   {
@@ -1893,8 +1893,8 @@
     "Sp. Attack": 125,
     "Sp. Defense": 85,
     "Speed": 90,
-    "baseAttack": 48,
-    "baseDefense": 46,
+    "baseAttack": 242,
+    "baseDefense": 194,
     "baseStamina": 180
   },
   {
@@ -1906,8 +1906,8 @@
     "Sp. Attack": 50,
     "Sp. Defense": 50,
     "Speed": 50,
-    "baseAttack": 36,
-    "baseDefense": 34,
+    "baseAttack": 128,
+    "baseDefense": 110,
     "baseStamina": 82
   },
   {
@@ -1919,8 +1919,8 @@
     "Sp. Attack": 70,
     "Sp. Defense": 70,
     "Speed": 70,
-    "baseAttack": 42,
-    "baseDefense": 40,
+    "baseAttack": 170,
+    "baseDefense": 152,
     "baseStamina": 122
   },
   {
@@ -1932,8 +1932,8 @@
     "Sp. Attack": 100,
     "Sp. Defense": 100,
     "Speed": 80,
-    "baseAttack": 48,
-    "baseDefense": 46,
+    "baseAttack": 250,
+    "baseDefense": 212,
     "baseStamina": 182
   },
   {
@@ -1945,8 +1945,8 @@
     "Sp. Attack": 154,
     "Sp. Defense": 90,
     "Speed": 130,
-    "baseAttack": 56,
-    "baseDefense": 50,
+    "baseAttack": 284,
+    "baseDefense": 202,
     "baseStamina": 212
   },
   {
@@ -1958,8 +1958,21 @@
     "Sp. Attack": 100,
     "Sp. Defense": 100,
     "Speed": 100,
-    "baseAttack": 48,
-    "baseDefense": 48,
+    "baseAttack": 220,
+    "baseDefense": 220,
     "baseStamina": 200
+  },
+  {
+    "#": "",
+    "Name": "",
+    "HP": "",
+    "Attack": "",
+    "Defense": "",
+    "Sp. Attack": "",
+    "Sp. Defense": "",
+    "Speed": "",
+    "baseAttack": "",
+    "baseDefense": "",
+    "baseStamina": ""
   }
 ]
