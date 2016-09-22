@@ -33,12 +33,13 @@ class PokemonLevelGuesser {
   let trainerLevel: Int
   var arcX = [Int]()
   var arcY = [Int]()
+  var context: CGContext? = nil
   
-  static func levelToLevelIndex(level:Double)->Int {
+  static func levelToLevelIndex(_ level:Double)->Int {
     return Int((level-1)*2)
   }
   
-  static func levelIndexToLevel(index:Int)->Double {
+  static func levelIndexToLevel(_ index:Int)->Double {
     return Double(index)*0.5+1
   }
   
@@ -72,13 +73,37 @@ class PokemonLevelGuesser {
     return PokemonLevelGuesser.levelToLevelIndex(maxMonLevel())
   }
   
+  func getScreenshotContext()->CGContext {
+    if let context = self.context {
+      return context
+    }
+    else {
+      let cgImage = screenshot.cgImage
+      let width = Int(screenshot.size.width)
+      let height = Int(screenshot.size.height)
+      let colorSpace = CGColorSpaceCreateDeviceRGB()
+      let context = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width*4, space: colorSpace, bitmapInfo: CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue)!
+      context.draw(cgImage!, in:CGRect(x:0,y:0,width:width, height:height))
+      return context
+    }
+  }
+  
+  func getPixelValue(x:Int, y:Int)-> (red:Int, green:Int, blue:Int)? {
+    let context = getScreenshotContext()
+    let rawData = context.data
+    let data = rawData!.bindMemory(to: UInt8.self, capacity: width*height*4)
+    let pixelData = ((width * y) + x) * 4
+    return (red:Int(data[pixelData+0]), green:Int(data[pixelData+1]), blue:Int(data[pixelData+2]))
+  }
+  
   func guessLevel()->Double {
     var estLevel = maxMonLevel()
     repeat {
       let index = PokemonLevelGuesser.levelToLevelIndex(estLevel)
       let (x,y) = (arcX[index], arcY[index])
-      if let pixelValue = screenshot[x,y] {
-        if pixelValue.red==255 && pixelValue.green==255 && pixelValue.blue==255 {
+      if let pixelValue = getPixelValue(x: x, y: y) {
+        print("pixelValue", x, y, pixelValue.red, pixelValue.green, pixelValue.blue, estLevel)
+        if pixelValue.red>=250 && pixelValue.green>=250 && pixelValue.blue>=250 {
           return estLevel
         }
       }
