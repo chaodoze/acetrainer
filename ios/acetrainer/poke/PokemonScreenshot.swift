@@ -29,9 +29,15 @@ class ScreenshotOCR {
     if let blackList = spec.blackList {
       tesseract?.charBlacklist = blackList
     }
+    else {
+      tesseract?.charBlacklist = ""
+    }
     if let whiteList = spec.whiteList {
       tesseract?.charWhitelist = whiteList
       print("got whitelist", whiteList)
+    }
+    else {
+      tesseract?.charWhitelist = ""
     }
     let rect = spec.rect
     tesseract?.rect = CGRect(x:rect[0]*width, y:rect[1]*height, width:rect[2]*width, height:rect[3]*height)
