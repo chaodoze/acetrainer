@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -58,6 +59,8 @@
 		EFA07E937CE94462B3E20FC7 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 301318CFB71F4479B4C5345E /* SafariServices.framework */; };
 		F07C710776A146ACA2D52596 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EEF94FAAF724FBF9B4E8A53 /* SystemConfiguration.framework */; };
 		F28093DB1C404DF18CCCCB09 /* libReactNativePermissions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 062A11D8B59D419793359C56 /* libReactNativePermissions.a */; };
+		FC210DBE1D90B4A00025756D /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC210DBC1D90B4A00025756D /* Lato-Bold.ttf */; };
+		FC210DBF1D90B4A00025756D /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC210DBD1D90B4A00025756D /* Lato-Regular.ttf */; };
 		FC89878D1D665F0B004D4930 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC89878C1D665EE8004D4930 /* libRNVectorIcons.a */; };
 		FC8987911D677762004D4930 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC8987901D677762004D4930 /* Roboto-Regular.ttf */; };
 /* End PBXBuildFile section */
@@ -257,6 +260,8 @@
 		E5F88D961D4AE52300F46419 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		E5F88D971D4AE52300F46419 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = "<group>"; };
 		E5F88D9F1D4AE67800F46419 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FC210DBC1D90B4A00025756D /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Bold.ttf"; path = "../../../Downloads/Lato/Lato-Bold.ttf"; sourceTree = "<group>"; };
+		FC210DBD1D90B4A00025756D /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Regular.ttf"; path = "../../../Downloads/Lato/Lato-Regular.ttf"; sourceTree = "<group>"; };
 		FC89876B1D650BCA004D4930 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
 		FC89876C1D650BCA004D4930 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
 		FC89876D1D650BCA004D4930 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
@@ -601,6 +606,8 @@
 		FC89876A1D650BCA004D4930 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				FC210DBC1D90B4A00025756D /* Lato-Bold.ttf */,
+				FC210DBD1D90B4A00025756D /* Lato-Regular.ttf */,
 				FC89876B1D650BCA004D4930 /* Entypo.ttf */,
 				FC89876C1D650BCA004D4930 /* EvilIcons.ttf */,
 				FC8987901D677762004D4930 /* Roboto-Regular.ttf */,
@@ -920,6 +927,7 @@
 				E5F88D9B1D4AE52300F46419 /* GoogleSignIn.bundle in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				529456ADA01849ECA6872DE8 /* Entypo.ttf in Resources */,
+				FC210DBE1D90B4A00025756D /* Lato-Bold.ttf in Resources */,
 				8BD9B0D4865041FB837249AE /* EvilIcons.ttf in Resources */,
 				63C65172E2BC48A3B3E45F80 /* FontAwesome.ttf in Resources */,
 				DBAAE0A5C7CE42C7AFA4F2DC /* Foundation.ttf in Resources */,
@@ -928,6 +936,7 @@
 				240CB1F71094438591CED538 /* Octicons.ttf in Resources */,
 				55ECD12118D54FC9B67C6A17 /* Zocial.ttf in Resources */,
 				E59C7E071D77A7CF00419870 /* chansey.png in Resources */,
+				FC210DBF1D90B4A00025756D /* Lato-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
