@@ -14,7 +14,7 @@
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright 2016 Google Inc.</string>
+			<string>Copyright 2016 Google</string>
 			<key>Title</key>
 			<string>Firebase</string>
 			<key>Type</key>
@@ -46,7 +46,7 @@
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright 2016 Google Inc.</string>
+			<string>Copyright 2016 Google</string>
 			<key>Title</key>
 			<string>FirebaseInstanceID</string>
 			<key>Type</key>
@@ -54,7 +54,7 @@
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright 2016 Google Inc.</string>
+			<string>Copyright 2016 Google</string>
 			<key>Title</key>
 			<string>FirebaseMessaging</string>
 			<key>Type</key>
@@ -88,14 +88,6 @@
 			<key>FooterText</key>
 			<string>Copyright 2015 Google Inc.</string>
 			<key>Title</key>
-			<string>GoogleParsingUtilities</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
-			<string>Copyright 2015 Google Inc.</string>
-			<key>Title</key>
 			<string>GoogleSymbolUtilities</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -105,14 +97,6 @@
 			<string>Copyright 2015 Google Inc.</string>
 			<key>Title</key>
 			<string>GoogleUtilities</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
-			<string>https://github.com/mxcl/OMGHTTPURLRQ/blob/master/README.markdown</string>
-			<key>Title</key>
-			<string>OMGHTTPURLRQ</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

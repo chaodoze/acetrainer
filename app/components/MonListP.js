@@ -29,7 +29,7 @@ class MonListP extends Component {
         AsyncStorage.getItem('MonListP:inactive').then( lastScan=>{
           lastScan = parseInt(lastScan,10)
           if (lastScan) {
-            PokemonImager.scan(21, lastScan)
+            PokemonImager.scan(27, lastScan)
           }
         })
       }
@@ -41,7 +41,7 @@ class MonListP extends Component {
       console.log('request perm', response)
       if (response == 'authorized') {
         console.log('got perm',response)
-        PokemonImager.scan(21, moment().subtract(20, 'days').unix()*1000)
+        PokemonImager.scan(27, moment().subtract(20, 'days').unix()*1000)
         this.reactToAppStates()
         this.setState({status:'good'})
       }

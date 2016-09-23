@@ -91,5 +91,7 @@
 		<string>Lato-Bold.ttf</string>
 		<string>Lato-Regular.ttf</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Scan photo library for Pogo screenshots</string>
 </dict>
 </plist>
