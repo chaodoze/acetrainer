@@ -29,6 +29,7 @@ class MonListP extends Component {
         AsyncStorage.getItem('MonListP:inactive').then( lastScan=>{
           lastScan = parseInt(lastScan,10)
           if (lastScan) {
+            console.log('reactivated from', new Date(lastScan))
             PokemonImager.scan(27, lastScan)
           }
         })
