@@ -11,8 +11,9 @@ import UIKit
 import TesseractOCR
 import Firebase
 import PromiseKit
+import GPUImage
 
-class ScreenshotOCR {
+class ScreenshotOCR: NSObject, G8TesseractDelegate {
   let screenshot:UIImage
   let width: CGFloat
   let height: CGFloat
@@ -22,8 +23,25 @@ class ScreenshotOCR {
     self.screenshot = screenshot
     self.width = screenshot.size.width
     self.height = screenshot.size.height
-    tesseract?.image = screenshot.g8_blackAndWhite()
+    super.init()
+    tesseract?.delegate = self
+    let filter = LuminanceThreshold()
+    filter.threshold = 0.9
+    tesseract?.image = screenshot.filterWithOperation(filter)
   }
+  
+//  func shouldCancelImageRecognition(for tesseract: G8Tesseract!) -> Bool {
+//    print("cancelImage delegate called")
+//    return false
+//  }
+//
+//  func preprocessedImage(for tesseract: G8Tesseract!, sourceImage: UIImage!) -> UIImage! {
+//    return sourceImage
+////    let filter = LuminanceThreshold()
+////    filter.threshold = 0.9
+////    print("preprocessingImage called!")
+////    return sourceImage.filterWithOperation(filter)
+//  }
   
   func extractText(_ spec: OCRSpec)->String {
     if let blackList = spec.blackList {
@@ -118,14 +136,12 @@ class PokemonScreenshot {
   
   func fetchData()->Promise<[String:String]> {
     print("in PokemonScreenshot.fetchData")
-    return pokemonOcr.fetchData().then {stats in
-      var stats = stats // stats is a let parameter
-      return Promise {fulfill, reject in
-        stats["url"] = self.screenshot.url
-        stats["trainerLevel"] = String(self.trainerLevel)
-        stats["level"] = String(self.levelGuesser.guessLevel())
-        fulfill(stats)
-      }
+    return pokemonOcr.fetchData().then {stats->[String:String] in
+      var results = stats
+      results["url"] = self.screenshot.url
+      results["trainerLevel"] = String(self.trainerLevel)
+      results["level"] = String(self.levelGuesser.guessLevel())
+      return results
     }
   }
 }

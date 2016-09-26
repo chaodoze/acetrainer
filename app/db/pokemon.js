@@ -23,7 +23,13 @@ const cleanup = {
     const match = cp.match(/(\d+)/)
     return match && match[1] || cp
   },
-  Name: name=>name.trim(),
+  Name: name=>{
+    name = name.trim()
+    if (_.endsWith(name,'/')) {
+      name = _.trimEnd(name,'/')
+    }
+    return name
+  },
   HP: hp=>{
     match = hp.match(/HP.*\d+\s*\/\s*(\d+)/)
     return match && match[1] || hp
