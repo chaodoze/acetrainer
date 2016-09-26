@@ -44,8 +44,6 @@
 		E50992041D87450200115F41 /* UIImagePixelColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50992001D87450200115F41 /* UIImagePixelColor.swift */; };
 		E50992491D87A86E00115F41 /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E50992291D87A7E500115F41 /* libRCTCameraRoll.a */; };
 		E524D7A21D6783860082DF29 /* libReact-Native-Webview-Bridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E524D79E1D6783670082DF29 /* libReact-Native-Webview-Bridge.a */; };
-		E52684511D9990D7002B4176 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E526844C1D99909F002B4176 /* GPUImage.framework */; };
-		E52684551D99913C002B4176 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E526844C1D99909F002B4176 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E59C7DB91D7644F900419870 /* PokemonImager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59C7DB81D7644F900419870 /* PokemonImager.swift */; };
 		E59C7DC91D76456200419870 /* PokemonImagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = E59C7DC81D76456200419870 /* PokemonImagerBridge.m */; };
 		E59C7DF71D77A5B000419870 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = E59C7DF61D77A5B000419870 /* tessdata */; };
@@ -65,6 +63,8 @@
 		FC210DBF1D90B4A00025756D /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC210DBD1D90B4A00025756D /* Lato-Regular.ttf */; };
 		FC89878D1D665F0B004D4930 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC89878C1D665EE8004D4930 /* libRNVectorIcons.a */; };
 		FC8987911D677762004D4930 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC8987901D677762004D4930 /* Roboto-Regular.ttf */; };
+		FCBFD7FF1D999D0300D43EF0 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCBFD7E91D999C6B00D43EF0 /* GPUImage.framework */; };
+		FCBFD8001D999D3900D43EF0 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FCBFD7E91D999C6B00D43EF0 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,27 +166,6 @@
 			remoteGlobalIDString = 4114DC4C1C187C3A003CD988;
 			remoteInfo = "React-Native-Webview-Bridge";
 		};
-		E526844B1D99909F002B4176 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E52684461D99909E002B4176 /* GPUImage-iOS.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCD1B1251C66A262001F2BDC;
-			remoteInfo = GPUImage;
-		};
-		E526844D1D99909F002B4176 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E52684461D99909E002B4176 /* GPUImage-iOS.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BCD1B12F1C66A262001F2BDC;
-			remoteInfo = GPUImageTests;
-		};
-		E526844F1D9990A8002B4176 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E52684461D99909E002B4176 /* GPUImage-iOS.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BCD1B1241C66A262001F2BDC;
-			remoteInfo = GPUImage;
-		};
 		E59C7EAD1D78FD4200419870 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7DBC848E79BA478AA0A92C3C /* ReactNativePermissions.xcodeproj */;
@@ -215,6 +194,27 @@
 			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
 			remoteInfo = RNVectorIcons;
 		};
+		FCBFD7E81D999C6B00D43EF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCBFD7E31D999C6B00D43EF0 /* GPUImage-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCD1B1251C66A262001F2BDC;
+			remoteInfo = GPUImage;
+		};
+		FCBFD7EA1D999C6B00D43EF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCBFD7E31D999C6B00D43EF0 /* GPUImage-iOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCD1B12F1C66A262001F2BDC;
+			remoteInfo = GPUImageTests;
+		};
+		FCBFD7FD1D999CF000D43EF0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FCBFD7E31D999C6B00D43EF0 /* GPUImage-iOS.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCD1B1241C66A262001F2BDC;
+			remoteInfo = GPUImage;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -224,7 +224,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E52684551D99913C002B4176 /* GPUImage.framework in CopyFiles */,
+				FCBFD8001D999D3900D43EF0 /* GPUImage.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +284,6 @@
 		E50992231D87A7E400115F41 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		E524D7901D6783660082DF29 /* React-Native-Webview-Bridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "React-Native-Webview-Bridge.xcodeproj"; path = "../node_modules/react-native-webview-bridge/ios/React-Native-Webview-Bridge.xcodeproj"; sourceTree = "<group>"; };
 		E52683CD1D94882A002B4176 /* acetrainer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = acetrainer.entitlements; path = acetrainer/acetrainer.entitlements; sourceTree = "<group>"; };
-		E52684461D99909E002B4176 /* GPUImage-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "GPUImage-iOS.xcodeproj"; path = "../../swift/GPUImage2/framework/GPUImage-iOS.xcodeproj"; sourceTree = "<group>"; };
 		E59C7DB71D7644F800419870 /* acetrainer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "acetrainer-Bridging-Header.h"; sourceTree = "<group>"; };
 		E59C7DB81D7644F900419870 /* PokemonImager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonImager.swift; sourceTree = "<group>"; };
 		E59C7DC81D76456200419870 /* PokemonImagerBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PokemonImagerBridge.m; sourceTree = "<group>"; };
@@ -310,6 +309,7 @@
 		FC8987721D650BCA004D4930 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
 		FC8987871D665EE8004D4930 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		FC8987901D677762004D4930 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		FCBFD7E31D999C6B00D43EF0 /* GPUImage-iOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "GPUImage-iOS.xcodeproj"; path = "../../GPUImage2/framework/GPUImage-iOS.xcodeproj"; sourceTree = "<group>"; };
 		FD28429BF830447982045FA0 /* libRNFIRMessaging.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFIRMessaging.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -327,7 +327,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E52684511D9990D7002B4176 /* GPUImage.framework in Frameworks */,
+				FCBFD7FF1D999D0300D43EF0 /* GPUImage.framework in Frameworks */,
 				E50992491D87A86E00115F41 /* libRCTCameraRoll.a in Frameworks */,
 				FC89878D1D665F0B004D4930 /* libRNVectorIcons.a in Frameworks */,
 				E524D7A21D6783860082DF29 /* libReact-Native-Webview-Bridge.a in Frameworks */,
@@ -491,7 +491,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				E52684461D99909E002B4176 /* GPUImage-iOS.xcodeproj */,
+				FCBFD7E31D999C6B00D43EF0 /* GPUImage-iOS.xcodeproj */,
 				E50992231D87A7E400115F41 /* RCTCameraRoll.xcodeproj */,
 				FC8987871D665EE8004D4930 /* RNVectorIcons.xcodeproj */,
 				E524D7901D6783660082DF29 /* React-Native-Webview-Bridge.xcodeproj */,
@@ -592,15 +592,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E52684471D99909E002B4176 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E526844C1D99909F002B4176 /* GPUImage.framework */,
-				E526844E1D99909F002B4176 /* GPUImageTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		E59C7E9F1D78FD4200419870 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -679,6 +670,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FCBFD7E41D999C6B00D43EF0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FCBFD7E91D999C6B00D43EF0 /* GPUImage.framework */,
+				FCBFD7EB1D999C6B00D43EF0 /* GPUImageTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -719,7 +719,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				E52684501D9990A8002B4176 /* PBXTargetDependency */,
+				FCBFD7FE1D999CF000D43EF0 /* PBXTargetDependency */,
 			);
 			name = acetrainer;
 			productName = "Hello World";
@@ -770,8 +770,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = E52684471D99909E002B4176 /* Products */;
-					ProjectRef = E52684461D99909E002B4176 /* GPUImage-iOS.xcodeproj */;
+					ProductGroup = FCBFD7E41D999C6B00D43EF0 /* Products */;
+					ProjectRef = FCBFD7E31D999C6B00D43EF0 /* GPUImage-iOS.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -942,20 +942,6 @@
 			remoteRef = E524D79D1D6783670082DF29 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		E526844C1D99909F002B4176 /* GPUImage.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = GPUImage.framework;
-			remoteRef = E526844B1D99909F002B4176 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E526844E1D99909F002B4176 /* GPUImageTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = GPUImageTests.xctest;
-			remoteRef = E526844D1D99909F002B4176 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		E59C7EAE1D78FD4200419870 /* libReactNativePermissions.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -982,6 +968,20 @@
 			fileType = archive.ar;
 			path = libRNVectorIcons.a;
 			remoteRef = FC89878B1D665EE8004D4930 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FCBFD7E91D999C6B00D43EF0 /* GPUImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GPUImage.framework;
+			remoteRef = FCBFD7E81D999C6B00D43EF0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FCBFD7EB1D999C6B00D43EF0 /* GPUImageTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GPUImageTests.xctest;
+			remoteRef = FCBFD7EA1D999C6B00D43EF0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1159,10 +1159,10 @@
 			target = 13B07F861A680F5B00A75B9A /* acetrainer */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
-		E52684501D9990A8002B4176 /* PBXTargetDependency */ = {
+		FCBFD7FE1D999CF000D43EF0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GPUImage;
-			targetProxy = E526844F1D9990A8002B4176 /* PBXContainerItemProxy */;
+			targetProxy = FCBFD7FD1D999CF000D43EF0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
