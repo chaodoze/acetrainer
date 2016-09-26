@@ -67,7 +67,11 @@ export default class Pokemon {
       const reportedCP = this['CP']
       console.log('looking for', mon.Name, reportedHP, reportedCP)
       let minStaminaIV = Math.floor(reportedHP/cpM - mon.baseStamina)
-      _.range(minStaminaIV, 15).find( staminaIV=>{
+      if (minStaminaIV <= 0 || minStaminaIV > 15) {
+        console.log('impossible minStaminIV', minStaminaIV)
+        return possibilities
+      }
+      _.range(minStaminaIV, 16).find( staminaIV=>{
         const stamina = mon.baseStamina + staminaIV
         let hp = Math.max(Math.floor((stamina) * cpM), 10);
         if (hp == reportedHP) {
