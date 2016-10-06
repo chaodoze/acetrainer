@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import OptionOne from './OptionOne'
+import {PokemonSpecie, PokemonType, PokemonMove} from '../db/pogo.js'
 
 var styles = StyleSheet.create({
   container: {
@@ -45,7 +46,7 @@ var styles = StyleSheet.create({
    },
   listView: {
     backgroundColor: '#F5FCFF'
-  } 
+  }
 });
 
 class OptionDetails extends Component {
@@ -60,6 +61,9 @@ class OptionDetails extends Component {
   }
 
   render() {
+    let bulbasaur = PokemonSpecie.find(1)
+    console.log('bulb', bulbasaur, bulbasaur.types(), bulbasaur.quickMoves(), bulbasaur.chargedMoves(), bulbasaur.attackMovesets())
+    console.log('caches', PokemonType.cache, PokemonMove.cache)
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -91,6 +95,5 @@ class OptionDetails extends Component {
     );
   }
 }
- 
-module.exports = OptionDetails;
 
+module.exports = OptionDetails;
