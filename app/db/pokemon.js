@@ -49,7 +49,7 @@ export default class Pokemon {
       stats[field] = cleanupFunc(stats[field])
     })
     mon = new Pokemon(stats)
-    mon.ivs = mon.getIVPossibilities()
+    mon.calcIVPossibilities()
     db.addMon(mon)
 
   }
@@ -58,7 +58,12 @@ export default class Pokemon {
     _.assign(this, rawData)
   }
 
-  getIVPossibilities() {
+  key() {
+    return this.url.replace(/\//g,'')
+  }
+
+  calcIVPossibilities() {
+    if (mon.ivCandidates) {return}
     const specie = PokemonSpecie.findByFuzzyName(this.Name)
     console.log('iv possibilities', specie, this.Name)
     let possibilities = []
@@ -95,6 +100,42 @@ export default class Pokemon {
         }
       })
     }
-    return possibilities
+    this.ivCandidates = possibilities
+  }
+
+  averageIV() {
+    this.calcIVPossibilities()
+    if (this.ivCandidates.length == 0) {
+      return 0
+    }
+    const total = this.ivCandidates.reduce((accum, candidate)=>accum+candidate[0]+candidate[1]+candidate[2])
+    return total/this.ivCandidates.length
+  }
+
+  static appraisalAverageRanges = {
+    best: [0.822,1],
+    strong: [2/3,0.8],
+    ok: [0.5,0.644],
+    bad: [0, 0.489]
+  }
+  static appraisalBestRanges = {
+    best:[15,15],
+    strong:[13,14.1],
+    ok: [8,12.1],
+    bad: [0,7.1],
+  }
+  filterIVPossibilities(appraisals) {
+    this.calcIVPossibilities()
+    if (this.ivCandidates.length == 0) {
+      return null
+    }
+    const filterCandidates = (candidates, range, criteria)=> {
+      return _.filter(candidates, candidate=>_.inRange(criteria(candidate),range[0],range[1]))
+    }
+    let candidates = filterCandidates(this.ivCandidates, appraisalAverageRanges[appraisals.average],
+      candidate=>(candidate[0]+candidate[1]+candidate[2])/3)
+    candidates = filterCandidates(candidates, appraisalBestRanges[appraisals.best],
+      candidate=>candidate.reduce((accum,curr)=>accum > curr ? accum : curr))
+    this.filteredCandidates = candidates
   }
 }

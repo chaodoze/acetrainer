@@ -42,13 +42,8 @@ export const subscribeToMons = (dispatch)=> {
 }
 
 export const addMon = (mon)=> {
-  console.log('addMon', {[mon.url]:mon})
   const ref = firebase.database().ref(monPath)
-  const key = mon.url.replace(/\//g,'')
-  ref.update({[key]:mon})
+  ref.update({[mon.key()]:mon})
 }
 
-export const updateMon = (mon)=> {
-  const ref = firebase.database().ref(monPath)
-  ref.update({[mon.url]:mon.val()})
-}
+export const updateMon = addMon
