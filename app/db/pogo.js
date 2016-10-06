@@ -65,11 +65,19 @@ class PokemonSpecie extends BaseRecord {
     parent: {field:'parent_pokemon_id', klass:PokemonSpecie},
     family: {field:'family_id', klass:PokemonSpecie},
   }
+  static findByFuzzyName(fuzzyName) {
+    return _.find(this.cache, specie=>fuzzyName.toLowerCase().indexOf(specie.displayName.toLowerCase()) >= 0)
+  }
+
   constructor(rawData) {
     super(rawData)
     this.id = this.pokemon_id
     this.type_ids = _.compact([this.type, this.type_2])
+    this.baseStamina = this.stats.base_stamina
+    this.baseAttack = this.stats.base_attack
+    this.baseDefense = this.stats.base_defense
   }
+
 
   attackMovesets() {
     return AttackMoveRank.find(this.id)

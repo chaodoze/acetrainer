@@ -1,6 +1,7 @@
 import * as _ from 'lodash-es'
 import * as db from '../db'
 const pokemonDB = require('../../data/pokemon.json')
+import {PokemonSpecie} from '../db/pogo'
 const cpMultiplier = [0.0939999967813492, 0.135137432089339, 0.166397869586945, 0.192650913155325, 0.215732470154762,
                              0.236572651424822, 0.255720049142838, 0.273530372106572, 0.290249884128571, 0.306057381389863,
                              0.321087598800659, 0.335445031996451, 0.349212676286697, 0.362457736609939, 0.375235587358475,
@@ -58,30 +59,30 @@ export default class Pokemon {
   }
 
   getIVPossibilities() {
-    const mon = findBasePokemon(this.Name)
-    console.log('iv possibilities', mon, this.Name)
+    const specie = PokemonSpecie.findByFuzzyName(this.Name)
+    console.log('iv possibilities', specie, this.Name)
     let possibilities = []
-    if (mon) {
+    if (specie) {
       const level = (this['level']-1)*2
       const cpM = cpMultiplier[level]
       const cpMSquaredTenth = Math.pow(cpM, 2)*0.1
       const reportedHP = this['HP']
       const reportedCP = this['CP']
-      console.log('looking for', mon.Name, reportedHP, reportedCP)
-      let minStaminaIV = Math.floor(reportedHP/cpM - mon.baseStamina)
+      console.log('looking for', specie.displayName, reportedHP, reportedCP)
+      let minStaminaIV = Math.floor(reportedHP/cpM - specie.baseStamina)
       if (minStaminaIV <= 0 || minStaminaIV > 15) {
         console.log('impossible minStaminIV', minStaminaIV)
         return possibilities
       }
       _.range(minStaminaIV, 16).find( staminaIV=>{
-        const stamina = mon.baseStamina + staminaIV
+        const stamina = specie.baseStamina + staminaIV
         let hp = Math.max(Math.floor((stamina) * cpM), 10);
         if (hp == reportedHP) {
-          console.log('considering stamina', staminaIV, hp, reportedHP, mon.baseStamina, cpM, level)
+          console.log('considering stamina', staminaIV, hp, reportedHP, specie.baseStamina, cpM, level)
           _.range(0,16).forEach(attackIV=>{
             _.range(0,16).forEach(defenseIV=>{
-              const cp = Math.floor((mon.baseAttack+attackIV)*Math.sqrt(mon.baseDefense+defenseIV)*Math.sqrt(stamina)*cpMSquaredTenth)
-              // console.log('candidate CP', cp, attackIV, defenseIV, mon.baseAttack, mon.baseDefense, cpMSquaredTenth, level)
+              const cp = Math.floor((specie.baseAttack+attackIV)*Math.sqrt(specie.baseDefense+defenseIV)*Math.sqrt(stamina)*cpMSquaredTenth)
+              // console.log('candidate CP', cp, attackIV, defenseIV, specie.baseAttack, specie.baseDefense, cpMSquaredTenth, level)
               if (cp == reportedCP) {
                 console.log('found combo', attackIV, defenseIV, staminaIV)
                 possibilities.push([attackIV, defenseIV, staminaIV])
