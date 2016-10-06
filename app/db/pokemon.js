@@ -35,6 +35,7 @@ const cleanup = {
     return match && match[1] || hp
   },
   'Stardust Needed': sd=>sd.trim(),
+  shotAt: unixTime=>new Date(unixTime*1000)
 }
 
 const findBasePokemon = name=>{
@@ -47,8 +48,9 @@ export default class Pokemon {
       stats[field] = cleanupFunc(stats[field])
     })
     mon = new Pokemon(stats)
+    mon.ivs = mon.getIVPossibilities()
     db.addMon(mon)
-    mon.getIVPossibilities()
+
   }
 
   constructor(rawData) {

@@ -14,9 +14,11 @@ import PromiseKit
 class Screenshot {
   let url:String!
   let image:UIImage!
-  init(image:UIImage, url:String) {
+  let shotAt:Date!
+  init(image:UIImage, url:String, shotAt:Date?) {
     self.url=url
     self.image=image
+    self.shotAt = shotAt
   }
 }
 
@@ -66,7 +68,7 @@ struct ScreenshotsMgr {
     result.enumerateObjects({(asset, count, stop) in
       let url = requestUrlForAsset(asset)
       let image = requestImageForAsset(asset)
-      screens.append(Screenshot(image:image, url:url))
+      screens.append(Screenshot(image:image, url:url, shotAt:asset.creationDate))
     })
     return screens
   }

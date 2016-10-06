@@ -141,6 +141,7 @@ class PokemonScreenshot {
       results["url"] = self.screenshot.url
       results["trainerLevel"] = String(self.trainerLevel)
       results["level"] = String(self.levelGuesser.guessLevel())
+      results["shotAt"] = String(self.screenshot.shotAt.timeIntervalSince1970)
       return results
     }
   }
