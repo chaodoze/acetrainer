@@ -39,10 +39,6 @@ const cleanup = {
   shotAt: unixTime=>new Date(unixTime*1000)
 }
 
-const findBasePokemon = name=>{
-  return _.find(pokemonDB, poke=>name.toLowerCase().indexOf(poke.Name.toLowerCase()) >= 0)
-}
-
 export default class Pokemon {
   static addFromScan(stats) {
     _.map(cleanup, (cleanupFunc, field)=>{
@@ -50,6 +46,11 @@ export default class Pokemon {
     })
     mon = new Pokemon(stats)
     mon.calcIVPossibilities()
+    const specie = mon.specie()
+    if (specie && specie.displayName == 'Charmeleon') {
+      mon.filterIVPossibilities({average:'best', best:'best'})
+      console.log('filtered', mon.filteredCandidates)
+    }
     db.addMon(mon)
 
   }
@@ -60,6 +61,17 @@ export default class Pokemon {
 
   key() {
     return this.url.replace(/\//g,'')
+  }
+
+  specie() {
+    if (this.pokemon_number) {
+      return PokemonSpecie.find(this.pokemon_number)
+    }
+    else {
+      const specie = PokemonSpecie.findByFuzzyName(this.Name)
+      this.pokemon_number = specie && specie.id
+    }
+    return PokemonSpecie.findByFuzzyName(this.Name)
   }
 
   calcIVPossibilities() {
@@ -119,7 +131,7 @@ export default class Pokemon {
     bad: [0, 0.489]
   }
   static appraisalBestRanges = {
-    best:[15,15],
+    best:[15,15.1],
     strong:[13,14.1],
     ok: [8,12.1],
     bad: [0,7.1],
@@ -132,9 +144,9 @@ export default class Pokemon {
     const filterCandidates = (candidates, range, criteria)=> {
       return _.filter(candidates, candidate=>_.inRange(criteria(candidate),range[0],range[1]))
     }
-    let candidates = filterCandidates(this.ivCandidates, appraisalAverageRanges[appraisals.average],
-      candidate=>(candidate[0]+candidate[1]+candidate[2])/3)
-    candidates = filterCandidates(candidates, appraisalBestRanges[appraisals.best],
+    let candidates = filterCandidates(this.ivCandidates, Pokemon.appraisalAverageRanges[appraisals.average],
+      candidate=>(candidate[0]+candidate[1]+candidate[2])/(3*15))
+    candidates = filterCandidates(candidates, Pokemon.appraisalBestRanges[appraisals.best],
       candidate=>candidate.reduce((accum,curr)=>accum > curr ? accum : curr))
     this.filteredCandidates = candidates
   }

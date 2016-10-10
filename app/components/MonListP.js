@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import {MonList} from './MonList'
 import {PokemonImager} from 'NativeModules'
 import Pokemon from '../db/pokemon'
+const trainerLevel = 28
 
 class MonListP extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class MonListP extends Component {
           lastScan = parseInt(lastScan,10)
           if (lastScan) {
             console.log('reactivated from', new Date(lastScan))
-            PokemonImager.scan(27, lastScan)
+            PokemonImager.scan(trainerLevel, lastScan)
           }
         })
       }
@@ -42,7 +43,7 @@ class MonListP extends Component {
       console.log('request perm', response)
       if (response == 'authorized') {
         console.log('got perm',response)
-        PokemonImager.scan(27, moment().subtract(20, 'days').unix()*1000)
+        PokemonImager.scan(trainerLevel, moment().subtract(20, 'days').unix()*1000)
         this.reactToAppStates()
         this.setState({status:'good'})
       }
