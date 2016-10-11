@@ -9,7 +9,8 @@ import {
   NativeAppEventEmitter,
   TouchableHighlight, TouchableOpacity
 } from 'react-native';
-
+import {Button} from 'native-base'
+import {Actions} from 'react-native-router-flux'
 
 var styles = StyleSheet.create({
   container: {
@@ -104,6 +105,7 @@ export const MonList = ({mons})=> (
   <ScrollView style={styles.scroll}>
     <View style={styles.container}>
       {mons.map(mon=><Mon stats={mon} key={mon.url} />)}
+      <Button onPress={Actions.map}>Map</Button>
     </View>
   </ScrollView>
 )

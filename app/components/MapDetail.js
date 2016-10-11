@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 
 import { MapView } from 'react-native';
+import {Button} from 'native-base'
+import {Actions} from 'react-native-router-flux'
 
 var styles = StyleSheet.create({
   description: {
@@ -30,7 +32,7 @@ var styles = StyleSheet.create({
       bottom: 0
   }
 });
- 
+
 class MapDetail extends Component {
   render() {
     return (
@@ -39,9 +41,10 @@ class MapDetail extends Component {
         style={styles.map}
         showsUserLocation={true}
       />
+      <Button onPress={Actions.pop}>Back</Button>
     </View>
     );
   }
 }
- 
+
 module.exports = MapDetail;
