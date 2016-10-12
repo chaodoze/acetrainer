@@ -105,7 +105,7 @@ export const MonList = ({mons})=> (
   <ScrollView style={styles.scroll}>
     <View style={styles.container}>
       {mons.map(mon=><Mon stats={mon} key={mon.url} />)}
-      <Button onPress={Actions.map}>Map</Button>
+      <Button rounded info onPress={Actions.mondetails}>Monster Details</Button>
     </View>
   </ScrollView>
 )
