@@ -18,7 +18,6 @@ import PercentageCircle from 'react-native-percentage-circle';
 import multipleStyles from 'react-native-multiple-styles';
 import ModalPicker from 'react-native-modal-picker'
 
-const Item = Picker.Item
 
 class MonDetails extends Component {
   constructor(props) {
@@ -32,15 +31,10 @@ class MonDetails extends Component {
  
   render() {
 
-     let index = 0;
-        const data = [
-            { key: index++, section: true, label: 'Quick Move' },
-            { key: index++, label: 'Dragon Breath' },
-            { key: index++, label: 'Steel Wing' },
-        ]; 
+
 
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, backgroundColor:'transparent'}}>
       <ScrollView>
         <Container> 
           <Content>
@@ -68,7 +62,7 @@ class MonDetails extends Component {
                 <ListItem itemDivider>
                   <Text>MOVESETS</Text>
                 </ListItem> 
-                <ListItem style={ styles.move_row }>                  
+                <ListItem>                  
                   <Grid style={styles.alignCenter}>   
                    <Col style={styles.alignLeft}><Text style={ styles.move_label_text }>QUICK MOVE</Text></Col>
                     <Col>
@@ -80,68 +74,94 @@ class MonDetails extends Component {
                     <Col style={styles.alignRight}><Badge style={styles.t_ice}>Ice</Badge></Col>
                   </Grid>
                 </ListItem> 
-                <ListItem style={ styles.move_row }>
+                <ListItem>
                   <Grid style={styles.alignCenter}>
                     <Col style={styles.alignLeft}><Text style={ styles.move_label_text }>CHARGE MOVE</Text></Col>
                     <Col>
-                      <ModalPicker
-                        data={data}
-                        initValue="Select something yummy!"
-                        onChange={(option)=>{ this.setState({textInputValue:option.label})}}>           
-                        <TextInput
+                      <TouchableHighlight onPress={() => {
+                          this.setModalVisible(true)
+                        }}>
+                        <View>
+                          <TextInput
                             style={{borderWidth:0, borderColor:'transparent', height:35}}
                             editable={false}
                             placeholder="Select..."
-                            value={this.state.textInputValue} />
-                    
-                      </ModalPicker> 
+                            />
+                          </View>
+                        </TouchableHighlight>
+
+                      
                     </Col>                   
                     <Col style={styles.alignRight}><Badge style={styles.t_unknown}>?</Badge></Col>
                   </Grid>
-                </ListItem>            
-                 <Grid style={styles.alignCenter}>
-                  <Col size={2} >
-                   <ListItem iconLeft style={ styles.move_grade }>
-                     <Icon name='shield' style={{fontSize: 18}} />
-                     <Text>Defence: 98%</Text>
-                   </ListItem> 
-                  </Col>
-                   <Col size={2}>
-                    <ListItem iconLeft style={ styles.move_grade }>
-                    <Icon name='star' style={{fontSize: 18}} />
-                    <Text>Attack: 90%</Text>
-                  </ListItem> 
-                  </Col>
-                  <Col size={1} style={styles.alignRight}>
-                    <ListItem style={ styles.move_grade }>
+                </ListItem> 
+                <ListItem style={styles.move_grade}>                  
+                  <Grid>   
+                    <Col size={1} style={styles.alignLeft}>
+                        <Text style={ styles.move_label_text }>GRADE</Text>
+                    </Col>
+                    <Col size={2} style={styles.alignCenter}>
+                       <Icon name='star' style={styles.grade_icon} />
+                       <Text>Attack </Text>
+                      <View style={multipleStyles(styles.grade_badge, styles.grade_a)}>
+                        <Text style={styles.grade_text}>A</Text>
+                      </View>  
+                    </Col>
+                    <Col size={2} style={multipleStyles(styles.alignCenter, styles.defence)}>
+                      <Icon name='shield' style={styles.grade_icon} />
+                      <Text style={styles.defence_text}>Defence</Text>
+                      <View style={multipleStyles(styles.grade_badge, styles.grade_d)}>
+                        <Text style={styles.grade_text}>D</Text>
+                      </View>
+                    </Col>
+                    <Col size={1} style={styles.alignRight}>
                       <Modal
-                        animationType={"slide"}
-                        transparent={true}
-                        visible={this.state.modalVisible}
-                        onRequestClose={() => {alert("Modal has been closed.")}}
-                        >
-                       <View style={{backgroundColor: 'rgba(0, 0, 0, 0.5)', flex: 1, justifyContent: 'center',padding: 20,}}>
-                          <View style={{backgroundColor: '#fff', padding: 20, borderRadius: 10,alignItems: 'center',}}>
-                          <Text>Hello World!</Text>
+                          animationType={"slide"}
+                          transparent={true}
+                          visible={this.state.modalVisible}
+                          onRequestClose={() => {alert("Modal has been closed.")}}
+                          >
+                        <View style={styles.modal_outer}>
+                          <View style={styles.modal_inner}>
+                          <View>         
+                          <List>
+                            <ListItem>
+                              <Text style={{textAlign:'center'}}>Quick Move</Text>
+                            </ListItem> 
+                            <TouchableHighlight>
+                            <View>
+                              <ListItem>                  
+                                 <Text style={{textAlign:'center', color:'#2182f7'}}>Dragon Breath</Text>
+                              </ListItem> 
+                            </View>
+                            </TouchableHighlight>
+                            <ListItem>                  
+                               <Text style={{textAlign:'center', color:'#2182f7'}}>Steel Wing</Text>
+                            </ListItem> 
+                            </List>
+                            </View>
+                          </View>
+                           
                           <TouchableHighlight onPress={() => {
-                            this.setModalVisible(!this.state.modalVisible)
-                          }}>
-                             <View><Text>Hide Modal</Text></View>
+                              this.setModalVisible(!this.state.modalVisible)
+                            }}>
+                            <View style={{backgroundColor: '#fff', padding: 10, borderRadius: 10,alignItems: 'center', marginTop:5}}>
+                              <View><Text style={{color:'#666666'}}>Cancel</Text></View>
+                            </View>
                           </TouchableHighlight>
-                        </View>
-                       </View>
-                      </Modal>
+                         </View>
+                        </Modal>
 
-                      <TouchableHighlight onPress={() => {
-                        this.setModalVisible(true)
-                      }}>
-                        <View><Icon name='info-circle' style={{fontSize: 18}} /></View>
-                      </TouchableHighlight>
-                    </ListItem> 
-                  </Col>
-                </Grid>             
+                        <TouchableHighlight onPress={() => {
+                          this.setModalVisible(true)
+                        }}>
+                          <View><Icon name='info-circle' style={{fontSize: 18}} /></View>
+                        </TouchableHighlight>
+                    </Col>
+                  </Grid>        
+                </ListItem>     
                 <ListItem itemDivider>
-                    <Text>BATTLE</Text>
+                  <Text>BATTLE</Text>
                 </ListItem>  
                 <ListItem >
                  <Grid style={styles.alignCenter}>   
@@ -222,11 +242,41 @@ var styles = StyleSheet.create({
   mon_analysis: {
     backgroundColor:'#ffffff',
   },
-  move_row: {  },
   move_grade: {
+     paddingTop:15,
+     paddingBottom:15,
      borderBottomWidth:0,
   },
 
+  grade_icon: {
+    fontSize: 18, marginRight:4
+  },
+
+  grade_badge: {
+    padding:7, 
+    paddingTop:1, 
+    paddingBottom:1, 
+    borderRadius:2, 
+    marginLeft:5
+  },
+
+  grade_a: { backgroundColor:'#00a700'},
+  grade_b: { backgroundColor:'#98d000'},
+  grade_c: { backgroundColor:'#ded100'},
+  grade_d: { backgroundColor:'#dea300'},
+
+  grade_text: { color:'#ffffff'},
+
+
+  defence: { opacity:0.3, marginLeft:20},
+
+  modal_outer: {
+    backgroundColor: 'rgba(0, 0, 0, 0.7)', 
+    flex: 1, justifyContent: 'center',padding: 20,
+  },
+  modal_inner: {
+    backgroundColor: '#fff', padding: 10, borderRadius: 10,
+  },
   move_label_text: {
     fontSize:14,
     fontWeight:'bold',
