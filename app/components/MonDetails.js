@@ -30,11 +30,8 @@ class MonDetails extends Component {
   }
  
   render() {
-
-
-
     return (
-      <View style={{flex: 1, backgroundColor:'transparent'}}>
+      <View style={{flex: 1}}>
       <ScrollView>
         <Container> 
           <Content>
@@ -126,7 +123,7 @@ class MonDetails extends Component {
                           <View>         
                           <List>
                             <ListItem>
-                              <Text style={{textAlign:'center'}}>Quick Move</Text>
+                              <Text style={{textAlign:'center'}}>Charge Move</Text>
                             </ListItem> 
                             <TouchableHighlight>
                             <View>
@@ -268,7 +265,7 @@ var styles = StyleSheet.create({
   grade_text: { color:'#ffffff'},
 
 
-  defence: { opacity:0.3, marginLeft:20},
+  defence: { opacity:0.3, marginLeft:30},
 
   modal_outer: {
     backgroundColor: 'rgba(0, 0, 0, 0.7)', 
