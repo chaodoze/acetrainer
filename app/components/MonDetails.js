@@ -16,7 +16,8 @@ import {Actions} from 'react-native-router-flux';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import PercentageCircle from 'react-native-percentage-circle';
 import multipleStyles from 'react-native-multiple-styles';
-import ModalPicker from 'react-native-modal-picker'
+import ModalPicker from 'react-native-modal-picker';
+import myTheme from './Themes/myTheme';
 
 
 class MonDetails extends Component {
@@ -34,7 +35,7 @@ class MonDetails extends Component {
       <View style={{flex: 1}}>
       <ScrollView>
         <Container> 
-          <Content>
+          <Content  theme={myTheme}>
             <Image source={require('./images/Thumbs/thumb.png')} style={styles.img_container}>          
               <View style={styles.overlay_box}></View>
               <View style={styles.overlay_box_text} >
@@ -185,7 +186,7 @@ class MonDetails extends Component {
           </Content>
         </Container>
       </ScrollView>
-    <Button rounded info onPress={Actions.pop} style={{alignSelf:'center', marginBottom:10}}><Icon name='close' /></Button>
+    <Button  theme={myTheme} rounded info onPress={Actions.pop} style={{alignSelf:'center', marginBottom:10}}><Icon name='close' /></Button>
   </View>
     );
   }
