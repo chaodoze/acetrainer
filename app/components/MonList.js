@@ -10,7 +10,6 @@ import {
   TouchableHighlight, TouchableOpacity
 } from 'react-native';
 import {Button} from 'native-base'
-import {Actions} from 'react-native-router-flux'
 
 var styles = StyleSheet.create({
   container: {
@@ -101,26 +100,25 @@ var styles = StyleSheet.create({
   }
 });
 
-export const MonList = ({mons})=> (
+export const MonList = ({mons, onMonClick})=> (
   <ScrollView style={styles.scroll}>
     <View style={styles.container}>
-      {mons.map(mon=><Mon stats={mon} key={mon.url} />)}
-      <Button rounded info onPress={Actions.mondetails}>Monster Details</Button>
+      {mons.map(mon=><Mon mon={mon} key={mon.url} onPress={()=>onMonClick(mon)}/>)}
     </View>
   </ScrollView>
 )
 
-const Mon = ({stats})=> (
-  <TouchableHighlight  key={stats.url}>
+const Mon = ({mon, onPress})=> (
+  <TouchableHighlight  key={mon.url} onPress={onPress}>
     <View style={ styles.mon }>
       <View style={styles.cp}>
         <Text style={ styles.mon_cp }>cp</Text>
-        <Text style={ styles.mon_cp_value }>{stats.CP.trim()}</Text>
+        <Text style={ styles.mon_cp_value }>{mon.CP}</Text>
         <Text style={ styles.mon_cp }>IV</Text>
-        <Text style={ styles.mon_cp_value }>98%</Text>
+        <Text style={ styles.mon_cp_value }>{`${mon.avgIVPercent()}%`}</Text>
       </View>
-      <Image style={ styles.mon_icon } source={{uri:stats.url}} resizeMode='cover' />
-      <Text style={ styles.mon_label }>{stats.Name.trim()}</Text>
+      <Image style={ styles.mon_icon } source={{uri:mon.url}} resizeMode='cover' />
+      <Text style={ styles.mon_label }>{mon.Name}</Text>
     </View>
   </TouchableHighlight>
 )

@@ -120,8 +120,18 @@ export default class Pokemon {
     if (this.ivCandidates.length == 0) {
       return 0
     }
-    const total = this.ivCandidates.reduce((accum, candidate)=>accum+candidate[0]+candidate[1]+candidate[2])
-    return total/this.ivCandidates.length
+    const total = this.ivCandidates.reduce((accum, candidate)=>accum+candidate[0]+candidate[1]+candidate[2],0)
+    console.log('average', total)
+    return total/(this.ivCandidates.length*45)
+  }
+
+  avgIVPercent() {
+    if (this.averageIV()) {
+      return Math.round(this.averageIV()*100)
+    }
+    else {
+      return '?'
+    }
   }
 
   static appraisalAverageRanges = {

@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux'
 import Pokemon from '../db/pokemon'
+import routes from './routes'
 
 function mons(state={}, action) {
   const mon = action.val
@@ -20,5 +21,14 @@ function mons(state={}, action) {
       return state
   }
 }
-const rootReducer = combineReducers({mons})
+
+const selectedMon = (state=null, action) => {
+  switch (action.type) {
+    case 'SELECT_MON':
+      return action.mon
+    default:
+      return state
+  }
+}
+const rootReducer = combineReducers({mons, routes, selectedMon})
 export default rootReducer

@@ -9,8 +9,8 @@ import {
   View
 } from 'react-native';
 
-import { 
-  Container, Content, List, ListItem, Text, InputGroup, 
+import {
+  Container, Content, List, ListItem, Text, InputGroup,
   Input, Icon, Picker, Badge, Button } from 'native-base';
 import {Actions} from 'react-native-router-flux';
 import { Col, Row, Grid } from "react-native-easy-grid";
@@ -19,6 +19,14 @@ import multipleStyles from 'react-native-multiple-styles';
 import ModalPicker from 'react-native-modal-picker';
 import myTheme from './Themes/myTheme';
 
+
+const MonTypeBadge = ({pokemonType}) => {
+  console.log('MonTypeBadge', pokemonType)
+  const style = `t_${pokemonType.displayName.toLowerCase()}`
+  return (
+    <Badge style={multipleStyles(styles[style])}>{pokemonType.displayName}</Badge>
+  )
+}
 
 class MonDetails extends Component {
   constructor(props) {
@@ -29,29 +37,30 @@ class MonDetails extends Component {
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
- 
+
   render() {
+    const {mon} = this.props
     return (
       <View style={{flex: 1}}>
       <ScrollView>
-        <Container> 
+        <Container>
           <Content  theme={myTheme}>
-            <Image source={require('./images/Thumbs/thumb.png')} style={styles.img_container}>          
+            <Image source={{uri:mon.url}} style={styles.img_container}>
               <View style={styles.overlay_box}></View>
               <View style={styles.overlay_box_text} >
                 <View style={styles.alignCenterCol}>
-                   <View><Text style={ styles.mon_name }>Vaporeon</Text></View>
-                   <View><Badge style={multipleStyles(styles.t_water)}>Water</Badge></View>
+                   <View><Text style={ styles.mon_name }>{mon.Name}</Text></View>
+                   <View>{mon.specie().types().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}</View>
                 </View>
               </View>
               <List style={styles.mon_data_box}>
                 <ListItem style={styles.mon_data}>
                 <Grid style={styles.alignCenter}>
-                  <Col size={2} style={styles.alignLeft}><Text> CP: 1360 </Text></Col>
-                  <Col size={2}><Text>HP: 153</Text></Col>
+                  <Col size={2} style={styles.alignLeft}><Text> CP: {mon.CP} </Text></Col>
+                  <Col size={2}><Text>HP: {mon.HP}</Text></Col>
                   <Col size={2}><Text>IV 85%-90%</Text></Col>
                   <Col size={1}>
-                    <PercentageCircle radius={20} percent={90} borderWidth={5} color={"#3498db"}></PercentageCircle>
+                    <PercentageCircle radius={20} percent={mon.avgIVPercent()} borderWidth={5} color={"#3498db"}></PercentageCircle>
                   </Col>
                 </Grid>
                 </ListItem>
@@ -59,9 +68,9 @@ class MonDetails extends Component {
               <List style={styles.mon_analysis}>
                 <ListItem itemDivider>
                   <Text>MOVESETS</Text>
-                </ListItem> 
-                <ListItem>                  
-                  <Grid style={styles.alignCenter}>   
+                </ListItem>
+                <ListItem>
+                  <Grid style={styles.alignCenter}>
                    <Col style={styles.alignLeft}><Text style={ styles.move_label_text }>QUICK MOVE</Text></Col>
                     <Col>
                      <TextInput
@@ -71,7 +80,7 @@ class MonDetails extends Component {
                     </Col>
                     <Col style={styles.alignRight}><Badge style={styles.t_ice}>Ice</Badge></Col>
                   </Grid>
-                </ListItem> 
+                </ListItem>
                 <ListItem>
                   <Grid style={styles.alignCenter}>
                     <Col style={styles.alignLeft}><Text style={ styles.move_label_text }>CHARGE MOVE</Text></Col>
@@ -88,13 +97,13 @@ class MonDetails extends Component {
                           </View>
                         </TouchableHighlight>
 
-                      
-                    </Col>                   
+
+                    </Col>
                     <Col style={styles.alignRight}><Badge style={styles.t_unknown}>?</Badge></Col>
                   </Grid>
-                </ListItem> 
-                <ListItem style={styles.move_grade}>                  
-                  <Grid>   
+                </ListItem>
+                <ListItem style={styles.move_grade}>
+                  <Grid>
                     <Col size={1} style={styles.alignLeft}>
                         <Text style={ styles.move_label_text }>GRADE</Text>
                     </Col>
@@ -103,7 +112,7 @@ class MonDetails extends Component {
                        <Text>Attack </Text>
                       <View style={multipleStyles(styles.grade_badge, styles.grade_a)}>
                         <Text style={styles.grade_text}>A</Text>
-                      </View>  
+                      </View>
                     </Col>
                     <Col size={2} style={multipleStyles(styles.alignCenter, styles.defence)}>
                       <Icon name='shield' style={styles.grade_icon} />
@@ -121,25 +130,25 @@ class MonDetails extends Component {
                           >
                         <View style={styles.modal_outer}>
                           <View style={styles.modal_inner}>
-                          <View>         
+                          <View>
                           <List>
                             <ListItem>
                               <Text style={{textAlign:'center'}}>Charge Move</Text>
-                            </ListItem> 
+                            </ListItem>
                             <TouchableHighlight>
                             <View>
-                              <ListItem>                  
+                              <ListItem>
                                  <Text style={{textAlign:'center', color:'#2182f7'}}>Dragon Breath</Text>
-                              </ListItem> 
+                              </ListItem>
                             </View>
                             </TouchableHighlight>
-                            <ListItem>                  
+                            <ListItem>
                                <Text style={{textAlign:'center', color:'#2182f7'}}>Steel Wing</Text>
-                            </ListItem> 
+                            </ListItem>
                             </List>
                             </View>
                           </View>
-                           
+
                           <TouchableHighlight onPress={() => {
                               this.setModalVisible(!this.state.modalVisible)
                             }}>
@@ -156,14 +165,13 @@ class MonDetails extends Component {
                           <View><Icon name='info-circle' style={{fontSize: 18}} /></View>
                         </TouchableHighlight>
                     </Col>
-                  </Grid>        
-                </ListItem>     
+                  </Grid>
+                </ListItem>
                 <ListItem itemDivider>
                   <Text>BATTLE</Text>
                 </ListItem>
-
                 <ListItem >
-                 <Grid style={styles.alignCenter}>   
+                 <Grid style={styles.alignCenter}>
                     <Col size={1} style={styles.alignLeft}>
                       <Text>Strong Against</Text>
                     </Col>
@@ -192,7 +200,7 @@ var styles = StyleSheet.create({
     flex: 1,
     width: undefined,
     height: undefined,
-    top:-60, 
+    top:-60,
   },
   overlay_box: {
     backgroundColor:'rgba(0, 0, 0, 0.6)',
@@ -210,7 +218,7 @@ var styles = StyleSheet.create({
     left:0,
     right:0,
     left:0,
-    height:250,  
+    height:250,
   },
 
   mon_data_box: {
@@ -245,10 +253,10 @@ var styles = StyleSheet.create({
   },
 
   grade_badge: {
-    padding:7, 
-    paddingTop:1, 
-    paddingBottom:1, 
-    borderRadius:2, 
+    padding:7,
+    paddingTop:1,
+    paddingBottom:1,
+    borderRadius:2,
     marginLeft:5
   },
 
@@ -263,7 +271,7 @@ var styles = StyleSheet.create({
   defence: { opacity:0.3, marginLeft:30},
 
   modal_outer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)', 
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
     flex: 1, justifyContent: 'center',padding: 20,
   },
   modal_inner: {
