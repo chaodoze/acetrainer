@@ -160,11 +160,12 @@ class MonDetails extends Component {
                 </ListItem>     
                 <ListItem itemDivider>
                   <Text>BATTLE</Text>
-                </ListItem>  
+                </ListItem>
+
                 <ListItem >
                  <Grid style={styles.alignCenter}>   
                     <Col size={1} style={styles.alignLeft}>
-                      <Text>Weakness</Text>
+                      <Text>Strong Against</Text>
                     </Col>
                     <Col size={3} style={styles.alignRight}>
                       <Badge primary>Water</Badge>
@@ -173,13 +174,6 @@ class MonDetails extends Component {
                       <Badge style={styles.t_electric}>Electric</Badge>
                     </Col>
                   </Grid>
-                </ListItem>
-                <ListItem >
-                  <Text>Resistant To</Text>
-                  <Badge style={styles.t_normal}>Normal</Badge>
-                </ListItem>
-                <ListItem>
-                  <Text>Train Against</Text>
                 </ListItem>
               </List>
             </Image>
@@ -221,7 +215,7 @@ var styles = StyleSheet.create({
 
   mon_data_box: {
     marginTop:250, 
-    backgroundColor:'rgba(255,255,255,0.8)',
+    backgroundColor:'#ffffff',
   },
 
   mon_name: {
