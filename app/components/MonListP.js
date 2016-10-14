@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 const Permissions = require('react-native-permissions')
 import { connect } from 'react-redux';
+import {Actions} from 'react-native-router-flux'
 import {MonList} from './MonList'
 import {PokemonImager} from 'NativeModules'
 import Pokemon from '../db/pokemon'
@@ -66,7 +67,8 @@ class MonListP extends Component {
       return (<Text>Sorry, we don't have permission to access your photos</Text>)
     }
     const {mons} = this.props
-    return <MonList mons={mons} />
+    const onMonClick = (mon)=>Actions.mondetails({mon:mon})
+    return <MonList mons={mons} onMonClick={onMonClick}/>
   }
 }
 

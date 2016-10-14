@@ -10,7 +10,6 @@ import {
   TouchableHighlight, TouchableOpacity
 } from 'react-native';
 import {Button} from 'native-base'
-import {Actions} from 'react-native-router-flux'
 
 var styles = StyleSheet.create({
   container: {
@@ -101,17 +100,16 @@ var styles = StyleSheet.create({
   }
 });
 
-export const MonList = ({mons})=> (
+export const MonList = ({mons, onMonClick})=> (
   <ScrollView style={styles.scroll}>
     <View style={styles.container}>
-      {mons.map(mon=><Mon mon={mon} key={mon.url} />)}
-      <Button rounded info onPress={Actions.mondetails}>Monster Details</Button>
+      {mons.map(mon=><Mon mon={mon} key={mon.url} onPress={()=>onMonClick(mon)}/>)}
     </View>
   </ScrollView>
 )
 
-const Mon = ({mon})=> (
-  <TouchableHighlight  key={mon.url}>
+const Mon = ({mon, onPress})=> (
+  <TouchableHighlight  key={mon.url} onPress={onPress}>
     <View style={ styles.mon }>
       <View style={styles.cp}>
         <Text style={ styles.mon_cp }>cp</Text>
