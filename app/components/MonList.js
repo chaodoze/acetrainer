@@ -104,23 +104,23 @@ var styles = StyleSheet.create({
 export const MonList = ({mons})=> (
   <ScrollView style={styles.scroll}>
     <View style={styles.container}>
-      {mons.map(mon=><Mon stats={mon} key={mon.url} />)}
+      {mons.map(mon=><Mon mon={mon} key={mon.url} />)}
       <Button rounded info onPress={Actions.mondetails}>Monster Details</Button>
     </View>
   </ScrollView>
 )
 
-const Mon = ({stats})=> (
-  <TouchableHighlight  key={stats.url}>
+const Mon = ({mon})=> (
+  <TouchableHighlight  key={mon.url}>
     <View style={ styles.mon }>
       <View style={styles.cp}>
         <Text style={ styles.mon_cp }>cp</Text>
-        <Text style={ styles.mon_cp_value }>{stats.CP.trim()}</Text>
+        <Text style={ styles.mon_cp_value }>{mon.CP.trim()}</Text>
         <Text style={ styles.mon_cp }>IV</Text>
-        <Text style={ styles.mon_cp_value }>98%</Text>
+        <Text style={ styles.mon_cp_value }>{mon.averageIVString()}</Text>
       </View>
-      <Image style={ styles.mon_icon } source={{uri:stats.url}} resizeMode='cover' />
-      <Text style={ styles.mon_label }>{stats.Name.trim()}</Text>
+      <Image style={ styles.mon_icon } source={{uri:mon.url}} resizeMode='cover' />
+      <Text style={ styles.mon_label }>{mon.Name.trim()}</Text>
     </View>
   </TouchableHighlight>
 )

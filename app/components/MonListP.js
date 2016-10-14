@@ -69,6 +69,7 @@ class MonListP extends Component {
     return <MonList mons={mons} />
   }
 }
+
 const mapStateToProps = ({mons}) => {
   mons = _.values(mons)
   return {
