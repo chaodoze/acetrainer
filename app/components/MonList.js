@@ -113,12 +113,12 @@ const Mon = ({mon, onPress})=> (
     <View style={ styles.mon }>
       <View style={styles.cp}>
         <Text style={ styles.mon_cp }>cp</Text>
-        <Text style={ styles.mon_cp_value }>{mon.CP.trim()}</Text>
+        <Text style={ styles.mon_cp_value }>{mon.CP}</Text>
         <Text style={ styles.mon_cp }>IV</Text>
-        <Text style={ styles.mon_cp_value }>{mon.averageIVString()}</Text>
+        <Text style={ styles.mon_cp_value }>{`${mon.avgIVPercent()}%`}</Text>
       </View>
       <Image style={ styles.mon_icon } source={{uri:mon.url}} resizeMode='cover' />
-      <Text style={ styles.mon_label }>{mon.Name.trim()}</Text>
+      <Text style={ styles.mon_label }>{mon.Name}</Text>
     </View>
   </TouchableHighlight>
 )

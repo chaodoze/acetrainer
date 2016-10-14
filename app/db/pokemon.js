@@ -125,9 +125,9 @@ export default class Pokemon {
     return total/(this.ivCandidates.length*45)
   }
 
-  averageIVString() {
+  avgIVPercent() {
     if (this.averageIV()) {
-      return Math.round(this.averageIV()*100) + '%'
+      return Math.round(this.averageIV()*100)
     }
     else {
       return '?'
