@@ -43,6 +43,26 @@ class PokemonType extends BaseRecord {
     super(rawData)
     this.id = this.attack_type
   }
+
+  strongAgainst() {
+    const typeIds = this.attack_scalar.reduce((accum, val, index)=>{
+      if (val > 1) {
+        accum.push(index)
+      }
+      return accum
+    }, [])
+    return typeIds.map(id=>PokemonType.find(id+1)) // + 1 because type array if zero-based, but types start from 1
+  }
+
+  resistantTo() {
+    const index = this.id - 1
+    return _.reduce(PokemonType.cache, (accum, type)=>{
+      if (type.attack_scalar[index] < 1) {
+        accum.push(type)
+      }
+      return accum
+    },[])
+  }
 }
 
 class PokemonMove extends BaseRecord {
@@ -85,6 +105,14 @@ class PokemonSpecie extends BaseRecord {
 
   defensiveMovesets() {
     return DefensiveMoveRank.find(this.id)
+  }
+
+  strongAgainst() {
+    return _.uniq(_.flatten(this.types().map(t=>t.strongAgainst())))
+  }
+
+  resistantTo() {
+    return _.uniq(_.flatten(this.types().map(t=>t.resistantTo())))
   }
 }
 

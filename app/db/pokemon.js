@@ -75,7 +75,7 @@ export default class Pokemon {
   }
 
   calcIVPossibilities() {
-    if (mon.ivCandidates) {return}
+    if (this.ivCandidates) {return}
     const specie = PokemonSpecie.findByFuzzyName(this.Name)
     console.log('iv possibilities', specie, this.Name)
     let possibilities = []

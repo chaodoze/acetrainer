@@ -21,7 +21,6 @@ import myTheme from './Themes/myTheme';
 
 
 const MonTypeBadge = ({pokemonType}) => {
-  console.log('MonTypeBadge', pokemonType)
   const style = `t_${pokemonType.displayName.toLowerCase()}`
   return (
     <Badge style={multipleStyles(styles[style])}>{pokemonType.displayName}</Badge>
@@ -176,12 +175,13 @@ class MonDetails extends Component {
                       <Text>Strong Against</Text>
                     </Col>
                     <Col size={3} style={styles.alignRight}>
-                      <Badge primary>Water</Badge>
-                      <Badge style={styles.t_grass}>Grass</Badge>
-                      <Badge style={styles.t_ice}>Ice</Badge>
-                      <Badge style={styles.t_electric}>Electric</Badge>
+                      {mon.specie().strongAgainst().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
                     </Col>
                   </Grid>
+                </ListItem>
+                <ListItem >
+                  <Text>Resistant To</Text>
+                  {mon.specie().resistantTo().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
                 </ListItem>
               </List>
             </Image>
@@ -222,7 +222,7 @@ var styles = StyleSheet.create({
   },
 
   mon_data_box: {
-    marginTop:250, 
+    marginTop:250,
     backgroundColor:'#ffffff',
   },
 
