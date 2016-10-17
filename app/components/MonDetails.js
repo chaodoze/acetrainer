@@ -23,7 +23,7 @@ import myTheme from './Themes/myTheme';
 const MonTypeBadge = ({pokemonType}) => {
   const style = `t_${pokemonType.displayName.toLowerCase()}`
   return (
-    <Badge style={multipleStyles(styles[style])}>{pokemonType.displayName}</Badge>
+    <Badge style={multipleStyles(styles[style], styles.type)}>{pokemonType.displayName}</Badge>
   )
 }
 
@@ -184,24 +184,20 @@ class MonDetails extends Component {
                   <Text>BATTLE</Text>
                 </ListItem>
                 <ListItem >
-                 <Grid style={styles.alignCenter}>
-                    <Col size={1} style={styles.alignLeft}>
-                      <Text>Strong Against</Text>
-                    </Col>
-                    <Col size={3} style={styles.alignRight}>
+                  <View>
+                    <Text>Strong Against</Text>
+                    <View style={styles.many_types}>
                       {mon.specie().strongAgainst().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
-                    </Col>
-                  </Grid>
+                    </View>
+                  </View>
                 </ListItem>
                 <ListItem >
-                  <Grid style={styles.alignCenter}>
-                    <Col size={1} style={styles.alignLeft}>
-                      <Text>Resistant To</Text>
-                    </Col>
-                    <Col size={3} style={styles.alignRight}>
+                  <View >
+                    <Text>Resistant To</Text>
+                    <View style={styles.many_types}>
                       {mon.specie().resistantTo().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
-                    </Col>
-                  </Grid>
+                    </View>
+                  </View>
                 </ListItem>
               </List>
             </Image>
@@ -320,7 +316,8 @@ var styles = StyleSheet.create({
     flexWrap: 'wrap',  justifyContent: 'center', alignItems: 'center', flexDirection:'column'
   },
 
-  type: { marginRight:4},
+  many_types: { flexWrap:'wrap', flexDirection:'row', marginLeft:-3, },
+  type: { marginRight:4, marginBottom:4},
   t_normal: { backgroundColor:'#a8a878'},
   t_fighting: { backgroundColor:'#c02038'},
   t_flying: { backgroundColor:'#a28ae7'},
