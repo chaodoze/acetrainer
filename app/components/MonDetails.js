@@ -49,10 +49,24 @@ class MonDetails extends Component {
               <View style={styles.overlay_box_text} >
                 <View style={styles.alignCenterCol}>
                    <View><Text style={ styles.mon_name }>{mon.Name}</Text></View>
-                   <View>{mon.specie().types().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}</View>
+                   <View style={styles.alignCenter}>{mon.specie().types().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}</View>
                 </View>
               </View>
               <List style={styles.mon_data_box}>
+                <ListItem itemDivider>
+                  <Grid>   
+                   <Col style={styles.alignLeft}><Text style={styles.stats}>STATS</Text></Col>
+                   <Col style={styles.alignRight}>
+                   <TouchableHighlight onPress={() => {
+                          this.setModalVisible(true)
+                        }}>
+                      <View>
+                        <Text style={styles.level}>Trainer Level 23</Text>
+                      </View>
+                    </TouchableHighlight>
+                   </Col>
+                  </Grid>
+                </ListItem> 
                 <ListItem style={styles.mon_data}>
                 <Grid style={styles.alignCenter}>
                   <Col size={2} style={styles.alignLeft}><Text> CP: {mon.CP} </Text></Col>
@@ -180,8 +194,14 @@ class MonDetails extends Component {
                   </Grid>
                 </ListItem>
                 <ListItem >
-                  <Text>Resistant To</Text>
-                  {mon.specie().resistantTo().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
+                  <Grid style={styles.alignCenter}>
+                    <Col size={1} style={styles.alignLeft}>
+                      <Text>Resistant To</Text>
+                    </Col>
+                    <Col size={3} style={styles.alignRight}>
+                      {mon.specie().resistantTo().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
+                    </Col>
+                  </Grid>
                 </ListItem>
               </List>
             </Image>
@@ -200,7 +220,7 @@ var styles = StyleSheet.create({
     flex: 1,
     width: undefined,
     height: undefined,
-    top:-60,
+    top:0, 
   },
   overlay_box: {
     backgroundColor:'rgba(0, 0, 0, 0.6)',
@@ -209,20 +229,19 @@ var styles = StyleSheet.create({
     left:0,
     right:0,
     left:0,
-    height:250,
+    height:200,
   },
 
   overlay_box_text: {
     position:'absolute',
-    top:150,
+    top:70,
     left:0,
     right:0,
     left:0,
-    height:250,
   },
 
   mon_data_box: {
-    marginTop:250,
+    marginTop:200, 
     backgroundColor:'#ffffff',
   },
 
@@ -239,6 +258,9 @@ var styles = StyleSheet.create({
     opacity:0.7, padding:5, borderBottomWidth:0,
   },
 
+  stats: { fontWeight:'bold'},
+  level: { color:'#666', fontSize:13 },
+
   mon_analysis: {
     backgroundColor:'#ffffff',
   },
@@ -253,10 +275,10 @@ var styles = StyleSheet.create({
   },
 
   grade_badge: {
-    padding:7,
-    paddingTop:1,
-    paddingBottom:1,
-    borderRadius:2,
+    padding:7, 
+    paddingTop:1, 
+    paddingBottom:1, 
+    borderRadius:2, 
     marginLeft:5
   },
 
@@ -271,7 +293,7 @@ var styles = StyleSheet.create({
   defence: { opacity:0.3, marginLeft:30},
 
   modal_outer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)', 
     flex: 1, justifyContent: 'center',padding: 20,
   },
   modal_inner: {
@@ -298,7 +320,7 @@ var styles = StyleSheet.create({
     flexWrap: 'wrap',  justifyContent: 'center', alignItems: 'center', flexDirection:'column'
   },
 
-  type: { marginRight:2},
+  type: { marginRight:4},
   t_normal: { backgroundColor:'#a8a878'},
   t_fighting: { backgroundColor:'#c02038'},
   t_flying: { backgroundColor:'#a28ae7'},
