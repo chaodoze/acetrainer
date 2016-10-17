@@ -117,7 +117,7 @@ export default class Pokemon {
 
   averageIV() {
     this.calcIVPossibilities()
-    if (this.ivCandidates.length == 0) {
+    if (!this.ivCandidates || this.ivCandidates.length == 0) {
       return 0
     }
     const total = this.ivCandidates.reduce((accum, candidate)=>accum+candidate[0]+candidate[1]+candidate[2],0)
