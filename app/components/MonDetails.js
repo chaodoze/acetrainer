@@ -8,6 +8,7 @@ import {
   View
 } from 'react-native';
 
+
 import {
   Container, Content, List, ListItem, Text, InputGroup,
   Input, Icon, Picker, Badge, Button } from 'native-base';
@@ -26,7 +27,6 @@ class MonDetails extends Component {
     const {mon} = this.props
     return (
       <View style={{flex: 1}}>
-      <ScrollView>
         <Container>
           <Content  theme={myTheme}>
             <Image source={{uri:mon.url}} style={styles.img_container}>
@@ -38,20 +38,14 @@ class MonDetails extends Component {
                 </View>
               </View>
               <List style={styles.mon_data_box}>
-                <ListItem itemDivider>
-                  <Grid>
-                   <Col style={layout.alignLeft}><Text style={styles.stats}>STATS</Text></Col>
-                   <Col style={layout.alignRight}>
-                   <TouchableHighlight onPress={() => {
+                <View style={styles.header}>
+                  <View><Text style={styles.headerTitle}>STATS</Text></View>
+                  <TouchableHighlight onPress={() => {
                           this.setModalVisible(true)
                         }}>
-                      <View>
-                        <Text style={styles.level}>Trainer Level 23</Text>
-                      </View>
-                    </TouchableHighlight>
-                   </Col>
-                  </Grid>
-                </ListItem>
+                    <View><Text style={styles.level}>Trainer Level 23</Text></View>
+                   </TouchableHighlight>
+                </View>
                 <ListItem style={styles.mon_data}>
                 <Grid style={layout.alignCenter}>
                   <Col size={2} style={layout.alignLeft}><Text> CP: {mon.CP} </Text></Col>
@@ -63,10 +57,10 @@ class MonDetails extends Component {
                 </Grid>
                 </ListItem>
               </List>
+              <View style={styles.header}>
+                  <Text style={styles.headerTitle}>MOVESETS</Text>
+              </View>
               <List style={styles.mon_analysis}>
-                <ListItem itemDivider>
-                  <Text>MOVESETS</Text>
-                </ListItem>
                 <ListItem>
                   <Move mon={mon} type="quick" />
                 </ListItem>
@@ -99,9 +93,9 @@ class MonDetails extends Component {
                     </Col>
                   </Grid>
                 </ListItem>
-                <ListItem itemDivider>
-                  <Text>BATTLE</Text>
-                </ListItem>
+                <View style={styles.header}>
+                    <Text style={styles.headerTitle}>BATTLE</Text>
+                </View>
                 <ListItem >
                   <View>
                     <Text>Strong Against</Text>
@@ -122,9 +116,11 @@ class MonDetails extends Component {
             </Image>
           </Content>
         </Container>
-      </ScrollView>
-    <Button  theme={myTheme} rounded info onPress={Actions.pop} style={{alignSelf:'center', marginBottom:10}}><Icon name='close' /></Button>
-  </View>
+        <View style={styles.floating_footer}>
+          <Button  theme={myTheme} rounded info onPress={Actions.pop} style={styles.floating_btn}>
+          <Icon name='close' /></Button>
+        </View>
+      </View> 
     );
   }
 }
@@ -153,6 +149,23 @@ var styles = StyleSheet.create({
     left:0,
     right:0,
     left:0,
+  },
+
+  header: {
+    flex:1,
+    flexDirection:'row',
+    backgroundColor: '#f3f3f3',
+    borderColor:'#dddddd',
+    borderTopWidth:1,
+    borderBottomWidth:1,
+    padding: 10,
+    justifyContent:'space-between',
+  },
+  headerTitle: {
+    color: '#666666',
+    fontSize:13,
+    letterSpacing: 3,
+    fontWeight:'bold',
   },
 
   mon_data_box: {
@@ -206,8 +219,36 @@ var styles = StyleSheet.create({
 
   defence: { opacity:0.3, marginLeft:30},
 
-  many_types: { flexWrap:'wrap', flexDirection:'row', marginLeft:-3, }
+  many_types: { flexWrap:'wrap', flexDirection:'row', marginLeft:-3, },
+
+  floating_footer: {
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    backgroundColor:'transparent', 
+    position:'absolute', 
+    bottom:0, left:0, right:0,
+  },
+  floating_btn: {
+    backgroundColor:'#1d8696',
+    borderColor: '#ffffff',
+    borderWidth:1,
+    alignSelf:'center',
+    marginBottom:15,
+    shadowColor: "#000000",
+    shadowOpacity: 0.7,
+    shadowRadius: 6,
+    shadowOffset: {
+      height: 3,
+      width: 0
+    }
+  },
   
+  move_label_text: {
+    fontSize:14,
+    fontWeight:'bold',
+    color:'#1d484d',
+  },
+
 });
 
 module.exports = MonDetails;

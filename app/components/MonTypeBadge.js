@@ -12,7 +12,7 @@ export default MonTypeBadge = ({pokemonType}) => {
 
 var styles = StyleSheet.create({
 
-  type: { marginRight:2},
+  type: { marginRight:2, marginBottom:2,},
   t_normal: { backgroundColor:'#a8a878'},
   t_fighting: { backgroundColor:'#c02038'},
   t_flying: { backgroundColor:'#a28ae7'},
