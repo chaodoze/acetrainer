@@ -16,8 +16,9 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import PercentageCircle from 'react-native-percentage-circle';
 import multipleStyles from 'react-native-multiple-styles';
 import ModalPicker from 'react-native-modal-picker';
-import Move from './Move'
-import MonTypeBadge from './MonTypeBadge'
+import layout from './Styles';
+import Move from './Move';
+import MonTypeBadge from './MonTypeBadge';
 import myTheme from './Themes/myTheme';
 
 class MonDetails extends Component {
@@ -31,16 +32,16 @@ class MonDetails extends Component {
             <Image source={{uri:mon.url}} style={styles.img_container}>
               <View style={styles.overlay_box}></View>
               <View style={styles.overlay_box_text} >
-                <View style={styles.alignCenterCol}>
+                <View style={layout.alignCenterCol}>
                    <View><Text style={ styles.mon_name }>{mon.Name}</Text></View>
-                   <View style={styles.alignCenter}>{mon.specie().types().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}</View>
+                   <View style={layout.alignCenter}>{mon.specie().types().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}</View>
                 </View>
               </View>
               <List style={styles.mon_data_box}>
                 <ListItem itemDivider>
                   <Grid>
-                   <Col style={styles.alignLeft}><Text style={styles.stats}>STATS</Text></Col>
-                   <Col style={styles.alignRight}>
+                   <Col style={layout.alignLeft}><Text style={styles.stats}>STATS</Text></Col>
+                   <Col style={layout.alignRight}>
                    <TouchableHighlight onPress={() => {
                           this.setModalVisible(true)
                         }}>
@@ -52,8 +53,8 @@ class MonDetails extends Component {
                   </Grid>
                 </ListItem>
                 <ListItem style={styles.mon_data}>
-                <Grid style={styles.alignCenter}>
-                  <Col size={2} style={styles.alignLeft}><Text> CP: {mon.CP} </Text></Col>
+                <Grid style={layout.alignCenter}>
+                  <Col size={2} style={layout.alignLeft}><Text> CP: {mon.CP} </Text></Col>
                   <Col size={2}><Text>HP: {mon.HP}</Text></Col>
                   <Col size={2}><Text>IV: {mon.ivRangeStr()}</Text></Col>
                   <Col size={1}>
@@ -74,24 +75,24 @@ class MonDetails extends Component {
                 </ListItem>
                 <ListItem style={styles.move_grade}>
                   <Grid>
-                    <Col size={1} style={styles.alignLeft}>
+                    <Col size={1} style={layout.alignLeft}>
                         <Text style={ styles.move_label_text }>GRADE</Text>
                     </Col>
-                    <Col size={2} style={styles.alignCenter}>
+                    <Col size={2} style={layout.alignCenter}>
                        <Icon name='star' style={styles.grade_icon} />
                        <Text>Attack </Text>
                       <View style={multipleStyles(styles.grade_badge, styles.grade_a)}>
                         <Text style={styles.grade_text}>A</Text>
                       </View>
                     </Col>
-                    <Col size={2} style={multipleStyles(styles.alignCenter, styles.defence)}>
+                    <Col size={2} style={multipleStyles(layout.alignCenter, styles.defence)}>
                       <Icon name='shield' style={styles.grade_icon} />
                       <Text style={styles.defence_text}>Defence</Text>
                       <View style={multipleStyles(styles.grade_badge, styles.grade_d)}>
                         <Text style={styles.grade_text}>D</Text>
                       </View>
                     </Col>
-                    <Col size={1} style={styles.alignRight}>
+                    <Col size={1} style={layout.alignRight}>
                         <TouchableHighlight>
                           <View><Icon name='info-circle' style={{fontSize: 18}} /></View>
                         </TouchableHighlight>
@@ -203,59 +204,10 @@ var styles = StyleSheet.create({
 
   grade_text: { color:'#ffffff'},
 
-
   defence: { opacity:0.3, marginLeft:30},
 
-  modal_outer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    flex: 1, justifyContent: 'center',padding: 20,
-  },
-  modal_inner: {
-    backgroundColor: '#fff', padding: 10, borderRadius: 10,
-  },
-  move_label_text: {
-    fontSize:14,
-    fontWeight:'bold',
-    color:'#1d484d',
-  },
-
-  alignRight: {
-    flexWrap: 'wrap',  justifyContent: 'flex-end', alignItems: 'flex-end',flexDirection:'row',
-  },
-  alignLeft: {
-    flexWrap: 'wrap',  justifyContent: 'flex-start', alignItems: 'flex-start',flexDirection:'row',
-  },
-
-  alignCenter: {
-    flexWrap: 'wrap',  justifyContent: 'center', alignItems: 'center',flexDirection:'row',
-  },
-
-  alignCenterCol: {
-    flexWrap: 'wrap',  justifyContent: 'center', alignItems: 'center', flexDirection:'column'
-  },
-
-  many_types: { flexWrap:'wrap', flexDirection:'row', marginLeft:-3, },
-  type: { marginRight:4, marginBottom:4},
-  t_normal: { backgroundColor:'#a8a878'},
-  t_fighting: { backgroundColor:'#c02038'},
-  t_flying: { backgroundColor:'#a28ae7'},
-  t_poison: { backgroundColor:'#a040a0'},
-  t_ground: { backgroundColor:'#e0c068'},
-  t_rock: { backgroundColor:'#b8a038'},
-  t_bug: { backgroundColor:'#a8b820'},
-  t_ghost: { backgroundColor:'#705898'},
-  t_steel: { backgroundColor:'#b8b8d0'},
-  t_fire: { backgroundColor:'#f08030'},
-  t_water: { backgroundColor:'#6890f0'},
-  t_grass: { backgroundColor:'#78c850'},
-  t_electric: { backgroundColor:'#f8d030'},
-  t_psychic: { backgroundColor:'#f85888'},
-  t_ice: { backgroundColor:'#5bc0de'},
-  t_dragon: { backgroundColor:'#7038f8'},
-  t_dark: { backgroundColor:'#705848'},
-  t_fairy: { backgroundColor:'#ee99ac'},
-  t_unknown: { backgroundColor:'#cccccc'}
-
+  many_types: { flexWrap:'wrap', flexDirection:'row', marginLeft:-3, }
+  
 });
 
 module.exports = MonDetails;
