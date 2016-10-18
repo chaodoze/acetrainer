@@ -21,22 +21,19 @@ export const subscribeToMons = (dispatch)=> {
   ref.on('child_added', (mon)=> {
     dispatch({
       type: 'MON_ADDED',
-      val:mon.val(),
-      mon,
+      mon:mon.val(),
     })
   })
   ref.on('child_changed', (mon)=>{
     dispatch({
       type:'MON_CHANGED',
-      val:mon.val(),
-      mon
+      mon:mon.val(),
     })
   })
   ref.on('child_removed', (mon)=>{
     dispatch({
       type:'MON_REMOVED',
-      val:mon.val(),
-      mon
+      mon:mon.val(),
     })
   })
 }

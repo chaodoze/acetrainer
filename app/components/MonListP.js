@@ -22,19 +22,22 @@ class MonListP extends Component {
         status: 'checking'
     };
   }
+  scanForScreenshots() {
+    AsyncStorage.getItem('MonListP:lastScan').then( lastScan=>{
+      lastScan = parseInt(lastScan,10) || moment().subtract(20, 'days').unix()*1000
+      console.log('reactivated from', new Date(lastScan))
+      PokemonImager.scan(trainerLevel, lastScan)
+      AsyncStorage.setItem('MonListP:lastScan', ''+Date.now())
+    })
+  }
+
   reactToAppStates() {
     AppState.addEventListener('change', appState=>{
       if (appState == 'inactive') {
-        AsyncStorage.setItem('MonListP:inactive', ''+Date.now())
+        AsyncStorage.setItem('MonListP:lastScan', ''+Date.now())
       }
       else if (appState == 'active') {
-        AsyncStorage.getItem('MonListP:inactive').then( lastScan=>{
-          lastScan = parseInt(lastScan,10)
-          if (lastScan) {
-            console.log('reactivated from', new Date(lastScan))
-            PokemonImager.scan(trainerLevel, lastScan)
-          }
-        })
+        this.scanForScreenshots()
       }
     })
   }
@@ -44,17 +47,20 @@ class MonListP extends Component {
       console.log('request perm', response)
       if (response == 'authorized') {
         console.log('got perm',response)
-        PokemonImager.scan(trainerLevel, moment().subtract(20, 'days').unix()*1000)
         this.reactToAppStates()
         this.setState({status:'good'})
+        this.scanForScreenshots()
       }
       else {
         this.setState({status:'unauthorized'})
       }
     })
     this.pokeSubscription = NativeAppEventEmitter.addListener('Pokemon', (stats)=>{
-      console.log('stats', stats)
-      Pokemon.addFromScan(stats)
+      const {mons} = this.props
+      const alreadyInDb = mons.find(mon=>mon.url == stats.url)
+      if (!alreadyInDb) {
+        Pokemon.addFromScan(stats)
+      }
     })
   }
 

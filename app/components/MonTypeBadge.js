@@ -4,10 +4,15 @@ import {Badge} from 'native-base'
 import multipleStyles from 'react-native-multiple-styles';
 
 export default MonTypeBadge = ({pokemonType}) => {
-  const style = `t_${pokemonType.displayName.toLowerCase()}`
-  return (
-    <Badge style={multipleStyles(styles[style], styles.type)}>{pokemonType.displayName}</Badge>
-  )
+  if (pokemonType) {
+    const style = `t_${pokemonType.displayName.toLowerCase()}`
+    return (
+        <Badge  style={multipleStyles(styles[style], styles.type)}>{pokemonType.displayName}</Badge>
+    )
+  }
+  else {
+    return <Badge style={styles.t_unknown}>?</Badge>
+  }
 }
 
 var styles = StyleSheet.create({
@@ -31,5 +36,6 @@ var styles = StyleSheet.create({
   t_dragon: { backgroundColor:'#7038f8'},
   t_dark: { backgroundColor:'#705848'},
   t_fairy: { backgroundColor:'#ee99ac'},
+  t_unknown: { backgroundColor:'#cccccc'},
 
 });

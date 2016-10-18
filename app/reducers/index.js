@@ -3,7 +3,7 @@ import Pokemon from '../db/pokemon'
 import routes from './routes'
 
 function mons(state={}, action) {
-  const mon = action.val
+  const mon = action.mon
   let newState
   switch (action.type) {
     case 'MON_ADDED':
@@ -22,13 +22,5 @@ function mons(state={}, action) {
   }
 }
 
-const selectedMon = (state=null, action) => {
-  switch (action.type) {
-    case 'SELECT_MON':
-      return action.mon
-    default:
-      return state
-  }
-}
-const rootReducer = combineReducers({mons, routes, selectedMon})
+const rootReducer = combineReducers({mons, routes})
 export default rootReducer

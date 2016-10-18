@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Modal, StyleSheet, TouchableHighlight, TextInput, View} from 'react-native'
+import {updateMon} from '../db/index'
 import {Badge, List, ListItem, Text} from 'native-base'
 import { Col, Row, Grid } from "react-native-easy-grid";
 import ChoiceModal from './ChoiceModal'
@@ -10,18 +11,18 @@ export default class Move extends Component {
   constructor(props) {
     super(props);
     this.state = {askForMove: false};
-    this.onChosenx = this.onChosenx.bind(this)
+    this.onChosen = this.onChosen.bind(this)
   }
 
   setAskMove(visible) {
     this.setState({askForMove: visible});
   }
-  onChosenx(choice) {
+  onChosen(choice) {
     this.setAskMove(false)
     if (choice) {
-      console.log('move chosen', choice)
       const {mon, type} = this.props
       mon.setMoveFor(type, choice)
+      updateMon(mon)
     }
   }
   render() {
@@ -30,7 +31,7 @@ export default class Move extends Component {
     const choices = mon.specie()[moveType]()
     const move = mon.moveFor(type)
 
-    const dialogCode = this.state.askForMove && <ChoiceModal choices={choices} onChosen={this.onChosenx}/>
+    const dialogCode = this.state.askForMove && <ChoiceModal choices={choices} onChosen={this.onChosen}/>
     return (
       <Grid style={layout.alignCenter}>
         <Col style={layout.alignLeft}><Text style={ styles.move_label_text }>{type.toUpperCase()} MOVE</Text></Col>
@@ -49,7 +50,7 @@ export default class Move extends Component {
             </View>
           </TouchableHighlight>
         </Col>
-        <Col style={layout.alignRight}><Badge style={styles.t_unknown}>?</Badge></Col>
+        <Col style={layout.alignRight}><MonTypeBadge pokemonType={move && move.type()} /></Col>
 
       </Grid>
     )
@@ -58,7 +59,6 @@ export default class Move extends Component {
 
 var styles = StyleSheet.create({
 
-  t_unknown: { backgroundColor:'#cccccc'},
   move_label_text: {
     fontSize:14,
     fontWeight:'bold',
