@@ -26,7 +26,7 @@ class BaseRecord {
             return val.map(id=>attrs['klass'].find(id))
           }
           else {
-            return attrs['klass'].find(id)
+            return val && attrs['klass'].find(val)
           }
         }
       })
@@ -80,7 +80,7 @@ class PokemonSpecie extends BaseRecord {
   static cache = {}
   static relationships = {
     quickMoves: {field:'quick_moves', klass:PokemonMove},
-    chargedMoves: {field:'cinematic_moves', klass:PokemonMove},
+    chargeMoves: {field:'cinematic_moves', klass:PokemonMove},
     types: {field:'type_ids', klass:PokemonType},
     parent: {field:'parent_pokemon_id', klass:PokemonSpecie},
     family: {field:'family_id', klass:PokemonSpecie},
@@ -143,4 +143,4 @@ PokemonSpecie.populateCache(pogoJSON.templates.pokemon_settings)
 AttackMoveRank.populateCache(pogoJSON.attackers)
 DefensiveMoveRank.populateCache(pogoJSON.defenders)
 
-export {PokemonSpecie, PokemonType, PokemonMove}
+export {PokemonSpecie, PokemonType, PokemonMove, BaseRecord}

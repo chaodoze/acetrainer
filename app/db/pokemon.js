@@ -1,7 +1,7 @@
 import * as _ from 'lodash-es'
 import * as db from '../db'
 const pokemonDB = require('../../data/pokemon.json')
-import {PokemonSpecie} from '../db/pogo'
+import {PokemonSpecie, BaseRecord, PokemonMove} from '../db/pogo'
 const cpMultiplier = [0.0939999967813492, 0.135137432089339, 0.166397869586945, 0.192650913155325, 0.215732470154762,
                              0.236572651424822, 0.255720049142838, 0.273530372106572, 0.290249884128571, 0.306057381389863,
                              0.321087598800659, 0.335445031996451, 0.349212676286697, 0.362457736609939, 0.375235587358475,
@@ -39,24 +39,21 @@ const cleanup = {
   shotAt: unixTime=>new Date(unixTime*1000)
 }
 
-export default class Pokemon {
+export default class Pokemon extends BaseRecord {
+  static relationships = {
+    quickMove: {field:'quick_move_id', klass:PokemonMove},
+    chargeMove: {field:'charge_move_id', klass:PokemonMove}
+  }
+
   static addFromScan(stats) {
     _.map(cleanup, (cleanupFunc, field)=>{
       stats[field] = cleanupFunc(stats[field])
     })
     mon = new Pokemon(stats)
     mon.calcIVPossibilities()
-    const specie = mon.specie()
-    if (specie && specie.displayName == 'Charmeleon') {
-      mon.filterIVPossibilities({average:'best', best:'best'})
-      console.log('filtered', mon.filteredCandidates)
-    }
+    console.log('iv candidates', mon.Name, mon.ivCandidates)
     db.addMon(mon)
 
-  }
-
-  constructor(rawData) {
-    _.assign(this, rawData)
   }
 
   key() {
@@ -74,11 +71,20 @@ export default class Pokemon {
     return PokemonSpecie.findByFuzzyName(this.Name)
   }
 
+  moveFor(type) {
+    return this[`${type}Move`]()
+  }
+
+  setMoveFor(type, move) {
+    this[`${type}_move_id`] = move.id
+  }
+
   calcIVPossibilities() {
     if (this.ivCandidates) {return}
     const specie = PokemonSpecie.findByFuzzyName(this.Name)
     console.log('iv possibilities', specie, this.Name)
     let possibilities = []
+    this.ivCandidates = possibilities
     if (specie) {
       const level = (this['level']-1)*2
       const cpM = cpMultiplier[level]
@@ -112,16 +118,15 @@ export default class Pokemon {
         }
       })
     }
-    this.ivCandidates = possibilities
+    // this.ivCandidates = possibilities
   }
 
   averageIV() {
     this.calcIVPossibilities()
-    if (!this.ivCandidates || this.ivCandidates.length == 0) {
+    if (this.ivCandidates.length == 0) {
       return 0
     }
     const total = this.ivCandidates.reduce((accum, candidate)=>accum+candidate[0]+candidate[1]+candidate[2],0)
-    console.log('average', total)
     return total/(this.ivCandidates.length*45)
   }
 
@@ -131,6 +136,37 @@ export default class Pokemon {
     }
     else {
       return '?'
+    }
+  }
+
+  ivRange() {
+    this.calcIVPossibilities()
+    if (this.ivCandidates.length == 0) {
+      return {min:0, max:0}
+    }
+    range = this.ivCandidates.reduce((accum,candidate)=>{
+      const candidateTotal = candidate.reduce((prev,curr)=>prev+curr)
+      if (candidateTotal < accum.min) {
+        accum.min = candidateTotal
+      }
+      else if (candidateTotal > accum.max) {
+        accum.max = candidateTotal
+      }
+      return accum
+    }, {min:45, max:0})
+    if (range.max == 0) {range.max = range.min}
+    range.min = Math.round(range.min/45*100)
+    range.max = Math.round(range.max/45*100)
+    return range
+  }
+
+  ivRangeStr() {
+    const range = this.ivRange()
+    if (range.min == range.max) {
+      return `${range.min}%`
+    }
+    else {
+      return `${range.min}%-${range.max}%`
     }
   }
 
@@ -160,4 +196,6 @@ export default class Pokemon {
       candidate=>candidate.reduce((accum,curr)=>accum > curr ? accum : curr))
     this.filteredCandidates = candidates
   }
+
 }
+Pokemon.addRelationships()

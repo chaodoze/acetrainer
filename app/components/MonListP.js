@@ -13,7 +13,7 @@ import {Actions} from 'react-native-router-flux'
 import {MonList} from './MonList'
 import {PokemonImager} from 'NativeModules'
 import Pokemon from '../db/pokemon'
-const trainerLevel = 28
+const trainerLevel = 29
 
 class MonListP extends Component {
   constructor(props) {
