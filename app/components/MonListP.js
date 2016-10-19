@@ -86,14 +86,12 @@ const mapStateToProps = ({mons}) => {
   }
 }
 
-const mapDispatchToProps = dispatch=> {
-  return {
-    onMonClick: (mon)=>{
-      dispatch(selectMon(mon))
-      Actions.mondetails()
-    }
+const mapDispatchToProps = dispatch=> ({
+  onMonClick: (mon)=>{
+    dispatch(selectMon(mon))
+    Actions.mondetails()
   }
-}
+})
 
 console.log('mdtp',mapDispatchToProps )
 MonListP = connect(mapStateToProps, mapDispatchToProps)(MonListP)
