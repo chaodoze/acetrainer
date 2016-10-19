@@ -69,20 +69,18 @@ class MonDetails extends Component {
                 </ListItem>
                 <ListItem style={styles.move_grade}>
                   <Grid>
-                    <Col size={1} style={layout.alignLeft}>
-                        <Text style={ styles.move_label_text }>GRADE</Text>
-                    </Col>
+
                     <Col size={2} style={layout.alignCenter}>
                        <Icon name='star' style={styles.grade_icon} />
                        <Text>Attack </Text>
-                      <View style={multipleStyles(styles.grade_badge, styles.grade_a)}>
+                      <View style={multipleStyles(styles.square_badge, styles.grade_a)}>
                         <Text style={styles.grade_text}>A</Text>
                       </View>
                     </Col>
                     <Col size={2} style={multipleStyles(layout.alignCenter, styles.defence)}>
                       <Icon name='shield' style={styles.grade_icon} />
                       <Text style={styles.defence_text}>Defence</Text>
-                      <View style={multipleStyles(styles.grade_badge, styles.grade_d)}>
+                      <View style={multipleStyles(styles.square_badge, styles.grade_d)}>
                         <Text style={styles.grade_text}>D</Text>
                       </View>
                     </Col>
@@ -98,7 +96,7 @@ class MonDetails extends Component {
                 </View>
                 <ListItem >
                   <View>
-                    <Text>Strong Against</Text>
+                    <Text style={styles.header4}>STRONG AGAINST</Text>
                     <View style={styles.many_types}>
                       {mon.specie().strongAgainst().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
                     </View>
@@ -106,7 +104,7 @@ class MonDetails extends Component {
                 </ListItem>
                 <ListItem >
                   <View >
-                    <Text>Resistant To</Text>
+                    <Text style={styles.header4}>RESISTANT TO</Text>
                     <View style={styles.many_types}>
                       {mon.specie().resistantTo().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
                     </View>
@@ -202,7 +200,7 @@ var styles = StyleSheet.create({
     fontSize: 18, marginRight:4
   },
 
-  grade_badge: {
+  square_badge: {
     padding:7,
     paddingTop:1,
     paddingBottom:1,
@@ -243,10 +241,11 @@ var styles = StyleSheet.create({
     }
   },
   
-  move_label_text: {
-    fontSize:14,
+  header4: {
+    fontSize:12,
     fontWeight:'bold',
     color:'#1d484d',
+    marginBottom:2,
   },
 
 });

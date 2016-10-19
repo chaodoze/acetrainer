@@ -5,6 +5,7 @@ import {Badge, List, ListItem, Text} from 'native-base'
 import { Col, Row, Grid } from "react-native-easy-grid";
 import ChoiceModal from './ChoiceModal'
 import layout from './Styles';
+import multipleStyles from 'react-native-multiple-styles';
 
 
 export default class Move extends Component {
@@ -50,7 +51,10 @@ export default class Move extends Component {
             </View>
           </TouchableHighlight>
         </Col>
-        <Col style={layout.alignRight}><MonTypeBadge pokemonType={move && move.type()} /></Col>
+        <Col style={layout.alignRight}><MonTypeBadge pokemonType={move && move.type()} />
+        <Text style={{fontSize:10}}>x1.25 STAB</Text>
+
+        </Col>
 
       </Grid>
     )
@@ -60,7 +64,7 @@ export default class Move extends Component {
 var styles = StyleSheet.create({
 
   move_label_text: {
-    fontSize:14,
+    fontSize:12,
     fontWeight:'bold',
     color:'#1d484d',
   },
