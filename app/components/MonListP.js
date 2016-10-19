@@ -73,7 +73,7 @@ class MonListP extends Component {
       return (<Text>Sorry, we don't have permission to access your photos</Text>)
     }
     const {mons} = this.props
-    const onMonClick = (mon)=>Actions.mondetails({mon:mon})
+    const onMonClick = (mon)=>Actions.mondetails({mon:mon, quick:mon.quickMove(), charge:mon.chargeMove()})
     return <MonList mons={mons} onMonClick={onMonClick}/>
   }
 }

@@ -20,11 +20,13 @@ import ModalPicker from 'react-native-modal-picker';
 import layout from './Styles';
 import Move from './Move';
 import MonTypeBadge from './MonTypeBadge';
+import Grade from './Grade'
 import myTheme from './Themes/myTheme';
 
 class MonDetails extends Component {
   render() {
     const {mon} = this.props
+    console.log('render mon details')
     return (
       <View style={{flex: 1}}>
         <Container>
@@ -71,18 +73,14 @@ class MonDetails extends Component {
                   <Grid>
 
                     <Col size={2} style={layout.alignCenter}>
-                       <Icon name='star' style={styles.grade_icon} />
-                       <Text>Attack </Text>
-                      <View style={multipleStyles(styles.square_badge, styles.grade_a)}>
-                        <Text style={styles.grade_text}>A</Text>
-                      </View>
+                      <Icon name='star' style={styles.grade_icon} />
+                      <Text>Attack </Text>
+                      <Grade grade={mon.attackGrade()} />
                     </Col>
                     <Col size={2} style={multipleStyles(layout.alignCenter, styles.defence)}>
                       <Icon name='shield' style={styles.grade_icon} />
                       <Text style={styles.defence_text}>Defence</Text>
-                      <View style={multipleStyles(styles.square_badge, styles.grade_d)}>
-                        <Text style={styles.grade_text}>D</Text>
-                      </View>
+                      <Grade grade={mon.defenseGrade()} />
                     </Col>
                     <Col size={1} style={layout.alignRight}>
                         <TouchableHighlight>
@@ -118,7 +116,7 @@ class MonDetails extends Component {
           <Button  theme={myTheme} rounded info onPress={Actions.pop} style={styles.floating_btn}>
           <Icon name='close' /></Button>
         </View>
-      </View> 
+      </View>
     );
   }
 }
@@ -220,10 +218,10 @@ var styles = StyleSheet.create({
   many_types: { flexWrap:'wrap', flexDirection:'row', marginLeft:-3, },
 
   floating_footer: {
-    alignItems: 'center', 
-    justifyContent: 'center', 
-    backgroundColor:'transparent', 
-    position:'absolute', 
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor:'transparent',
+    position:'absolute',
     bottom:0, left:0, right:0,
   },
   floating_btn: {
@@ -240,7 +238,7 @@ var styles = StyleSheet.create({
       width: 0
     }
   },
-  
+
   header4: {
     fontSize:12,
     fontWeight:'bold',
