@@ -24,6 +24,16 @@ import Grade from './Grade'
 import myTheme from './Themes/myTheme';
 
 class MonDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.onMoveChange = this.onMoveChange.bind(this)
+  }
+
+  onMoveChange() {
+    const {mon} = this.props
+    Actions.refresh({mon:mon, quick:mon.quickMove(), charge:mon.chargeMove()})
+  }
+
   render() {
     const {mon} = this.props
     console.log('render mon details')
@@ -64,10 +74,10 @@ class MonDetails extends Component {
               </View>
               <List style={styles.mon_analysis}>
                 <ListItem>
-                  <Move mon={mon} type="quick" />
+                  <Move mon={mon} type="quick" onChange={this.onMoveChange} />
                 </ListItem>
                 <ListItem>
-                  <Move mon={mon} type="charge" />
+                  <Move mon={mon} type="charge" onChange={this.onMoveChange} />
                 </ListItem>
                 <ListItem style={styles.move_grade}>
                   <Grid>
