@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Image,
@@ -21,18 +22,8 @@ import Grade from './Grade'
 import myTheme from './Themes/myTheme';
 
 class MonDetails extends Component {
-  constructor(props) {
-    super(props);
-    this.onMoveChange = this.onMoveChange.bind(this)
-  }
-
-  onMoveChange() {
-    const {mon} = this.props
-    Actions.refresh({mon:mon, quick:mon.quickMove(), charge:mon.chargeMove()})
-  }
-
   render() {
-    const {mon} = this.props
+    const {mon, goBack} = this.props
     console.log('render mon details')
     return (
       <View style={{flex: 1}}>
@@ -71,10 +62,10 @@ class MonDetails extends Component {
               </View>
               <List style={styles.mon_analysis}>
                 <ListItem>
-                  <Move mon={mon} type="quick" onChange={this.onMoveChange} />
+                  <Move mon={mon} type="quick" />
                 </ListItem>
                 <ListItem>
-                  <Move mon={mon} type="charge" onChange={this.onMoveChange} />
+                  <Move mon={mon} type="charge" />
                 </ListItem>
                 <ListItem style={styles.move_grade}>
                   <Grid>
@@ -120,7 +111,7 @@ class MonDetails extends Component {
           </Content>
         </Container>
         <View style={styles.floating_footer}>
-          <Button  theme={myTheme} rounded info onPress={Actions.pop} style={styles.floating_btn}>
+          <Button  theme={myTheme} rounded info onPress={goBack} style={styles.floating_btn}>
           <Icon name='close' /></Button>
         </View>
       </View>
@@ -254,5 +245,18 @@ var styles = StyleSheet.create({
   },
 
 });
+
+const mapStateToProps = ({selectedMon}) => ({
+  mon: selectedMon,
+  quick: selectedMon.quickMove(), //use quick and charge so that component will re-render, when these change
+  charge: selectedMon.chargeMove()
+})
+const mapDispatchToProps = dispatch=> ({
+  goBack: ()=>{
+    Actions.pop()
+  }
+})
+
+MonDetails = connect(mapStateToProps,mapDispatchToProps)(MonDetails)
 
 module.exports = MonDetails;

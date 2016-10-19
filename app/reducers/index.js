@@ -22,5 +22,9 @@ function mons(state={}, action) {
   }
 }
 
-const rootReducer = combineReducers({mons, routes})
+function selectedMon(state=null, action) {
+  return action.type == 'SELECT_MON' ? action.mon : state
+}
+
+const rootReducer = combineReducers({mons, selectedMon, routes})
 export default rootReducer
