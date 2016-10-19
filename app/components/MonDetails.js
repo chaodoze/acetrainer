@@ -7,8 +7,6 @@ import {
   Modal,
   View
 } from 'react-native';
-
-
 import {
   Container, Content, List, ListItem, Text, InputGroup,
   Input, Icon, Picker, Badge, Button } from 'native-base';
@@ -16,7 +14,6 @@ import {Actions} from 'react-native-router-flux';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import PercentageCircle from 'react-native-percentage-circle';
 import multipleStyles from 'react-native-multiple-styles';
-import ModalPicker from 'react-native-modal-picker';
 import layout from './Styles';
 import Move from './Move';
 import MonTypeBadge from './MonTypeBadge';
