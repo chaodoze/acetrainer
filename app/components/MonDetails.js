@@ -185,7 +185,7 @@ var styles = StyleSheet.create({
   },
 
   stats: { fontWeight:'bold'},
-  level: { color:'#666', fontSize:13 },
+  level: { color:'#1780fb', fontSize:13 },
 
   mon_analysis: {
     backgroundColor:'#ffffff',
@@ -247,6 +247,10 @@ var styles = StyleSheet.create({
     color:'#1d484d',
     marginBottom:2,
   },
+
+  linkcolor: {
+    color:'#1d8696',
+  }
 
 });
 
