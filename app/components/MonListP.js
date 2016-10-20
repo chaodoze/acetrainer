@@ -93,7 +93,6 @@ const mapDispatchToProps = dispatch=> ({
   }
 })
 
-console.log('mdtp',mapDispatchToProps )
 MonListP = connect(mapStateToProps, mapDispatchToProps)(MonListP)
 
 export default MonListP
