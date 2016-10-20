@@ -1,13 +1,13 @@
 import React from 'react';
 import {StyleSheet} from 'react-native'
-import {Badge} from 'native-base'
+import {Badge, Icon} from 'native-base'
 import multipleStyles from 'react-native-multiple-styles';
 
 export default MonTypeBadge = ({pokemonType}) => {
   if (pokemonType) {
     const style = `t_${pokemonType.displayName.toLowerCase()}`
     return (
-        <Badge  style={multipleStyles(styles[style], styles.type)}>{pokemonType.displayName}</Badge>
+        <Badge style={multipleStyles(styles[style], styles.type)}><Icon name='star' style={styles.grade_icon} /> {pokemonType.displayName}</Badge>
     )
   }
   else {
@@ -16,6 +16,10 @@ export default MonTypeBadge = ({pokemonType}) => {
 }
 
 var styles = StyleSheet.create({
+
+  grade_icon: {
+    fontSize: 12, marginRight:4, color:'#ffffff',
+  },
 
   type: { marginRight:2, marginBottom:2,},
   t_normal: { backgroundColor:'#a8a878'},

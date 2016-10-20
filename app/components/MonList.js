@@ -109,7 +109,7 @@ export const MonList = ({mons, onMonClick})=> (
 )
 
 const Mon = ({mon, onPress})=> (
-  <TouchableHighlight  key={mon.url} onPress={onPress}>
+  <TouchableHighlight  key={mon.url} onPress={onPress} underlayColor='#ffffff'>
     <View style={ styles.mon }>
       <View style={styles.cp}>
         <Text style={ styles.mon_cp }>cp</Text>

@@ -69,16 +69,15 @@ class MonDetails extends Component {
                 </ListItem>
                 <ListItem style={styles.move_grade}>
                   <Grid>
-
                     <Col size={2} style={layout.alignCenter}>
-                       <Icon name='star' style={styles.grade_icon} />
+                       <Image source={require('./images/icons/sword.png')} style={styles.icon} />          
                        <Text>Attack </Text>
                       <View style={multipleStyles(styles.square_badge, styles.grade_a)}>
                         <Text style={styles.grade_text}>A</Text>
                       </View>
                     </Col>
                     <Col size={2} style={multipleStyles(layout.alignCenter, styles.defence)}>
-                      <Icon name='shield' style={styles.grade_icon} />
+                      <Image source={require('./images/icons/shield.png')} style={styles.icon} />          
                       <Text style={styles.defence_text}>Defence</Text>
                       <View style={multipleStyles(styles.square_badge, styles.grade_d)}>
                         <Text style={styles.grade_text}>D</Text>
@@ -180,6 +179,11 @@ var styles = StyleSheet.create({
     textAlign :'center',
   },
 
+  icon: {
+    width:16,
+    height:16,
+    marginRight:5,
+  },
   mon_data: {
     opacity:0.7, padding:5, borderBottomWidth:0,
   },

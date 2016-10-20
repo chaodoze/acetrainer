@@ -39,7 +39,7 @@ export default class Move extends Component {
         <Col>
           <TouchableHighlight onPress={() => {
               this.setAskMove(true)
-            }}>
+            }} underlayColor='#ffffff'>
             <View>
               <TextInput
                 style={{borderWidth:0, borderColor:'transparent', height:35}}
@@ -52,8 +52,6 @@ export default class Move extends Component {
           </TouchableHighlight>
         </Col>
         <Col style={layout.alignRight}><MonTypeBadge pokemonType={move && move.type()} />
-        <Text style={{fontSize:10}}>x1.25 STAB</Text>
-
         </Col>
 
       </Grid>
