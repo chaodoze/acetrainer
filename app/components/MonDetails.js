@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Image,
@@ -7,8 +8,6 @@ import {
   Modal,
   View
 } from 'react-native';
-
-
 import {
   Container, Content, List, ListItem, Text, InputGroup,
   Input, Icon, Picker, Badge, Button } from 'native-base';
@@ -16,15 +15,16 @@ import {Actions} from 'react-native-router-flux';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import PercentageCircle from 'react-native-percentage-circle';
 import multipleStyles from 'react-native-multiple-styles';
-import ModalPicker from 'react-native-modal-picker';
 import layout from './Styles';
 import Move from './Move';
 import MonTypeBadge from './MonTypeBadge';
+import Grade from './Grade'
 import myTheme from './Themes/myTheme';
 
 class MonDetails extends Component {
   render() {
-    const {mon} = this.props
+    const {mon, goBack} = this.props
+    console.log('render mon details')
     return (
       <View style={{flex: 1}}>
         <Container>
@@ -70,18 +70,14 @@ class MonDetails extends Component {
                 <ListItem style={styles.move_grade}>
                   <Grid>
                     <Col size={2} style={layout.alignCenter}>
-                       <Image source={require('./images/icons/sword.png')} style={styles.icon} />          
-                       <Text>Attack </Text>
-                      <View style={multipleStyles(styles.square_badge, styles.grade_a)}>
-                        <Text style={styles.grade_text}>A</Text>
-                      </View>
+                      <Image source={require('./images/icons/sword.png')} style={styles.icon} />          
+                      <Text>Attack </Text>
+                      <Grade grade={mon.attackGrade()} />
                     </Col>
                     <Col size={2} style={multipleStyles(layout.alignCenter, styles.defence)}>
                       <Image source={require('./images/icons/shield.png')} style={styles.icon} />          
                       <Text style={styles.defence_text}>Defence</Text>
-                      <View style={multipleStyles(styles.square_badge, styles.grade_d)}>
-                        <Text style={styles.grade_text}>D</Text>
-                      </View>
+                      <Grade grade={mon.defenseGrade()} />
                     </Col>
                     <Col size={1} style={layout.alignRight}>
                         <TouchableHighlight>
@@ -114,10 +110,10 @@ class MonDetails extends Component {
           </Content>
         </Container>
         <View style={styles.floating_footer}>
-          <Button  theme={myTheme} rounded info onPress={Actions.pop} style={styles.floating_btn}>
+          <Button  theme={myTheme} rounded info onPress={goBack} style={styles.floating_btn}>
           <Icon name='close' /></Button>
         </View>
-      </View> 
+      </View>
     );
   }
 }
@@ -224,10 +220,10 @@ var styles = StyleSheet.create({
   many_types: { flexWrap:'wrap', flexDirection:'row', marginLeft:-3, },
 
   floating_footer: {
-    alignItems: 'center', 
-    justifyContent: 'center', 
-    backgroundColor:'transparent', 
-    position:'absolute', 
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor:'transparent',
+    position:'absolute',
     bottom:0, left:0, right:0,
   },
   floating_btn: {
@@ -244,7 +240,7 @@ var styles = StyleSheet.create({
       width: 0
     }
   },
-  
+
   header4: {
     fontSize:12,
     fontWeight:'bold',
@@ -253,5 +249,18 @@ var styles = StyleSheet.create({
   },
 
 });
+
+const mapStateToProps = ({selectedMon}) => ({
+  mon: selectedMon,
+  quick: selectedMon.quickMove(), //use quick and charge so that component will re-render, when these change
+  charge: selectedMon.chargeMove()
+})
+const mapDispatchToProps = dispatch=> ({
+  goBack: ()=>{
+    Actions.pop()
+  }
+})
+
+MonDetails = connect(mapStateToProps,mapDispatchToProps)(MonDetails)
 
 module.exports = MonDetails;

@@ -9,6 +9,7 @@ class BaseRecord {
   static find(id) {
     return this.cache[id]
   }
+
   static populateCache(objs) {
     this.addRelationships()
     objs.forEach(obj=>{
@@ -73,6 +74,7 @@ class PokemonMove extends BaseRecord {
   constructor(rawData) {
     super(rawData)
     this.id = this.movement_id
+    this.displayName = this.displayName.trim()
   }
 }
 
@@ -103,7 +105,7 @@ class PokemonSpecie extends BaseRecord {
     return AttackMoveRank.find(this.id)
   }
 
-  defensiveMovesets() {
+  defenseMovesets() {
     return DefensiveMoveRank.find(this.id)
   }
 

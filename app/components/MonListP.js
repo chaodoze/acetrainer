@@ -13,6 +13,8 @@ import {Actions} from 'react-native-router-flux'
 import {MonList} from './MonList'
 import {PokemonImager} from 'NativeModules'
 import Pokemon from '../db/pokemon'
+import {selectMon} from '../actions'
+
 const trainerLevel = 29
 
 class MonListP extends Component {
@@ -65,15 +67,14 @@ class MonListP extends Component {
   }
 
   render() {
-    const status = this.state.status
+    const {status} = this.state
     if (status == 'checking') {
       return (<Text>checking permissions</Text>)
     }
     else if (status=='unauthorized') {
       return (<Text>Sorry, we don't have permission to access your photos</Text>)
     }
-    const {mons} = this.props
-    const onMonClick = (mon)=>Actions.mondetails({mon:mon})
+    const {mons, onMonClick} = this.props
     return <MonList mons={mons} onMonClick={onMonClick}/>
   }
 }
@@ -85,6 +86,14 @@ const mapStateToProps = ({mons}) => {
   }
 }
 
-MonListP = connect(mapStateToProps)(MonListP)
+const mapDispatchToProps = dispatch=> ({
+  onMonClick: (mon)=>{
+    dispatch(selectMon(mon))
+    Actions.mondetails()
+  }
+})
+
+console.log('mdtp',mapDispatchToProps )
+MonListP = connect(mapStateToProps, mapDispatchToProps)(MonListP)
 
 export default MonListP

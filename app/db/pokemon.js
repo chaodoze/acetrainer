@@ -79,6 +79,39 @@ export default class Pokemon extends BaseRecord {
     this[`${type}_move_id`] = move.id
   }
 
+  gradeFor(type) {
+    if (type != 'attack' && type != 'defense') {return null}
+    const [quickMove, chargeMove, specie] = [this.quickMove(), this.chargeMove(), this.specie()]
+    if (!(quickMove && chargeMove && specie)) {return null}
+    const movesets = specie[`${type}Movesets`]()
+    console.log('grade', movesets, quickMove, chargeMove)
+    const matchingMoveset = movesets.find(moveset=>{
+      return quickMove.displayName == moveset.quick && chargeMove.displayName == moveset.charge
+    })
+    console.assert(matchingMoveset, 'moveset not found!')
+    const rank = matchingMoveset.rank/movesets[0].rank
+    if (rank > 0.95) {
+      return 'A'
+    }
+    else if (rank > 0.8) {
+      return 'B'
+    }
+    else if (rank > 0.6) {
+      return 'C'
+    }
+    else {
+      return 'F'
+    }
+  }
+
+  attackGrade() {
+    return this.gradeFor('attack')
+  }
+
+  defenseGrade() {
+    return this.gradeFor('defense')
+  }
+
   calcIVPossibilities() {
     if (this.ivCandidates) {return}
     const specie = PokemonSpecie.findByFuzzyName(this.Name)

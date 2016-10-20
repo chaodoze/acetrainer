@@ -17,7 +17,7 @@ export default class ChoiceModal extends Component {
                   <Text style={styles.choice_title}>Charge Move</Text>
                 </ListItem>
                 {choices.map(choice=>(
-                  <ListItem  key={choice} onPress={()=>{console.log('bye');if (onChosen) {onChosen(choice)}}}>
+                  <ListItem  key={choice} onPress={()=>{if (onChosen) {onChosen(choice)}}}>
                      <Text style={styles.choice}>{choice.displayName}</Text>
                   </ListItem>
                 ))}
@@ -54,7 +54,7 @@ var styles = StyleSheet.create({
 
   choice: {
   textAlign:'center', color:'#2182f7'
-  }, 
+  },
 
   cancel_box: {
     backgroundColor: '#fff', padding: 10, borderRadius: 10,alignItems: 'center', marginTop:5,

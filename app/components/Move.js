@@ -21,9 +21,10 @@ export default class Move extends Component {
   onChosen(choice) {
     this.setAskMove(false)
     if (choice) {
-      const {mon, type} = this.props
+      const {mon, type, onChange} = this.props
       mon.setMoveFor(type, choice)
       updateMon(mon)
+      if (onChange) {onChange(choice, type)}
     }
   }
   render() {
