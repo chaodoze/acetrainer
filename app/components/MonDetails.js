@@ -6,11 +6,12 @@ import {
   ScrollView,
   TextInput,TouchableHighlight,
   Modal,
-  View
+  View,
+  Picker,
 } from 'react-native';
 import {
   Container, Content, List, ListItem, Text, InputGroup,
-  Input, Icon, Picker, Badge, Button } from 'native-base';
+  Input, Icon, Badge, Button } from 'native-base';
 import {Actions} from 'react-native-router-flux';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import PercentageCircle from 'react-native-percentage-circle';
@@ -19,6 +20,7 @@ import layout from './Styles';
 import Move from './Move';
 import MonTypeBadge from './MonTypeBadge';
 import Grade from './Grade'
+import TrainerLevel from './TrainerLevel'
 import myTheme from './Themes/myTheme';
 
 class MonDetails extends Component {
@@ -38,14 +40,7 @@ class MonDetails extends Component {
                 </View>
               </View>
               <List style={styles.mon_data_box}>
-                <View style={styles.header}>
-                  <View><Text style={styles.headerTitle}>STATS</Text></View>
-                  <TouchableHighlight onPress={() => {
-                          this.setModalVisible(true)
-                        }}>
-                    <View><Text style={styles.level}>Trainer Level {mon.trainerLevel}</Text></View>
-                   </TouchableHighlight>
-                </View>
+                <TrainerLevel level={mon.trainerLevel} />
                 <ListItem style={styles.mon_data}>
                 <Grid style={layout.alignCenter}>
                   <Col size={2} style={layout.alignLeft}><Text> CP: {mon.CP} </Text></Col>
@@ -70,12 +65,12 @@ class MonDetails extends Component {
                 <ListItem style={styles.move_grade}>
                   <Grid>
                     <Col size={2} style={layout.alignCenter}>
-                      <Image source={require('./images/icons/sword.png')} style={styles.icon} />          
+                      <Image source={require('./images/icons/sword.png')} style={styles.icon} />
                       <Text>Attack </Text>
                       <Grade grade={mon.attackGrade()} />
                     </Col>
                     <Col size={2} style={multipleStyles(layout.alignCenter, styles.defence)}>
-                      <Image source={require('./images/icons/shield.png')} style={styles.icon} />          
+                      <Image source={require('./images/icons/shield.png')} style={styles.icon} />
                       <Text style={styles.defence_text}>Defence</Text>
                       <Grade grade={mon.defenseGrade()} />
                     </Col>
