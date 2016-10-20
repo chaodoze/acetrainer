@@ -43,7 +43,7 @@ class MonDetails extends Component {
                   <TouchableHighlight onPress={() => {
                           this.setModalVisible(true)
                         }}>
-                    <View><Text style={styles.level}>Trainer Level 23</Text></View>
+                    <View><Text style={styles.level}>Trainer Level {mon.trainerLevel}</Text></View>
                    </TouchableHighlight>
                 </View>
                 <ListItem style={styles.mon_data}>

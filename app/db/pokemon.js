@@ -164,12 +164,7 @@ export default class Pokemon extends BaseRecord {
   }
 
   avgIVPercent() {
-    if (this.averageIV()) {
-      return Math.round(this.averageIV()*100)
-    }
-    else {
-      return '?'
-    }
+    return Math.round(this.averageIV()*100)
   }
 
   ivRange() {
