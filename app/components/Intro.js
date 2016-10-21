@@ -7,28 +7,32 @@ import {
 } from 'react-native';
 
 import { Input, Text, Button } from 'native-base';
+import TrainerLevel from './TrainerLevel'
 
 class Intro extends Component {
 
   render() {
+
     return (
 
       <View style={styles.container}>
         <Text style={styles.description}>
           What was (or is) your level at the time you took the screenshots?
         </Text>
-        
-        <View style={styles.flowRight}>
-          <TextInput
-            style={styles.searchInput}
-            placeholder='Enter Trainer Level'/>
-          <Button>Scan Photos</Button>
+        <TrainerLevel  />
+
+        <View >
+
+
+          <Button style={{alignSelf:'center', marginTop:20}}>Scan Photos</Button>
         </View>
       </View>
 
     );
   }
 }
+
+
 const styles = StyleSheet.create({
   description: {
     marginBottom: 20,
@@ -39,7 +43,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 30,
     marginTop: 200,
-    alignItems: 'center'
   },
   flowRight: {
     flexDirection: 'row',
