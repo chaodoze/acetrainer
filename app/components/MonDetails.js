@@ -8,6 +8,7 @@ import {
   Modal,
   View,
   Picker,
+  Dimensions
 } from 'react-native';
 import {
   Container, Content, List, ListItem, Text, InputGroup,
@@ -22,124 +23,163 @@ import MonTypeBadge from './MonTypeBadge';
 import Grade from './Grade'
 import TrainerLevel from './TrainerLevel'
 import myTheme from './Themes/myTheme';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
+
+const PARALLAX_HEADER_HEIGHT = 270;
+const STICKY_HEADER_HEIGHT = 70;
+const window = Dimensions.get('window');
 
 class MonDetails extends Component {
   render() {
     const {mon, goBack} = this.props
     console.log('render mon details')
     return (
-      <View style={{flex: 1}}>
-        <Container>
-          <Content  theme={myTheme}>
-            <Image source={{uri:mon.url}} style={styles.img_container}>
-              <View style={styles.overlay_box}></View>
-              <View style={styles.overlay_box_text} >
-                <View style={layout.alignCenterCol}>
-                   <View><Text style={ styles.mon_name }>{mon.Name}</Text></View>
-                   <View style={layout.alignCenter}>{mon.specie().types().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}</View>
-                </View>
-              </View>
-              <List style={styles.mon_data_box}>
-                <TrainerLevel level={mon.trainerLevel} />
-                <ListItem style={styles.mon_data}>
-                <Grid style={layout.alignCenter}>
-                  <Col size={2} style={layout.alignLeft}><Text> CP: {mon.CP} </Text></Col>
-                  <Col size={2}><Text>HP: {mon.HP}</Text></Col>
-                  <Col size={2}><Text>IV: {mon.ivRangeStr()}</Text></Col>
-                  <Col size={1}>
-                    <PercentageCircle radius={20} percent={mon.avgIVPercent()} borderWidth={5} color={"#3498db"}></PercentageCircle>
-                  </Col>
-                </Grid>
-                </ListItem>
-              </List>
-              <View style={styles.header}>
-                  <Text style={styles.headerTitle}>MOVESETS</Text>
-              </View>
-              <List style={styles.mon_analysis}>
-                <ListItem>
-                  <Move mon={mon} type="quick" />
-                </ListItem>
-                <ListItem>
-                  <Move mon={mon} type="charge" />
-                </ListItem>
-                <ListItem style={styles.move_grade}>
-                  <Grid>
-                    <Col size={2} style={layout.alignCenter}>
-                      <Image source={require('./images/icons/sword.png')} style={styles.icon} />
-                      <Text>Attack </Text>
-                      <Grade grade={mon.attackGrade()} />
-                    </Col>
-                    <Col size={2} style={multipleStyles(layout.alignCenter, styles.defence)}>
-                      <Image source={require('./images/icons/shield.png')} style={styles.icon} />
-                      <Text style={styles.defence_text}>Defence</Text>
-                      <Grade grade={mon.defenseGrade()} />
-                    </Col>
-                    <Col size={1} style={layout.alignRight}>
-                        <TouchableHighlight>
-                          <View><Icon name='info-circle' style={{fontSize: 18}} /></View>
-                        </TouchableHighlight>
-                    </Col>
-                  </Grid>
-                </ListItem>
-                <View style={styles.header}>
-                    <Text style={styles.headerTitle}>BATTLE</Text>
-                </View>
-                <ListItem >
-                  <View>
-                    <Text style={styles.header4}>STRONG AGAINST</Text>
-                    <View style={styles.many_types}>
-                      {mon.specie().strongAgainst().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
-                    </View>
-                  </View>
-                </ListItem>
-                <ListItem >
-                  <View >
-                    <Text style={styles.header4}>RESISTANT TO</Text>
-                    <View style={styles.many_types}>
-                      {mon.specie().resistantTo().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
-                    </View>
-                  </View>
-                </ListItem>
-              </List>
-            </Image>
-          </Content>
-        </Container>
-        <View style={styles.floating_footer}>
-          <Button  theme={myTheme} rounded info onPress={goBack} style={styles.floating_btn}>
-          <Icon name='close' /></Button>
+      <ParallaxScrollView
+        stickyHeaderHeight={ STICKY_HEADER_HEIGHT }
+        parallaxHeaderHeight={ 270 }
+        style={styles.parallelContainer}
+        renderBackground={() => 
+          <View key="background">
+          <Image source={{uri:mon.url}} style={{width: window.width, height: window.height}} />
+          <View 
+            style={{position: 'absolute', top: 0, width: window.width, backgroundColor: 'rgba(0,0,0,.7)',height: PARALLAX_HEADER_HEIGHT}}/>
+          </View>        
+        }
+        renderStickyHeader={() => (
+          <View key="sticky-header" style={styles.stickySection}>
+            <Text style={styles.stickySectionText}>{mon.Name}</Text>
+          </View>
+        )}
+        renderFixedHeader={() => 
+          <View key="fixed-header" style={styles.fixedSection}>
+            <Button  theme={myTheme} transparent onPress={goBack}>
+              <Icon name='close' style={{color:'#ffffff'}}/>
+            </Button>
+          </View>
+        }
+        
+        renderForeground={() => (
+          <View key="parallax-header" style={ styles.parallaxHeader }>
+            <Text style={ styles.sectionMonText }>
+              {mon.Name}
+            </Text>
+            <View style={layout.alignCenter}>{mon.specie().types().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}</View>
+          </View>
+        )}>
+
+        <List>
+          <TrainerLevel level={mon.trainerLevel} />
+          <ListItem style={styles.mon_data}>
+          <Grid style={layout.alignCenter}>
+            <Col size={2} style={layout.alignLeft}><Text> CP: {mon.CP} </Text></Col>
+            <Col size={2}><Text>HP: {mon.HP}</Text></Col>
+            <Col size={2}><Text>IV: {mon.ivRangeStr()}</Text></Col>
+            <Col size={1}>
+              <PercentageCircle radius={20} percent={mon.avgIVPercent()} borderWidth={5} color={"#3498db"}></PercentageCircle>
+            </Col>
+          </Grid>
+          </ListItem>
+        </List>
+        <View style={styles.list_header}>
+            <Text style={styles.list_headerTitle}>MOVESETS</Text>
         </View>
-      </View>
+        <List style={styles.mon_analysis}>
+          <ListItem>
+            <Move mon={mon} type="quick" />
+          </ListItem>
+          <ListItem>
+            <Move mon={mon} type="charge" />
+          </ListItem>
+          <ListItem style={styles.move_grade}>
+            <Grid>
+              <Col size={2} style={layout.alignCenter}>
+                <Image source={require('./images/icons/sword.png')} style={styles.icon} />
+                <Text>Attack </Text>
+                <Grade grade={mon.attackGrade()} />
+              </Col>
+              <Col size={2} style={multipleStyles(layout.alignCenter, styles.defence)}>
+                <Image source={require('./images/icons/shield.png')} style={styles.icon} />
+                <Text style={styles.defence_text}>Defence</Text>
+                <Grade grade={mon.defenseGrade()} />
+              </Col>
+              <Col size={1} style={layout.alignRight}>
+                  <TouchableHighlight>
+                    <View><Icon theme={myTheme} name='info-circle' style={{fontSize: 18}} /></View>
+                  </TouchableHighlight>
+              </Col>
+            </Grid>
+          </ListItem>
+          <View style={styles.list_header}>
+              <Text style={styles.list_headerTitle}>BATTLE</Text>
+          </View>
+          <ListItem >
+            <View>
+              <Text style={styles.header4}>STRONG AGAINST</Text>
+              <View style={styles.many_types}>
+                {mon.specie().strongAgainst().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
+              </View>
+            </View>
+          </ListItem>
+          <ListItem >
+            <View >
+              <Text style={styles.header4}>RESISTANT TO</Text>
+              <View style={styles.many_types}>
+                {mon.specie().resistantTo().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
+              </View>
+            </View>
+          </ListItem>
+        </List>
+      </ParallaxScrollView>
     );
   }
 }
 
 var styles = StyleSheet.create({
 
- img_container: {
+  parallelContainer: {
     flex: 1,
-    width: undefined,
-    height: undefined,
-    top:0,
-  },
-  overlay_box: {
-    backgroundColor:'rgba(0, 0, 0, 0.6)',
-    position:'absolute',
-    top:0,
-    left:0,
-    right:0,
-    left:0,
-    height:200,
+    backgroundColor: 'black'
   },
 
-  overlay_box_text: {
-    position:'absolute',
-    top:70,
-    left:0,
-    right:0,
-    left:0,
+  stickySection: {
+    height: STICKY_HEADER_HEIGHT,
+    width: 300,
+    justifyContent: 'flex-end'
+  },
+  stickySectionText: {
+    color: 'white',
+    fontSize: 20,
+    margin: 10
+  },
+  fixedSection: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10
+  },
+  fixedSectionText: {
+    color: '#999',
+    fontSize: 20
+  },
+  parallaxHeader: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'column',
+    paddingTop: 100
   },
 
-  header: {
+  sectionMonText: {
+    color: 'white',
+    fontSize: 24,
+    paddingVertical: 5
+  },
+  sectionTitleText: {
+    color: 'white',
+    fontSize: 18,
+    paddingVertical: 5
+  },
+
+
+  list_header: {
     flex:1,
     flexDirection:'row',
     backgroundColor: '#f3f3f3',
@@ -149,17 +189,13 @@ var styles = StyleSheet.create({
     padding: 10,
     justifyContent:'space-between',
   },
-  headerTitle: {
+  list_headerTitle: {
     color: '#666666',
     fontSize:13,
     letterSpacing: 3,
     fontWeight:'bold',
   },
 
-  mon_data_box: {
-    marginTop:200,
-    backgroundColor:'#ffffff',
-  },
 
   mon_name: {
     color:'#ffffff',
@@ -176,7 +212,7 @@ var styles = StyleSheet.create({
     marginRight:5,
   },
   mon_data: {
-    opacity:0.7, padding:5, borderBottomWidth:0,
+    padding:5, borderBottomWidth:0,
   },
 
   stats: { fontWeight:'bold'},

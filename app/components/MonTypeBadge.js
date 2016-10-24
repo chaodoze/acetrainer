@@ -2,12 +2,13 @@ import React from 'react';
 import {StyleSheet} from 'react-native'
 import {Badge, Icon} from 'native-base'
 import multipleStyles from 'react-native-multiple-styles';
+import myTheme from './Themes/myTheme';
 
 export default MonTypeBadge = ({pokemonType}) => {
   if (pokemonType) {
     const style = `t_${pokemonType.displayName.toLowerCase()}`
     return (
-        <Badge style={multipleStyles(styles[style], styles.type)}><Icon name='star' style={styles.grade_icon} /> {pokemonType.displayName}</Badge>
+        <Badge theme={myTheme} style={multipleStyles(styles[style], styles.type)}><Icon name='star' style={styles.grade_icon} /> {pokemonType.displayName}</Badge>
     )
   }
   else {
