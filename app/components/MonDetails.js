@@ -25,7 +25,7 @@ import TrainerLevel from './TrainerLevel'
 import myTheme from './Themes/myTheme';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 
-const PARALLAX_HEADER_HEIGHT = 270;
+const PARALLAX_HEADER_HEIGHT = 250;
 const STICKY_HEADER_HEIGHT = 70;
 const window = Dimensions.get('window');
 
@@ -36,7 +36,7 @@ class MonDetails extends Component {
     return (
       <ParallaxScrollView
         stickyHeaderHeight={ STICKY_HEADER_HEIGHT }
-        parallaxHeaderHeight={ 270 }
+        parallaxHeaderHeight={ 250 }
         style={styles.parallelContainer}
         renderBackground={() => 
           <View key="background">
@@ -103,14 +103,14 @@ class MonDetails extends Component {
                 <Grade grade={mon.defenseGrade()} />
               </Col>
               <Col size={1} style={layout.alignRight}>
-                  <TouchableHighlight>
-                    <View><Icon theme={myTheme} name='info-circle' style={{fontSize: 18}} /></View>
-                  </TouchableHighlight>
+                <TouchableHighlight>
+                  <View><Icon theme={myTheme} name='info-circle' style={{fontSize: 18}} /></View>
+                </TouchableHighlight>
               </Col>
             </Grid>
           </ListItem>
           <View style={styles.list_header}>
-              <Text style={styles.list_headerTitle}>BATTLE</Text>
+            <Text style={styles.list_headerTitle}>BATTLE</Text>
           </View>
           <ListItem >
             <View>
