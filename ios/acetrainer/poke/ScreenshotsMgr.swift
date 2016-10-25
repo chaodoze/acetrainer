@@ -72,4 +72,14 @@ struct ScreenshotsMgr {
     })
     return screens
   }
+  
+  static func fetchOne(_ url:NSString)->Screenshot? {
+    let result = PHAsset.fetchAssets(withLocalIdentifiers: [url as String], options: PHFetchOptions())
+    if let asset = result.firstObject {
+      let image = requestImageForAsset(asset)
+      let url = requestUrlForAsset(asset)
+      return Screenshot(image:image, url:url, shotAt:asset.creationDate)
+    }
+    return nil
+  }
 }

@@ -45,10 +45,13 @@ export default class Pokemon extends BaseRecord {
     chargeMove: {field:'charge_move_id', klass:PokemonMove}
   }
 
-  static addFromScan(stats) {
+  static cleanupStats(stats) {
     _.map(cleanup, (cleanupFunc, field)=>{
       stats[field] = cleanupFunc(stats[field])
     })
+  }
+  static addFromScan(stats) {
+    this.cleanupStats(stats)
     mon = new Pokemon(stats)
     mon.calcIVPossibilities()
     console.log('iv candidates', mon.Name, mon.ivCandidates)
@@ -58,6 +61,14 @@ export default class Pokemon extends BaseRecord {
 
   key() {
     return this.url.replace(/\//g,'')
+  }
+
+  update(stats) {
+    Pokemon.cleanupStats(stats)
+    _.forEach(stats, (val,key)=>{this[key] = val})
+    delete this.ivCandidates
+    this.calcIVPossibilities()
+    db.updateMon(this)
   }
 
   specie() {

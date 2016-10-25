@@ -58,9 +58,13 @@ class MonListP extends Component {
       }
     })
     this.pokeSubscription = NativeAppEventEmitter.addListener('Pokemon', (stats)=>{
+      console.log('new stats', stats)
       const {mons} = this.props
       const alreadyInDb = mons.find(mon=>mon.url == stats.url)
-      if (!alreadyInDb) {
+      if (alreadyInDb) {
+        alreadyInDb.update(stats)
+      }
+      else {
         Pokemon.addFromScan(stats)
       }
     })

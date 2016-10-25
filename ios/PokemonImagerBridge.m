@@ -13,4 +13,5 @@
 @interface RCT_EXTERN_MODULE(PokemonImager, NSObject)
 
 RCT_EXTERN_METHOD(scan:(nonnull NSNumber *)trainerLevel date:(NSDate *)date);
+RCT_EXTERN_METHOD(scanOne:(nonnull NSNumber *)trainerLevel url:(NSString *)url);
 @end

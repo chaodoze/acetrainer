@@ -17,6 +17,7 @@ import {Actions} from 'react-native-router-flux';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import PercentageCircle from 'react-native-percentage-circle';
 import multipleStyles from 'react-native-multiple-styles';
+import {PokemonImager} from 'NativeModules'
 import layout from './Styles';
 import Move from './Move';
 import MonTypeBadge from './MonTypeBadge';
@@ -28,8 +29,16 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 const PARALLAX_HEADER_HEIGHT = 250;
 const STICKY_HEADER_HEIGHT = 70;
 const window = Dimensions.get('window');
+import {updateMon} from '../db/index'
 
 class MonDetails extends Component {
+  changeTrainerLevel(newLevel) {
+    console.log('changeTrainerLevel', newLevel)
+    const {mon} = this.props
+    const localIdentifier = mon.url.replace('ph://', '')
+    PokemonImager.scanOne(newLevel, localIdentifier)
+  }
+
   render() {
     const {mon, goBack} = this.props
     console.log('render mon details')
@@ -38,26 +47,26 @@ class MonDetails extends Component {
         stickyHeaderHeight={ STICKY_HEADER_HEIGHT }
         parallaxHeaderHeight={ 250 }
         style={styles.parallelContainer}
-        renderBackground={() => 
+        renderBackground={() =>
           <View key="background">
           <Image source={{uri:mon.url}} style={{width: window.width, height: window.height}} />
-          <View 
+          <View
             style={{position: 'absolute', top: 0, width: window.width, backgroundColor: 'rgba(0,0,0,.7)',height: PARALLAX_HEADER_HEIGHT}}/>
-          </View>        
+          </View>
         }
         renderStickyHeader={() => (
           <View key="sticky-header" style={styles.stickySection}>
             <Text style={styles.stickySectionText}>{mon.Name}</Text>
           </View>
         )}
-        renderFixedHeader={() => 
+        renderFixedHeader={() =>
           <View key="fixed-header" style={styles.fixedSection}>
             <Button  theme={myTheme} transparent onPress={goBack}>
               <Icon name='close' style={{color:'#ffffff'}}/>
             </Button>
           </View>
         }
-        
+
         renderForeground={() => (
           <View key="parallax-header" style={ styles.parallaxHeader }>
             <Text style={ styles.sectionMonText }>
@@ -68,7 +77,7 @@ class MonDetails extends Component {
         )}>
 
         <List>
-          <TrainerLevel level={mon.trainerLevel} />
+          <TrainerLevel level={mon.trainerLevel} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
           <ListItem style={styles.mon_data}>
           <Grid style={layout.alignCenter}>
             <Col size={2} style={layout.alignLeft}><Text> CP: {mon.CP} </Text></Col>
@@ -288,7 +297,8 @@ var styles = StyleSheet.create({
 const mapStateToProps = ({selectedMon}) => ({
   mon: selectedMon,
   quick: selectedMon.quickMove(), //use quick and charge so that component will re-render, when these change
-  charge: selectedMon.chargeMove()
+  charge: selectedMon.chargeMove(),
+  trainerLevel: selectedMon.trainerLevel,
 })
 const mapDispatchToProps = dispatch=> ({
   goBack: ()=>{

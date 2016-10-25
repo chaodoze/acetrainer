@@ -23,7 +23,15 @@ function mons(state={}, action) {
 }
 
 function selectedMon(state=null, action) {
-  return action.type == 'SELECT_MON' ? action.mon : state
+  if (action.type == 'SELECT_MON') {
+    return action.mon
+  }
+  else {
+    if (action.type == 'MON_CHANGED' && state && state.url == action.mon.url) {
+      return new Pokemon(action.mon)
+    }
+  }
+  return state
 }
 
 const rootReducer = combineReducers({mons, selectedMon, routes})

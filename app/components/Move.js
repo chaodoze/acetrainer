@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Modal, StyleSheet, TouchableHighlight, TextInput, View} from 'react-native'
+import {StyleSheet, TouchableHighlight, TextInput, View} from 'react-native'
 import {updateMon} from '../db/index'
 import {Badge, List, ListItem, Text} from 'native-base'
 import { Col, Row, Grid } from "react-native-easy-grid";

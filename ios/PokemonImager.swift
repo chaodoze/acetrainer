@@ -27,4 +27,14 @@ class PokemonImager: NSObject {
     }
   }
   
+  @objc func scanOne(_ trainerLevel:NSNumber, url:NSString) -> Void {
+    print("scanOne called ", trainerLevel, url)
+    if let screenshot = ScreenshotsMgr.fetchOne(url) {
+      let pokemon = PokemonScreenshot(screenshot:screenshot, trainerLevel: trainerLevel as Int)
+      _ = pokemon.fetchData().then {stats->Void in
+        print("scanOne stats", stats)
+        self.bridge.eventDispatcher().sendAppEvent(withName: "Pokemon", body: stats)
+      }
+    }
+  }
 }
