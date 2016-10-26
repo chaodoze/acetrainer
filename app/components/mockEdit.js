@@ -18,23 +18,49 @@ import TrainerLevel from './TrainerLevel'
 import { Col, Row, Grid } from "react-native-easy-grid";
 import myTheme from './Themes/myTheme';
 
-export default class EditStats extends Component {
-  chosen(cancelled) {
-    const {onChosen} = this.props
-    if (onChosen) {onChosen(cancelled)}
+const window = Dimensions.get('window')
+const imageDimensions = {
+  height: window.height,
+  width: window.width
+}
+
+class SampleApp2 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {modalVisible: false};
   }
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
   render() {
-    const {children} = this.props
     return (
+      <View style={{flex: 1}}>
+        <View>    
+          <Image style={[imageDimensions, {position: 'absolute'}]} source={require('./images/Thumbs/thumb.png')} />
+        </View>
+      <ScrollView style={{marginTop:100}}>
+        <View>
+          <TouchableHighlight onPress={() => {
+              this.setModalVisible(true)
+            }}>
+              <View><Text>Click here</Text></View>
+          </TouchableHighlight>
+        </View>
+      </ScrollView>
       <Modal
-        animationType={"slide"}
+        animationType={"fade"}
         transparent={true}
+        visible={this.state.modalVisible}
+        onRequestClose={() => {alert("Modal has been closed.")}}
         >
         <View style={{backgroundColor: 'rgba(0, 0, 0, 0.7)', flex:1, borderColor:'#ffffff', borderWidth:2}}>
         <View>
-          <Text style={{fontWeight:'bold', fontSize:16, color:'#ffffff', marginTop:30, marginLeft:20}}>Edit Stats</Text>
+          <Text style={{fontWeight:'bold', fontSize:12, color:'#ffffff', marginTop:80, marginLeft:20}}>Sorry, we couldn't read the screenshot :( 
+            Please enter them manually and we'll do the rest.</Text>
           <List theme={myTheme}>
-            <ListItem style={{ marginTop:30, borderColor:'transparent' }}>
+            <ListItem style={{ marginTop:10, borderColor:'transparent' }}>
               <Grid>
                <Col size={2}>
                 <View style={{marginRight:5}}>
@@ -62,16 +88,26 @@ export default class EditStats extends Component {
                 <View style={{marginRight:5}}>
                   <Text style={styles.header5}>Your Trainer Level</Text>
                   <TextInput
-                    style={styles.editMonInput} />
-                    {children}
+                    style={styles.editMonInput}
+                    onChangeText={(text) => this.setState({text})}
+                    value={this.state.text} />
                 </View>
               </Col>
               <Col Col size={2} style={{justifyContent: 'flex-end', alignItems: 'flex-end',flexDirection:'row'}}>
                 <View style={{marginRight:5}}>
-                  <View style={{marginTop:18}}><Button small onPress={()=>this.chosen(false)}>Update</Button></View>
+                  <TouchableHighlight onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible)
+                  }}>
+                  <View style={{marginTop:18}}><Button small >Update</Button></View>
+                  </TouchableHighlight>
                 </View>
+
                 <View style={{marginRight:5}}>
-                  <View style={{marginTop:18}}><Button small bordered info onPress={()=>this.chosen(true)}>Cancel</Button></View>
+                  <TouchableHighlight onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible)
+                  }}>
+                  <View style={{marginTop:18}}><Button small bordered info >Cancel</Button></View>
+                  </TouchableHighlight>
                 </View>
               </Col>
             </Grid>         
@@ -80,7 +116,8 @@ export default class EditStats extends Component {
         </View>
        </View>
       </Modal>
-    )
+    </View>
+    );
   }
 }
 
@@ -96,3 +133,6 @@ var styles = StyleSheet.create({
   },
 
 });
+
+
+module.exports = SampleApp2;

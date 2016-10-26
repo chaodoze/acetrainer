@@ -45,7 +45,7 @@ class MonDetails extends Component {
     return (
       <ParallaxScrollView
         stickyHeaderHeight={ STICKY_HEADER_HEIGHT }
-        parallaxHeaderHeight={ 250 }
+        parallaxHeaderHeight={ PARALLAX_HEADER_HEIGHT }
         style={styles.parallelContainer}
         renderBackground={() =>
           <View key="background">
