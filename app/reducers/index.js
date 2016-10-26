@@ -34,5 +34,12 @@ function selectedMon(state=null, action) {
   return state
 }
 
-const rootReducer = combineReducers({mons, selectedMon, routes})
+function trainerLevel(state=null, action) {
+  if (action.type == 'SET_TRAINER_LEVEL') {
+    return action.level
+  }
+  return state
+}
+
+const rootReducer = combineReducers({mons, selectedMon, trainerLevel, routes})
 export default rootReducer

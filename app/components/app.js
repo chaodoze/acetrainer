@@ -5,6 +5,7 @@ import configureStore from '../store/configureStore'
 import * as db from '../db'
 import Mons from './Mons'
 import MonDetails from './MonDetails'
+import Intro from './Intro'
 
 const RouterWithRedux = connect()(Router)
 const store = configureStore()
@@ -15,7 +16,8 @@ export default function App() {
     <Provider store={store}>
       <RouterWithRedux>
         <Scene key="root" hideNavBar={true}>
-          <Scene key="mons" component={Mons} title="Mons" initial={true} />
+          <Scene key="intro" component={Intro} title="Intro" initial={true} />
+          <Scene key="mons" component={Mons} title="Mons" />
           <Scene key="mondetails" component={MonDetails} title="Monster Info" />
         </Scene>
       </RouterWithRedux>

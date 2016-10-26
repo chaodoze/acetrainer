@@ -15,16 +15,17 @@ import {PokemonImager} from 'NativeModules'
 import Pokemon from '../db/pokemon'
 import {selectMon} from '../actions'
 
-const trainerLevel = 29
-
 class MonListP extends Component {
   constructor(props) {
     super(props);
     this.state = {
         status: 'checking'
     };
+    console.log('Trainer Level: ', this.props.trainerLevel)
   }
   scanForScreenshots() {
+    let {trainerLevel} = this.props
+    trainerLevel = parseInt(trainerLevel, 10)
     AsyncStorage.getItem('MonListP:lastScan').then( lastScan=>{
       lastScan = parseInt(lastScan,10) || moment().subtract(20, 'days').unix()*1000
       console.log('reactivated from', new Date(lastScan))
@@ -83,10 +84,11 @@ class MonListP extends Component {
   }
 }
 
-const mapStateToProps = ({mons}) => {
+const mapStateToProps = ({mons, trainerLevel}) => {
   mons = _.values(mons)
   return {
-    mons
+    mons,
+    trainerLevel,
   }
 }
 
