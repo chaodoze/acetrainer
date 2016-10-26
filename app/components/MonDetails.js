@@ -82,6 +82,7 @@ class MonDetails extends Component {
           <Grid style={layout.alignCenter}>
             <Col size={2} style={layout.alignLeft}><Text> CP: {mon.CP} </Text></Col>
             <Col size={2}><Text>HP: {mon.HP}</Text></Col>
+            <Col size={2}><Text>Level: 21</Text></Col>
             <Col size={2}><Text>IV: {mon.ivRangeStr()}</Text></Col>
             <Col size={1}>
               <PercentageCircle radius={20} percent={mon.avgIVPercent()} borderWidth={5} color={"#3498db"}></PercentageCircle>
