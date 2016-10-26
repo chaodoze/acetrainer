@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {Modal, StyleSheet, TouchableHighlight, View} from 'react-native'
-import {List, ListItem, Text} from 'native-base'
+import {List, ListItem, Text, Icon, Button} from 'native-base'
+import myTheme from './Themes/myTheme';
+import { Col, Row, Grid } from "react-native-easy-grid";
+import layout from './Styles';
 
 export default class ChoiceModal extends Component {
   render() {
@@ -9,59 +12,26 @@ export default class ChoiceModal extends Component {
       <Modal
           animationType={"slide"}
           transparent={true} >
-        <View style={styles.modal_outer}>
-          <View style={styles.modal_inner}>
+        <View style={layout.modal_outer}>
+          <View style={layout.modal_inner}>
             <View>
+              <View style={layout.choice_title}>
+                <Text style={layout.choice_title_text}>SELECT MOVE</Text>
+                <Button style={layout.fixedClose} theme={myTheme} transparent small onPress={() => { if (onChosen) {onChosen()} }}>
+                  <Icon name='close' style={{color:'#333333'}}/>
+                </Button>
+              </View>
               <List>
-                <ListItem>
-                  <Text style={styles.choice_title}>Charge Move</Text>
-                </ListItem>
                 {choices.map(choice=>(
                   <ListItem  key={choice} onPress={()=>{if (onChosen) {onChosen(choice)}}}>
-                     <Text style={styles.choice}>{choice.displayName}</Text>
+                     <Text style={layout.choice}>{choice.displayName}</Text>
                   </ListItem>
                 ))}
               </List>
             </View>
           </View>
-
-          <TouchableHighlight onPress={() => {
-              if (onChosen) {onChosen()}
-            }}>
-            <View style={styles.cancel_box}>
-              <View><Text style={styles.cancel_text}>Cancel</Text></View>
-            </View>
-          </TouchableHighlight>
         </View>
       </Modal>
     )
   }
 }
-
-var styles = StyleSheet.create({
-
-  modal_outer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    flex: 1, justifyContent: 'center',padding: 20,
-  },
-  modal_inner: {
-    backgroundColor: '#fff', padding: 10, borderRadius: 10,
-  },
-
-  choice_title: {
-    textAlign:'center'
-  },
-
-  choice: {
-  textAlign:'center', color:'#2182f7'
-  },
-
-  cancel_box: {
-    backgroundColor: '#fff', padding: 10, borderRadius: 10,alignItems: 'center', marginTop:5,
-  },
-
-  cancel_text: {
-    color:'#666666',
-  },
-
-});

@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
-import {Modal, StyleSheet, TouchableHighlight, View} from 'react-native'
-import {Button, Text} from 'native-base'
+import {
+  AppRegistry,
+  StyleSheet,
+  Modal,
+  TouchableHighlight,
+  View
+} from 'react-native';
+
+import { List, ListItem, Text, Button, Icon } from 'native-base';
+import TrainerLevel from './TrainerLevel'
+import { Col, Row, Grid } from "react-native-easy-grid";
+import myTheme from './Themes/myTheme';
+import layout from './Styles';
+
 
 export default class ChooseOrCancel extends Component {
   chosen(cancelled) {
@@ -13,40 +25,28 @@ export default class ChooseOrCancel extends Component {
       <Modal
           animationType={"slide"}
           transparent={true} >
-        <View style={styles.modal_outer}>
-          <Button onPress={()=>this.chosen(true)}>Cancel</Button>
-          <Button onPress={()=>this.chosen(false)}>Choose</Button>
-          {children}
+        <View style={layout.modal_outer}>
+          <View style={layout.modal_inner}>
+            <View>
+              <View style={layout.choice_title}>
+                <Text style={layout.choice_title_text}>EDIT TRAINER LEVEL</Text>
+                <Button style={layout.fixedClose} theme={myTheme} transparent small onPress={()=>this.chosen(true)}>
+                  <Icon name='close' style={{color:'#333333'}}/>
+                </Button>
+              </View>
+              <List>
+                <Text style={layout.smallText}>Your trainer level at the time the screenshot was taken</Text>
+                <ListItem style={{borderColor:'#ffffff'}}>
+                  {children}
+                </ListItem>
+                <ListItem style={{borderColor:'#ffffff'}}>
+                  <Button block onPress={()=>this.chosen(false)}>Choose</Button>
+                </ListItem>
+              </List>
+            </View>
+          </View>
         </View>
       </Modal>
     )
   }
 }
-
-var styles = StyleSheet.create({
-
-  modal_outer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    flex: 1, justifyContent: 'center',padding: 20,
-  },
-  modal_inner: {
-    backgroundColor: '#fff', padding: 10, borderRadius: 10,
-  },
-
-  choice_title: {
-    textAlign:'center'
-  },
-
-  choice: {
-  textAlign:'center', color:'#2182f7'
-  },
-
-  cancel_box: {
-    backgroundColor: '#fff', padding: 10, borderRadius: 10,alignItems: 'center', marginTop:5,
-  },
-
-  cancel_text: {
-    color:'#666666',
-  },
-
-});
