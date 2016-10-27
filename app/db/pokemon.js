@@ -32,8 +32,13 @@ const cleanup = {
     return name
   },
   HP: hp=>{
-    match = hp.match(/HP.*\d+\s*\/\s*(\d+)/)
-    return match && match[1] || hp
+    let match = hp.match(/.*\d+\s*\/\s*(\d+)\s*HP/)
+    let result = match && match[1]
+    if (!result) {
+      match = hp.match(/HP.*\d+\s*\/\s*(\d+)/)
+      result = match && match[1]
+    }
+    return result || hp
   },
   'Stardust Needed': sd=>sd.trim(),
   shotAt: unixTime=>new Date(unixTime*1000)
