@@ -99,7 +99,7 @@ export default class Pokemon extends BaseRecord {
     const matchingMoveset = movesets.find(moveset=>{
       return quickMove.displayName == moveset.quick && chargeMove.displayName == moveset.charge
     })
-    console.assert(matchingMoveset, 'moveset not found!')
+    // console.assert(matchingMoveset, 'moveset not found!')
     const rank = matchingMoveset.rank/movesets[0].rank
     if (rank > 0.95) {
       return 'A'

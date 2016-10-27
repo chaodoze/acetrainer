@@ -3,6 +3,7 @@ import {Modal, Picker, StyleSheet, Text, TouchableHighlight, View} from 'react-n
 import * as _ from 'lodash-es'
 import Collapsible from 'react-native-collapsible'
 import ChooseOrCancel from './ChooseOrCancel'
+import LevelPicker from './LevelPicker'
 
 export default class TrainerLevel extends Component {
   constructor(props) {
@@ -15,7 +16,6 @@ export default class TrainerLevel extends Component {
   }
 
   onValueChange(newVal) {
-    console.log('onValueChange', newVal)
     this.setState({selectedValue:newVal})
   }
 
@@ -32,18 +32,10 @@ export default class TrainerLevel extends Component {
     }
   }
 
-  collapseStyle() {
-    return (
-      <Collapsible collapsed={this.state.collapsed}>
-        <TrainerPicker initialLevel={this.props.level} selectLevel={this.state.selectedValue} onValueChange={this.onValueChange} />
-      </Collapsible>
-    )
-  }
-
   modalStyle() {
     return (
       <ChooseOrCancel onChosen={this.onChosen}>
-        <TrainerPicker initialLevel={this.props.level} selectLevel={this.state.selectedValue} onValueChange={this.onValueChange} />
+        <LevelPicker initialLevel={this.props.level} onValueChange={this.onValueChange} />
       </ChooseOrCancel>
     )
   }
@@ -62,12 +54,6 @@ export default class TrainerLevel extends Component {
     )
   }
 }
-
-const TrainerPicker = ({initialLevel, selectLevel, onValueChange}) => (
-  <Picker selectedValue={selectLevel} onValueChange={(lvl)=> {if (onValueChange) onValueChange(lvl)}}>
-    {_.range((Math.max(1,initialLevel-3)),41).map((lvl)=><Picker.Item key={lvl} label={''+lvl} value={lvl} />)}
-  </Picker>
-)
 
 var styles = StyleSheet.create({
 
