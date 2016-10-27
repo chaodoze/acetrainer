@@ -17,14 +17,15 @@ import {Actions} from 'react-native-router-flux';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import PercentageCircle from 'react-native-percentage-circle';
 import multipleStyles from 'react-native-multiple-styles';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import {PokemonImager} from 'NativeModules'
-import layout from './Styles';
 import Move from './Move';
 import MonTypeBadge from './MonTypeBadge';
 import Grade from './Grade'
 import TrainerLevel from './TrainerLevel'
+import EditStats from './EditStats'
 import myTheme from './Themes/myTheme';
-import ParallaxScrollView from 'react-native-parallax-scroll-view';
+import layout from './Styles';
 
 const PARALLAX_HEADER_HEIGHT = 250;
 const STICKY_HEADER_HEIGHT = 70;
@@ -38,7 +39,7 @@ class MonDetails extends Component {
     const localIdentifier = mon.url.replace('ph://', '')
     PokemonImager.scanOne(newLevel, localIdentifier)
   }
-
+ 
   render() {
     const {mon, goBack} = this.props
     console.log('render mon details')
@@ -87,6 +88,7 @@ class MonDetails extends Component {
             <Col size={1}>
               <PercentageCircle radius={20} percent={mon.avgIVPercent()} borderWidth={5} color={"#3498db"}></PercentageCircle>
             </Col>
+            <Col><EditStats /></Col>
           </Grid>
           </ListItem>
         </List>
