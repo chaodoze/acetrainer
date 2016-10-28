@@ -100,6 +100,9 @@ class PokemonSpecie extends BaseRecord {
     this.baseDefense = this.stats.base_defense
   }
 
+  canEvolve() {
+    return this.evolution_ids.length > 0
+  }
 
   attackMovesets() {
     return AttackMoveRank.find(this.id)

@@ -41,8 +41,44 @@ const cleanup = {
     return result || hp
   },
   'Stardust Needed': sd=>sd.trim(),
-  shotAt: unixTime=>new Date(unixTime*1000)
+  'Quick Move': qm=>qm.trim(),
+  'Charge Move': cm=>cm.trim(),
+  shotAt: unixTime=>new Date(unixTime*1000),
 }
+
+function getEditDistance(a, b) {
+  if (a.length === 0) return b.length;
+  if (b.length === 0) return a.length;
+
+  var matrix = [];
+
+  // increment along the first column of each row
+  var i;
+  for (i = 0; i <= b.length; i++) {
+    matrix[i] = [i];
+  }
+
+  // increment each column in the first row
+  var j;
+  for (j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+
+  // Fill in the rest of the matrix
+  for (i = 1; i <= b.length; i++) {
+    for (j = 1; j <= a.length; j++) {
+      if (b.charAt(i-1) == a.charAt(j-1)) {
+        matrix[i][j] = matrix[i-1][j-1];
+      } else {
+        matrix[i][j] = Math.min(matrix[i-1][j-1] + 1, // substitution
+                                Math.min(matrix[i][j-1] + 1, // insertion
+                                         matrix[i-1][j] + 1)); // deletion
+      }
+    }
+  }
+
+  return matrix[b.length][a.length];
+};
 
 export default class Pokemon extends BaseRecord {
   static relationships = {
@@ -60,6 +96,7 @@ export default class Pokemon extends BaseRecord {
     mon = new Pokemon(stats)
     mon.calcIVPossibilities()
     console.log('iv candidates', mon.Name, mon.ivCandidates)
+    mon.setMatchingMoves()
     db.addMon(mon)
 
   }
@@ -126,6 +163,25 @@ export default class Pokemon extends BaseRecord {
 
   defenseGrade() {
     return this.gradeFor('defense')
+  }
+
+  matchingMoveFor(type, ocrString) {
+    const moves = this.specie()[`${type}Moves`]()
+    let current = [Number.MAX_SAFE_INTEGER, null]
+    for (let move of moves) {
+      const dist = getEditDistance(move.displayName, ocrString)
+      if (dist < current[0]) {
+        current = [dist, move]
+      }
+    }
+    return current[1]
+  }
+  setMatchingMoves() {
+    if (this.specie() && !this.specie().canEvolve()) {
+      this.setMoveFor('quick', this.matchingMoveFor('quick', this['Quick Move']))
+      this.setMoveFor('charge', this.matchingMoveFor('charge', this['Charge Move']))
+      console.log('setMatchingMoves', this.moveFor('quick').displayName, this.moveFor('charge').displayName)
+    }
   }
 
   calcIVPossibilities() {
