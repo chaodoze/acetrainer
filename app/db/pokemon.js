@@ -142,7 +142,8 @@ export default class Pokemon extends BaseRecord {
       const reportedCP = this['CP']
       console.log('looking for', specie.displayName, reportedHP, reportedCP)
       let minStaminaIV = Math.floor(reportedHP/cpM - specie.baseStamina)
-      if (minStaminaIV <= 0 || minStaminaIV > 15) {
+      if (minStaminaIV == -1) {minStaminaIV = 0} // e.g. -0.85's floor is -1 but we really want 0
+      if (minStaminaIV < 0 || minStaminaIV > 15) {
         console.log('impossible minStaminIV', minStaminaIV)
         return possibilities
       }
