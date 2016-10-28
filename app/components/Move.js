@@ -33,7 +33,7 @@ export default class Move extends Component {
     const moveType = `${type}Moves`
     const choices = mon.specie()[moveType]()
     const move = mon.moveFor(type)
-    const isStab = move && _.includes(mon.specie().types(), move.type())
+    const hasStab = move && move.hasStab(mon.specie())
 
     const dialogCode = this.state.askForMove && <ChoiceModal choices={choices} onChosen={this.onChosen}/>
     return (
@@ -54,7 +54,7 @@ export default class Move extends Component {
             </View>
           </TouchableHighlight>
         </Col>
-        <Col style={layout.alignRight}><MonTypeBadge pokemonType={move && move.type()} stab={isStab} />
+        <Col style={layout.alignRight}><MonTypeBadge pokemonType={move && move.type()} stab={hasStab} />
         </Col>
 
       </Grid>

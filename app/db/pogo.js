@@ -76,6 +76,9 @@ class PokemonMove extends BaseRecord {
     this.id = this.movement_id
     this.displayName = this.displayName.trim()
   }
+  hasStab(specie) {
+    return _.includes(specie.types(), this.type())
+  }
 }
 
 class PokemonSpecie extends BaseRecord {

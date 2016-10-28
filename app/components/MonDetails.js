@@ -133,7 +133,7 @@ class MonDetails extends Component {
             <View>
               <Text style={styles.header4}>STRONG AGAINST</Text>
               <View style={styles.many_types}>
-                {mon.specie().strongAgainst().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
+                {mon.strongAgainst().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
               </View>
             </View>
           </ListItem>
@@ -306,7 +306,7 @@ var styles = StyleSheet.create({
     color:'#999999',
     fontFamily: 'Roboto',
   },
-  
+
   mon_stat_value: {
     paddingRight:10,
     fontSize:16,

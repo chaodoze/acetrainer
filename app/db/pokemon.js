@@ -1,7 +1,7 @@
 import * as _ from 'lodash-es'
 import * as db from '../db'
 const pokemonDB = require('../../data/pokemon.json')
-import {PokemonSpecie, BaseRecord, PokemonMove} from '../db/pogo'
+import {PokemonSpecie, BaseRecord, PokemonMove, PokemonType} from '../db/pogo'
 const cpMultiplier = [0.0939999967813492, 0.135137432089339, 0.166397869586945, 0.192650913155325, 0.215732470154762,
                              0.236572651424822, 0.255720049142838, 0.273530372106572, 0.290249884128571, 0.306057381389863,
                              0.321087598800659, 0.335445031996451, 0.349212676286697, 0.362457736609939, 0.375235587358475,
@@ -182,6 +182,28 @@ export default class Pokemon extends BaseRecord {
       this.setMoveFor('charge', this.matchingMoveFor('charge', this['Charge Move']))
       console.log('setMatchingMoves', this.moveFor('quick').displayName, this.moveFor('charge').displayName)
     }
+  }
+
+  strongAgainst() {
+    const type_scalar = _.reduce(_.range(18), (accum,i)=>{accum.push(1);return accum},[]) //initialized 18-element array each with value 1
+    const [quick,charge] = [this.quickMove(), this.chargeMove()]
+    const boost = (types,by)=>types.forEach(type=>type_scalar[type.id-1]=type_scalar[type.id-1]*by)
+    if (quick) {
+      boost(quick.type().strongAgainst(),quick.hasStab(this.specie()) ? 1.25 : 1.2)
+    }
+    if (charge) {
+      boost(charge.type().strongAgainst(),charge.hasStab(this.specie()) ? 1.25 : 1.2)
+    }
+    boost(this.specie().resistantTo(), 1.1)
+    for (var i=0;i<type_scalar.length;++i) {
+      try {
+        console.log('strongAgainst', PokemonType.find(i+1).displayName, type_scalar[i])
+      }
+      catch(e) {
+        console.log(e,i)
+      }
+    }
+    return this.specie().strongAgainst()
   }
 
   calcIVPossibilities() {
