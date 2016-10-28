@@ -80,16 +80,21 @@ class MonDetails extends Component {
         <List>
           <TrainerLevel level={mon.trainerLevel} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
           <ListItem style={styles.mon_data}>
-          <Grid style={layout.alignCenter}>
-            <Col size={2} style={layout.alignLeft}><Text> CP: {mon.CP} </Text></Col>
-            <Col size={2}><Text>HP: {mon.HP}</Text></Col>
-            <Col size={2}><Text>Level: {mon.level}</Text></Col>
-            <Col size={2}><Text>IV: {mon.ivRangeStr()}</Text></Col>
-            <Col size={1}>
-              <PercentageCircle radius={20} percent={mon.avgIVPercent()} borderWidth={5} color={"#3498db"}></PercentageCircle>
-            </Col>
-            <Col><EditStats /></Col>
-          </Grid>
+            <Grid >
+              <Col size={7} style={{flexWrap: 'wrap',  justifyContent: 'flex-start', alignItems: 'center',flexDirection:'row',justifyContent:'flex-start'}} >
+                <Text style={styles.mon_stat}>CP</Text>
+                <Text style={styles.mon_stat_value}>{mon.CP}</Text>
+                <Text style={styles.mon_stat}>HP</Text>
+                <Text style={styles.mon_stat_value}>{mon.HP}</Text>
+                <Text style={styles.mon_stat}>Level</Text>
+                <Text style={styles.mon_stat_value}>{mon.level}</Text>
+                <Text style={styles.mon_stat}>IV</Text>
+                <Text style={styles.mon_stat_value}>{mon.ivRangeStr()}</Text>
+              </Col>
+              <Col size={1}>
+                <PercentageCircle radius={20} percent={mon.avgIVPercent()} borderWidth={5} color={"#3498db"}></PercentageCircle>
+              </Col>
+            </Grid>
           </ListItem>
         </List>
         <View style={styles.list_header}>
@@ -279,8 +284,8 @@ var styles = StyleSheet.create({
     shadowOpacity: 0.7,
     shadowRadius: 6,
     shadowOffset: {
-      height: 3,
-      width: 0
+    height: 3,
+    width: 0
     }
   },
 
@@ -293,7 +298,19 @@ var styles = StyleSheet.create({
 
   linkcolor: {
     color:'#1d8696',
-  }
+  },
+
+  mon_stat: {
+    fontSize:12,
+    marginRight:2,
+    color:'#999999',
+    fontFamily: 'Roboto',
+  },
+  
+  mon_stat_value: {
+    paddingRight:10,
+    fontSize:16,
+  },
 
 });
 

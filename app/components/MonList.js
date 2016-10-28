@@ -105,6 +105,7 @@ export const MonList = ({mons, onMonClick})=> (
     <View style={styles.container}>
       {mons.map(mon=><Mon mon={mon} key={mon.url} onPress={()=>onMonClick(mon)}/>)}
       <View style={ styles.mon }></View>
+      <View style={ styles.mon }></View>
     </View>
   </ScrollView>
 )
