@@ -78,7 +78,7 @@ class MonDetails extends Component {
         )}>
 
         <List>
-          <TrainerLevel level={mon.trainerLevel} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
+          <TrainerLevel level={mon.trainerLvl()} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
           <ListItem style={styles.mon_data}>
             <Grid >
               <Col size={7} style={{flexWrap: 'wrap',  justifyContent: 'flex-start', alignItems: 'center',flexDirection:'row',justifyContent:'flex-start'}} >

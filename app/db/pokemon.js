@@ -113,6 +113,10 @@ export default class Pokemon extends BaseRecord {
     db.updateMon(this)
   }
 
+  trainerLvl() {
+    return parseInt(this.trainerLevel,10)
+  }
+  
   specie() {
     if (this.pokemon_number) {
       return PokemonSpecie.find(this.pokemon_number)
