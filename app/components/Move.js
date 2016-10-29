@@ -7,6 +7,7 @@ import MonTypeBadge from './MonTypeBadge'
 import ChoiceModal from './ChoiceModal'
 import layout from './Styles';
 import multipleStyles from 'react-native-multiple-styles';
+import Pokemon from '../db/pokemon'
 
 
 export default class Move extends Component {
@@ -60,6 +61,12 @@ export default class Move extends Component {
       </Grid>
     )
   }
+}
+
+Move.propTypes = {
+  mon: React.PropTypes.instanceOf(Pokemon).isRequired,
+  type: React.PropTypes.string.isRequired,
+  onChange: React.PropTypes.func,
 }
 
 var styles = StyleSheet.create({

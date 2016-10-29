@@ -7,7 +7,7 @@ import layout from './Styles';
 
 export default class ChoiceModal extends Component {
   render() {
-    const {choices, header, onChosen} = this.props
+    const {choices, onChosen} = this.props
     return (
       <Modal
           animationType={"slide"}
@@ -34,4 +34,9 @@ export default class ChoiceModal extends Component {
       </Modal>
     )
   }
+}
+
+ChoiceModal.propTypes = {
+  choices: React.PropTypes.array.isRequired,
+  onChosen: React.PropTypes.func,
 }

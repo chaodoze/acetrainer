@@ -55,6 +55,10 @@ export default class TrainerLevel extends Component {
   }
 }
 
+TrainerLevel.propTypes = {
+  level: React.PropTypes.number.isRequired,
+  onLevelChange: React.PropTypes.func,
+}
 var styles = StyleSheet.create({
 
   header: {

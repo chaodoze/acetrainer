@@ -15,6 +15,10 @@ export default Grade = ({grade}) => {
     </View>)
 }
 
+Grade.propTypes = {
+  grade: React.PropTypes.string,
+}
+
 var styles = StyleSheet.create({
 
  img_container: {
