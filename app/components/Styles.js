@@ -77,6 +77,44 @@ const layout = StyleSheet.create({
     right: 5,
   },
 
+  list_header: {
+    flex:1,
+    flexDirection:'row',
+    backgroundColor: '#f3f3f3',
+    borderColor:'#dddddd',
+    borderTopWidth:1,
+    borderBottomWidth:1,
+    padding: 10,
+    justifyContent:'space-between',
+  },
+
+  list_headerTitle: {
+    color: '#666666',
+    fontSize:13,
+    letterSpacing: 3,
+    fontWeight:'bold',
+  },
+
+  modal_list_header: {
+    flex:1,
+    flexDirection:'row',
+    backgroundColor: '#f3f3f3',
+    borderColor:'#dddddd',
+    borderTopWidth:1,
+    borderBottomWidth:1,
+    padding: 5,
+    paddingLeft:20,
+    paddingRight:20,
+    marginRight:-10,
+    marginLeft:-10,
+  },
+
+  icon: {
+    width:16,
+    height:16,
+    marginRight:5,
+  },
+
 
 });
 

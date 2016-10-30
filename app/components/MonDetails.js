@@ -24,6 +24,7 @@ import MonTypeBadge from './MonTypeBadge';
 import Grade from './Grade'
 import TrainerLevel from './TrainerLevel'
 import EditStats from './EditStats'
+import MoveSetChart from './MoveSetChart'
 import myTheme from './Themes/myTheme';
 import layout from './Styles';
 
@@ -76,7 +77,6 @@ class MonDetails extends Component {
             <View style={layout.alignCenter}>{mon.specie().types().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}</View>
           </View>
         )}>
-
         <List>
           <TrainerLevel level={mon.trainerLevel} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
           <ListItem style={styles.mon_data}>
@@ -97,8 +97,8 @@ class MonDetails extends Component {
             </Grid>
           </ListItem>
         </List>
-        <View style={styles.list_header}>
-            <Text style={styles.list_headerTitle}>MOVESETS</Text>
+        <View style={layout.list_header}>
+            <Text style={layout.list_headerTitle}>MOVESETS</Text>
         </View>
         <List style={styles.mon_analysis}>
           <ListItem>
@@ -110,24 +110,22 @@ class MonDetails extends Component {
           <ListItem style={styles.move_grade}>
             <Grid>
               <Col size={2} style={layout.alignCenter}>
-                <Image source={require('./images/icons/sword.png')} style={styles.icon} />
+                <Image source={require('./images/icons/sword.png')} style={layout.icon} />
                 <Text>Attack </Text>
                 <Grade grade={mon.attackGrade()} />
               </Col>
               <Col size={2} style={multipleStyles(layout.alignCenter, styles.defence)}>
-                <Image source={require('./images/icons/shield.png')} style={styles.icon} />
+                <Image source={require('./images/icons/shield.png')} style={layout.icon} />
                 <Text style={styles.defence_text}>Defence</Text>
                 <Grade grade={mon.defenseGrade()} />
               </Col>
               <Col size={1} style={layout.alignRight}>
-                <TouchableHighlight>
-                  <View><Icon theme={myTheme} name='info-circle' style={{fontSize: 18}} /></View>
-                </TouchableHighlight>
+                <MoveSetChart />
               </Col>
             </Grid>
           </ListItem>
-          <View style={styles.list_header}>
-            <Text style={styles.list_headerTitle}>BATTLE</Text>
+          <View style={layout.list_header}>
+            <Text style={layout.list_headerTitle}>BATTLE</Text>
           </View>
           <ListItem >
             <View>
@@ -144,6 +142,45 @@ class MonDetails extends Component {
                 {mon.specie().resistantTo().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
               </View>
             </View>
+          </ListItem>
+          <View style={layout.list_header}>
+            <Text style={layout.list_headerTitle}>POWER UPS</Text>
+          </View>
+          <ListItem>
+            <Grid>
+              <Col size={2}><Text style={styles.header4}>Level</Text></Col>
+              <Col size={3}><Text style={styles.header4}># of Power Ups</Text></Col>
+              <Col size={3}><Text style={styles.header4}>Stardusts</Text></Col> 
+              <Col size={2}><Text style={styles.header4}>Candies</Text></Col>  
+              <Col size={1}><Text style={styles.header4}>CP</Text></Col>  
+            </Grid>
+          </ListItem>
+          <ListItem>
+            <Grid>
+              <Col size={2}><Text style={styles.cell}>17</Text></Col>
+              <Col size={3}><Text style={styles.cell}>1</Text></Col>
+              <Col size={3}><Text style={styles.cell}>2200</Text></Col>              
+              <Col size={2}><Text style={styles.cell}>2</Text></Col> 
+              <Col size={1}><Text style={styles.cell}>430</Text></Col> 
+            </Grid>
+          </ListItem>
+          <ListItem>
+            <Grid>
+              <Col size={2}><Text style={styles.cell}>17.5</Text></Col>
+              <Col size={3}><Text style={styles.cell}>2</Text></Col>
+              <Col size={3}><Text style={styles.cell}>2200</Text></Col>              
+              <Col size={2}><Text style={styles.cell}>2</Text></Col> 
+              <Col size={1}><Text style={styles.cell}>430</Text></Col> 
+            </Grid>
+          </ListItem>
+          <View style={layout.list_header}>
+            <Text style={layout.list_headerTitle}>ATTACKING MOVESETS</Text>
+          </View>          
+          <ListItem>
+            <Grid>
+              <Col size={2}><Text style={styles.header4}>Movesets</Text></Col>
+              <Col size={1}><Text style={styles.header4}>Grade</Text></Col>
+            </Grid>
           </ListItem>
         </List>
       </ParallaxScrollView>
@@ -195,25 +232,6 @@ var styles = StyleSheet.create({
     paddingVertical: 5
   },
 
-
-  list_header: {
-    flex:1,
-    flexDirection:'row',
-    backgroundColor: '#f3f3f3',
-    borderColor:'#dddddd',
-    borderTopWidth:1,
-    borderBottomWidth:1,
-    padding: 10,
-    justifyContent:'space-between',
-  },
-  list_headerTitle: {
-    color: '#666666',
-    fontSize:13,
-    letterSpacing: 3,
-    fontWeight:'bold',
-  },
-
-
   mon_name: {
     color:'#ffffff',
     fontSize:28,
@@ -223,17 +241,9 @@ var styles = StyleSheet.create({
     textAlign :'center',
   },
 
-  icon: {
-    width:16,
-    height:16,
-    marginRight:5,
-  },
   mon_data: {
     padding:5, borderBottomWidth:0,
   },
-
-  stats: { fontWeight:'bold'},
-  level: { color:'#1780fb', fontSize:13 },
 
   mon_analysis: {
     backgroundColor:'#ffffff',
@@ -244,56 +254,19 @@ var styles = StyleSheet.create({
      borderBottomWidth:0,
   },
 
-  grade_icon: {
-    fontSize: 18, marginRight:4
-  },
-
-  square_badge: {
-    padding:7,
-    paddingTop:1,
-    paddingBottom:1,
-    borderRadius:2,
-    marginLeft:5
-  },
-
-  grade_a: { backgroundColor:'#00a700'},
-  grade_b: { backgroundColor:'#98d000'},
-  grade_c: { backgroundColor:'#ded100'},
-  grade_d: { backgroundColor:'#dea300'},
-
-  grade_text: { color:'#ffffff'},
-
   defence: { opacity:0.3, marginLeft:30},
 
   many_types: { flexWrap:'wrap', flexDirection:'row', marginLeft:-3, },
-
-  floating_footer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor:'transparent',
-    position:'absolute',
-    bottom:0, left:0, right:0,
-  },
-  floating_btn: {
-    backgroundColor:'#1d8696',
-    borderColor: '#ffffff',
-    borderWidth:1,
-    alignSelf:'center',
-    marginBottom:15,
-    shadowColor: "#000000",
-    shadowOpacity: 0.7,
-    shadowRadius: 6,
-    shadowOffset: {
-    height: 3,
-    width: 0
-    }
-  },
 
   header4: {
     fontSize:12,
     fontWeight:'bold',
     color:'#1d484d',
     marginBottom:2,
+  },
+
+  cell: {
+    fontSize:13,
   },
 
   linkcolor: {
