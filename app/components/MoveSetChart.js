@@ -55,7 +55,7 @@ export default class MoveSetChart extends Component {
                   <ListItem>
                     <Grid>
                       <Col size={3}><Text style={styles.cell}>Shadow Claw / Sludge Bomb</Text></Col>
-                      <Col size={1}>    
+                      <Col size={1}  style={layout.alignRight}>    
                         <View style={multipleStyles(styles.grade_badge, styles.grade_a)}>
                           <Text style={styles.grade_text}>A</Text>
                         </View>
@@ -65,7 +65,7 @@ export default class MoveSetChart extends Component {
                   <ListItem>
                     <Grid>
                       <Col size={3}><Text style={styles.cell}>Sucker Punch / Sludge Bomb </Text></Col>
-                      <Col size={1} >    
+                      <Col size={1}  style={layout.alignRight}>    
                         <View style={multipleStyles(styles.grade_badge, styles.grade_b)}>
                           <Text style={styles.grade_text}>B</Text>
                         </View>
@@ -81,7 +81,7 @@ export default class MoveSetChart extends Component {
                   <ListItem>
                     <Grid>
                       <Col size={3}><Text style={styles.cell}>Shadow Claw / Sludge Bomb</Text></Col>
-                      <Col size={1}>    
+                      <Col size={1} style={layout.alignRight}>    
                         <View style={multipleStyles(styles.grade_badge, styles.grade_a)}>
                           <Text style={styles.grade_text}>A</Text>
                         </View>
@@ -91,7 +91,7 @@ export default class MoveSetChart extends Component {
                   <ListItem>
                     <Grid>
                       <Col size={3}><Text style={styles.cell}>Sucker Punch / Sludge Bomb </Text></Col>
-                      <Col size={1} >    
+                      <Col size={1}  style={layout.alignRight}>    
                         <View style={multipleStyles(styles.grade_badge, styles.grade_b)}>
                           <Text style={styles.grade_text}>B</Text>
                         </View>

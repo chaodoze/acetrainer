@@ -11,7 +11,7 @@ export default MonTypeBadge = ({pokemonType, stab}) => {
     const style = `t_${pokemonType.displayName.toLowerCase()}`
     return (
         <Badge theme={myTheme} style={multipleStyles(styles[style], styles.type)}>
-          {pokemonType.displayName}{showStab}
+          {pokemonType.displayName} {showStab}
         </Badge>
     )
   }
@@ -23,7 +23,7 @@ export default MonTypeBadge = ({pokemonType, stab}) => {
 var styles = StyleSheet.create({
 
   grade_icon: {
-    fontSize: 12, marginRight:4, color:'#ffffff',
+    fontSize: 12, color:'#ffffff',
   },
 
   type: { marginRight:2, marginBottom:2,},

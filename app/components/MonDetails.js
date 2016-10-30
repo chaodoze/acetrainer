@@ -107,7 +107,7 @@ class MonDetails extends Component {
           <ListItem>
             <Move mon={mon} type="charge" />
           </ListItem>
-          <ListItem style={styles.move_grade}>
+          <ListItem style={styles.last_row}>
             <Grid>
               <Col size={2} style={layout.alignCenter}>
                 <Image source={require('./images/icons/sword.png')} style={layout.icon} />
@@ -120,7 +120,7 @@ class MonDetails extends Component {
                 <Grade grade={mon.defenseGrade()} />
               </Col>
               <Col size={1} style={layout.alignRight}>
-                <MoveSetChart />
+               {/*} <MoveSetChart /> */}
               </Col>
             </Grid>
           </ListItem>
@@ -135,7 +135,7 @@ class MonDetails extends Component {
               </View>
             </View>
           </ListItem>
-          <ListItem >
+          <ListItem style={styles.last_row}>
             <View >
               <Text style={styles.header4}>RESISTANT TO</Text>
               <View style={styles.many_types}>
@@ -171,15 +171,6 @@ class MonDetails extends Component {
               <Col size={3}><Text style={styles.cell}>2200</Text></Col>              
               <Col size={2}><Text style={styles.cell}>2</Text></Col> 
               <Col size={1}><Text style={styles.cell}>430</Text></Col> 
-            </Grid>
-          </ListItem>
-          <View style={layout.list_header}>
-            <Text style={layout.list_headerTitle}>ATTACKING MOVESETS</Text>
-          </View>          
-          <ListItem>
-            <Grid>
-              <Col size={2}><Text style={styles.header4}>Movesets</Text></Col>
-              <Col size={1}><Text style={styles.header4}>Grade</Text></Col>
             </Grid>
           </ListItem>
         </List>
@@ -248,7 +239,7 @@ var styles = StyleSheet.create({
   mon_analysis: {
     backgroundColor:'#ffffff',
   },
-  move_grade: {
+  last_row: {
      paddingTop:15,
      paddingBottom:15,
      borderBottomWidth:0,
