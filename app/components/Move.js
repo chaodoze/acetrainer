@@ -3,9 +3,11 @@ import {StyleSheet, TouchableHighlight, TextInput, View} from 'react-native'
 import {updateMon} from '../db/index'
 import {Badge, List, ListItem, Text} from 'native-base'
 import { Col, Row, Grid } from "react-native-easy-grid";
+import MonTypeBadge from './MonTypeBadge'
 import ChoiceModal from './ChoiceModal'
 import layout from './Styles';
 import multipleStyles from 'react-native-multiple-styles';
+import Pokemon from '../db/pokemon'
 
 
 export default class Move extends Component {
@@ -32,6 +34,7 @@ export default class Move extends Component {
     const moveType = `${type}Moves`
     const choices = mon.specie()[moveType]()
     const move = mon.moveFor(type)
+    const hasStab = move && move.hasStab(mon.specie())
 
     const dialogCode = this.state.askForMove && <ChoiceModal choices={choices} onChosen={this.onChosen}/>
     return (
@@ -52,12 +55,18 @@ export default class Move extends Component {
             </View>
           </TouchableHighlight>
         </Col>
-        <Col style={layout.alignRight}><MonTypeBadge pokemonType={move && move.type()} />
+        <Col style={layout.alignRight}><MonTypeBadge pokemonType={move && move.type()} stab={hasStab} />
         </Col>
 
       </Grid>
     )
   }
+}
+
+Move.propTypes = {
+  mon: React.PropTypes.instanceOf(Pokemon).isRequired,
+  type: React.PropTypes.string.isRequired,
+  onChange: React.PropTypes.func,
 }
 
 var styles = StyleSheet.create({

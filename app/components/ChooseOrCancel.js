@@ -50,3 +50,8 @@ export default class ChooseOrCancel extends Component {
     )
   }
 }
+
+ChooseOrCancel.propTypes = {
+  children: React.PropTypes.element.isRequired,
+  onChosen: React.PropTypes.func,
+}

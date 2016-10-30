@@ -78,7 +78,7 @@ class MonDetails extends Component {
           </View>
         )}>
         <List>
-          <TrainerLevel level={mon.trainerLevel} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
+          <TrainerLevel level={mon.trainerLvl()} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
           <ListItem style={styles.mon_data}>
             <Grid >
               <Col size={7} style={{flexWrap: 'wrap',  justifyContent: 'flex-start', alignItems: 'center',flexDirection:'row',justifyContent:'flex-start'}} >
@@ -131,7 +131,7 @@ class MonDetails extends Component {
             <View>
               <Text style={styles.header4}>STRONG AGAINST</Text>
               <View style={styles.many_types}>
-                {mon.specie().strongAgainst().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
+                {mon.strongAgainst().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
               </View>
             </View>
           </ListItem>
@@ -279,7 +279,7 @@ var styles = StyleSheet.create({
     color:'#999999',
     fontFamily: 'Roboto',
   },
-  
+
   mon_stat_value: {
     paddingRight:10,
     fontSize:16,

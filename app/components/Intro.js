@@ -71,7 +71,6 @@ const mapDispatchToProps = dispatch=> ({
 
 Intro = connect(null, mapDispatchToProps)(Intro)
 
-
 const styles = StyleSheet.create({
   description: {
     marginBottom: 20,

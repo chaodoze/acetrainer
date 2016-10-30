@@ -23,3 +23,9 @@ export default class LevelPicker extends Component {
     )
   }
 }
+
+LevelPicker.propTypes = {
+  initialLevel: React.PropTypes.number.isRequired,
+  startLevel: React.PropTypes.number,
+  onValueChange: React.PropTypes.func,
+}
