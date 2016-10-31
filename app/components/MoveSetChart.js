@@ -21,90 +21,76 @@ export default class MoveSetChart extends Component {
   }
 
   openModal() {
-    this.setState({modalVisible: visible});
+    this.setState({modalVisible: true});
   }
 
   closeModal() {
     this.setState({modalVisible: false});
   }
 
+  renderChartFor(type) {
+    const {quick, charge, specie} = this.props
+    const movesets = specie[`${type}Movesets`]()
+    const bestRank = movesets[0].rank
+    const rankPercent = rank=>Math.round(100*rank/bestRank)
+    const isCurrentMoveset = moveset=>moveset.quick==quick.displayName && moveset.charge == charge.displayName
+
+    return (
+      <List>
+        {movesets.map(moveset=>(
+          <ListItem key={`${moveset.quick}-${moveset.charge}`}>
+            <Grid>
+              <Col size={3}><Text style={styles.cell}>{moveset.quick} / {moveset.charge}{isCurrentMoveset(moveset) && '**'}</Text></Col>
+              <Col size={1}  style={layout.alignRight}>
+                <Text>{rankPercent(moveset.rank)}%</Text>
+              </Col>
+            </Grid>
+          </ListItem>
+        ))}
+      </List>
+    )
+  }
+  renderModal() {
+    const {modalVisible} = this.state
+    if (modalVisible) {
+
+      return (
+      <Modal
+        animationType={"slide"}
+        transparent={true}
+        >
+        <View style={layout.modal_outer}>
+          <View style={layout.modal_inner}>
+            <View>
+              <View style={layout.choice_title}>
+                <Text style={layout.choice_title_text}>MOVESET GRADE</Text>
+                <Button style={layout.fixedClose} theme={myTheme} transparent small onPress={() => {this.closeModal()}}>
+                  <Icon name='close' style={{color:'#333333'}}/>
+                </Button>
+              </View>
+              <View style={layout.modal_list_header}>
+                <Image source={require('./images/icons/sword.png')} style={layout.icon} />
+                <Text>Attack</Text>
+              </View>
+              {this.renderChartFor('attack')}
+              <View style={layout.modal_list_header}>
+                <Image source={require('./images/icons/shield.png')} style={layout.icon} />
+                <Text>Defense</Text>
+              </View>
+              {this.renderChartFor('defense')}
+            </View>
+          </View>
+        </View>
+      </Modal>
+    )}
+  }
   render() {
     return (
       <View>
         <TouchableHighlight onPress={() => {this.openModal()}}>
           <View><Icon theme={myTheme} name='info-circle' style={{fontSize: 18}} /></View>
         </TouchableHighlight>
-        <Modal
-          animationType={"slide"}
-          transparent={true} 
-          >
-          <View style={layout.modal_outer}>
-            <View style={layout.modal_inner}>
-              <View>
-                <View style={layout.choice_title}>
-                  <Text style={layout.choice_title_text}>MOVESET GRADE</Text>
-                  <Button style={layout.fixedClose} theme={myTheme} transparent small onPress={() => {this.closeModal()}}>
-                    <Icon name='close' style={{color:'#333333'}}/>
-                  </Button>
-                </View>
-                <View style={layout.modal_list_header}>
-                  <Image source={require('./images/icons/sword.png')} style={layout.icon} />
-                  <Text>Attack</Text>
-                </View>   
-                <List>
-                  <ListItem>
-                    <Grid>
-                      <Col size={3}><Text style={styles.cell}>Shadow Claw / Sludge Bomb</Text></Col>
-                      <Col size={1}  style={layout.alignRight}>    
-                        <View style={multipleStyles(styles.grade_badge, styles.grade_a)}>
-                          <Text style={styles.grade_text}>A</Text>
-                        </View>
-                      </Col>
-                    </Grid>
-                  </ListItem>
-                  <ListItem>
-                    <Grid>
-                      <Col size={3}><Text style={styles.cell}>Sucker Punch / Sludge Bomb </Text></Col>
-                      <Col size={1}  style={layout.alignRight}>    
-                        <View style={multipleStyles(styles.grade_badge, styles.grade_b)}>
-                          <Text style={styles.grade_text}>B</Text>
-                        </View>
-                      </Col>
-                    </Grid>
-                  </ListItem>
-                </List>
-                <View style={layout.modal_list_header}>
-                  <Image source={require('./images/icons/shield.png')} style={layout.icon} />                  
-                  <Text>Defense</Text>
-                </View>   
-                <List>
-                  <ListItem>
-                    <Grid>
-                      <Col size={3}><Text style={styles.cell}>Shadow Claw / Sludge Bomb</Text></Col>
-                      <Col size={1} style={layout.alignRight}>    
-                        <View style={multipleStyles(styles.grade_badge, styles.grade_a)}>
-                          <Text style={styles.grade_text}>A</Text>
-                        </View>
-                      </Col>
-                    </Grid>
-                  </ListItem>
-                  <ListItem>
-                    <Grid>
-                      <Col size={3}><Text style={styles.cell}>Sucker Punch / Sludge Bomb </Text></Col>
-                      <Col size={1}  style={layout.alignRight}>    
-                        <View style={multipleStyles(styles.grade_badge, styles.grade_b)}>
-                          <Text style={styles.grade_text}>B</Text>
-                        </View>
-                      </Col>
-                    </Grid>
-                  </ListItem>
-                </List>
-
-
-              </View>
-            </View>
-          </View>
-        </Modal>
+        {this.renderModal()}
       </View>
     )
   }

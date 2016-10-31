@@ -120,7 +120,7 @@ class MonDetails extends Component {
                 <Grade grade={mon.defenseGrade()} />
               </Col>
               <Col size={1} style={layout.alignRight}>
-               {/*} <MoveSetChart /> */}
+                <MoveSetChart specie={mon.specie()} quick={mon.quickMove()} charge={mon.chargeMove()}/>
               </Col>
             </Grid>
           </ListItem>
