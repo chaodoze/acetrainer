@@ -38,11 +38,16 @@ export default class MoveSetChart extends Component {
     return (
       <List>
         {movesets.map(moveset=>(
-          <ListItem key={`${moveset.quick}-${moveset.charge}`}>
+          <ListItem key={`${moveset.quick}-${moveset.charge}`} style={multipleStyles(styles.movesetList, styles.yourmove)}>
             <Grid>
               <Col size={3}><Text style={styles.cell}>{moveset.quick} / {moveset.charge}{isCurrentMoveset(moveset) && '**'}</Text></Col>
               <Col size={1}  style={layout.alignRight}>
-                <Text>{rankPercent(moveset.rank)}%</Text>
+                <Text style={styles.cell}>{rankPercent(moveset.rank)}%</Text>
+              </Col>
+              <Col size={1} style={layout.alignRight}>    
+                <View style={multipleStyles(styles.grade_badge, styles.grade_a)}>
+                  <Text style={styles.grade_text}>A</Text>
+                </View>
               </Col>
             </Grid>
           </ListItem>
@@ -120,5 +125,13 @@ var styles = StyleSheet.create({
   grade_d: { backgroundColor:'#dea300'},
 
   grade_text: { color:'#ffffff'},
+
+  movesetList:{
+    marginLeft:-10, marginRight:-10, paddingLeft:20, paddingRight:20,
+  },
+
+  yourmove: {
+    backgroundColor:'#fcf8e3', 
+  },
 
 });
