@@ -66,6 +66,7 @@
 		FCBFD8041D99A20100D43EF0 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCBFD8011D99A20100D43EF0 /* Lato-Black.ttf */; };
 		FCBFD8051D99A20100D43EF0 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCBFD8021D99A20100D43EF0 /* Lato-Bold.ttf */; };
 		FCBFD8061D99A20100D43EF0 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCBFD8031D99A20100D43EF0 /* Lato-Regular.ttf */; };
+		FCFEFC771DC7D2B9002E5950 /* pokemon_cc in Resources */ = {isa = PBXBuildFile; fileRef = FCFEFC761DC7D2B9002E5950 /* pokemon_cc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -312,6 +313,7 @@
 		FCBFD8011D99A20100D43EF0 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		FCBFD8021D99A20100D43EF0 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		FCBFD8031D99A20100D43EF0 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		FCFEFC761DC7D2B9002E5950 /* pokemon_cc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pokemon_cc; sourceTree = "<group>"; };
 		FD28429BF830447982045FA0 /* libRNFIRMessaging.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFIRMessaging.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -445,6 +447,7 @@
 				E59C7E061D77A7CF00419870 /* chansey.png */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				FCFEFC761DC7D2B9002E5950 /* pokemon_cc */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -1001,6 +1004,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCFEFC771DC7D2B9002E5950 /* pokemon_cc in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				E59C7DF71D77A5B000419870 /* tessdata in Resources */,
 				FC8987911D677762004D4930 /* Roboto-Regular.ttf in Resources */,
