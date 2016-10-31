@@ -25,6 +25,7 @@ import Grade from './Grade'
 import TrainerLevel from './TrainerLevel'
 import EditStats from './EditStats'
 import MoveSetChart from './MoveSetChart'
+import CPChart from './CPChart'
 import myTheme from './Themes/myTheme';
 import layout from './Styles';
 
@@ -42,8 +43,8 @@ class MonDetails extends Component {
   }
 
   render() {
-    const {mon, goBack} = this.props
-    console.log('render mon details')
+    const {mon, goBack, trainerLevel} = this.props
+    console.log('render mon details', mon.averageStats())
     return (
       <ParallaxScrollView
         stickyHeaderHeight={ STICKY_HEADER_HEIGHT }
@@ -146,33 +147,7 @@ class MonDetails extends Component {
           <View style={layout.list_header}>
             <Text style={layout.list_headerTitle}>POWER UPS</Text>
           </View>
-          <ListItem>
-            <Grid>
-              <Col size={2}><Text style={styles.header4}>Level</Text></Col>
-              <Col size={3}><Text style={styles.header4}># of Power Ups</Text></Col>
-              <Col size={3}><Text style={styles.header4}>Stardusts</Text></Col> 
-              <Col size={2}><Text style={styles.header4}>Candies</Text></Col>  
-              <Col size={1}><Text style={styles.header4}>CP</Text></Col>  
-            </Grid>
-          </ListItem>
-          <ListItem>
-            <Grid>
-              <Col size={2}><Text style={styles.cell}>17</Text></Col>
-              <Col size={3}><Text style={styles.cell}>1</Text></Col>
-              <Col size={3}><Text style={styles.cell}>2200</Text></Col>              
-              <Col size={2}><Text style={styles.cell}>2</Text></Col> 
-              <Col size={1}><Text style={styles.cell}>430</Text></Col> 
-            </Grid>
-          </ListItem>
-          <ListItem>
-            <Grid>
-              <Col size={2}><Text style={styles.cell}>17.5</Text></Col>
-              <Col size={3}><Text style={styles.cell}>2</Text></Col>
-              <Col size={3}><Text style={styles.cell}>2200</Text></Col>              
-              <Col size={2}><Text style={styles.cell}>2</Text></Col> 
-              <Col size={1}><Text style={styles.cell}>430</Text></Col> 
-            </Grid>
-          </ListItem>
+          <CPChart mon={mon} trainerLevel={trainerLevel} />
         </List>
       </ParallaxScrollView>
     );

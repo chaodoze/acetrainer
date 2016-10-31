@@ -116,7 +116,7 @@ export default class Pokemon extends BaseRecord {
   trainerLvl() {
     return parseInt(this.trainerLevel,10)
   }
-  
+
   specie() {
     if (this.pokemon_number) {
       return PokemonSpecie.find(this.pokemon_number)
@@ -212,7 +212,7 @@ export default class Pokemon extends BaseRecord {
 
   calcIVPossibilities() {
     if (this.ivCandidates) {return}
-    const specie = PokemonSpecie.findByFuzzyName(this.Name)
+    const specie = this.specie()
     console.log('iv possibilities', specie, this.Name)
     let possibilities = []
     this.ivCandidates = possibilities
@@ -297,6 +297,21 @@ export default class Pokemon extends BaseRecord {
     }
   }
 
+  averageStats() {
+    if (!this.avgStats) {
+      const total = this.ivCandidates.reduce((accum, candidate)=>[accum[0]+candidate[0],accum[1]+candidate[1],accum[2]+candidate[2]],[0,0,0])
+      const averageIVs = total.map(iv=>iv/this.ivCandidates.length)
+      const specie = this.specie()
+      this.avgStats = [specie.baseAttack+averageIVs[0], specie.baseDefense+averageIVs[1], specie.baseStamina+averageIVs[2]]
+    }
+    return this.avgStats
+  }
+
+  cpForLevel(level) {
+    const [atk,def,sta] = this.averageStats()
+    const cpM = cpMultiplier[Math.round((level-1)*2)]
+    return Math.round(atk*Math.sqrt(def*sta)*cpM*cpM/10)
+  }
   static appraisalAverageRanges = {
     best: [0.822,1],
     strong: [2/3,0.8],
