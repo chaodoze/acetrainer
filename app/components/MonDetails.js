@@ -42,6 +42,15 @@ class MonDetails extends Component {
     PokemonImager.scanOne(newLevel, localIdentifier)
   }
 
+  renderMovesetChart(mon) {
+    const [quick, charge] = [mon.quickMove(), mon.chargeMove()]
+    if (quick && charge) {
+      return (
+        <MoveSetChart specie={mon.specie()} quick={mon.quickMove()} charge={mon.chargeMove()}/>
+      )
+    }
+  }
+
   render() {
     const {mon, goBack, trainerLevel} = this.props
     console.log('render mon details', mon.averageStats())
@@ -121,7 +130,7 @@ class MonDetails extends Component {
                 <Grade rank={mon.defenseRank()} />
               </Col>
               <Col size={1} style={layout.alignRight}>
-                <MoveSetChart specie={mon.specie()} quick={mon.quickMove()} charge={mon.chargeMove()}/>
+                {this.renderMovesetChart(mon)}
               </Col>
             </Grid>
           </ListItem>
