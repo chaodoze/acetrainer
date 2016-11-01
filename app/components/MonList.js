@@ -10,6 +10,7 @@ import {
   TouchableHighlight, TouchableOpacity
 } from 'react-native';
 import {Button} from 'native-base'
+import MonImage from './MonImage'
 
 var styles = StyleSheet.create({
   container: {
@@ -119,7 +120,7 @@ const Mon = ({mon, onPress})=> (
         <Text style={ styles.mon_cp }>IV</Text>
         <Text style={ styles.mon_cp_value }>{`${mon.avgIVPercent()}%`}</Text>
       </View>
-      <Image style={ styles.mon_icon } source={{uri:mon.url}} resizeMode='cover' />
+      <MonImage mon={mon} style={ styles.mon_icon } resizeMode='cover' />
       <Text style={ styles.mon_label }>{mon.Name}</Text>
     </View>
   </TouchableHighlight>
