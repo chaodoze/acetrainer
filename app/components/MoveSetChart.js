@@ -13,6 +13,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import myTheme from './Themes/myTheme';
 import layout from './Styles';
 import multipleStyles from 'react-native-multiple-styles';
+import Grade from './Grade'
 
 export default class MoveSetChart extends Component {
   constructor(props) {
@@ -37,21 +38,21 @@ export default class MoveSetChart extends Component {
 
     return (
       <List>
-        {movesets.map(moveset=>(
-          <ListItem key={`${moveset.quick}-${moveset.charge}`} style={multipleStyles(styles.movesetList, styles.yourmove)}>
-            <Grid>
-              <Col size={3}><Text style={styles.cell}>{moveset.quick} / {moveset.charge}{isCurrentMoveset(moveset) && '**'}</Text></Col>
-              <Col size={1}  style={layout.alignRight}>
-                <Text style={styles.cell}>{rankPercent(moveset.rank)}%</Text>
-              </Col>
-              <Col size={1} style={layout.alignRight}>    
-                <View style={multipleStyles(styles.grade_badge, styles.grade_a)}>
-                  <Text style={styles.grade_text}>A</Text>
-                </View>
-              </Col>
-            </Grid>
-          </ListItem>
-        ))}
+        {movesets.map(moveset=>{
+          return (
+            <ListItem key={`${moveset.quick}-${moveset.charge}`} style={multipleStyles(styles.movesetList, isCurrentMoveset(moveset) && styles.yourmove)}>
+              <Grid>
+                <Col size={3}><Text style={styles.cell}>{moveset.quick} / {moveset.charge}</Text></Col>
+                <Col size={1}  style={layout.alignRight}>
+                  <Text style={styles.cell}>{rankPercent(moveset.rank)}%</Text>
+                </Col>
+                <Col size={1} style={layout.alignRight}>
+                  <Grade rank={rankPercent(moveset.rank)/100} />
+                </Col>
+              </Grid>
+            </ListItem>
+          )}
+        )}
       </List>
     )
   }

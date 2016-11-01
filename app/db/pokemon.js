@@ -2,6 +2,7 @@ import * as _ from 'lodash-es'
 import * as db from '../db'
 const pokemonDB = require('../../data/pokemon.json')
 import {PokemonSpecie, BaseRecord, PokemonMove, PokemonType} from '../db/pogo'
+
 const cpMultiplier = [0.0939999967813492, 0.135137432089339, 0.166397869586945, 0.192650913155325, 0.215732470154762,
                              0.236572651424822, 0.255720049142838, 0.273530372106572, 0.290249884128571, 0.306057381389863,
                              0.321087598800659, 0.335445031996451, 0.349212676286697, 0.362457736609939, 0.375235587358475,
@@ -136,7 +137,7 @@ export default class Pokemon extends BaseRecord {
     this[`${type}_move_id`] = move.id
   }
 
-  gradeFor(type) {
+  rankFor(type) {
     if (type != 'attack' && type != 'defense') {return null}
     const [quickMove, chargeMove, specie] = [this.quickMove(), this.chargeMove(), this.specie()]
     if (!(quickMove && chargeMove && specie)) {return null}
@@ -146,27 +147,15 @@ export default class Pokemon extends BaseRecord {
       return quickMove.displayName == moveset.quick && chargeMove.displayName == moveset.charge
     })
     // console.assert(matchingMoveset, 'moveset not found!')
-    const rank = matchingMoveset.rank/movesets[0].rank
-    if (rank > 0.95) {
-      return 'A'
-    }
-    else if (rank > 0.8) {
-      return 'B'
-    }
-    else if (rank > 0.6) {
-      return 'C'
-    }
-    else {
-      return 'F'
-    }
+    return matchingMoveset.rank/movesets[0].rank
   }
 
-  attackGrade() {
-    return this.gradeFor('attack')
+  attackRank() {
+    return this.rankFor('attack')
   }
 
-  defenseGrade() {
-    return this.gradeFor('defense')
+  defenseRank() {
+    return this.rankFor('defense')
   }
 
   matchingMoveFor(type, ocrString) {

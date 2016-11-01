@@ -3,12 +3,27 @@ import multipleStyles from 'react-native-multiple-styles';
 import {StyleSheet, View} from 'react-native';
 import {Text} from 'native-base';
 
-export default Grade = ({grade}) => {
-  if (!grade) {
+const rankToGrade = rank=>{
+  if (rank > 0.95) {
+    return 'A'
+  }
+  else if (rank > 0.8) {
+    return 'B'
+  }
+  else if (rank > 0.6) {
+    return 'C'
+  }
+  else {
+    return 'F'
+  }
+}
+
+export default Grade = ({rank}) => {
+  if (!rank) {
     return <Text>?</Text>
   }
+  const grade = rankToGrade(rank)
   const styleGrade = `grade_${grade.toLowerCase()}`
-  console.log('grade tag', grade, styleGrade)
   return (
     <View style={multipleStyles(styles.grade_badge, styles[styleGrade])}>
       <Text style={styles.grade_text}>{grade}</Text>

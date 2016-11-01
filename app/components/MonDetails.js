@@ -113,12 +113,12 @@ class MonDetails extends Component {
               <Col size={2} style={layout.alignCenter}>
                 <Image source={require('./images/icons/sword.png')} style={layout.icon} />
                 <Text>Attack </Text>
-                <Grade grade={mon.attackGrade()} />
+                <Grade rank={mon.attackRank()} />
               </Col>
               <Col size={2} style={multipleStyles(layout.alignCenter, styles.defence)}>
                 <Image source={require('./images/icons/shield.png')} style={layout.icon} />
                 <Text style={styles.defence_text}>Defence</Text>
-                <Grade grade={mon.defenseGrade()} />
+                <Grade rank={mon.defenseRank()} />
               </Col>
               <Col size={1} style={layout.alignRight}>
                 <MoveSetChart specie={mon.specie()} quick={mon.quickMove()} charge={mon.chargeMove()}/>
