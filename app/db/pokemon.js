@@ -27,9 +27,8 @@ const cleanup = {
   },
   Name: name=>{
     name = name.trim()
-    if (_.endsWith(name,'/')) {
-      name = _.trimEnd(name,'/')
-    }
+    name = _.trimEnd(name,"'/ \"’")
+    console.log('cleanup name', name)
     return name
   },
   HP: hp=>{

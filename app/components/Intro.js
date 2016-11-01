@@ -41,7 +41,7 @@ class Intro extends Component {
   }
   render() {
     let {showErr, gotTrainerLevel} = this.state
-    if (!gotTrainerLevel) {return <Text>Loading...</Text>}
+    if (!gotTrainerLevel && !this.props.user) {return <Text>Loading...</Text>}
     showErr = showErr && <Text>Please select your Trainer Level!</Text>
     return (
 
@@ -62,6 +62,11 @@ class Intro extends Component {
     );
   }
 }
+
+const mapStateToProps = ({user}) => {
+  return {user}
+}
+
 const mapDispatchToProps = dispatch=> ({
   onProceed: (level)=>{
     dispatch(setTrainerLevel(level))

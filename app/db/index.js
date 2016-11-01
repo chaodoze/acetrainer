@@ -2,7 +2,8 @@ import firebase from 'firebase'
 import DeviceInfo from 'react-native-device-info'
 
 const uuid = DeviceInfo.getUniqueID()
-const monPath = `/${uuid}/mons`
+let subscribedUid = null
+const monPath = ()=>`/users/${subscribedUid}/mons`
 
 export const init = (dispatch) => {
   console.log('db init')
@@ -13,11 +14,23 @@ export const init = (dispatch) => {
     storageBucket: "acetrainer-ce9c9.appspot.com",
   }
   firebase.initializeApp(config)
-  subscribeToMons(dispatch)
+  firebase.auth().onAuthStateChanged(user=>{
+    if (!user) {
+      firebase.auth().signInAnonymously()
+    } else {
+      if (subscribedUid != user.uid)
+      subscribedUid = user.uid
+      subscribeToMons(dispatch)
+      dispatch({
+        type:'USER_SIGNIN',
+        user,
+      })
+    }
+  })
 }
 
-export const subscribeToMons = (dispatch)=> {
-  const ref = firebase.database().ref(monPath)
+const subscribeToMons = (dispatch)=> {
+  const ref = firebase.database().ref(monPath())
   ref.on('child_added', (mon)=> {
     dispatch({
       type: 'MON_ADDED',
@@ -39,7 +52,8 @@ export const subscribeToMons = (dispatch)=> {
 }
 
 export const addMon = (mon)=> {
-  const ref = firebase.database().ref(monPath)
+  console.log('addMon monPath', monPath())
+  const ref = firebase.database().ref(monPath())
   ref.update({[mon.key()]:mon})
 }
 

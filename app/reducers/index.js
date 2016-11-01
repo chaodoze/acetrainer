@@ -41,5 +41,13 @@ function trainerLevel(state=null, action) {
   return state
 }
 
-const rootReducer = combineReducers({mons, selectedMon, trainerLevel, routes})
+function user(state=null, action) {
+  if (action.type == 'USER_SIGNIN') {
+    if (!state || state.uid != action.user.uid) {
+      return action.user
+    }
+  }
+  return state
+}
+const rootReducer = combineReducers({mons, selectedMon, trainerLevel, routes, user})
 export default rootReducer
