@@ -14,6 +14,7 @@ import myTheme from './Themes/myTheme';
 import layout from './Styles';
 import multipleStyles from 'react-native-multiple-styles';
 import Grade from './Grade'
+import {PokemonSpecie, PokemonMove} from '../db/pogo.js'
 
 export default class MoveSetChart extends Component {
   constructor(props) {
@@ -102,6 +103,11 @@ export default class MoveSetChart extends Component {
   }
 }
 
+MoveSetChart.propTypes = {
+  quick: React.PropTypes.instanceOf(PokemonMove).isRequired,
+  charge: React.PropTypes.instanceOf(PokemonMove).isRequired,
+  specie: React.PropTypes.instanceOf(PokemonSpecie).isRequired,
+}
 var styles = StyleSheet.create({
 
   header5: {

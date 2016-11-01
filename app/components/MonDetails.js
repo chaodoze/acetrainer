@@ -79,7 +79,7 @@ class MonDetails extends Component {
           </View>
         )}>
         <List>
-          <TrainerLevel level={mon.trainerLvl()} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
+          <TrainerLevel level={trainerLevel} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
           <ListItem style={styles.mon_data}>
             <Grid >
               <Col size={7} style={{flexWrap: 'wrap',  justifyContent: 'flex-start', alignItems: 'center',flexDirection:'row',justifyContent:'flex-start'}} >
@@ -257,7 +257,7 @@ const mapStateToProps = ({selectedMon}) => ({
   mon: selectedMon,
   quick: selectedMon.quickMove(), //use quick and charge so that component will re-render, when these change
   charge: selectedMon.chargeMove(),
-  trainerLevel: selectedMon.trainerLevel,
+  trainerLevel: selectedMon.trainerLvl(),
 })
 const mapDispatchToProps = dispatch=> ({
   goBack: ()=>{
