@@ -287,7 +287,7 @@ export default class Pokemon extends BaseRecord {
   }
 
   averageStats() {
-    if (!this.avgStats) {
+    if (!this.avgStats && this.ivCandidates.length > 0) {
       const total = this.ivCandidates.reduce((accum, candidate)=>[accum[0]+candidate[0],accum[1]+candidate[1],accum[2]+candidate[2]],[0,0,0])
       const averageIVs = total.map(iv=>iv/this.ivCandidates.length)
       const specie = this.specie()
@@ -297,6 +297,8 @@ export default class Pokemon extends BaseRecord {
   }
 
   cpForLevel(level) {
+    this.calcIVPossibilities()
+    if (this.ivCandidates.length == 0) {return 0}
     const [atk,def,sta] = this.averageStats()
     const cpM = cpMultiplier[Math.round((level-1)*2)]
     return Math.round(atk*Math.sqrt(def*sta)*cpM*cpM/10)

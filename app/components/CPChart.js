@@ -32,6 +32,10 @@ export default class CPChart extends Component {
     ))
   }
   render() {
+    const {mon} = this.props
+    if (mon.ivCandidates.length == 0) {
+      return <Text>?</Text>
+    }
     return (
       <View>
         <ListItem>
