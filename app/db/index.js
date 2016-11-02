@@ -1,5 +1,6 @@
 import firebase from 'firebase'
 import DeviceInfo from 'react-native-device-info'
+import {AsyncStorage} from 'react-native'
 
 const uuid = DeviceInfo.getUniqueID()
 let subscribedUid = null
@@ -14,17 +15,26 @@ export const init = (dispatch) => {
     storageBucket: "acetrainer-ce9c9.appspot.com",
   }
   firebase.initializeApp(config)
+  AsyncStorage.getItem('uuid').then(uuid=>{
+    if (uuid) {
+      subscribedUid = uuid
+      subscribeToMons(dispatch)
+    }
+  })
   firebase.auth().onAuthStateChanged(user=>{
     if (!user) {
       firebase.auth().signInAnonymously()
     } else {
-      if (subscribedUid != user.uid)
-      subscribedUid = user.uid
-      subscribeToMons(dispatch)
-      dispatch({
-        type:'USER_SIGNIN',
-        user,
-      })
+      if (subscribedUid != user.uid) {
+        subscribedUid = user.uid
+        console.log('fb uuid', subscribedUid, Date.now())
+        AsyncStorage.setItem('uuid', subscribedUid)
+        subscribeToMons(dispatch)
+        dispatch({
+          type:'USER_SIGNIN',
+          uid: subscribedUid,
+        })
+      }
     }
   })
 }
