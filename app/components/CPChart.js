@@ -59,69 +59,6 @@ CPChart.propTypes = {
 }
 var styles = StyleSheet.create({
 
-  parallelContainer: {
-    flex: 1,
-    backgroundColor: 'black'
-  },
-
-  stickySectionText: {
-    color: 'white',
-    fontSize: 20,
-    margin: 10
-  },
-  fixedSection: {
-    position: 'absolute',
-    bottom: 10,
-    right: 10
-  },
-  fixedSectionText: {
-    color: '#999',
-    fontSize: 20
-  },
-  parallaxHeader: {
-    alignItems: 'center',
-    flex: 1,
-    flexDirection: 'column',
-    paddingTop: 100
-  },
-
-  sectionMonText: {
-    color: 'white',
-    fontSize: 24,
-    paddingVertical: 5
-  },
-  sectionTitleText: {
-    color: 'white',
-    fontSize: 18,
-    paddingVertical: 5
-  },
-
-  mon_name: {
-    color:'#ffffff',
-    fontSize:28,
-    lineHeight:32,
-    marginBottom:10,
-    fontWeight:'bold',
-    textAlign :'center',
-  },
-
-  mon_data: {
-    padding:5, borderBottomWidth:0,
-  },
-
-  mon_analysis: {
-    backgroundColor:'#ffffff',
-  },
-  last_row: {
-     paddingTop:15,
-     paddingBottom:15,
-     borderBottomWidth:0,
-  },
-
-  defence: { opacity:0.3, marginLeft:30},
-
-  many_types: { flexWrap:'wrap', flexDirection:'row', marginLeft:-3, },
-
   header4: {
     fontSize:12,
     fontWeight:'bold',
@@ -130,23 +67,7 @@ var styles = StyleSheet.create({
   },
 
   cell: {
-    fontSize:13,
-  },
-
-  linkcolor: {
-    color:'#1d8696',
-  },
-
-  mon_stat: {
-    fontSize:12,
-    marginRight:2,
-    color:'#999999',
-    fontFamily: 'Roboto',
-  },
-
-  mon_stat_value: {
-    paddingRight:10,
-    fontSize:16,
+    fontSize:14,
   },
 
 });

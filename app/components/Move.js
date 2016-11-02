@@ -46,7 +46,7 @@ export default class Move extends Component {
             }} underlayColor='#ffffff'>
             <View>
               <TextInput
-                style={{borderWidth:0, borderColor:'transparent', height:35}}
+                style={{borderWidth:0, borderColor:'transparent', height:35, fontSize:15}}
                 editable={false}
                 placeholder="Select..."
                 value={move && move.displayName}
