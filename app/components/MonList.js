@@ -163,7 +163,7 @@ export const MonList = ({mons, onMonClick})=> (
             <Image style={ styles.unknown_icon } source={require('./images/Thumbs/thumb6.png')} resizeMode='contain' />
           </TouchableHighlight>
         </View>
-        <Button small>Delete all</Button>
+        <Button small disabled>Or delete all</Button>
       </View>
       <View style={styles.container}>
         {mons.map(mon=><Mon mon={mon} key={mon.url} onPress={()=>onMonClick(mon)}/>)}
