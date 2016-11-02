@@ -11,7 +11,7 @@ const StardustRequired = [200,200,200,200,400,400,400,400,600,600,600,600,800,80
 export default class CPChart extends Component {
   renderLevels() {
     const {mon, trainerLevel} = this.props
-    const monLevel = parseInt(mon.level,10)
+    const monLevel = parseFloat(mon.level,10)
     const monDoubleLevel = (monLevel-1)*2
     const accumReq = (level,array)=>{
       const doubleLevel = (level-1)*2
