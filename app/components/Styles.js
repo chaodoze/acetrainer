@@ -106,7 +106,7 @@ const layout = StyleSheet.create({
     paddingLeft:20,
     paddingRight:20,
     marginRight:-10,
-    marginLeft:-10,
+    marginLeft:-10,height:30
   },
 
   icon: {

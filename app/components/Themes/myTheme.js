@@ -114,7 +114,7 @@ export default {
 
 
     // Header
-    iosToolbarBtnColor: '#007aff',
+    iosToolbarBtnColor: '#1d8696',
     toolbarDefaultBg: (Platform.OS === 'ios' ) ? '#F8F8F8' : '#4179F7',
     toolbarHeight: (Platform.OS === 'ios' ) ? 64 : 56,
     toolbarIconSize: (Platform.OS === 'ios' ) ? 20 : 22,

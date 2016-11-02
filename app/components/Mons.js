@@ -16,13 +16,7 @@ var styles = StyleSheet.create({
 class Mons extends Component {
   render() {
     return (
-      <NavigatorIOS
-          style={styles.container}
-          initialRoute={{
-      title: 'My Pokemons',
-      component: MonListP,
-      rightButtonTitle: 'Sort by',
-      }}/>
+      <MonListP />
     );
   }
 }

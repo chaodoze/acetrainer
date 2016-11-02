@@ -9,7 +9,7 @@ import {
   TouchableHighlight, TouchableOpacity
 } from 'react-native';
 import {
-  Container, Content, List, ListItem, Text, InputGroup,
+  Container, Header, Title, Content, List, ListItem, Text, InputGroup,
   Input, Icon, Badge, Button } from 'native-base';
 import PercentageCircle from 'react-native-percentage-circle';
 import myTheme from './Themes/myTheme';
@@ -123,7 +123,7 @@ var styles = StyleSheet.create({
     borderColor: '#faebcc', 
     padding:5,
     margin:10, 
-    marginTop:40, 
+    marginTop:10, 
     marginBottom:-30, 
     borderColor:'#faebcc', 
     borderWidth:1, 
@@ -143,6 +143,10 @@ var styles = StyleSheet.create({
 
 export const MonList = ({mons, onMonClick})=> (
   <Container style={styles.outerContainer}>
+    <Header theme={myTheme} iconRight style={{paddingTop:0}}>      
+      <Title>My Pokemons</Title>
+      <Button  transparent><Icon name='bars' /></Button>
+    </Header>
     <Content theme={myTheme}>
       <View style={styles.alert}>
         <Text style={styles.alertHeader}>Sorry, we couldn't read these screenshots correctly. Can you help us fix it?</Text>
