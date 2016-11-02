@@ -19,7 +19,6 @@ var styles = StyleSheet.create({
 
   outerContainer: {
     backgroundColor: '#fafcf8',
-    marginTop: 34,
   },
 
   container: {
@@ -143,7 +142,7 @@ var styles = StyleSheet.create({
 
 export const MonList = ({mons, onMonClick})=> (
   <Container style={styles.outerContainer}>
-    <Header theme={myTheme} iconRight style={{paddingTop:0}}>      
+    <Header theme={myTheme} iconRight>      
       <Title>My Pokemons</Title>
       <Button  transparent><Icon name='bars' /></Button>
     </Header>
