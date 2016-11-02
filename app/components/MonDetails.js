@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
+  AsyncStorage,
   StyleSheet,
   Image,
   ScrollView,
@@ -19,6 +20,7 @@ import PercentageCircle from 'react-native-percentage-circle';
 import multipleStyles from 'react-native-multiple-styles';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import {PokemonImager} from 'NativeModules'
+import {setTrainerLevel} from '../actions'
 import Move from './Move';
 import MonTypeBadge from './MonTypeBadge';
 import Grade from './Grade'
@@ -37,9 +39,12 @@ import {updateMon} from '../db/index'
 class MonDetails extends Component {
   changeTrainerLevel(newLevel) {
     console.log('changeTrainerLevel', newLevel)
-    const {mon} = this.props
+    const {mon, trainerLevel, onTrainerLevelChanged} = this.props
     const localIdentifier = mon.url.replace('ph://', '')
     PokemonImager.scanOne(newLevel, localIdentifier)
+    if (onTrainerLevelChanged && newLevel > trainerLevel) {
+      onTrainerLevelChanged(newLevel)
+    }
   }
 
   renderMovesetChart(mon) {
@@ -271,6 +276,10 @@ const mapStateToProps = ({selectedMon}) => ({
 const mapDispatchToProps = dispatch=> ({
   goBack: ()=>{
     Actions.pop()
+  },
+  onTrainerLevelChanged: (newLvl)=>{
+    AsyncStorage.setItem('TrainerLevel', JSON.stringify(newLvl)).then(()=>dispatch(setTrainerLevel(newLvl)))
+    .catch((r)=>console.error('setTrainerLevel err', r))
   }
 })
 
