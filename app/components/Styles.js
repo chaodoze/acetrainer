@@ -106,7 +106,8 @@ const layout = StyleSheet.create({
     paddingLeft:20,
     paddingRight:20,
     marginRight:-10,
-    marginLeft:-10,height:30
+    marginLeft:-10,
+    height:30
   },
 
   icon: {
@@ -114,6 +115,12 @@ const layout = StyleSheet.create({
     height:16,
     marginRight:5,
   },
+
+  icon_sm: {
+    width:16,
+    height:16,
+    marginRight:3,
+  }
 
 
 });

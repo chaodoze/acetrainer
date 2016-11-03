@@ -144,7 +144,7 @@ export const MonList = ({mons, onMonClick})=> (
   <Container style={styles.outerContainer}>
     <Header theme={myTheme} iconRight>      
       <Title>My Pokemons</Title>
-      <Button  transparent><Icon name='bars' /></Button>
+      <Button onPress={() => this.props.openDrawer()} transparent><Icon name='bars' /></Button>    
     </Header>
     <Content theme={myTheme}>
       <View style={styles.alert}>

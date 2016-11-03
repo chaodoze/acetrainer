@@ -70,7 +70,13 @@ export default class MoveSetChart extends Component {
           <View style={layout.modal_inner}>
             <View>
               <View style={layout.choice_title}>
-                <Text style={layout.choice_title_text}>MOVESET GRADE</Text>
+                <View style={{flexDirection:'row', justifyContent:'center'}}>
+                  <Text style={layout.choice_title_text}>MOVESET GRADE</Text>
+                  <Text style={{fontSize:10}}>by </Text>
+                  <Image source={require('./images/icons/ggfavicon.png')} style={layout.icon_sm} />
+                  <Text style={{fontSize:10}}>GamePress.GG</Text>
+
+                </View>
                 <Button style={layout.fixedClose} theme={myTheme} transparent small onPress={() => {this.closeModal()}}>
                   <Icon name='close' style={{color:'#333333'}}/>
                 </Button>
