@@ -91,7 +91,7 @@ class PokemonSpecie extends BaseRecord {
     family: {field:'family_id', klass:PokemonSpecie},
   }
   static findByFuzzyName(fuzzyName) {
-    return _.find(this.cache, specie=>fuzzyName.toLowerCase().indexOf(specie.displayName.toLowerCase()) >= 0)
+    return _.find(this.cache, specie=>fuzzyName.toLowerCase().indexOf(specie.displayName.toLowerCase()) >= 0) || null
   }
 
   constructor(rawData) {

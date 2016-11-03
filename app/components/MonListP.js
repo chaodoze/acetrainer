@@ -79,16 +79,18 @@ class MonListP extends Component {
     else if (status=='unauthorized') {
       return (<Text>Sorry, we don't have permission to access your photos</Text>)
     }
-    const {mons, onMonClick} = this.props
-    return <MonList mons={mons} onMonClick={onMonClick}/>
+    const {mons, unknowns, onMonClick} = this.props
+    console.log('unknowns', unknowns)
+    return <MonList mons={mons} unknowns={unknowns} onMonClick={onMonClick}/>
   }
 }
 
 const mapStateToProps = ({mons, trainerLevel}) => {
-  mons = _.values(mons)
+  [mons, unknowns] = _.partition(_.values(mons), (mon)=>mon.isKnown())
   return {
     mons,
     trainerLevel,
+    unknowns,
   }
 }
 
