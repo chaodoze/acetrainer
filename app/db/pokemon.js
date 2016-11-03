@@ -105,6 +105,10 @@ export default class Pokemon extends BaseRecord {
     return this.url.replace(/\//g,'')
   }
 
+  isKnown() {
+    return this.specie() && this.ivCandidates && this.ivCandidates.length > 0
+  }
+  
   update(stats) {
     Pokemon.cleanupStats(stats)
     _.forEach(stats, (val,key)=>{this[key] = val})
@@ -124,8 +128,8 @@ export default class Pokemon extends BaseRecord {
     else {
       const specie = PokemonSpecie.findByFuzzyName(this.Name)
       this.pokemon_number = specie && specie.id
+      return specie
     }
-    return PokemonSpecie.findByFuzzyName(this.Name)
   }
 
   moveFor(type) {

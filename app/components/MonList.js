@@ -63,21 +63,21 @@ var styles = StyleSheet.create({
   },
 
   cp: {
-    flexDirection:'row', 
+    flexDirection:'row',
     alignItems:'center'
   },
 
   mon_cp: {
     fontSize:11,
     marginRight:2,
-    color:'#999999',    
+    color:'#999999',
     fontFamily: 'Roboto',
   },
 
   mon_cp_value: {
     fontSize:18,
     fontWeight:'bold',
-    color:'#1d484d',    
+    color:'#1d484d',
     fontFamily: 'Roboto',
   },
 
@@ -91,10 +91,10 @@ var styles = StyleSheet.create({
   },
 
   stats: {
-    marginTop:-5, 
-    flexWrap: 'wrap', 
+    marginTop:-5,
+    flexWrap: 'wrap',
     alignItems: 'flex-start',
-    flexDirection:'row', 
+    flexDirection:'row',
     alignItems:'center',
     justifyContent:'center',
   },
@@ -118,56 +118,36 @@ var styles = StyleSheet.create({
   },
 
   alert: {
-    backgroundColor: '#fcf8e3', 
-    borderColor: '#faebcc', 
+    backgroundColor: '#fcf8e3',
+    borderColor: '#faebcc',
     padding:5,
-    margin:10, 
-    marginTop:10, 
-    marginBottom:-30, 
-    borderColor:'#faebcc', 
-    borderWidth:1, 
+    margin:10,
+    marginTop:10,
+    marginBottom:-30,
+    borderColor:'#faebcc',
+    borderWidth:1,
     borderRadius:5
   },
   alertHeader: {
     color: '#8a6d3b', fontSize:14, textAlign:'center'
   },
   errorThumbs: {
-    flexDirection:'row', 
-    marginTop:10, 
-    marginBottom:10, 
-    flexWrap:'wrap', 
+    flexDirection:'row',
+    marginTop:10,
+    marginBottom:10,
+    flexWrap:'wrap',
     alignItems:'flex-start',
   }
 });
 
-export const MonList = ({mons, onMonClick})=> (
+export const MonList = ({mons, unknowns, onMonClick})=> (
   <Container style={styles.outerContainer}>
-    <Header theme={myTheme} iconRight>      
+    <Header theme={myTheme} iconRight>
       <Title>My Pokemons</Title>
       <Button  transparent><Icon name='bars' /></Button>
     </Header>
     <Content theme={myTheme}>
-      <View style={styles.alert}>
-        <Text style={styles.alertHeader}>Sorry, we couldn't read these screenshots correctly. Can you help us fix it?</Text>
-        <View style={styles.errorThumbs}>
-          <TouchableHighlight>
-            <Image style={ styles.unknown_icon } source={require('./images/Thumbs/thumb10.png')} resizeMode='contain' />
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <Image style={ styles.unknown_icon } source={require('./images/Thumbs/thumb3.png')} resizeMode='contain' />
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <Image style={ styles.unknown_icon } source={require('./images/Thumbs/thumb4.png')} resizeMode='contain' />
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <Image style={ styles.unknown_icon } source={require('./images/Thumbs/thumb5.png')} resizeMode='contain' />
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <Image style={ styles.unknown_icon } source={require('./images/Thumbs/thumb6.png')} resizeMode='contain' />
-          </TouchableHighlight>
-        </View>
-        <Button small disabled>Or delete all</Button>
-      </View>
+      <UnknownList mons={unknowns} />
       <View style={styles.container}>
         {mons.map(mon=><Mon mon={mon} key={mon.url} onPress={()=>onMonClick(mon)}/>)}
         <View style={ styles.mon }></View>
@@ -192,11 +172,33 @@ const Mon = ({mon, onPress})=> (
         <Image source={require('./images/icons/shield.png')} style={styles.icon} />
         <Text style={styles.statsText}>B</Text>
         <View style={{width:20, height:20, marginLeft:5}}>
-          <PercentageCircle radius={10} percent={mon.avgIVPercent()} color={"#3498db"} textStyle={{fontSize: 7}}></PercentageCircle>  
-        </View>              
-      </View> 
+          <PercentageCircle radius={10} percent={mon.avgIVPercent()} color={"#3498db"} textStyle={{fontSize: 7}}></PercentageCircle>
+        </View>
+      </View>
     </View>
   </TouchableHighlight>
 
 
 )
+
+const UnknownMon = ({mon, onPress})=>(
+  <MonImage mon={mon} style={styles.unknown_icon} resizeMode='cover' />
+)
+
+const UnknownList = ({mons, onPress})=>{
+  console.log('unknown mons', mons)
+  if (mons.length > 0) {
+    return (
+      <View style={styles.alert}>
+        <Text style={styles.alertHeader}>Sorry, we couldn't read these screenshots correctly. Can you help us fix it?</Text>
+        <View style={styles.errorThumbs}>
+          {mons.map(unknown=><UnknownMon key={unknown.url} mon={unknown} />)}
+        </View>
+        <Button small disabled>Or delete all</Button>
+      </View>
+    )
+  }
+  else {
+    return false
+  }
+}
