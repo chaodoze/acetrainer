@@ -3,20 +3,17 @@ import {
   AppRegistry,
   StyleSheet,
   Image,
-  ScrollView,
   TextInput,
-  TouchableHighlight,
-  Modal,
   Dimensions,
   View
 } from 'react-native';
 
 import { 
-  List, ListItem, Text, InputGroup, 
-  Input, Icon, Button } from 'native-base';
+  List, ListItem, Text, Thumbnail, Input, Icon, Button } from 'native-base';
 import TrainerLevel from './TrainerLevel'
-import { Col, Row, Grid } from "react-native-easy-grid";
 import myTheme from './Themes/myTheme';
+import layout from './Styles';
+
 
 const window = Dimensions.get('window')
 const imageDimensions = {
@@ -40,51 +37,50 @@ class EditStats extends Component {
           </View>
           <View>
             <List theme={myTheme}>
-              <ListItem style={{ marginTop:80, borderColor:'transparent' }}>
-                <Grid>
-                 <Col size={2}>
-                  <View style={{marginRight:5}}>
-                    <Text style={styles.header5}>Pokemon Species</Text>
-                    <TextInput style={styles.editMonInput} />
-                    </View>
-                  </Col>
-                  <Col size={1}>
-                  <View style={{marginRight:5}}>
-                    <Text style={styles.header5}>CP</Text>
-                    <TextInput style={styles.editMonInput} />
-                    </View>
-                  </Col>
-                  <Col size={1}>
-                  <View>
-                    <Text style={styles.header5}>HP</Text>
-                    <TextInput style={styles.editMonInput}/>
-                    </View>
-                  </Col>                 
-                </Grid>         
+              <ListItem style={[styles.firstItem, layout.alignLeft, styles.noBorder]}>
+                <View style={{flex:2}}>
+                  <Text style={styles.header5}>Pokemon Species</Text>
+                  <TextInput style={styles.editMonInput} />
+                </View>
+                <View style={{flex:1}}>
+                  <Text style={styles.header5}>CP</Text>
+                  <TextInput style={styles.editMonInput} />
+                </View>
+                <View style={{flex:1}}>
+                  <Text style={styles.header5}>HP</Text>
+                  <TextInput style={styles.editMonInput}/>
+                </View> 
               </ListItem>
-              <ListItem style={{ borderColor:'transparent' }}>
-                <Grid>
-                 <Col size={1}>
-                  <View style={{marginRight:5}}>
-                  </View>
-                </Col>
-                <Col Col size={2} style={{justifyContent: 'flex-end', alignItems:'flex-end', flexDirection:'row'}}>
-                  <View style={{marginRight:5}}>
-                    <TouchableHighlight onPress={() => {
-                    this.setModalVisible(!this.state.modalVisible)
-                    }}>
-                    <View style={{marginTop:18}}><Button small >Update</Button></View>
-                    </TouchableHighlight>
-                  </View>
-                  <View style={{marginRight:5}}>
-                    <TouchableHighlight onPress={() => {
-                    this.setModalVisible(!this.state.modalVisible)
-                    }}>
-                    <View style={{marginTop:18}}><Button small bordered info >Cancel</Button></View>
-                    </TouchableHighlight>
-                  </View>
-                </Col>
-              </Grid>         
+              <ListItem style={styles.suggestMon} >
+                <List style={{backgroundColor:'#ffffff'}}>
+                  <ListItem>
+                    <Thumbnail source={require('./images/pokemon_cc/1.png')} />
+                    <Text>Bulbasaur</Text>
+                  </ListItem>
+                  <ListItem>
+                    <Thumbnail source={require('./images/pokemon_cc/2.png')} />
+                    <Text>IvySaur</Text>
+                  </ListItem>
+                  <ListItem>
+                    <Thumbnail source={require('./images/pokemon_cc/3.png')} />
+                    <Text>Venasaur</Text>
+                  </ListItem>
+                  <ListItem>
+                    <Thumbnail source={require('./images/pokemon_cc/4.png')} />
+                    <Text>Charmandar</Text>
+                  </ListItem>
+                </List>
+              </ListItem>
+
+              <ListItem style={[layout.alignRight, styles.noBorder]}>
+                <View style={{flex:1}}>
+                  <Text style={styles.header5}>Your Trainer Level</Text>
+                  <TextInput style={[styles.editMonInput, styles.levelInput]}/>
+                </View> 
+                <View style={layout.alignRight}>
+                  <Button small  style={styles.button}>Update</Button>
+                  <Button small bordered info style={styles.button}>Cancel</Button>
+                </View>
               </ListItem>
             </List>
           </View>
@@ -100,17 +96,35 @@ var styles = StyleSheet.create({
   },
 
   header5: {
-    fontWeight:'bold', fontSize:12, color:'#ffffff',
+    fontWeight:'bold', fontSize:13, color:'#ffffff',
   },
 
   editMonInput: {
     height: 30, borderColor: 'gray', borderWidth: 1, borderRadius:4, padding:3,
-    color:'#ffffff'
+    color:'#ffffff', marginRight:5
+  },
+  levelInput: {
+    width:170,
   },
   trash: {
     position:'absolute', top:20, right:10,
-  }
-});
+  },
+  firstItem: {
+    marginTop:80, borderColor:'transparent'
+  },
+  noBorder: {
+    borderColor:'transparent'
+  },
+  button: {
+    marginRight:5,
+    marginTop:16
+  },
 
+  suggestMon: {
+    borderColor:'transparent', marginRight:5,
+    marginTop:-14
+  },
+
+});
 
 module.exports = EditStats;
