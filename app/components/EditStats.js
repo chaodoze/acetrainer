@@ -52,20 +52,20 @@ class EditStats extends Component {
                 </View> 
               </ListItem>
               <ListItem style={styles.suggestMon} >
-                <List style={{backgroundColor:'#ffffff'}}>
-                  <ListItem>
+                <List style={{backgroundColor:'rgba(255,255,255,0.6)'}}>
+                  <ListItem style={styles.suggestMonList}>
                     <Thumbnail source={require('./images/pokemon_cc/1.png')} />
                     <Text>Bulbasaur</Text>
                   </ListItem>
-                  <ListItem>
+                  <ListItem style={styles.suggestMonList}>
                     <Thumbnail source={require('./images/pokemon_cc/2.png')} />
                     <Text>IvySaur</Text>
                   </ListItem>
-                  <ListItem>
+                  <ListItem style={styles.suggestMonList}>
                     <Thumbnail source={require('./images/pokemon_cc/3.png')} />
                     <Text>Venasaur</Text>
                   </ListItem>
-                  <ListItem>
+                  <ListItem style={styles.suggestMonList}>
                     <Thumbnail source={require('./images/pokemon_cc/4.png')} />
                     <Text>Charmandar</Text>
                   </ListItem>
@@ -123,6 +123,11 @@ var styles = StyleSheet.create({
   suggestMon: {
     borderColor:'transparent', marginRight:5,
     marginTop:-14
+  },
+
+  suggestMonList: {
+    borderColor:'#999999',
+    marginLeft:0,
   },
 
 });
