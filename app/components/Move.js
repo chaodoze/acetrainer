@@ -6,7 +6,6 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import MonTypeBadge from './MonTypeBadge'
 import ChoiceModal from './ChoiceModal'
 import layout from './Styles';
-import multipleStyles from 'react-native-multiple-styles';
 import Pokemon from '../db/pokemon'
 
 

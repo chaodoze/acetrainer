@@ -17,7 +17,6 @@ import {
 import {Actions} from 'react-native-router-flux';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import PercentageCircle from 'react-native-percentage-circle';
-import multipleStyles from 'react-native-multiple-styles';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import {PokemonImager} from 'NativeModules'
 import {setTrainerLevel} from '../actions'
@@ -94,7 +93,7 @@ class MonDetails extends Component {
         )}>
         <List>
           <TrainerLevel level={trainerLevel} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
-          <ListItem style={styles.mon_data}>
+          <ListItem style={styles.mon_data} theme={myTheme}>
             <Grid >
               <Col size={7} style={{flexWrap: 'wrap',  justifyContent: 'flex-start', alignItems: 'center',flexDirection:'row',justifyContent:'flex-start'}} >
                 <Text style={styles.mon_stat}>CP</Text>
@@ -129,7 +128,7 @@ class MonDetails extends Component {
                 <Text>Attack </Text>
                 <Grade rank={mon.attackRank()} />
               </Col>
-              <Col size={2} style={multipleStyles(layout.alignCenter, styles.defence)}>
+              <Col size={2} style={[layout.alignCenter, styles.defence]}>
                 <Image source={require('./images/icons/shield.png')} style={layout.icon} />
                 <Text style={styles.defence_text}>Defence</Text>
                 <Grade rank={mon.defenseRank()} />
@@ -150,7 +149,7 @@ class MonDetails extends Component {
           </ListItem>
           <ListItem style={layout.alignLeft} >
             <View style={{flex:2}}>
-              <Badge theme={myTheme} style={multipleStyles(styles.t_dragon, styles.type)}>
+              <Badge theme={myTheme} style={[styles.t_dragon, styles.type]}>
                 Dragon
               </Badge>
             </View>
@@ -171,7 +170,7 @@ class MonDetails extends Component {
           </ListItem>
           <ListItem style={layout.alignLeft}>
             <View style={{flex:2}}>
-              <Badge theme={myTheme} style={multipleStyles(styles.t_water, styles.type)}>
+              <Badge theme={myTheme} style={[styles.t_water, styles.type]}>
                 Water
               </Badge>
             </View>

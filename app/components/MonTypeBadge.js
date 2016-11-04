@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native'
 import {Badge, Icon} from 'native-base'
-import multipleStyles from 'react-native-multiple-styles';
 import myTheme from './Themes/myTheme';
 
 export default MonTypeBadge = ({pokemonType, stab}) => {
@@ -10,7 +9,7 @@ export default MonTypeBadge = ({pokemonType, stab}) => {
 
     const style = `t_${pokemonType.displayName.toLowerCase()}`
     return (
-        <Badge theme={myTheme} style={multipleStyles(styles[style], styles.type)}>
+        <Badge theme={myTheme} style={[styles[style], styles.type]}>
           {pokemonType.displayName} {showStab}
         </Badge>
     )

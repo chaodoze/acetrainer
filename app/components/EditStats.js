@@ -39,7 +39,7 @@ class EditStats extends Component {
             <List theme={myTheme}>
               <ListItem style={[styles.firstItem, layout.alignLeft, styles.noBorder]}>
                 <View style={{flex:2}}>
-                  <Text style={styles.header5}>Pokemon Species</Text>
+                  <Text style={styles.header5}>Pokémon Species</Text>
                   <TextInput style={styles.editMonInput} />
                 </View>
                 <View style={{flex:1}}>

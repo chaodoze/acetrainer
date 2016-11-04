@@ -143,7 +143,7 @@ var styles = StyleSheet.create({
 export const MonList = ({mons, unknowns, onMonClick})=> (
   <Container style={styles.outerContainer}>
     <Header theme={myTheme} iconRight>
-      <Title>My Pokemons</Title>
+      <Title>My Pokémons</Title>
       <Button onPress={() => this.props.openDrawer()} transparent><Icon name='bars' /></Button>    
     </Header>
     <Content theme={myTheme}>
@@ -168,9 +168,9 @@ const Mon = ({mon, onPress})=> (
       <Text style={ styles.mon_label }>{mon.Name}</Text>
       <View style={styles.stats}>
         <Image source={require('./images/icons/sword.png')} style={styles.icon} />
-        <Text style={styles.statsText}>A</Text>
+        <View><Text style={styles.statsText}>A</Text></View>
         <Image source={require('./images/icons/shield.png')} style={styles.icon} />
-        <Text style={styles.statsText}>B</Text>
+        <View><Text style={styles.statsText}>B</Text></View>
         <View style={{width:20, height:20, marginLeft:5}}>
           <PercentageCircle radius={10} percent={mon.avgIVPercent()} color={"#3498db"} textStyle={{fontSize: 7}}></PercentageCircle>
         </View>

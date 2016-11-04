@@ -12,7 +12,6 @@ import { List, ListItem, Text, Icon, Button } from 'native-base';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import myTheme from './Themes/myTheme';
 import layout from './Styles';
-import multipleStyles from 'react-native-multiple-styles';
 import Grade from './Grade'
 import {PokemonSpecie, PokemonMove} from '../db/pogo.js'
 
@@ -41,7 +40,7 @@ export default class MoveSetChart extends Component {
       <List>
         {movesets.map(moveset=>{
           return (
-            <ListItem key={`${moveset.quick}-${moveset.charge}`} style={multipleStyles(styles.movesetList, isCurrentMoveset(moveset) && styles.yourmove)}>
+            <ListItem key={`${moveset.quick}-${moveset.charge}`} style={[styles.movesetList, isCurrentMoveset(moveset) && styles.yourmove]}>
               <Grid>
                 <Col size={3}><Text style={styles.cell}>{moveset.quick} / {moveset.charge}</Text></Col>
                 <Col size={1}  style={layout.alignRight}>
@@ -72,10 +71,7 @@ export default class MoveSetChart extends Component {
               <View style={layout.choice_title}>
                 <View style={{flexDirection:'row', justifyContent:'center'}}>
                   <Text style={layout.choice_title_text}>MOVESET GRADE</Text>
-                  <Text style={{fontSize:10}}>by </Text>
-                  <Image source={require('./images/icons/ggfavicon.png')} style={layout.icon_sm} />
-                  <Text style={{fontSize:10}}>GamePress.GG</Text>
-
+                  <Text style={{fontSize:10}}>by Pokémon Go Info</Text>
                 </View>
                 <Button style={layout.fixedClose} theme={myTheme} transparent small onPress={() => {this.closeModal()}}>
                   <Icon name='close' style={{color:'#333333'}}/>
@@ -140,7 +136,7 @@ var styles = StyleSheet.create({
   grade_text: { color:'#ffffff'},
 
   movesetList:{
-    marginLeft:-10, marginRight:-10, paddingLeft:20, paddingRight:20, height:40
+    marginLeft:-10, marginRight:-10, paddingLeft:20, paddingRight:20, height:42
   },
 
   yourmove: {

@@ -32,18 +32,18 @@ class Credits extends Component {
         <Card>
         <CardItem>                       
             <Thumbnail source={require('./images/icons/iconfinderfavicon.png')} />
-            <Text>Pokemon icons by Geovanny Gavilanes</Text>
+            <Text>Pokémon icons by Geovanny Gavilanes</Text>
             <Text note>https://www.iconfinder.com/GeoGavilanes</Text>
         </CardItem>
         <CardItem>                       
             <Thumbnail source={require('./images/icons/ggfavicon.png')} />
-            <Text>Game Press Pokemon Go</Text>
+            <Text>Game Press Pokémon Go</Text>
             <Text note>https://pokemongo.gamepress.gg</Text>
         </CardItem>
 
         <CardItem>                       
             <Thumbnail source={require('./images/icons/gameinfofavicon.png')} />
-            <Text>Pokemon Game Info</Text>
+            <Text>Pokémon Game Info</Text>
             <Text note>https://pokemon.gameinfo.io</Text>
         </CardItem>                
         </Card>

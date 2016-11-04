@@ -1,5 +1,4 @@
 import React from 'react';
-import multipleStyles from 'react-native-multiple-styles';
 import {StyleSheet, View} from 'react-native';
 import {Text} from 'native-base';
 
@@ -25,9 +24,10 @@ export default Grade = ({rank}) => {
   const grade = rankToGrade(rank)
   const styleGrade = `grade_${grade.toLowerCase()}`
   return (
-    <View style={multipleStyles(styles.grade_badge, styles[styleGrade])}>
+    <View style={[styles.grade_badge, styles[styleGrade]]}>
       <Text style={styles.grade_text}>{grade}</Text>
-    </View>)
+    </View>
+  )
 }
 
 Grade.propTypes = {
@@ -35,64 +35,6 @@ Grade.propTypes = {
 }
 
 var styles = StyleSheet.create({
-
- img_container: {
-    flex: 1,
-    width: undefined,
-    height: undefined,
-    top:0,
-  },
-  overlay_box: {
-    backgroundColor:'rgba(0, 0, 0, 0.6)',
-    position:'absolute',
-    top:0,
-    left:0,
-    right:0,
-    left:0,
-    height:200,
-  },
-
-  overlay_box_text: {
-    position:'absolute',
-    top:70,
-    left:0,
-    right:0,
-    left:0,
-  },
-
-  mon_data_box: {
-    marginTop:200,
-    backgroundColor:'#ffffff',
-  },
-
-  mon_name: {
-    color:'#ffffff',
-    fontSize:28,
-    lineHeight:32,
-    marginBottom:10,
-    fontWeight:'bold',
-    textAlign :'center',
-  },
-
-  mon_data: {
-    opacity:0.7, padding:5, borderBottomWidth:0,
-  },
-
-  stats: { fontWeight:'bold'},
-  level: { color:'#666', fontSize:13 },
-
-  mon_analysis: {
-    backgroundColor:'#ffffff',
-  },
-  move_grade: {
-     paddingTop:15,
-     paddingBottom:15,
-     borderBottomWidth:0,
-  },
-
-  grade_icon: {
-    fontSize: 18, marginRight:4
-  },
 
   grade_badge: {
     padding:7,
@@ -108,6 +50,12 @@ var styles = StyleSheet.create({
   grade_d: { backgroundColor:'#dea300'},
 
   grade_text: { color:'#ffffff'},
+  
+  grade_text_no_badge: {
+    fontSize:12,
+    color:'#888888',
+    fontFamily: 'Roboto-Regular',
+  },
 
   defence: { opacity:0.3, marginLeft:30},
 
