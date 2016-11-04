@@ -142,12 +142,58 @@ class MonDetails extends Component {
           <View style={layout.list_header}>
             <Text style={layout.list_headerTitle}>BATTLE</Text>
           </View>
-          <ListItem >
-            <View>
-              <Text style={styles.header4}>STRONG AGAINST</Text>
-              <View style={styles.many_types}>
-                {mon.strongAgainst().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
+{/*new battle chart */}
+          <ListItem style={layout.alignLeft} >
+            <Text style={{flex:2, fontWeight:'bold', fontSize:12}}>Good Against</Text>
+            <Text style={{flex:2, fontWeight:'bold', fontSize:12}}>Effectiveness</Text>
+            <Text style={{flex:3, fontWeight:'bold', fontSize:12}}>Top Tier Mons</Text>
+          </ListItem>
+          <ListItem style={layout.alignLeft} >
+            <View style={{flex:2}}>
+              <Badge theme={myTheme} style={multipleStyles(styles.t_dragon, styles.type)}>
+                Dragon
+              </Badge>
+            </View>
+            <View style={{flex:2}}>
+              <View style={layout.alignLeft}>
+                <Image source={require('./images/icons/sword.png')} style={layout.icon_ef} />
+                <Image source={require('./images/icons/sword.png')} style={layout.icon_ef} />
+                <Image source={require('./images/icons/star.png')} style={layout.icon_ef} />
+                <Image source={require('./images/icons/star.png')} style={layout.icon_ef} />
+                <Image source={require('./images/icons/shield.png')} style={layout.icon_ef} />
               </View>
+            </View>
+            <View style={{flex:3}}>
+              <View style={layout.alignLeft}>
+                <Image source={require('./images/pokemon_cc/149.png')} style={layout.icon_mon} />
+              </View>
+            </View>
+          </ListItem>
+          <ListItem style={layout.alignLeft}>
+            <View style={{flex:2}}>
+              <Badge theme={myTheme} style={multipleStyles(styles.t_water, styles.type)}>
+                Water
+              </Badge>
+            </View>
+            <View style={{flex:2}}>
+              <View style={layout.alignLeft}>
+                <Image source={require('./images/icons/sword.png')} style={layout.icon_ef} />
+                <Image source={require('./images/icons/sword.png')} style={layout.icon_ef} />
+                <Image source={require('./images/icons/shield.png')} style={layout.icon_ef} />
+              </View>
+            </View>
+            <View style={{flex:3}}>
+              <View style={layout.alignLeft}>
+                <Image source={require('./images/pokemon_cc/130.png')} style={layout.icon_mon} />
+                <Image source={require('./images/pokemon_cc/131.png')} style={layout.icon_mon} />
+                <Image source={require('./images/pokemon_cc/134.png')} style={layout.icon_mon} />
+              </View>
+            </View>
+          </ListItem>
+{/*end of new battle chart */}
+          <ListItem style={layout.alignLeft} >
+            <View style={styles.many_types}>
+              {mon.strongAgainst().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
             </View>
           </ListItem>
           <ListItem style={styles.last_row}>
@@ -264,6 +310,27 @@ var styles = StyleSheet.create({
     paddingRight:10,
     fontSize:16,
   },
+
+  type: { marginRight:2, marginBottom:2,},
+  t_normal: { backgroundColor:'#a8a878'},
+  t_fighting: { backgroundColor:'#c02038'},
+  t_flying: { backgroundColor:'#a28ae7'},
+  t_poison: { backgroundColor:'#a040a0'},
+  t_ground: { backgroundColor:'#e0c068'},
+  t_rock: { backgroundColor:'#b8a038'},
+  t_bug: { backgroundColor:'#a8b820'},
+  t_ghost: { backgroundColor:'#705898'},
+  t_steel: { backgroundColor:'#b8b8d0'},
+  t_fire: { backgroundColor:'#f08030'},
+  t_water: { backgroundColor:'#6890f0'},
+  t_grass: { backgroundColor:'#78c850'},
+  t_electric: { backgroundColor:'#f8d030'},
+  t_psychic: { backgroundColor:'#f85888'},
+  t_ice: { backgroundColor:'#5bc0de'},
+  t_dragon: { backgroundColor:'#7038f8'},
+  t_dark: { backgroundColor:'#705848'},
+  t_fairy: { backgroundColor:'#ee99ac'},
+  t_unknown: { backgroundColor:'#cccccc'},
 
 });
 

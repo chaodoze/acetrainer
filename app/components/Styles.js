@@ -120,8 +120,17 @@ const layout = StyleSheet.create({
     width:16,
     height:16,
     marginRight:3,
+  },
+  icon_ef: {
+    width:16,
+    height:16,
+    marginTop:5,
+    marginRight:2
+  },
+  icon_mon: {
+    width:30,
+    height:30,
   }
-
 
 });
 
