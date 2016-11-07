@@ -94,6 +94,10 @@ class PokemonSpecie extends BaseRecord {
     return _.find(this.cache, specie=>fuzzyName.toLowerCase().indexOf(specie.displayName.toLowerCase()) >= 0) || null
   }
 
+  static suggestByName(partialName) {
+    return _.filter(this.cache, specie=>specie.displayName.toLowerCase().indexOf(partialName.toLowerCase()) >= 0)
+  }
+
   constructor(rawData) {
     super(rawData)
     this.id = this.pokemon_id
@@ -103,6 +107,9 @@ class PokemonSpecie extends BaseRecord {
     this.baseDefense = this.stats.base_defense
   }
 
+  iconUrl() {
+    return `pokemon_cc/${this.id}.png`
+  }
   canEvolve() {
     return this.evolution_ids.length > 0
   }

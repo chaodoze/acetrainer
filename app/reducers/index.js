@@ -38,6 +38,11 @@ function trainerLevel(state=null, action) {
   if (action.type == 'SET_TRAINER_LEVEL') {
     return action.level
   }
+  else if (action.type == 'MON_LEVEL_RAISED' && action.level > state) {
+    AsyncStorage.setItem('TrainerLevel', JSON.stringify(newLvl))
+      .catch((r)=>console.error('setTrainerLevel err', r))
+    return action.level
+  }
   return state
 }
 

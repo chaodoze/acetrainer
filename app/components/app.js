@@ -6,6 +6,8 @@ import * as db from '../db'
 import Mons from './Mons'
 import MonDetails from './MonDetails'
 import Intro from './Intro'
+import EditStats from './EditStats'
+import MyDrawer from './MyDrawer'
 
 const RouterWithRedux = connect()(Router)
 const store = configureStore()
@@ -19,6 +21,8 @@ export default function App() {
           <Scene key="intro" component={Intro} title="Intro" initial={true} />
           <Scene key="mons" component={Mons} title="Mons" />
           <Scene key="mondetails" component={MonDetails} title="Monster Info" />
+          <Scene key="mydrawer" component={MyDrawer} title="MyDrawer" initial={false} />
+          <Scene key="editstats" component={EditStats} title="Edit Mon Stats" />
         </Scene>
       </RouterWithRedux>
     </Provider>

@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -340,13 +341,12 @@ const mapStateToProps = ({selectedMon}) => ({
   trainerLevel: selectedMon.trainerLvl(),
 })
 const mapDispatchToProps = dispatch=> ({
-  goBack: ()=>{
+  goBack: _.once(()=>{
     Actions.pop()
-  },
+  }),
   onTrainerLevelChanged: (newLvl)=>{
-    AsyncStorage.setItem('TrainerLevel', JSON.stringify(newLvl)).then(()=>dispatch(setTrainerLevel(newLvl)))
-    .catch((r)=>console.error('setTrainerLevel err', r))
-  }
+    dispatch(monLevelRaised(level))
+  },
 })
 
 MonDetails = connect(mapStateToProps,mapDispatchToProps)(MonDetails)

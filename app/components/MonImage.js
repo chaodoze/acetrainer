@@ -3,7 +3,8 @@ import {Image} from 'react-native'
 import Pokemon from '../db/pokemon.js'
 
 export default MonImage = ({mon, children, ...rest})=>{
-  let uri = mon.specie() ? `pokemon_cc/${mon.specie().id}.png` : mon.url
+  const specie = mon.specie()
+  let uri = specie ? specie.iconUrl() : mon.url
   return (
     <Image source={{uri}} {...rest}>
       {children}

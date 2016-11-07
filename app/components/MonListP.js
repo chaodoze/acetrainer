@@ -79,26 +79,34 @@ class MonListP extends Component {
     else if (status=='unauthorized') {
       return (<Text>Sorry, we don't have permission to access your photos</Text>)
     }
-    const {mons, unknowns, onMonClick} = this.props
-    console.log('unknowns', unknowns)
-    return <MonList mons={mons} unknowns={unknowns} onMonClick={onMonClick}/>
+    const {mons, unknowns, onMonClick, onUnknownClick, onDeleteUnknowns} = this.props
+    return <MonList mons={mons} unknowns={unknowns} onMonClick={onMonClick} onUnknownClick={onUnknownClick} onDeleteUnknowns={onDeleteUnknowns} />
   }
 }
 
 const mapStateToProps = ({mons, trainerLevel}) => {
   [mons, unknowns] = _.partition(_.values(mons), (mon)=>mon.isKnown())
+  const onDeleteUnknowns = ()=>{
+    console.log('mstp onDeleteUnknowns', unknowns)
+    unknowns.forEach(unknown=>unknown.destroy())
+  }
   return {
     mons,
     trainerLevel,
     unknowns,
+    onDeleteUnknowns,
   }
 }
 
-const mapDispatchToProps = dispatch=> ({
+const mapDispatchToProps = (dispatch, ownProps)=> ({
   onMonClick: (mon)=>{
     dispatch(selectMon(mon))
     Actions.mondetails()
-  }
+  },
+  onUnknownClick: mon=>{
+    dispatch(selectMon(mon))
+    Actions.editstats()
+  },
 })
 
 MonListP = connect(mapStateToProps, mapDispatchToProps)(MonListP)
