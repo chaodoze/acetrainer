@@ -70,7 +70,7 @@ const mapStateToProps = ({uid}) => {
 const mapDispatchToProps = dispatch=> ({
   onProceed: (level)=>{
     dispatch(setTrainerLevel(level))
-    Actions.mons()
+    Actions.mydrawer()
   }
 })
 

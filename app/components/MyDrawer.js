@@ -7,7 +7,7 @@ import MonListP from './MonListP'
 import Credits from './Credits'
 import Drawer from 'react-native-drawer'
 
-class MyDrawer extends Component {  
+class MyDrawer extends Component {
   render () {
     return (
       <Drawer
@@ -32,11 +32,10 @@ class MyDrawer extends Component {
           },
         })}
         >
-        <Credits openDrawer={ () => this._drawer.open() } />
+        <MonListP onOpenDrawer={ () => this._drawer.open() } />
       </Drawer>
     )
   }
 }
 
 export default MyDrawer;
-

@@ -58,7 +58,6 @@ class MonDetails extends Component {
 
   render() {
     const {mon, goBack, trainerLevel} = this.props
-    console.log('render mon details', mon.averageStats())
     return (
       <ParallaxScrollView
         stickyHeaderHeight={ STICKY_HEADER_HEIGHT }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
+import {Actions} from 'react-native-router-flux';
 
 import { Container, Content, List, ListItem, Button, Header, Title, Text } from 'native-base';
 
@@ -14,7 +15,7 @@ class ControlPanel extends Component {
               <ListItem button style={styles.navItem}>
                   <Text style={styles.navItemText}>Help</Text>
               </ListItem>
-              <ListItem button style={styles.navItem}>
+              <ListItem button style={styles.navItem} onPress={()=>Actions.credits()}>
                   <Text style={styles.navItemText}>Credits</Text>
               </ListItem>
           </List>

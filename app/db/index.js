@@ -18,6 +18,7 @@ export const init = (dispatch) => {
     if (uuid) {
       subscribedUid = uuid
       subscribeToMons(dispatch)
+      console.log('uuid', subscribedUid)
     }
   })
   firebase.auth().onAuthStateChanged(user=>{

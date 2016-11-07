@@ -8,6 +8,7 @@ import MonDetails from './MonDetails'
 import Intro from './Intro'
 import EditStats from './EditStats'
 import MyDrawer from './MyDrawer'
+import Credits from './Credits'
 
 const RouterWithRedux = connect()(Router)
 const store = configureStore()
@@ -19,10 +20,10 @@ export default function App() {
       <RouterWithRedux>
         <Scene key="root" hideNavBar={true}>
           <Scene key="intro" component={Intro} title="Intro" initial={true} />
-          <Scene key="mons" component={Mons} title="Mons" />
           <Scene key="mondetails" component={MonDetails} title="Monster Info" />
-          <Scene key="mydrawer" component={MyDrawer} title="MyDrawer" initial={false} />
+          <Scene key="mydrawer" component={MyDrawer} title="MyDrawer"/>
           <Scene key="editstats" component={EditStats} title="Edit Mon Stats" />
+          <Scene key="credits" component={Credits} title="Credits" />
         </Scene>
       </RouterWithRedux>
     </Provider>
