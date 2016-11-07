@@ -11,7 +11,6 @@ const Permissions = require('react-native-permissions')
 import { connect } from 'react-redux';
 import {Actions} from 'react-native-router-flux'
 
-import EventMitter from 'EventEmitter'
 import {MonList} from './MonList'
 import {PokemonImager} from 'NativeModules'
 import Pokemon from '../db/pokemon'

@@ -7,6 +7,7 @@ import {
   TouchableHighlight, TouchableOpacity
 
 } from 'react-native';
+import {Actions} from 'react-native-router-flux'
 
 import {
   Container, Content, Card, CardItem, Thumbnail, Button, Icon, Header, Title, Text } from 'native-base';
@@ -24,35 +25,34 @@ class Credits extends Component {
     return (
       <Container theme={myTheme}>
         <Header >
-          <Button onPress={() => this.props.openDrawer()} transparent><Icon name='chevron-left' /></Button>    
+          <Button onPress={() => Actions.pop()} transparent><Icon name='chevron-left' /></Button>
           <Title>Credits</Title>
         </Header>
         <Content theme={myTheme} style={styles.content}>
             <Text style={styles.headerText}>Thanks to all of these open source projects and Creative Common Licensed Images</Text>
         <Card>
-        <CardItem>                       
+        <CardItem>
             <Thumbnail source={require('./images/icons/iconfinderfavicon.png')} />
             <Text>Pokémon icons by Geovanny Gavilanes</Text>
             <Text note>https://www.iconfinder.com/GeoGavilanes</Text>
         </CardItem>
-        <CardItem>                       
+        <CardItem>
             <Thumbnail source={require('./images/icons/ggfavicon.png')} />
             <Text>Game Press Pokémon Go</Text>
             <Text note>https://pokemongo.gamepress.gg</Text>
         </CardItem>
 
-        <CardItem>                       
+        <CardItem>
             <Thumbnail source={require('./images/icons/gameinfofavicon.png')} />
             <Text>Pokémon Game Info</Text>
             <Text note>https://pokemon.gameinfo.io</Text>
-        </CardItem>                
+        </CardItem>
         </Card>
 
-        </Content>          
+        </Content>
       </Container>
     );
   }
 }
- 
-module.exports = Credits;
 
+module.exports = Credits;
