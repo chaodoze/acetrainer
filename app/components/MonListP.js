@@ -10,6 +10,7 @@ import {
 const Permissions = require('react-native-permissions')
 import { connect } from 'react-redux';
 import {Actions} from 'react-native-router-flux'
+
 import {MonList} from './MonList'
 import {PokemonImager} from 'NativeModules'
 import Pokemon from '../db/pokemon'
@@ -27,8 +28,8 @@ class MonListP extends Component {
     let {trainerLevel} = this.props
     trainerLevel = parseInt(trainerLevel, 10)
     AsyncStorage.getItem('MonListP:lastScan').then( lastScan=>{
+      console.log('scanForScreenshots', lastScan)
       lastScan = parseInt(lastScan,10) || moment().subtract(20, 'days').unix()*1000
-      console.log('reactivated from', new Date(lastScan))
       PokemonImager.scan(trainerLevel, lastScan)
       AsyncStorage.setItem('MonListP:lastScan', ''+Date.now())
     })
@@ -47,9 +48,7 @@ class MonListP extends Component {
   componentDidMount() {
     Permissions.getPermissionStatus('photo').then((r)=>console.log('photo perm', r))
     Permissions.requestPermission('photo').then(response=>{
-      console.log('request perm', response)
       if (response == 'authorized') {
-        console.log('got perm',response)
         this.reactToAppStates()
         this.setState({status:'good'})
         this.scanForScreenshots()
@@ -79,15 +78,15 @@ class MonListP extends Component {
     else if (status=='unauthorized') {
       return (<Text>Sorry, we don't have permission to access your photos</Text>)
     }
-    const {mons, unknowns, onMonClick, onUnknownClick, onDeleteUnknowns} = this.props
-    return <MonList mons={mons} unknowns={unknowns} onMonClick={onMonClick} onUnknownClick={onUnknownClick} onDeleteUnknowns={onDeleteUnknowns} />
+    const {mons, unknowns, onMonClick, onUnknownClick, onDeleteUnknowns, onOpenDrawer} = this.props
+    console.log('onOpenDrawer', onOpenDrawer)
+    return <MonList mons={mons} unknowns={unknowns} onMonClick={onMonClick} onUnknownClick={onUnknownClick} onDeleteUnknowns={onDeleteUnknowns} onOpenDrawer={onOpenDrawer}/>
   }
 }
 
-const mapStateToProps = ({mons, trainerLevel}) => {
+const mapStateToProps = ({mons, trainerLevel}, ownProps) => {
   [mons, unknowns] = _.partition(_.values(mons), (mon)=>mon.isKnown())
   const onDeleteUnknowns = ()=>{
-    console.log('mstp onDeleteUnknowns', unknowns)
     unknowns.forEach(unknown=>unknown.destroy())
   }
   return {

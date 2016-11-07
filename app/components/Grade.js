@@ -17,7 +17,7 @@ const rankToGrade = rank=>{
   }
 }
 
-export default Grade = ({rank}) => {
+export default Grade = ({rank, small}) => {
   if (!rank) {
     return <Text>?</Text>
   }

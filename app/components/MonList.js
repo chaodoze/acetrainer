@@ -4,7 +4,6 @@ import {
   View,
   ScrollView,
   Image,
-  NativeAppEventEmitter,
   TouchableHighlight, TouchableOpacity
 } from 'react-native';
 import {
@@ -139,11 +138,11 @@ var styles = StyleSheet.create({
   }
 });
 
-export const MonList = ({mons, unknowns, onMonClick, onUnknownClick, onDeleteUnknowns})=> (
+export const MonList = ({mons, unknowns, onMonClick, onUnknownClick, onDeleteUnknowns, onOpenDrawer})=> (
   <Container style={styles.outerContainer}>
     <Header theme={myTheme} iconRight>
       <Title>My Pokémons</Title>
-      <Button onPress={() => this.props.openDrawer()} transparent><Icon name='bars' /></Button>
+      <Button onPress={onOpenDrawer} transparent><Icon name='bars' /></Button>
     </Header>
     <Content theme={myTheme}>
       <UnknownList mons={unknowns} onPress={onUnknownClick} onDeleteUnknowns={onDeleteUnknowns} />
