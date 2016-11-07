@@ -39,8 +39,8 @@ class EditStats extends Component {
             <List theme={myTheme}>
               <ListItem style={[styles.firstItem, layout.alignLeft, styles.noBorder]}>
                 <View style={{flex:2}}>
-                  <Text style={styles.header5}>Pokémon Species</Text>
-                  <TextInput style={styles.editMonInput} />
+                  <Text style={[styles.header5,styles.errorLabel] }>Pokémon Species</Text>
+                  <TextInput style={[styles.editMonInput, styles.errorInput]} />
                 </View>
                 <View style={{flex:1}}>
                   <Text style={styles.header5}>CP</Text>
@@ -71,7 +71,6 @@ class EditStats extends Component {
                   </ListItem>
                 </List>
               </ListItem>
-
               <ListItem style={[layout.alignRight, styles.noBorder]}>
                 <View style={{flex:1}}>
                   <Text style={styles.header5}>Your Trainer Level</Text>
@@ -83,6 +82,7 @@ class EditStats extends Component {
                 </View>
               </ListItem>
             </List>
+            <View style={styles.errorAlert}><Text style={styles.errorLabel}>We can't figure out the specie, can you select manually?</Text></View>
           </View>
         </View>
       </View>
@@ -99,6 +99,16 @@ var styles = StyleSheet.create({
     fontWeight:'bold', fontSize:13, color:'#ffffff',
   },
 
+  errorLabel: {
+    color:'#ff0000', fontWeight:'bold',
+  },
+  errorInput: {
+    borderColor:"#ff0000",
+  },
+
+  errorAlert: {
+    position:'absolute', top:63, left:17,
+  },
   editMonInput: {
     height: 30, borderColor: 'gray', borderWidth: 1, borderRadius:4, padding:3,
     color:'#ffffff', marginRight:5
