@@ -7,7 +7,6 @@ let subscribedUid = null
 const monPath = ()=>`/users/${subscribedUid}/mons`
 
 export const init = (dispatch) => {
-  console.log('db init')
   const config = {
     apiKey: "AIzaSyBWvVTIVhdCARWTPEAipe5TjkWCguDZjvg",
     authDomain: "acetrainer-ce9c9.firebaseapp.com",
@@ -27,7 +26,6 @@ export const init = (dispatch) => {
     } else {
       if (subscribedUid != user.uid) {
         subscribedUid = user.uid
-        console.log('fb uuid', subscribedUid, Date.now())
         AsyncStorage.setItem('uuid', subscribedUid)
         subscribeToMons(dispatch)
         dispatch({
@@ -62,9 +60,13 @@ const subscribeToMons = (dispatch)=> {
 }
 
 export const addMon = (mon)=> {
-  console.log('addMon monPath', monPath())
   const ref = firebase.database().ref(monPath())
   ref.update({[mon.key()]:mon})
+}
+
+export const deleteMon = (mon)=> {
+  const ref = firebase.database().ref(monPath())
+  ref.child(mon.key()).remove()
 }
 
 export const updateMon = addMon

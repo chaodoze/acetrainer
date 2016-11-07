@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -140,14 +139,14 @@ var styles = StyleSheet.create({
   }
 });
 
-export const MonList = ({mons, unknowns, onMonClick})=> (
+export const MonList = ({mons, unknowns, onMonClick, onUnknownClick, onDeleteUnknowns})=> (
   <Container style={styles.outerContainer}>
     <Header theme={myTheme} iconRight>
       <Title>My Pokémons</Title>
-      <Button onPress={() => this.props.openDrawer()} transparent><Icon name='bars' /></Button>    
+      <Button onPress={() => this.props.openDrawer()} transparent><Icon name='bars' /></Button>
     </Header>
     <Content theme={myTheme}>
-      <UnknownList mons={unknowns} />
+      <UnknownList mons={unknowns} onPress={onUnknownClick} onDeleteUnknowns={onDeleteUnknowns} />
       <View style={styles.container}>
         {mons.map(mon=><Mon mon={mon} key={mon.url} onPress={()=>onMonClick(mon)}/>)}
         <View style={ styles.mon }></View>
@@ -182,19 +181,21 @@ const Mon = ({mon, onPress})=> (
 )
 
 const UnknownMon = ({mon, onPress})=>(
-  <MonImage mon={mon} style={styles.unknown_icon} resizeMode='cover' />
+  <TouchableHighlight onPress={onPress}>
+    <View>
+      <MonImage mon={mon} style={styles.unknown_icon} resizeMode='cover' />
+    </View>
+  </TouchableHighlight>
 )
 
-const UnknownList = ({mons, onPress})=>{
-  console.log('unknown mons', mons)
+const UnknownList = ({mons, onPress, onDeleteUnknowns})=>{
   if (mons.length > 0) {
     return (
       <View style={styles.alert}>
         <Text style={styles.alertHeader}>Sorry, we couldn't read these screenshots correctly. Can you help us fix it?</Text>
         <View style={styles.errorThumbs}>
-          {mons.map(unknown=><UnknownMon key={unknown.url} mon={unknown} />)}
+          {mons.map(unknown=><UnknownMon onPress={()=>onPress(unknown)} key={unknown.url} mon={unknown} />)}
         </View>
-        <Button small disabled>Or delete all</Button>
       </View>
     )
   }

@@ -40,7 +40,7 @@ const cleanup = {
     }
     return result || hp
   },
-  'Stardust Needed': sd=>sd.trim(),
+  'Stardust Needed': sd=>parseInt(sd,10),
   'Quick Move': qm=>qm.trim(),
   'Charge Move': cm=>cm.trim(),
   shotAt: unixTime=>new Date(unixTime*1000),
@@ -94,11 +94,12 @@ export default class Pokemon extends BaseRecord {
   static addFromScan(stats) {
     this.cleanupStats(stats)
     mon = new Pokemon(stats)
-    mon.calcIVPossibilities()
-    console.log('iv candidates', mon.Name, mon.ivCandidates)
-    mon.setMatchingMoves()
-    db.addMon(mon)
-
+    if (!mon.isImprobable()) {
+      console.log('probable mon', mon)
+      mon.calcIVPossibilities()
+      mon.setMatchingMoves()
+      db.addMon(mon)
+    }
   }
 
   key() {
@@ -108,7 +109,16 @@ export default class Pokemon extends BaseRecord {
   isKnown() {
     return this.specie() && this.ivCandidates && this.ivCandidates.length > 0
   }
-  
+
+  isImprobable() {
+    const sd = this['Stardust Needed']
+    return !(sd >= 200 && (sd % 100 == 0))
+  }
+
+  destroy() {
+    db.deleteMon(this)
+  }
+
   update(stats) {
     Pokemon.cleanupStats(stats)
     _.forEach(stats, (val,key)=>{this[key] = val})

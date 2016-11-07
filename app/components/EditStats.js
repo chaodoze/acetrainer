@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import _ from 'lodash'
 import {
-  AppRegistry,
+  AsyncStorage,
   StyleSheet,
   Image,
   TextInput,
   Dimensions,
   View
 } from 'react-native';
+import {Actions} from 'react-native-router-flux'
 
-import { 
+import {PokemonImager} from 'NativeModules'
+import {PokemonSpecie} from '../db/pogo'
+import {monLevelRaised} from '../actions'
+
+import {
   List, ListItem, Text, Thumbnail, Input, Icon, Button } from 'native-base';
+import {updateMon} from '../db/'
 import TrainerLevel from './TrainerLevel'
 import myTheme from './Themes/myTheme';
 import layout from './Styles';
@@ -22,69 +30,113 @@ const imageDimensions = {
 }
 
 class EditStats extends Component {
+  constructor(props) {
+    super(props)
+    const {mon} = this.props
+    this.chooseSpecie = this.chooseSpecie.bind(this)
+    this.changeText = this.changeText.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
+    this.state = {specieText:mon.Name, specieFocus:false, specie:mon.specie(), cp:mon.CP, hp:mon.HP}
+  }
+  changeTrainerLevel(newLevel) {
+    console.log('changeTrainerLevel', newLevel)
+    const {mon, trainerLevel, onTrainerLevelChanged} = this.props
+    const localIdentifier = mon.url.replace('ph://', '')
+    PokemonImager.scanOne(newLevel, localIdentifier)
+    if (onTrainerLevelChanged && newLevel > mon.trainerLvl()) {
+      onTrainerLevelChanged(newLevel)
+    }
+  }
+  renderSuggestions() {
+    const {specieText, specieFocus, specie} = this.state
+    if (!specie && specieFocus && specieText && specieText.length > 0) {
+      return (
+        <ListItem style={styles.suggestMon} >
+          <Suggestions text={this.state.specieText} onPress={this.chooseSpecie}/>
+        </ListItem>
+      )
+    }
+    return false
+  }
+  changeText(newText) {
+    const newState = {specieText:newText}
+    const {specie} = this.state
+    if (specie && specie.displayName != newText) {
+      newState.specie = null
+    }
+    this.setState(newState)
+  }
+  chooseSpecie(specie) {
+    console.log('specie chosen', specie.displayName)
+    this.setState({specie, specieText:specie.displayName})
+  }
+  onSubmit() {
+    const {mon} = this.props
+    const {specie, hp, cp} = this.state
+    if (!specie) {
+      return console.error('Pokemon specie not found!')
+    }
+    mon.pokemon_number = specie.id
+    mon.HP = hp
+    mon.CP = cp
+    mon.ivCandidates = null
+    mon.calcIVPossibilities()
+    console.log('onSubmit', mon.isKnown(), mon.HP, mon.CP, mon)
+    if (mon.isKnown()) {
+      updateMon(mon)
+      Actions.pop()
+    }
+    else {
+      console.error('onSubmit', mon.isKnown(), mon.HP, mon.CP, mon)
+    }
+  }
 
   render() {
+    const {mon, goBack} = this.props
+    const {specieText, hp, cp} = this.state
     return (
       <View style={{flex: 1}}>
-        <View>    
-          <Image style={[imageDimensions, {position: 'absolute'}]} source={require('./images/Thumbs/thumb.png')} />
+      <View>
+        <Image style={[imageDimensions, {position: 'absolute'}]} source={{uri:mon.url}} />
+      </View>
+      <View style={styles.editOverlay}>
+        <View style={styles.trash}>
+          <Button  theme={myTheme} transparent>
+            <Icon name='trash' style={{color:'#ffffff'}}/>
+          </Button>
         </View>
-        <View style={styles.editOverlay}>
-          <View style={styles.trash}>
-            <Button  theme={myTheme} transparent>
-              <Icon name='trash' style={{color:'#ffffff'}}/>
-            </Button>
-          </View>
-          <View>
-            <List theme={myTheme}>
-              <ListItem style={[styles.firstItem, layout.alignLeft, styles.noBorder]}>
-                <View style={{flex:2}}>
-                  <Text style={styles.header5}>Pokémon Species</Text>
-                  <TextInput style={styles.editMonInput} />
-                </View>
-                <View style={{flex:1}}>
-                  <Text style={styles.header5}>CP</Text>
-                  <TextInput style={styles.editMonInput} />
-                </View>
-                <View style={{flex:1}}>
-                  <Text style={styles.header5}>HP</Text>
-                  <TextInput style={styles.editMonInput}/>
-                </View> 
-              </ListItem>
-              <ListItem style={styles.suggestMon} >
-                <List style={{backgroundColor:'rgba(255,255,255,0.6)'}}>
-                  <ListItem style={styles.suggestMonList}>
-                    <Thumbnail source={require('./images/pokemon_cc/1.png')} />
-                    <Text>Bulbasaur</Text>
-                  </ListItem>
-                  <ListItem style={styles.suggestMonList}>
-                    <Thumbnail source={require('./images/pokemon_cc/2.png')} />
-                    <Text>IvySaur</Text>
-                  </ListItem>
-                  <ListItem style={styles.suggestMonList}>
-                    <Thumbnail source={require('./images/pokemon_cc/3.png')} />
-                    <Text>Venasaur</Text>
-                  </ListItem>
-                  <ListItem style={styles.suggestMonList}>
-                    <Thumbnail source={require('./images/pokemon_cc/4.png')} />
-                    <Text>Charmandar</Text>
-                  </ListItem>
-                </List>
-              </ListItem>
+        <View>
+          <List theme={myTheme}>
+            <ListItem style={[styles.firstItem, layout.alignLeft, styles.noBorder]}>
+              <View style={{flex:2}}>
+                <Text style={styles.header5}>Pokémon Species</Text>
+                <TextInput style={styles.editMonInput}
+                  onChangeText={this.changeText}
+                  onFocus={()=>this.setState({specieFocus:true})}
+                  onBlur={()=>this.setState({specieFocus:false})}
+                  value={this.state.specieText} />
+              </View>
+              <View style={{flex:1}}>
+                <Text style={styles.header5}>CP</Text>
+                <TextInput style={styles.editMonInput} value={cp} onChangeText={val=>{this.setState({cp:val})}} keyboardType="numeric" />
+              </View>
+              <View style={{flex:1}}>
+                <Text style={styles.header5}>HP</Text>
+                <TextInput style={styles.editMonInput} value={hp} onChangeText={val=>this.setState({hp:val})}   keyboardType="numeric" />
+              </View>
+            </ListItem>
+            {this.renderSuggestions()}
 
-              <ListItem style={[layout.alignRight, styles.noBorder]}>
-                <View style={{flex:1}}>
-                  <Text style={styles.header5}>Your Trainer Level</Text>
-                  <TextInput style={[styles.editMonInput, styles.levelInput]}/>
-                </View> 
-                <View style={layout.alignRight}>
-                  <Button small  style={styles.button}>Update</Button>
-                  <Button small bordered info style={styles.button}>Cancel</Button>
-                </View>
-              </ListItem>
-            </List>
-          </View>
+            <ListItem style={[layout.alignRight, styles.noBorder]}>
+              <TrainerLevel level={mon.trainerLvl()} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
+              <View style={layout.alignRight}>
+                <Button onPress={this.onSubmit} small  style={styles.button}>Update</Button>
+                <Button onPress={goBack} small bordered info style={styles.button}>Cancel</Button>
+              </View>
+            </ListItem>
+          </List>
         </View>
+      </View>
       </View>
     );
   }
@@ -131,5 +183,41 @@ var styles = StyleSheet.create({
   },
 
 });
+
+const getSuggestions = text=>{
+  let species = PokemonSpecie.suggestByName(text)
+  species = _.sortBy(species, specie=>specie.displayName.toLowerCase().indexOf(text.toLowerCase()))
+  return species.map(specie=>({uri:specie.iconUrl(), text:specie.displayName, obj:specie}))
+}
+
+const Suggestion = ({uri, text, obj, onPress})=>(
+  <ListItem style={styles.suggestMonList} onPress={()=>onPress(obj)}>
+    <Thumbnail source={{uri:uri}} />
+    <Text>{text}</Text>
+  </ListItem>
+)
+
+const Suggestions = ({text, onPress})=>{
+  suggestions = getSuggestions(text)
+  return (
+    <List style={{backgroundColor:'rgba(255,255,255,0.6)'}}>
+      {suggestions.map(({uri,text,obj})=><Suggestion key={text} uri={uri} text={text} obj={obj} onPress={onPress}/>)}
+    </List>
+  )
+}
+
+const mapStateToProps = ({selectedMon}) => ({
+  mon: selectedMon,
+})
+const mapDispatchToProps = dispatch=> ({
+  goBack: _.once(()=>{
+    Actions.pop()
+  }),
+  onTrainerLevelChanged: (newLvl)=>{
+    dispatch(monLevelRaised(level))
+  }
+})
+
+EditStats = connect(mapStateToProps,mapDispatchToProps)(EditStats)
 
 module.exports = EditStats;
