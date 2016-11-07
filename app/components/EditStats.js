@@ -224,8 +224,8 @@ const mapDispatchToProps = dispatch=> ({
     Actions.pop()
   }),
   onTrainerLevelChanged: (newLvl)=>{
-    dispatch(monLevelRaised(level))
-  }
+    dispatch(monLevelRaised(newLvl))
+  },
 })
 
 EditStats = connect(mapStateToProps,mapDispatchToProps)(EditStats)

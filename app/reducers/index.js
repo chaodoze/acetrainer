@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux'
+import {  AsyncStorage } from 'react-native'
 import Pokemon from '../db/pokemon'
 import routes from './routes'
 
@@ -39,7 +40,7 @@ function trainerLevel(state=null, action) {
     return action.level
   }
   else if (action.type == 'MON_LEVEL_RAISED' && action.level > state) {
-    AsyncStorage.setItem('TrainerLevel', JSON.stringify(newLvl))
+    AsyncStorage.setItem('TrainerLevel', JSON.stringify(action.level))
       .catch((r)=>console.error('setTrainerLevel err', r))
     return action.level
   }
