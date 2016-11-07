@@ -106,11 +106,15 @@ class EditStats extends Component {
           </Button>
         </View>
         <View>
+            <View style={styles.editHeader}>
+              <View><Text style={styles.headerTitle}>EDIT STATS</Text></View>
+              <TrainerLevel style={styles.levelLink} level={mon.trainerLvl()} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
+            </View>
           <List theme={myTheme}>
-            <ListItem style={[styles.firstItem, layout.alignLeft, styles.noBorder]}>
+            <ListItem style={[layout.alignLeft, styles.noBorder]}>
               <View style={{flex:2}}>
                 <Text style={styles.header5}>Pokémon Species</Text>
-                <TextInput style={styles.editMonInput}
+                <TextInput style={[styles.editMonInput, styles.errorInput]}
                   onChangeText={this.changeText}
                   onFocus={()=>this.setState({specieFocus:true})}
                   onBlur={()=>this.setState({specieFocus:false})}
@@ -127,14 +131,17 @@ class EditStats extends Component {
             </ListItem>
             {this.renderSuggestions()}
             <ListItem style={[layout.alignRight, styles.noBorder]}>
-              <TrainerLevel level={mon.trainerLvl()} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
+              <View style={{flex:1}}>
+                <Text style={styles.header5}>Monster Level</Text>
+                <TextInput style={[styles.editMonInput, styles.levelInput]}   keyboardType="numeric" />
+              </View>
               <View style={layout.alignRight}>
                 <Button onPress={this.onSubmit} small  style={styles.button}>Update</Button>
                 <Button onPress={goBack} small bordered info style={styles.button}>Cancel</Button>
               </View>
             </ListItem>
           </List>
-          <View style={styles.errorAlert}><Text style={styles.errorLabel}>We can't figure out the specie, can you select manually?</Text></View>
+          <View style={styles.errorAlert}><Text style={styles.errorLabel}>We can't figure out the specie :(</Text></View>
         </View>
       </View>
       </View>
@@ -152,27 +159,29 @@ var styles = StyleSheet.create({
   },
 
   errorLabel: {
-    color:'#ff0000', fontWeight:'bold',
+    color:'#ff0000', fontWeight:'bold', fontSize:13,
   },
   errorInput: {
     borderColor:"#ff0000",
   },
 
   errorAlert: {
-    position:'absolute', top:63, left:17,
+    position:'absolute', top:70, left:15,
   },
   editMonInput: {
     height: 30, borderColor: 'gray', borderWidth: 1, borderRadius:4, padding:3,
     color:'#ffffff', marginRight:5
   },
   levelInput: {
-    width:170,
+    width:100,
   },
   trash: {
     position:'absolute', top:20, right:10,
   },
   firstItem: {
-    marginTop:80, borderColor:'transparent'
+    marginTop:100, 
+    borderColor:'transparent', 
+    
   },
   noBorder: {
     borderColor:'transparent'
@@ -192,6 +201,17 @@ var styles = StyleSheet.create({
     marginLeft:0,
   },
 
+  editHeader: {
+    marginTop:100, flex:1,
+    flexDirection:'row',
+    justifyContent:'space-between', 
+    paddingLeft:15, paddingRight:15, height:25
+  },
+
+  levelLink: { color:'#5bc0de', fontSize:14 },
+
+  headerTitle: { color:'#ffffff', fontWeight:'bold'}
+  
 });
 
 const getSuggestions = text=>{

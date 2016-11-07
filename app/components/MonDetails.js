@@ -93,10 +93,13 @@ class MonDetails extends Component {
           </View>
         )}>
         <List>
-          <TrainerLevel level={trainerLevel} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
+          <View style={styles.header}>
+            <View><Text style={styles.headerTitle}>STATS</Text></View>
+            <TrainerLevel  style={styles.levelLink} level={trainerLevel} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
+          </View>
           <ListItem style={styles.mon_data} theme={myTheme}>
             <Grid >
-              <Col size={7} style={{flexWrap: 'wrap',  justifyContent: 'flex-start', alignItems: 'center',flexDirection:'row',justifyContent:'flex-start'}} >
+              <Col size={7} style={{justifyContent: 'flex-start', alignItems: 'center',flexDirection:'row'}} >
                 <Text style={styles.mon_stat}>CP</Text>
                 <Text style={styles.mon_stat_value}>{mon.CP}</Text>
                 <Text style={styles.mon_stat}>HP</Text>
@@ -105,9 +108,12 @@ class MonDetails extends Component {
                 <Text style={styles.mon_stat_value}>{mon.level}</Text>
                 <Text style={styles.mon_stat}>IV</Text>
                 <Text style={styles.mon_stat_value}>{mon.ivRangeStr()}</Text>
+                <View style={{width:40, height:40}}>
+                  <PercentageCircle radius={20} percent={mon.avgIVPercent()} borderWidth={5} color={"#3498db"}></PercentageCircle>
+                </View>
               </Col>
-              <Col size={1}>
-                <PercentageCircle radius={20} percent={mon.avgIVPercent()} borderWidth={5} color={"#3498db"}></PercentageCircle>
+              <Col size={1} style={{justifyContent:'flex-end'}}>
+                <Icon name="chevron-right" />
               </Col>
             </Grid>
           </ListItem>
@@ -310,6 +316,24 @@ var styles = StyleSheet.create({
     paddingRight:10,
     fontSize:16,
   },
+  header: {
+    flex:1,
+    flexDirection:'row',
+    backgroundColor: '#f3f3f3',
+    borderColor:'#dddddd',
+    borderTopWidth:1,
+    borderBottomWidth:1,
+    padding: 10,
+    justifyContent:'space-between',
+  },
+
+  headerTitle: {
+    color: '#666666',
+    fontSize:13,
+    letterSpacing: 3,
+    fontWeight:'bold',
+  },
+  levelLink: { color:'#1780fb', fontSize:13 },
 
   type: { marginRight:2, marginBottom:2,},
   t_normal: { backgroundColor:'#a8a878'},

@@ -43,12 +43,9 @@ export default class TrainerLevel extends Component {
     const {level} = this.props
     return (
       <View>
-        <View style={styles.header}>
-          <View><Text style={styles.headerTitle}>STATS</Text></View>
           <TouchableHighlight>
-            <View><Text onPress={this.onChangeRequest} style={styles.level}>Trainer Level {this.state.selectedValue}</Text></View>
+            <View><Text onPress={this.onChangeRequest} style={this.props.style}>Trainer Level {this.state.selectedValue}</Text></View>
           </TouchableHighlight>
-        </View>
         {!this.state.collapsed && this.modalStyle()}
       </View>
     )
@@ -59,25 +56,3 @@ TrainerLevel.propTypes = {
   level: React.PropTypes.number.isRequired,
   onLevelChange: React.PropTypes.func,
 }
-var styles = StyleSheet.create({
-
-  header: {
-    flex:1,
-    flexDirection:'row',
-    backgroundColor: '#f3f3f3',
-    borderColor:'#dddddd',
-    borderTopWidth:1,
-    borderBottomWidth:1,
-    padding: 10,
-    justifyContent:'space-between',
-  },
-
-  headerTitle: {
-    color: '#666666',
-    fontSize:13,
-    letterSpacing: 3,
-    fontWeight:'bold',
-  },
-
- level: { color:'#1780fb', fontSize:13 },
-});
