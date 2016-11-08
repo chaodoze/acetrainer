@@ -142,8 +142,10 @@ class EditStats extends Component {
             </ListItem>
           </List>
           <View style={styles.errorAlert}>
+     {/*  
             <Text style={styles.errorLabel}>No possible IV from this stats, can you double check all the values?</Text>
-     {/*    <Text style={styles.errorLabel}>We can't figure out the specie :(</Text> */}
+      */}
+            <Text style={styles.errorLabel}>We can't figure out the specie :(</Text> 
           </View>
         </View>
       </View>
