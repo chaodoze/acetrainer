@@ -141,7 +141,10 @@ class EditStats extends Component {
               </View>
             </ListItem>
           </List>
-          <View style={styles.errorAlert}><Text style={styles.errorLabel}>We can't figure out the specie :(</Text></View>
+          <View style={styles.errorAlert}>
+            <Text style={styles.errorLabel}>No possible IV from this stats, can you double check all the values?</Text>
+     {/*    <Text style={styles.errorLabel}>We can't figure out the specie :(</Text> */}
+          </View>
         </View>
       </View>
       </View>
@@ -159,14 +162,14 @@ var styles = StyleSheet.create({
   },
 
   errorLabel: {
-    color:'#ff0000', fontWeight:'bold', fontSize:13,
+    color:'#ff0000', fontWeight:'bold', fontSize:13, 
   },
   errorInput: {
     borderColor:"#ff0000",
   },
 
   errorAlert: {
-    position:'absolute', top:70, left:15,
+    position:'absolute', top:70, left:15, right:15
   },
   editMonInput: {
     height: 30, borderColor: 'gray', borderWidth: 1, borderRadius:4, padding:3,
@@ -177,11 +180,6 @@ var styles = StyleSheet.create({
   },
   trash: {
     position:'absolute', top:20, right:10,
-  },
-  firstItem: {
-    marginTop:100, 
-    borderColor:'transparent', 
-    
   },
   noBorder: {
     borderColor:'transparent'
@@ -202,7 +200,7 @@ var styles = StyleSheet.create({
   },
 
   editHeader: {
-    marginTop:100, flex:1,
+    marginTop:120, flex:1,
     flexDirection:'row',
     justifyContent:'space-between', 
     paddingLeft:15, paddingRight:15, height:25
