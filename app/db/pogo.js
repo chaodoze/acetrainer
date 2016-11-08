@@ -38,6 +38,7 @@ class BaseRecord {
 
   }
 }
+
 class PokemonType extends BaseRecord {
   static cache = {}
   constructor(rawData) {
@@ -150,6 +151,10 @@ class AttackMoveRank extends MovesetRank {
 
 class DefensiveMoveRank extends MovesetRank {
   static cache = {}
+}
+
+PokemonType.relationships = { //must be defined after PokemonSpecie is defined
+  topTier: {field:'top_tier', klass:PokemonSpecie}
 }
 
 PokemonType.populateCache(pogoJSON.templates.type_effective)
