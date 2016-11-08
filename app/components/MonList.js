@@ -182,7 +182,7 @@ const Mon = ({mon, onPress})=> (
 const UnknownMon = ({mon, onPress})=>(
   <TouchableHighlight onPress={onPress}>
     <View>
-      <MonImage mon={mon} style={styles.unknown_icon} resizeMode='cover' />
+      <MonImage mon={mon} useScreenshot style={styles.unknown_icon} resizeMode='cover' />
     </View>
   </TouchableHighlight>
 )
