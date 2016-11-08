@@ -97,8 +97,8 @@ class MonDetails extends Component {
             <TrainerLevel  style={styles.levelLink} level={trainerLevel} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
           </View>
           <ListItem style={styles.mon_data} theme={myTheme}>
-            <Grid >
-              <Col size={7} style={{justifyContent: 'flex-start', alignItems: 'center',flexDirection:'row'}} >
+              <View style={{justifyContent:'space-between', alignItems: 'center',flexDirection:'row'}} >
+                <View style={{justifyContent:'flex-start', alignItems: 'center',flexDirection:'row'}}>
                 <Text style={styles.mon_stat}>CP</Text>
                 <Text style={styles.mon_stat_value}>{mon.CP}</Text>
                 <Text style={styles.mon_stat}>HP</Text>
@@ -110,11 +110,11 @@ class MonDetails extends Component {
                 <View style={{width:40, height:40}}>
                   <PercentageCircle radius={20} percent={mon.avgIVPercent()} borderWidth={5} color={"#3498db"}></PercentageCircle>
                 </View>
-              </Col>
-              <Col size={1} style={{justifyContent:'flex-end'}}>
-                <Icon name="chevron-right" />
-              </Col>
-            </Grid>
+                </View>
+                <View style={{justifyContent:'flex-end'}}>
+                <Icon style={{ fontSize:16, color:'#1780fb'}}  name="chevron-right" />
+                </View>
+              </View>
           </ListItem>
         </List>
         <View style={layout.list_header}>
@@ -273,7 +273,7 @@ var styles = StyleSheet.create({
   },
 
   mon_data: {
-    padding:5, borderBottomWidth:0,
+     borderBottomWidth:0,
   },
 
   mon_analysis: {
@@ -301,7 +301,7 @@ var styles = StyleSheet.create({
   },
 
   linkcolor: {
-    color:'#1d8696',
+    color:'#1780fb',
   },
 
   mon_stat: {

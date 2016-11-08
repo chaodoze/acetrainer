@@ -97,7 +97,7 @@ export default class MoveSetChart extends Component {
     return (
       <View>
         <TouchableHighlight onPress={() => {this.openModal()}}>
-          <View><Icon theme={myTheme} name='info-circle' style={{fontSize: 18}} /></View>
+          <View><Icon theme={myTheme} name='info-circle' style={{fontSize: 18, color:'#1780fb'}} /></View>
         </TouchableHighlight>
         {this.renderModal()}
       </View>
