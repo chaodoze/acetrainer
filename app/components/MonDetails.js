@@ -107,12 +107,12 @@ class MonDetails extends Component {
                 <Text style={styles.mon_stat_value}>{mon.level}</Text>
                 <Text style={styles.mon_stat}>IV</Text>
                 <Text style={styles.mon_stat_value}>{mon.ivRangeStr()}</Text>
-                <View style={{width:40, height:40}}>
-                  <PercentageCircle radius={20} percent={mon.avgIVPercent()} borderWidth={5} color={"#3498db"}></PercentageCircle>
+                <View style={{width:30, height:30}}>
+                  <PercentageCircle radius={15} textStyle={{fontSize: 9}} percent={mon.avgIVPercent()} borderWidth={3} color={"#3498db"}></PercentageCircle>
                 </View>
                 </View>
                 <View style={{justifyContent:'flex-end'}}>
-                <Icon style={{ fontSize:16, color:'#1780fb'}}  name="chevron-right" />
+                <Icon style={{ fontSize:16, color:'#1780fb'}}  name="pencil" />
                 </View>
               </View>
           </ListItem>
