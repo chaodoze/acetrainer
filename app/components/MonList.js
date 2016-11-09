@@ -12,6 +12,7 @@ import {
 import PercentageCircle from 'react-native-percentage-circle';
 import myTheme from './Themes/myTheme';
 import MonImage from './MonImage'
+import Grade from './Grade'
 
 var styles = StyleSheet.create({
 
@@ -135,7 +136,8 @@ var styles = StyleSheet.create({
     marginBottom:10,
     flexWrap:'wrap',
     alignItems:'flex-start',
-  }
+  },
+
 });
 
 export const MonList = ({mons, unknowns, onMonClick, onUnknownClick, onDeleteUnknowns, onOpenDrawer})=> (
@@ -166,17 +168,15 @@ const Mon = ({mon, onPress})=> (
       <Text style={ styles.mon_label }>{mon.Name}</Text>
       <View style={styles.stats}>
         <Image source={require('./images/icons/sword.png')} style={styles.icon} />
-        <View><Text style={styles.statsText}>A</Text></View>
+        <Grade rank={mon.attackRank()} small />
         <Image source={require('./images/icons/shield.png')} style={styles.icon} />
-        <View><Text style={styles.statsText}>B</Text></View>
+        <Grade rank={mon.defenseRank()} small />
         <View style={{width:20, height:20, marginLeft:5}}>
           <PercentageCircle radius={10} percent={mon.avgIVPercent()} color={"#3498db"} textStyle={{fontSize: 7}}></PercentageCircle>
         </View>
       </View>
     </View>
   </TouchableHighlight>
-
-
 )
 
 const UnknownMon = ({mon, onPress})=>(
