@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import {Actions} from 'react-native-router-flux';
+import TrainerLevel from './TrainerLevel'
 
 import { Container, Content, List, ListItem, Button, Header, Title, Text } from 'native-base';
 
@@ -10,7 +11,7 @@ class ControlPanel extends Component {
         <View style={styles.sideNav}>
           <List>
               <ListItem button style={styles.navItem}>
-                  <Text style={styles.navItemText}>Set Trainer Level (21)</Text>
+                 <View><Text>Set </Text><TrainerLevel level={30} /></View>
               </ListItem>
               <ListItem button style={styles.navItem}>
                   <Text style={styles.navItemText}>Help</Text>

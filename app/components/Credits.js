@@ -20,6 +20,8 @@ var styles = StyleSheet.create({
   note: { color:'#999999', fontSize:15, lineHeight:20}
 });
 
+const openInBrowser = url=>{}
+
 class Credits extends Component {
 
   render() {
@@ -32,7 +34,7 @@ class Credits extends Component {
         <Content theme={myTheme} style={styles.content}>
           <Text style={styles.headerText}>Thanks to all of these open source projects and Creative Common Licensed Images</Text>
           <Card>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('http://google.com')}>
               <Text>React</Text>
               <Text style={styles.note}>https://facebook.github.io/react</Text>
             </CardItem> 

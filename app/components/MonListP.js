@@ -104,7 +104,7 @@ const mapDispatchToProps = (dispatch, ownProps)=> ({
   },
   onUnknownClick: mon=>{
     dispatch(selectMon(mon))
-    Actions.editstats()
+    Actions.editunknownstats()
   },
 })
 

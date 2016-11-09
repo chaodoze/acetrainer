@@ -112,7 +112,9 @@ class MonDetails extends Component {
                 </View>
                 </View>
                 <View style={{justifyContent:'flex-end'}}>
-                <Icon style={{ fontSize:16, color:'#1780fb'}}  name="pencil" />
+                <Button onPress={()=>Actions.editstats()} transparent>
+                  <Icon style={{ fontSize:16, color:'#1780fb'}}  name="pencil" />
+                </Button>
                 </View>
               </View>
           </ListItem>
