@@ -5045,7 +5045,8 @@
           0.800000011920929
         ],
         "attack_type": 7,
-        "displayName": "Bug"
+        "displayName": "Bug",
+        top_tier: []
       },
       {
         "attack_scalar": [
@@ -5069,7 +5070,8 @@
           0.800000011920929
         ],
         "attack_type": 17,
-        "displayName": "Dark"
+        "displayName": "Dark",
+        top_tier:[]
       },
       {
         "attack_scalar": [
@@ -5093,7 +5095,8 @@
           0.800000011920929
         ],
         "attack_type": 16,
-        "displayName": "Dragon"
+        "displayName": "Dragon",
+        top_tier:[149]
       },
       {
         "attack_scalar": [
@@ -5117,7 +5120,8 @@
           1
         ],
         "attack_type": 13,
-        "displayName": "Electric"
+        "displayName": "Electric",
+        top_tier:[]
       },
       {
         "attack_scalar": [
@@ -5141,7 +5145,8 @@
           1
         ],
         "attack_type": 18,
-        "displayName": "Fairy"
+        "displayName": "Fairy",
+        top_tier:[]
       },
       {
         "attack_scalar": [
@@ -5165,7 +5170,8 @@
           0.800000011920929
         ],
         "attack_type": 2,
-        "displayName": "Fighting"
+        "displayName": "Fighting",
+        top_tier:[62, 68]
       },
       {
         "attack_scalar": [
@@ -5189,7 +5195,8 @@
           1
         ],
         "attack_type": 10,
-        "displayName": "Fire"
+        "displayName": "Fire",
+        top_tier: [6,59,136]
       },
       {
         "attack_scalar": [
@@ -5213,7 +5220,8 @@
           1
         ],
         "attack_type": 3,
-        "displayName": "Flying"
+        "displayName": "Flying",
+        top_tier:[6,130,149]
       },
       {
         "attack_scalar": [
@@ -5237,7 +5245,8 @@
           1
         ],
         "attack_type": 8,
-        "displayName": "Ghost"
+        "displayName": "Ghost",
+        top_tier:[]
       },
       {
         "attack_scalar": [
@@ -5261,7 +5270,8 @@
           1
         ],
         "attack_type": 12,
-        "displayName": "Grass"
+        "displayName": "Grass",
+        top_tier:[3,45,71,102]
       },
       {
         "attack_scalar": [
@@ -5285,7 +5295,8 @@
           1
         ],
         "attack_type": 5,
-        "displayName": "Ground"
+        "displayName": "Ground",
+        "top_tier": [31,34]
       },
       {
         "attack_scalar": [
@@ -5309,7 +5320,8 @@
           1
         ],
         "attack_type": 15,
-        "displayName": "Ice"
+        "displayName": "Ice",
+        top_tier:[131]
       },
       {
         "attack_scalar": [
@@ -5333,7 +5345,8 @@
           1
         ],
         "attack_type": 1,
-        "displayName": "Normal"
+        "displayName": "Normal",
+        top_tier:[143]
       },
       {
         "attack_scalar": [
@@ -5357,7 +5370,8 @@
           1.25
         ],
         "attack_type": 4,
-        "displayName": "Poison"
+        "displayName": "Poison",
+        top_tier:[31,34,45,71,89]
       },
       {
         "attack_scalar": [
@@ -5381,7 +5395,8 @@
           1
         ],
         "attack_type": 14,
-        "displayName": "Psychic"
+        "displayName": "Psychic",
+        top_tier:[80,103]
       },
       {
         "attack_scalar": [
@@ -5405,7 +5420,8 @@
           1
         ],
         "attack_type": 6,
-        "displayName": "Rock"
+        "displayName": "Rock",
+        top_tier:[]
       },
       {
         "attack_scalar": [
@@ -5429,7 +5445,8 @@
           1.25
         ],
         "attack_type": 9,
-        "displayName": "Steel"
+        "displayName": "Steel",
+        top_tier:[]
       },
       {
         "attack_scalar": [
@@ -5453,7 +5470,8 @@
           1
         ],
         "attack_type": 11,
-        "displayName": "Water"
+        "displayName": "Water",
+        top_tier:[9,62,80,130,131,134]
       }
     ],
     "battle_settings": [

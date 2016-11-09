@@ -113,7 +113,7 @@ class EditStats extends Component {
           <List theme={myTheme}>
             <ListItem style={[layout.alignLeft, styles.noBorder]}>
               <View style={{flex:2}}>
-                <Text style={styles.header5}>Pokémon Species</Text>
+                <Text style={styles.header5}>Pokémon Specie</Text>
                 <TextInput style={[styles.editMonInput, styles.errorInput]}
                   onChangeText={this.changeText}
                   onFocus={()=>this.setState({specieFocus:true})}
@@ -142,10 +142,10 @@ class EditStats extends Component {
             </ListItem>
           </List>
           <View style={styles.errorAlert}>
-     {/*  
+     {/*
             <Text style={styles.errorLabel}>No possible IV from this stats, can you double check all the values?</Text>
       */}
-            <Text style={styles.errorLabel}>We can't figure out the specie :(</Text> 
+            <Text style={styles.errorLabel}>We can't figure out the specie :(</Text>
           </View>
         </View>
       </View>
@@ -164,7 +164,7 @@ var styles = StyleSheet.create({
   },
 
   errorLabel: {
-    color:'#ff0000', fontWeight:'bold', fontSize:13, 
+    color:'#ff0000', fontWeight:'bold', fontSize:13,
   },
   errorInput: {
     borderColor:"#ff0000",
@@ -204,14 +204,14 @@ var styles = StyleSheet.create({
   editHeader: {
     marginTop:120, flex:1,
     flexDirection:'row',
-    justifyContent:'space-between', 
+    justifyContent:'space-between',
     paddingLeft:15, paddingRight:15, height:25
   },
 
   levelLink: { color:'#5bc0de', fontSize:14 },
 
   headerTitle: { color:'#ffffff', fontWeight:'bold'}
-  
+
 });
 
 const getSuggestions = text=>{

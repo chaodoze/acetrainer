@@ -147,68 +147,12 @@ class MonDetails extends Component {
           <View style={layout.list_header}>
             <Text style={layout.list_headerTitle}>BATTLE</Text>
           </View>
-{/*new battle chart */}
           <ListItem style={layout.alignLeft} >
             <Text style={{flex:2, fontWeight:'bold', fontSize:12}}>Good Against</Text>
             <Text style={{flex:2, fontWeight:'bold', fontSize:12}}>Effectiveness</Text>
             <Text style={{flex:3, fontWeight:'bold', fontSize:12}}>Top Tier Mons</Text>
           </ListItem>
-          <ListItem style={layout.alignLeft} >
-            <View style={{flex:2}}>
-              <Badge theme={myTheme} style={[styles.t_dragon, styles.type]}>
-                Dragon
-              </Badge>
-            </View>
-            <View style={{flex:2}}>
-              <View style={layout.alignLeft}>
-                <Image source={require('./images/icons/sword.png')} style={layout.icon_ef} />
-                <Image source={require('./images/icons/sword.png')} style={layout.icon_ef} />
-                <Image source={require('./images/icons/star.png')} style={layout.icon_ef} />
-                <Image source={require('./images/icons/star.png')} style={layout.icon_ef} />
-                <Image source={require('./images/icons/shield.png')} style={layout.icon_ef} />
-              </View>
-            </View>
-            <View style={{flex:3}}>
-              <View style={layout.alignLeft}>
-                <Image source={require('./images/pokemon_cc/149.png')} style={layout.icon_mon} />
-              </View>
-            </View>
-          </ListItem>
-          <ListItem style={layout.alignLeft}>
-            <View style={{flex:2}}>
-              <Badge theme={myTheme} style={[styles.t_water, styles.type]}>
-                Water
-              </Badge>
-            </View>
-            <View style={{flex:2}}>
-              <View style={layout.alignLeft}>
-                <Image source={require('./images/icons/sword.png')} style={layout.icon_ef} />
-                <Image source={require('./images/icons/sword.png')} style={layout.icon_ef} />
-                <Image source={require('./images/icons/shield.png')} style={layout.icon_ef} />
-              </View>
-            </View>
-            <View style={{flex:3}}>
-              <View style={layout.alignLeft}>
-                <Image source={require('./images/pokemon_cc/130.png')} style={layout.icon_mon} />
-                <Image source={require('./images/pokemon_cc/131.png')} style={layout.icon_mon} />
-                <Image source={require('./images/pokemon_cc/134.png')} style={layout.icon_mon} />
-              </View>
-            </View>
-          </ListItem>
-{/*end of new battle chart */}
-          <ListItem style={layout.alignLeft} >
-            <View style={styles.many_types}>
-              {mon.strongAgainst().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
-            </View>
-          </ListItem>
-          <ListItem style={styles.last_row}>
-            <View >
-              <Text style={styles.header4}>RESISTANT TO</Text>
-              <View style={styles.many_types}>
-                {mon.specie().resistantTo().map(type=><MonTypeBadge key={type.id} pokemonType={type} />)}
-              </View>
-            </View>
-          </ListItem>
+          {mon.strongAgainst().map(strength=><StrengthChartItem key={strength.type.displayName} strength={strength} />)}
           <View style={layout.list_header}>
             <Text style={layout.list_headerTitle}>POWER UPS</Text>
           </View>
@@ -219,6 +163,25 @@ class MonDetails extends Component {
   }
 }
 
+const StrengthChartItem = ({strength})=>(
+  <ListItem style={layout.alignLeft} >
+    <View style={{flex:2}}>
+      <MonTypeBadge pokemonType={strength.type} />
+    </View>
+    <View style={{flex:2}}>
+      <View style={layout.alignLeft}>
+        {_.range(0,strength.attack).map(i=><Image key={`attack${i}`} source={require('./images/icons/sword.png')} style={layout.icon_ef} />)}
+        {_.range(0,strength.stab).map(i=><Image key={`stab${i}`} source={require('./images/icons/star.png')} style={layout.icon_ef} />)}
+        {_.range(0,strength.defense).map(i=><Image key={`defense${i}`} source={require('./images/icons/shield.png')} style={layout.icon_ef} />)}
+      </View>
+    </View>
+    <View style={{flex:3}}>
+      <View style={layout.alignLeft}>
+        {strength.type.topTier().map(specie=><Image key={specie.displayName} source={{uri:specie.iconUrl()}} style={layout.icon_mon} />)}
+      </View>
+    </View>
+  </ListItem>
+)
 var styles = StyleSheet.create({
 
   parallelContainer: {

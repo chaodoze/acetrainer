@@ -191,25 +191,40 @@ export default class Pokemon extends BaseRecord {
   }
 
   strongAgainst() {
-    const type_scalar = _.reduce(_.range(18), (accum,i)=>{accum.push(1);return accum},[]) //initialized 18-element array each with value 1
+    const type_scalar = {}
     const [quick,charge] = [this.quickMove(), this.chargeMove()]
-    const boost = (types,by)=>types.forEach(type=>type_scalar[type.id-1]=type_scalar[type.id-1]*by)
-    if (quick) {
-      boost(quick.type().strongAgainst(),quick.hasStab(this.specie()) ? 1.25 : 1.2)
-    }
-    if (charge) {
-      boost(charge.type().strongAgainst(),charge.hasStab(this.specie()) ? 1.25 : 1.2)
-    }
-    boost(this.specie().resistantTo(), 1.1)
-    for (var i=0;i<type_scalar.length;++i) {
-      try {
-        console.log('strongAgainst', PokemonType.find(i+1).displayName, type_scalar[i])
+    const boost = (typeId, boostAmt, effect, hasStab=false)=>{
+      const result = type_scalar[typeId] || {}
+      result[effect] = (result[effect] || 0) + boostAmt
+      result.total = (result.total || 0) + boostAmt
+      if (hasStab && boostAmt > 0) {
+        result.stab = (result.stab || 0) + 1
+        result.total += 0.5
       }
-      catch(e) {
-        console.log(e,i)
+      type_scalar[typeId] = result
+    }
+    const boostMove = move=>{
+      if (move) {
+        move.type().attack_scalar.forEach((scale,i)=>{
+          if (scale != 1) {
+            const boostAmt = scale > 1 ? 1 : -1
+            boost(i+1, boostAmt, 'attack', move.hasStab(this.specie()))
+          }
+        })
       }
     }
-    return this.specie().strongAgainst()
+    boostMove(quick)
+    boostMove(charge)
+    this.specie().resistantTo().forEach(type=>boost(type.id, 1, 'defense'))
+    const r= _.chain(type_scalar)
+      .map((val,id)=>{
+        val.type = PokemonType.find(id)
+        return val})
+      .orderBy(['total','type.displayName'], ['desc','asc'])
+      .filter(strength=>strength.total >= 1)
+      .value()
+    console.log('strongAgainst', r)
+    return r
   }
 
   calcIVPossibilities() {
