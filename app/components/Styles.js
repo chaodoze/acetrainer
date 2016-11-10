@@ -9,7 +9,7 @@ const layout = StyleSheet.create({
     flexWrap: 'wrap',  justifyContent: 'flex-end', alignItems: 'flex-end',flexDirection:'row',
   },
   alignLeft: {
-    flexWrap: 'wrap',  justifyContent: 'flex-start', alignItems: 'flex-start',flexDirection:'row',
+    flexWrap: 'wrap',  justifyContent: 'flex-start', alignItems: 'center',flexDirection:'row',
   },
 
   alignCenter: {

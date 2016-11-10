@@ -4,6 +4,7 @@ import {Actions} from 'react-native-router-flux';
 import TrainerLevel from './TrainerLevel'
 
 import { Container, Content, List, ListItem, Button, Header, Title, Text } from 'native-base';
+import layout from './Styles';
 
 class ControlPanel extends Component {
   render() {
@@ -11,7 +12,7 @@ class ControlPanel extends Component {
         <View style={styles.sideNav}>
           <List>
               <ListItem button style={styles.navItem}>
-                 <View><Text>Set </Text><TrainerLevel level={30} /></View>
+                 <View style={layout.alignLeft}><Text style={styles.navItemText}>Set </Text><TrainerLevel style={styles.levelLink} level={30} /></View>
               </ListItem>
               <ListItem button style={styles.navItem}>
                   <Text style={styles.navItemText}>Help</Text>
@@ -29,6 +30,7 @@ var styles = StyleSheet.create({
   sideNav: { marginTop:30 },
   navItem: { marginLeft:0, paddingLeft:10},
   navItemText: { fontSize:14},
+  levelLink: { fontSize:14 }
 
 });
 
