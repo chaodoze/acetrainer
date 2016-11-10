@@ -1,11 +1,10 @@
-
 import React, { Component } from 'react';
 import {
-  StyleSheet,
-  View,
   Image,
-  TouchableHighlight, TouchableOpacity
-
+  Linking,
+  StyleSheet,
+  TouchableHighlight, TouchableOpacity,
+  View,
 } from 'react-native';
 import {Actions} from 'react-native-router-flux'
 
@@ -20,7 +19,13 @@ var styles = StyleSheet.create({
   note: { color:'#999999', fontSize:15, lineHeight:20}
 });
 
-const openInBrowser = url=>{}
+const openInBrowser = url=>{
+  Linking.canOpenURL(url).then(supported=>{
+    if (supported) {
+      Linking.openURL(url)
+    }
+  })
+}
 
 class Credits extends Component {
 
@@ -36,7 +41,7 @@ class Credits extends Component {
           <Card>
             <CardItem button onPress={()=> openInBrowser('https://facebook.github.io/react')}>
               <Text>React</Text>
-            </CardItem> 
+            </CardItem>
             <CardItem button onPress={()=> openInBrowser('https://facebook.github.io/react-native/')}>
               <Text>React Native</Text>
             </CardItem>
@@ -45,10 +50,10 @@ class Credits extends Component {
             </CardItem>
             <CardItem button onPress={()=> openInBrowser('http://nativebase.io/')}>
               <Text>Native Base</Text>
-            </CardItem>            
+            </CardItem>
             <CardItem button onPress={()=> openInBrowser('https://facebook.github.io/react')}>
               <Text>Pokémon Game Info</Text>
-            </CardItem> 
+            </CardItem>
             <CardItem button onPress={()=> openInBrowser('https://www.iconfinder.com/GeoGavilanes')}>
               <Text>Pokémon icons by Geovanny Gavilanes</Text>
             </CardItem>
@@ -95,13 +100,13 @@ class Credits extends Component {
             </CardItem>
             <CardItem button onPress={()=> openInBrowser('https://github.com/reactjs/react-redux')}>
               <Text>react-redux</Text>
-            </CardItem> 
+            </CardItem>
             <CardItem button onPress={()=> openInBrowser('https://github.com/reactjs/redux')}>
               <Text>redux</Text>
             </CardItem>
             <CardItem button onPress={()=> openInBrowser('https://github.com/evgenyrodionov/redux-logger')}>
               <Text>redux-logger</Text>
-            </CardItem>         
+            </CardItem>
           </Card>
         </Content>
       </Container>
