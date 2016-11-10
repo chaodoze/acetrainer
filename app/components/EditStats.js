@@ -36,7 +36,7 @@ class EditStats extends Component {
     this.chooseSpecie = this.chooseSpecie.bind(this)
     this.changeText = this.changeText.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-    this.state = {specieText:mon.Name, specieFocus:false, specie:mon.specie(), cp:mon.CP, hp:mon.HP}
+    this.state = {specieText:mon.Name, specieFocus:false, specie:mon.specie(), cp:mon.CP, hp:mon.HP, level:mon.level}
   }
   changeTrainerLevel(newLevel) {
     console.log('changeTrainerLevel', newLevel)
@@ -67,18 +67,19 @@ class EditStats extends Component {
     this.setState(newState)
   }
   chooseSpecie(specie) {
-    console.log('specie chosen', specie.displayName)
-    this.setState({specie, specieText:specie.displayName})
+    this.setState({specie, specieText:specie.displayName, noSpecieErr:false})
   }
   onSubmit() {
     const {mon} = this.props
-    const {specie, hp, cp} = this.state
+    const {specie, hp, cp, level} = this.state
     if (!specie) {
-      return console.error('Pokemon specie not found!')
+      return this.setState({noSpecieErr:true})
     }
     mon.pokemon_number = specie.id
     mon.HP = hp
     mon.CP = cp
+    mon.level = level
+
     mon.ivCandidates = null
     mon.calcIVPossibilities()
     console.log('onSubmit', mon.isKnown(), mon.HP, mon.CP, mon)
@@ -87,13 +88,24 @@ class EditStats extends Component {
       Actions.pop()
     }
     else {
-      console.error('onSubmit', mon.isKnown(), mon.HP, mon.CP, mon)
+      this.setState({noIVsErr:true})
     }
+  }
+  renderErrors() {
+    const {noSpecieErr, noIVsErr} = this.state
+    const specieErr = noSpecieErr && <Text style={styles.errorLabel}>We can't figure out the specie :(</Text>
+    const ivErr = noIVsErr && <Text style={styles.errorLabel}>No possible IV from this stats, can you double check all the values?</Text>
+    return (
+      <View style={styles.errorAlert}>
+        {ivErr}
+        {specieErr}
+      </View>
+    )
   }
 
   render() {
     const {mon, goBack} = this.props
-    const {specieText, hp, cp} = this.state
+    const {specieText, hp, cp, level, noSpecieErr} = this.state
     return (
       <View style={{flex: 1}}>
       <View>
@@ -114,7 +126,7 @@ class EditStats extends Component {
             <ListItem style={[layout.alignLeft, styles.noBorder]}>
               <View style={{flex:2}}>
                 <Text style={styles.header5}>Pokémon Specie</Text>
-                <TextInput style={[styles.editMonInput, styles.errorInput]}
+                <TextInput style={[styles.editMonInput, noSpecieErr && styles.errorInput]}
                   onChangeText={this.changeText}
                   onFocus={()=>this.setState({specieFocus:true})}
                   onBlur={()=>this.setState({specieFocus:false})}
@@ -133,7 +145,8 @@ class EditStats extends Component {
             <ListItem style={[layout.alignRight, styles.noBorder]}>
               <View style={{flex:1}}>
                 <Text style={styles.header5}>Monster Level</Text>
-                <TextInput style={[styles.editMonInput, styles.levelInput]}   keyboardType="numeric" />
+                <TextInput style={[styles.editMonInput, styles.levelInput]} value={level}
+                  onChangeText={val=>this.setState({level:val})} keyboardType="numeric" />
               </View>
               <View style={layout.alignRight}>
                 <Button onPress={this.onSubmit} small  style={styles.button}>Update</Button>
@@ -141,12 +154,7 @@ class EditStats extends Component {
               </View>
             </ListItem>
           </List>
-          <View style={styles.errorAlert}>
-     {/*
-            <Text style={styles.errorLabel}>No possible IV from this stats, can you double check all the values?</Text>
-      */}
-            <Text style={styles.errorLabel}>We can't figure out the specie :(</Text>
-          </View>
+          {this.renderErrors()}
         </View>
       </View>
       </View>

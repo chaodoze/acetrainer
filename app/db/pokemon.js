@@ -155,7 +155,6 @@ export default class Pokemon extends BaseRecord {
     const [quickMove, chargeMove, specie] = [this.quickMove(), this.chargeMove(), this.specie()]
     if (!(quickMove && chargeMove && specie)) {return null}
     const movesets = specie[`${type}Movesets`]()
-    console.log('grade', movesets, quickMove, chargeMove)
     const matchingMoveset = movesets.find(moveset=>{
       return quickMove.displayName == moveset.quick && chargeMove.displayName == moveset.charge
     })
