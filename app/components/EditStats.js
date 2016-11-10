@@ -17,7 +17,7 @@ import {monLevelRaised} from '../actions'
 
 import {
   List, ListItem, Text, Thumbnail, Input, Icon, Button } from 'native-base';
-import {updateMon} from '../db/'
+import {updateMon, deleteMon} from '../db/'
 import TrainerLevel from './TrainerLevel'
 import myTheme from './Themes/myTheme';
 import layout from './Styles';
@@ -68,6 +68,12 @@ class EditStats extends Component {
   }
   chooseSpecie(specie) {
     this.setState({specie, specieText:specie.displayName, noSpecieErr:false})
+  }
+  onDeleteMon() {
+    console.log('onDeleteMon')
+    const {mon} = this.props
+    deleteMon(mon)
+    Actions.mydrawer({type:'reset'})
   }
   onSubmit() {
     const {mon} = this.props
@@ -151,6 +157,10 @@ class EditStats extends Component {
               <View style={layout.alignRight}>
                 <Button onPress={this.onSubmit} small  style={styles.button}>Update</Button>
                 <Button onPress={goBack} small bordered info style={styles.button}>Cancel</Button>
+                <Button  theme={myTheme} onPress={()=>this.onDeleteMon()} transparent>
+                  <Icon name='trash' style={{color:'#ffffff'}}/>
+                </Button>
+
               </View>
             </ListItem>
           </List>
