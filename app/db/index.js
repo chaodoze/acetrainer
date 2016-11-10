@@ -13,26 +13,26 @@ export const init = (dispatch) => {
     databaseURL: "https://acetrainer-ce9c9.firebaseio.com",
     storageBucket: "acetrainer-ce9c9.appspot.com",
   }
-  firebase.initializeApp(config)
-  AsyncStorage.getItem('uuid').then(uuid=>{
+  const initUuid = uuid=> {
     if (uuid) {
       subscribedUid = uuid
       subscribeToMons(dispatch)
+      dispatch({
+        type:'USER_SIGNIN',
+        uid: subscribedUid,
+      })
       console.log('uuid', subscribedUid)
     }
-  })
+  }
+  firebase.initializeApp(config)
+    AsyncStorage.getItem('uuid').then(initUuid)
   firebase.auth().onAuthStateChanged(user=>{
     if (!user) {
       firebase.auth().signInAnonymously()
     } else {
       if (subscribedUid != user.uid) {
-        subscribedUid = user.uid
         AsyncStorage.setItem('uuid', subscribedUid)
-        subscribeToMons(dispatch)
-        dispatch({
-          type:'USER_SIGNIN',
-          uid: subscribedUid,
-        })
+        initUuid(user.uid)
       }
     }
   })
