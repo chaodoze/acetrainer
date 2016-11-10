@@ -44,8 +44,8 @@ var styles = StyleSheet.create({
 
   unknownMon: {
     marginTop:0,
-    width:90,
-    height:90,
+    width:71,
+    height:100,
   },
 
   mon_icon: {
@@ -120,7 +120,7 @@ var styles = StyleSheet.create({
     backgroundColor: '#fcf8e3',
     borderColor: '#faebcc',
     padding:5,
-    margin:10,
+    margin:3,
     marginTop:10,
     marginBottom:-30,
     borderColor:'#faebcc',
@@ -181,7 +181,7 @@ const Mon = ({mon, onPress})=> (
 
 const UnknownMon = ({mon, onPress})=>(
   <TouchableHighlight onPress={onPress}>
-    <View>
+    <View style={styles.unknownMon}>
       <MonImage mon={mon} useScreenshot style={styles.unknown_icon} resizeMode='cover' />
     </View>
   </TouchableHighlight>

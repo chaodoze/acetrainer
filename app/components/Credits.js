@@ -32,86 +32,77 @@ class Credits extends Component {
           <Title>Credits</Title>
         </Header>
         <Content theme={myTheme} style={styles.content}>
-          <Text style={styles.headerText}>Thanks to all of these open source projects and Creative Common Licensed Images</Text>
+          <Text style={styles.headerText}>Thanks to all of these open source projects and Creative Commons licensed images</Text>
           <Card>
-            <CardItem button onPress={()=> openInBrowser('http://google.com')}>
+            <CardItem button onPress={()=> openInBrowser('https://facebook.github.io/react')}>
               <Text>React</Text>
-              <Text style={styles.note}>https://facebook.github.io/react</Text>
             </CardItem> 
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://facebook.github.io/react-native/')}>
               <Text>React Native</Text>
-              <Text style={styles.note}>https://facebook.github.io/react-native/</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://firebase.google.com/')}>
               <Text>Firebase</Text>
-              <Text style={styles.note}>https://firebase.google.com/</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('http://nativebase.io/')}>
               <Text>Native Base</Text>
-              <Text style={styles.note}>http://nativebase.io/</Text>
             </CardItem>            
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://facebook.github.io/react')}>
               <Text>Pokémon Game Info</Text>
-              <Text style={styles.note}>https://pokemon.gameinfo.io</Text>
             </CardItem> 
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://www.iconfinder.com/GeoGavilanes')}>
               <Text>Pokémon icons by Geovanny Gavilanes</Text>
-              <Text style={styles.note}>https://www.iconfinder.com/GeoGavilanes</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://pokemongo.gamepress.gg')}>
               <Text>Game Press Pokémon Go</Text>
-              <Text style={styles.note}>https://pokemongo.gamepress.gg</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://lodash.com/')}>
               <Text>Lodash</Text>
-              <Text style={styles.note}>https://lodash.com/</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('http://momentjs.com')}>
               <Text>Moment</Text>
-              <Text style={styles.note}>http://momentjs.com</Text>
             </CardItem>
-            <CardItem>
-              <Text>Query String</Text>
-              <Text style={styles.note}>https://github.com/sindresorhus/query-string</Text>
+            <CardItem button onPress={()=> openInBrowser('https://github.com/sindresorhus/query-string')}>
+              <Text>query-string</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://github.com/oblador/react-native-collapsible')}>
               <Text>react-native-collapsible</Text>
+
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://github.com/rebeccahughes/react-native-device-info')}>
               <Text>react-native-device-info</Text>
+
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://github.com/root-two/react-native-drawer')}>
               <Text>react-native-drawer</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://github.com/evollu/react-native-fcm')}>
               <Text>react-native-fcm</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://www.npmjs.com/package/react-native-parallax-scroll-view')}>
               <Text>react-native-parallax-scroll-view</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://github.com/yonahforst/react-native-permissions')}>
               <Text>react-native-permissions</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://github.com/aksonov/react-native-router-flux')}>
               <Text>react-native-router-flux</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://github.com/oblador/react-native-vector-icons')}>
               <Text>react-native-vector-icons</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://github.com/alinz/react-native-webview-bridge')}>
               <Text>react-native-webview-bridge</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://github.com/reactjs/react-redux')}>
               <Text>react-redux</Text>
             </CardItem> 
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://github.com/reactjs/redux')}>
               <Text>redux</Text>
             </CardItem>
-            <CardItem>
+            <CardItem button onPress={()=> openInBrowser('https://github.com/evgenyrodionov/redux-logger')}>
               <Text>redux-logger</Text>
             </CardItem>         
           </Card>
-
         </Content>
       </Container>
     );

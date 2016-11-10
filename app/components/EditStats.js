@@ -156,7 +156,7 @@ class EditStats extends Component {
 
 var styles = StyleSheet.create({
   editOverlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)', flex:1, borderColor:'#ffffff', borderWidth:2
+    backgroundColor: 'rgba(0, 0, 0, 0.7)', flex:1
   },
 
   header5: {
