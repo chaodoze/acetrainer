@@ -79,7 +79,6 @@ class MonListP extends Component {
       return (<Text>Sorry, we don't have permission to access your photos</Text>)
     }
     const {mons, unknowns, onMonClick, onUnknownClick, onDeleteUnknowns, onOpenDrawer} = this.props
-    console.log('onOpenDrawer', onOpenDrawer)
     return <MonList mons={mons} unknowns={unknowns} onMonClick={onMonClick} onUnknownClick={onUnknownClick} onDeleteUnknowns={onDeleteUnknowns} onOpenDrawer={onOpenDrawer}/>
   }
 }
