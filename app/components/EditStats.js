@@ -100,7 +100,7 @@ class EditStats extends Component {
   renderErrors() {
     const {noSpecieErr, noIVsErr} = this.state
     const specieErr = noSpecieErr && <Text style={styles.errorLabel}>We can't figure out the specie :(</Text>
-    const ivErr = noIVsErr && <Text style={styles.errorLabel}>No possible IV from this stats, can you double check all the values?</Text>
+    const ivErr = noIVsErr && <Text style={styles.errorLabel}>No possible IV from this stats :( If the Arc behind the specie is covered, try tweaking the monster level.</Text>
     return (
       <View style={styles.errorAlert}>
         {ivErr}
@@ -114,59 +114,62 @@ class EditStats extends Component {
     const {specieText, hp, cp, level, noSpecieErr} = this.state
     return (
       <View style={{flex: 1}}>
-      <View>
-        <Image style={[imageDimensions, {position: 'absolute'}]} source={{uri:mon.url}} />
-      </View>
-      <View style={styles.editOverlay}>
-        <View style={styles.trash}>
-          <Button  theme={myTheme} transparent>
-            <Icon name='trash' style={{color:'#ffffff'}}/>
-          </Button>
-        </View>
         <View>
+          <Image style={[imageDimensions, {position: 'absolute'}]} source={{uri:mon.url}} />
+        </View>
+        <View style={styles.editOverlay}>
+          <View>
             <View style={styles.editHeader}>
               <View><Text style={styles.headerTitle}>EDIT STATS</Text></View>
               <TrainerLevel style={styles.levelLink} level={mon.trainerLvl()} onLevelChange={(level)=>this.changeTrainerLevel(level)}/>
             </View>
-          <List theme={myTheme}>
-            <ListItem style={[layout.alignLeft, styles.noBorder]}>
-              <View style={{flex:2}}>
-                <Text style={styles.header5}>Pokémon Specie</Text>
-                <TextInput style={[styles.editMonInput, noSpecieErr && styles.errorInput]}
-                  onChangeText={this.changeText}
-                  onFocus={()=>this.setState({specieFocus:true})}
-                  onBlur={()=>this.setState({specieFocus:false})}
-                  value={this.state.specieText} />
-              </View>
-              <View style={{flex:1}}>
-                <Text style={styles.header5}>CP</Text>
-                <TextInput style={styles.editMonInput} value={cp} onChangeText={val=>{this.setState({cp:val})}} keyboardType="numeric" />
-              </View>
-              <View style={{flex:1}}>
-                <Text style={styles.header5}>HP</Text>
-                <TextInput style={styles.editMonInput} value={hp} onChangeText={val=>this.setState({hp:val})}   keyboardType="numeric" />
-              </View>
-            </ListItem>
-            {this.renderSuggestions()}
-            <ListItem style={[layout.alignRight, styles.noBorder]}>
-              <View style={{flex:1}}>
-                <Text style={styles.header5}>Monster Level</Text>
-                <TextInput style={[styles.editMonInput, styles.levelInput]} value={level}
-                  onChangeText={val=>this.setState({level:val})} keyboardType="numeric" />
-              </View>
-              <View style={layout.alignRight}>
-                <Button onPress={this.onSubmit} small  style={styles.button}>Update</Button>
-                <Button onPress={goBack} small bordered info style={styles.button}>Cancel</Button>
-                <Button  theme={myTheme} onPress={()=>this.onDeleteMon()} transparent>
-                  <Icon name='trash' style={{color:'#ffffff'}}/>
-                </Button>
-
-              </View>
-            </ListItem>
-          </List>
-          {this.renderErrors()}
+            <List theme={myTheme}>
+              <ListItem style={[layout.alignLeft, styles.noBorder]}>
+                <View style={{flex:2}}>
+                  <Text style={styles.header5}>Pokémon Specie</Text>
+                  <TextInput style={[styles.editMonInput, noSpecieErr && styles.errorInput]}
+                    onChangeText={this.changeText}
+                    onFocus={()=>this.setState({specieFocus:true})}
+                    onBlur={()=>this.setState({specieFocus:false})}
+                    value={this.state.specieText} />
+                </View>
+                <View style={{flex:1}}>
+                  <Text style={styles.header5}>CP</Text>
+                  <TextInput style={styles.editMonInput} value={cp} onChangeText={val=>{this.setState({cp:val})}} keyboardType="numeric" />
+                </View>
+                <View style={{flex:1}}>
+                  <Text style={styles.header5}>HP</Text>
+                  <TextInput style={styles.editMonInput} value={hp} onChangeText={val=>this.setState({hp:val})}   keyboardType="numeric" />
+                </View>
+              </ListItem>
+              {this.renderSuggestions()}
+              <ListItem style={[layout.alignRight, styles.noBorder]}>
+                <View style={{flex:1}}>
+                  <Text style={styles.header5}>Monster Level</Text>
+                  <TextInput style={[styles.editMonInput, styles.levelInput]} value={level}
+                    onChangeText={val=>this.setState({level:val})} keyboardType="numeric" />
+                </View>
+                <View style={layout.alignRight}>
+                  <Button onPress={this.onSubmit} small  style={styles.button}>Update</Button>
+                  <Button onPress={goBack} small bordered info style={styles.button}>Cancel</Button>
+                </View>
+              </ListItem>
+            </List>
+            {this.renderErrors()}
+          </View>
         </View>
-      </View>
+        <View style={styles.goback}>
+          <Button  theme={myTheme} transparent onPress={goBack}>
+            <Icon name='chevron-left' style={{color:'#ffffff'}}/>
+          </Button>
+        </View>
+        <View style={{position: 'absolute', left: 0, right: 0, bottom: 10, backgroundColor:'transparent'}}>
+          <View style={[layout.alignRight, {marginRight:15}]}>
+            <Button small  danger  theme={myTheme} onPress={()=>this.onDeleteMon()} >
+              <Icon name='trash' style={{color:'#ffffff'}}/>Delete
+            </Button>  
+          </View>      
+        </View>
       </View>
     );
   }
@@ -198,8 +201,8 @@ var styles = StyleSheet.create({
   levelInput: {
     width:100,
   },
-  trash: {
-    position:'absolute', top:20, right:10,
+  goback: {
+    position:'absolute', top:20, left:10,
   },
   noBorder: {
     borderColor:'transparent'
