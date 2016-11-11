@@ -28,6 +28,11 @@ const layout = StyleSheet.create({
     backgroundColor: '#fff', padding: 10, borderRadius: 10,
   },
 
+  modal_content: {
+   padding:20,
+  },
+
+
   choice_title: {
     flexWrap: 'wrap',  
     justifyContent: 'center', 

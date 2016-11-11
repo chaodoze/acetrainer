@@ -7,6 +7,7 @@ import {
   Image,
   TextInput,
   Dimensions,
+  Modal,
   View
 } from 'react-native';
 import {Actions} from 'react-native-router-flux'
@@ -30,13 +31,21 @@ const imageDimensions = {
 }
 
 class EditStats extends Component {
+
   constructor(props) {
     super(props)
     const {mon} = this.props
     this.chooseSpecie = this.chooseSpecie.bind(this)
     this.changeText = this.changeText.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
-    this.state = {specieText:mon.Name, specieFocus:false, specie:mon.specie(), cp:mon.CP, hp:mon.HP, level:mon.level}
+    this.state = {specieText:mon.Name, specieFocus:false, specie:mon.specie(), cp:mon.CP, hp:mon.HP, level:mon.level, modalVisible: false}
+  }
+  openModal() {
+    this.setState({modalVisible: true});
+  }
+
+  closeModal() {
+    this.setState({modalVisible: false});
   }
   changeTrainerLevel(newLevel) {
     console.log('changeTrainerLevel', newLevel)
@@ -108,7 +117,6 @@ class EditStats extends Component {
       </View>
     )
   }
-
   render() {
     const {mon, goBack} = this.props
     const {specieText, hp, cp, level, noSpecieErr} = this.state
@@ -165,19 +173,48 @@ class EditStats extends Component {
         </View>
         <View style={{position: 'absolute', left: 0, right: 0, bottom: 10, backgroundColor:'transparent'}}>
           <View style={[layout.alignRight, {marginRight:15}]}>
-            <Button small  danger  theme={myTheme} onPress={()=>this.onDeleteMon()} >
+            <Button small  danger  theme={myTheme} onPress={() => {this.openModal()}}>
               <Icon name='trash' style={{color:'#ffffff'}}/>Delete
             </Button>  
           </View>      
         </View>
+        {this.renderModal()}
       </View>
     );
   }
+
+  renderModal() {
+    const {modalVisible} = this.state
+    if (modalVisible) {
+      return (
+        <Modal
+            animationType={"slide"}
+            transparent={true} >
+          <View style={layout.modal_outer}>
+            <View style={layout.modal_inner}>
+              <View>
+                <View style={layout.choice_title}>
+                  <Text style={layout.choice_title_text}>EDIT TRAINER LEVEL</Text>
+                  <Button style={layout.fixedClose} theme={myTheme} transparent small onPress={() => {this.closeModal()}}>
+                    <Icon name='close' style={{color:'#333333'}}/>
+                  </Button>
+                </View>
+                <View style={[layout.alignCenterCol, layout.modal_content]}>
+                  <Text style={{marginBottom:20}}>Are you sure you want to delete?</Text>
+                  <Button block danger onPress={()=>this.onDeleteMon()}>Delete</Button> 
+                </View>
+              </View>
+            </View>
+          </View>
+        </Modal>
+    )}
+  }
+
 }
 
 var styles = StyleSheet.create({
   editOverlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)', flex:1
+    backgroundColor: 'rgba(0, 0, 0, 0.65)', flex:1
   },
 
   header5: {
