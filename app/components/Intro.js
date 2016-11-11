@@ -22,7 +22,7 @@ class Intro extends Component {
     this.state = {}
     AsyncStorage.getItem('TrainerLevel').then(lvl=>{
       if (lvl) {
-        onProceed(lvl)
+        onProceed(parseInt(lvl,10))
       }
       else {
         this.setState({gotTrainerLevel:true})

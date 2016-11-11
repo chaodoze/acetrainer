@@ -192,6 +192,8 @@ export default class Pokemon extends BaseRecord {
   strongAgainst() {
     const type_scalar = {}
     const [quick,charge] = [this.quickMove(), this.chargeMove()]
+    if (!(quick && charge)) {return []} //need to have both moves defined to compute
+
     const boost = (typeId, boostAmt, effect, hasStab=false)=>{
       const result = type_scalar[typeId] || {}
       result[effect] = (result[effect] || 0) + boostAmt

@@ -1,6 +1,7 @@
 import firebase from 'firebase'
 import DeviceInfo from 'react-native-device-info'
 import {AsyncStorage} from 'react-native'
+import Pokemon from '../db/pokemon'
 
 const uuid = DeviceInfo.getUniqueID()
 let subscribedUid = null
@@ -40,11 +41,22 @@ export const init = (dispatch) => {
 
 const subscribeToMons = (dispatch)=> {
   const ref = firebase.database().ref(monPath())
-  ref.on('child_added', (mon)=> {
-    dispatch({
-      type: 'MON_ADDED',
-      mon:mon.val(),
+  ref.once('value', snapshot=>{
+    const mons = {}
+    snapshot.forEach(childSnap=>{
+      const mon = new Pokemon(childSnap.val())
+      mons[mon.url] = mon
     })
+    dispatch({
+      type:'INITIAL_MONS',
+      mons,
+    })
+    // ref.on('child_added', (mon)=> {
+    //   dispatch({
+    //     type:'MON_ADDED',
+    //     mon:mon.val(),
+    //   })
+    // })
   })
   ref.on('child_changed', (mon)=>{
     dispatch({

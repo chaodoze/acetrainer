@@ -7,10 +7,14 @@ function mons(state={}, action) {
   const mon = action.mon
   let newState
   switch (action.type) {
+    case 'INITIAL_MONS':
+      return action.mons
     case 'MON_ADDED':
     case 'MON_CHANGED':
       newState = {...state}
-      newState[mon.url] = new Pokemon(mon)
+      if (action.type == 'MON_CHANGED' || !newState[mon.url]) { //if existing mon, then just ignore MON_ADDED
+        newState[mon.url] = new Pokemon(mon)
+      }
       return newState
     case 'MON_REMOVED':
       newState = {...state}

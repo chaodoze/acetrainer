@@ -145,17 +145,7 @@ class MonDetails extends Component {
             </View>
           </View>
           </ListItem>
-          <View>
-            <View style={layout.list_header}>
-              <Text style={layout.list_headerTitle}>BATTLE</Text>
-            </View>
-            <ListItem style={layout.alignLeft} >
-              <Text style={{flex:2, fontWeight:'bold', fontSize:12}}>Good Against</Text>
-              <Text style={{flex:2, fontWeight:'bold', fontSize:12}}>Effectiveness</Text>
-              <Text style={{flex:3, fontWeight:'bold', fontSize:12}}>Top Tier Mons</Text>
-            </ListItem>
-            {mon.strongAgainst().map(strength=><StrengthChartItem key={strength.type.displayName} strength={strength} />)}
-          </View>
+          <StrengthChart mon={mon} />
           <View style={layout.list_header}>
             <Text style={layout.list_headerTitle}>POWER UPS</Text>
           </View>
@@ -165,6 +155,22 @@ class MonDetails extends Component {
     );
   }
 }
+
+const StrengthChart = ({mon})=>{
+  const strengths = mon.strongAgainst()
+  return strengths.length > 0 && (
+    <View>
+      <View style={layout.list_header}>
+        <Text style={layout.list_headerTitle}>BATTLE</Text>
+      </View>
+      <ListItem style={layout.alignLeft} >
+        <Text style={{flex:2, fontWeight:'bold', fontSize:12}}>Good Against</Text>
+        <Text style={{flex:2, fontWeight:'bold', fontSize:12}}>Effectiveness</Text>
+        <Text style={{flex:3, fontWeight:'bold', fontSize:12}}>Top Tier Mons</Text>
+      </ListItem>
+      {mon.strongAgainst().map(strength=><StrengthChartItem key={strength.type.displayName} strength={strength} />)}
+    </View>
+)}
 
 const StrengthChartItem = ({strength})=>(
   <ListItem style={layout.alignLeft} >
