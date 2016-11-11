@@ -16,7 +16,6 @@ import {
   Container, Content, List, ListItem, Text, InputGroup,
   Input, Icon, Badge, Button } from 'native-base';
 import {Actions} from 'react-native-router-flux';
-import { Col, Row, Grid } from "react-native-easy-grid";
 import PercentageCircle from 'react-native-percentage-circle';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import {PokemonImager} from 'NativeModules'
@@ -99,22 +98,22 @@ class MonDetails extends Component {
           <ListItem style={styles.mon_data} theme={myTheme}>
               <View style={{justifyContent:'space-between', alignItems: 'center',flexDirection:'row'}} >
                 <View style={{justifyContent:'flex-start', alignItems: 'center',flexDirection:'row'}}>
-                <Text style={styles.mon_stat}>CP</Text>
-                <Text style={styles.mon_stat_value}>{mon.CP}</Text>
-                <Text style={styles.mon_stat}>HP</Text>
-                <Text style={styles.mon_stat_value}>{mon.HP}</Text>
-                <Text style={styles.mon_stat}>Level</Text>
-                <Text style={styles.mon_stat_value}>{mon.level}</Text>
-                <Text style={styles.mon_stat}>IV</Text>
-                <Text style={styles.mon_stat_value}>{mon.ivRangeStr()}</Text>
-                <View style={{width:30, height:30}}>
-                  <PercentageCircle radius={15} textStyle={{fontSize: 9}} percent={mon.avgIVPercent()} borderWidth={3} color={"#3498db"}></PercentageCircle>
-                </View>
+                  <Text style={styles.mon_stat}>CP</Text>
+                  <Text style={styles.mon_stat_value}>{mon.CP}</Text>
+                  <Text style={styles.mon_stat}>HP</Text>
+                  <Text style={styles.mon_stat_value}>{mon.HP}</Text>
+                  <Text style={styles.mon_stat}>Level</Text>
+                  <Text style={styles.mon_stat_value}>{mon.level}</Text>
+                  <Text style={styles.mon_stat}>IV</Text>
+                  <Text style={styles.mon_stat_value}>{mon.ivRangeStr()}</Text>
+                  <View style={{width:30, height:30}}>
+                    <PercentageCircle radius={15} textStyle={{fontSize: 9}} percent={mon.avgIVPercent()} borderWidth={3} color={"#3498db"}></PercentageCircle>
+                  </View>
                 </View>
                 <View style={{justifyContent:'flex-end'}}>
-                <Button onPress={()=>Actions.editstats()} transparent>
-                  <Icon style={{ fontSize:16, color:'#1780fb'}}  name="pencil" />
-                </Button>
+                  <Button onPress={()=>Actions.editstats()} transparent>
+                    <Icon style={{ fontSize:16, color:'#1780fb'}}  name="pencil" />
+                  </Button>
                 </View>
               </View>
           </ListItem>
@@ -130,21 +129,21 @@ class MonDetails extends Component {
             <Move mon={mon} type="charge" />
           </ListItem>
           <ListItem style={styles.last_row}>
-            <Grid>
-              <Col size={2} style={layout.alignCenter}>
-                <Image source={require('./images/icons/sword.png')} style={layout.icon} />
-                <Text>Attack </Text>
-                <Grade rank={mon.attackRank()} />
-              </Col>
-              <Col size={2} style={[layout.alignCenter, styles.defence]}>
-                <Image source={require('./images/icons/shield.png')} style={layout.icon} />
-                <Text style={styles.defence_text}>Defence</Text>
-                <Grade rank={mon.defenseRank()} />
-              </Col>
-              <Col size={1} style={layout.alignRight}>
-                {this.renderMovesetChart(mon)}
-              </Col>
-            </Grid>
+          <View style={{justifyContent:'space-between', alignItems: 'center',flexDirection:'row'}}>
+            <View style={[layout.alignCenter, {marginLeft:20}]}>
+              <Image source={require('./images/icons/sword.png')} style={layout.icon} />
+              <Text>Attack </Text>
+              <Grade rank={mon.attackRank()} />
+            </View>
+            <View style={[layout.alignLeft, styles.defence]}>
+              <Image source={require('./images/icons/shield.png')} style={layout.icon} />
+              <Text style={styles.defence_text}>Defence</Text>
+              <Grade rank={mon.defenseRank()} />
+            </View>
+            <View style={{justifyContent:'flex-end'}}>
+              {this.renderMovesetChart(mon)}
+            </View>
+          </View>
           </ListItem>
           <View>
             <View style={layout.list_header}>

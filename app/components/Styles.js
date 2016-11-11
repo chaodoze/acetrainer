@@ -13,7 +13,7 @@ const layout = StyleSheet.create({
   },
 
   alignCenter: {
-    flexWrap: 'wrap',  justifyContent: 'center', alignItems: 'center',flexDirection:'row',
+    flexWrap: 'wrap',  justifyContent: 'center', alignItems: 'center',flexDirection:'row'
   },
 
   alignCenterCol: {

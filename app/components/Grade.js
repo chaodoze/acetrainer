@@ -41,7 +41,7 @@ const styleBig = StyleSheet.create({
   grade_a: { backgroundColor:'#00a700'},
   grade_b: { backgroundColor:'#98d000'},
   grade_c: { backgroundColor:'#ded100'},
-  grade_d: { backgroundColor:'#dea300'},
+  grade_f: { backgroundColor:'#dea300'},
   
   grade_badge: {
   padding:7,

@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import { List, ListItem, Text, Icon, Button } from 'native-base';
-import { Col, Row, Grid } from "react-native-easy-grid";
 import myTheme from './Themes/myTheme';
 import layout from './Styles';
 import Grade from './Grade'
@@ -40,16 +39,14 @@ export default class MoveSetChart extends Component {
       <List>
         {movesets.map(moveset=>{
           return (
-            <ListItem key={`${moveset.quick}-${moveset.charge}`} style={[styles.movesetList, isCurrentMoveset(moveset) && styles.yourmove]}>
-              <Grid>
-                <Col size={3}><Text style={styles.cell}>{moveset.quick} / {moveset.charge}</Text></Col>
-                <Col size={1}  style={layout.alignRight}>
-                  <Text style={styles.cell}>{rankPercent(moveset.rank)}%</Text>
-                </Col>
-                <Col size={1} style={layout.alignRight}>
-                  <Grade rank={rankPercent(moveset.rank)/100} />
-                </Col>
-              </Grid>
+            <ListItem key={`${moveset.quick}-${moveset.charge}`} style={[styles.movesetList, layout.alignLeft, isCurrentMoveset(moveset) && styles.yourmove]}>
+              <View style={{flex:3}}><Text style={styles.cell}>{moveset.quick} / {moveset.charge}</Text></View>
+              <View style={[layout.alignRight, {flex:1}]}>
+                <Text style={styles.cell}>{rankPercent(moveset.rank)}%</Text>
+              </View>
+              <View style={[layout.alignRight, {flex:1}]}>
+                <Grade rank={rankPercent(moveset.rank)/100} />
+              </View>
             </ListItem>
           )}
         )}

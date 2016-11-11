@@ -9,7 +9,6 @@ import {
 
 import { List, ListItem, Text, Button, Icon } from 'native-base';
 import TrainerLevel from './TrainerLevel'
-import { Col, Row, Grid } from "react-native-easy-grid";
 import myTheme from './Themes/myTheme';
 import layout from './Styles';
 

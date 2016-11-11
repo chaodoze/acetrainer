@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Modal, StyleSheet, TouchableHighlight, View} from 'react-native'
 import {List, ListItem, Text, Icon, Button} from 'native-base'
 import myTheme from './Themes/myTheme';
-import { Col, Row, Grid } from "react-native-easy-grid";
 import layout from './Styles';
 
 export default class ChoiceModal extends Component {
