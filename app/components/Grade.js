@@ -19,7 +19,7 @@ const rankToGrade = rank=>{
 
 export default Grade = ({rank, small}) => {
   if (!rank) {
-    return <Text>?</Text>
+    return <Text style={{color:'#888888', fontSize:12}}>?</Text>
   }
   const grade = rankToGrade(rank)
   const styleGrade = `grade_${grade.toLowerCase()}`
