@@ -25,7 +25,7 @@ class Intro extends Component {
         onProceed(parseInt(lvl,10))
       }
       else {
-        this.setState({gotTrainerLevel:true})
+        this.setState({readTrainerLevel:true})
       }
     })
   }
@@ -40,8 +40,8 @@ class Intro extends Component {
     onProceed(chosenLevel)
   }
   render() {
-    let {showErr, gotTrainerLevel} = this.state
-    if (!gotTrainerLevel && !this.props.uid) {return <Text>Loading...</Text>}
+    let {showErr, readTrainerLevel} = this.state
+    if (!readTrainerLevel || !this.props.uid) {return <Text>Loading...</Text>}
     showErr = showErr && <Text>Please select your Trainer Level!</Text>
     return (
 
@@ -74,7 +74,7 @@ const mapDispatchToProps = dispatch=> ({
   }
 })
 
-Intro = connect(null, mapDispatchToProps)(Intro)
+Intro = connect(mapStateToProps, mapDispatchToProps)(Intro)
 
 const styles = StyleSheet.create({
   description: {

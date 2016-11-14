@@ -22,7 +22,6 @@ class MonListP extends Component {
     this.state = {
         status: 'checking'
     };
-    console.log('Trainer Level: ', this.props.trainerLevel)
   }
   scanForScreenshots() {
     let {trainerLevel} = this.props

@@ -26,13 +26,14 @@ export const init = (dispatch) => {
     }
   }
   firebase.initializeApp(config)
-    AsyncStorage.getItem('uuid').then(initUuid)
+  AsyncStorage.getItem('uuid').then(initUuid)
   firebase.auth().onAuthStateChanged(user=>{
     if (!user) {
       firebase.auth().signInAnonymously()
     } else {
       if (subscribedUid != user.uid) {
         AsyncStorage.setItem('uuid', subscribedUid)
+          .catch(err=>console.log('set uuid err', err))
         initUuid(user.uid)
       }
     }

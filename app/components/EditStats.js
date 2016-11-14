@@ -48,7 +48,6 @@ class EditStats extends Component {
     this.setState({modalVisible: false});
   }
   changeTrainerLevel(newLevel) {
-    console.log('changeTrainerLevel', newLevel)
     const {mon, trainerLevel, onTrainerLevelChanged} = this.props
     const localIdentifier = mon.url.replace('ph://', '')
     PokemonImager.scanOne(newLevel, localIdentifier)
@@ -79,7 +78,6 @@ class EditStats extends Component {
     this.setState({specie, specieText:specie.displayName, noSpecieErr:false})
   }
   onDeleteMon() {
-    console.log('onDeleteMon')
     const {mon} = this.props
     deleteMon(mon)
     Actions.mydrawer({type:'reset'})
@@ -97,7 +95,6 @@ class EditStats extends Component {
 
     mon.ivCandidates = null
     mon.calcIVPossibilities()
-    console.log('onSubmit', mon.isKnown(), mon.HP, mon.CP, mon)
     if (mon.isKnown()) {
       updateMon(mon)
       Actions.pop()
@@ -175,8 +172,8 @@ class EditStats extends Component {
           <View style={[layout.alignRight, {marginRight:15}]}>
             <Button small  danger  theme={myTheme} onPress={() => {this.openModal()}}>
               <Icon name='trash' style={{color:'#ffffff'}}/>Delete
-            </Button>  
-          </View>      
+            </Button>
+          </View>
         </View>
         {this.renderModal()}
       </View>
@@ -201,7 +198,7 @@ class EditStats extends Component {
                 </View>
                 <View style={[layout.alignCenterCol, layout.modal_content]}>
                   <Text style={{marginBottom:20}}>Are you sure you want to delete?</Text>
-                  <Button block danger onPress={()=>this.onDeleteMon()}>Delete</Button> 
+                  <Button block danger onPress={()=>this.onDeleteMon()}>Delete</Button>
                 </View>
               </View>
             </View>

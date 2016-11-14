@@ -37,7 +37,6 @@ import {updateMon} from '../db/index'
 
 class MonDetails extends Component {
   changeTrainerLevel(newLevel) {
-    console.log('changeTrainerLevel', newLevel)
     const {mon, trainerLevel, onTrainerLevelChanged} = this.props
     const localIdentifier = mon.url.replace('ph://', '')
     PokemonImager.scanOne(newLevel, localIdentifier)
