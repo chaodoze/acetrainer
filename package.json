@@ -20,7 +20,7 @@
     "react-native-fcm": "^1.0.16",
     "react-native-google-signin": "^0.8.0",
     "react-native-parallax-scroll-view": "https://github.com/jaysoo/react-native-parallax-scroll-view.git",
-    "react-native-percentage-circle": "^1.0.1",
+    "react-native-percentage-circle": "https://github.com/JackPu/react-native-percentage-circle.git",
     "react-native-permissions": "^0.2.4",
     "react-native-router-flux": "^3.36.0",
     "react-native-vector-icons": "^2.0.3",
