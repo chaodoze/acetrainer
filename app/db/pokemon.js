@@ -95,7 +95,6 @@ export default class Pokemon extends BaseRecord {
     this.cleanupStats(stats)
     mon = new Pokemon(stats)
     if (!mon.isImprobable()) {
-      console.log('probable mon', mon)
       mon.calcIVPossibilities()
       mon.setMatchingMoves()
       db.addMon(mon)
@@ -185,7 +184,6 @@ export default class Pokemon extends BaseRecord {
     if (this.specie() && !this.specie().canEvolve()) {
       this.setMoveFor('quick', this.matchingMoveFor('quick', this['Quick Move']))
       this.setMoveFor('charge', this.matchingMoveFor('charge', this['Charge Move']))
-      console.log('setMatchingMoves', this.moveFor('quick').displayName, this.moveFor('charge').displayName)
     }
   }
 
@@ -224,7 +222,6 @@ export default class Pokemon extends BaseRecord {
       .orderBy(['total','type.displayName'], ['desc','asc'])
       .filter(strength=>strength.total >= 1)
       .value()
-    console.log('strongAgainst', r)
     return r
   }
 
