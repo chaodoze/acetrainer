@@ -47,12 +47,12 @@ const subscribeToMons = (dispatch)=> {
       type:'INITIAL_MONS',
       mons,
     })
-    // ref.on('child_added', (mon)=> {
-    //   dispatch({
-    //     type:'MON_ADDED',
-    //     mon:mon.val(),
-    //   })
-    // })
+    ref.on('child_added', (mon)=> {
+      dispatch({
+        type:'MON_ADDED',
+        mon:mon.val(),
+      })
+    })
   })
   ref.on('child_changed', (mon)=>{
     dispatch({
