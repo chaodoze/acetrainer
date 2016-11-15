@@ -6,6 +6,7 @@ import * as db from '../db'
 import Mons from './Mons'
 import MonDetails from './MonDetails'
 import Intro from './Intro'
+import Splash from './Splash'
 import EditStats from './EditStats'
 import MyDrawer from './MyDrawer'
 import Credits from './Credits'
@@ -25,6 +26,7 @@ export default function App() {
           <Scene key="editunknownstats" component={EditStats} title="Edit Mon Stats" />
           <Scene key="editstats" component={EditStats} animation="fade" title="Edit Mon Stats" />
           <Scene key="credits" component={Credits} title="Credits" />
+          <Scene key="Splash" component={Splash} title="Splash" initial={false} />
         </Scene>
       </RouterWithRedux>
     </Provider>
