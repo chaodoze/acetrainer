@@ -2,18 +2,13 @@ import firebase from 'firebase'
 import DeviceInfo from 'react-native-device-info'
 import {AsyncStorage} from 'react-native'
 import Pokemon from '../db/pokemon'
+import {firebaseConf} from '../config/firebase'
 
 const uuid = DeviceInfo.getUniqueID()
 let subscribedUid = null
 const monPath = ()=>`/users/${subscribedUid}/mons`
 
 export const init = (dispatch) => {
-  const config = {
-    apiKey: "AIzaSyBWvVTIVhdCARWTPEAipe5TjkWCguDZjvg",
-    authDomain: "acetrainer-ce9c9.firebaseapp.com",
-    databaseURL: "https://acetrainer-ce9c9.firebaseio.com",
-    storageBucket: "acetrainer-ce9c9.appspot.com",
-  }
   const initUuid = uuid=> {
     if (uuid) {
       subscribedUid = uuid
@@ -25,16 +20,16 @@ export const init = (dispatch) => {
       console.log('uuid', subscribedUid)
     }
   }
-  firebase.initializeApp(config)
+  firebase.initializeApp(firebaseConf)
   AsyncStorage.getItem('uuid').then(initUuid)
   firebase.auth().onAuthStateChanged(user=>{
     if (!user) {
       firebase.auth().signInAnonymously()
     } else {
       if (subscribedUid != user.uid) {
-        AsyncStorage.setItem('uuid', subscribedUid)
-          .catch(err=>console.log('set uuid err', err))
         initUuid(user.uid)
+        AsyncStorage.setItem('uuid', user.uid)
+          .catch(err=>console.log('set uuid err', err))
       }
     }
   })
