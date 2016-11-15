@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
+  AppState,
   AsyncStorage,
   StyleSheet,
   TouchableHighlight,
@@ -10,6 +11,8 @@ import {
 
 import { Input, Text, Button } from 'native-base';
 import {Actions} from 'react-native-router-flux'
+const Permissions = require('react-native-permissions')
+
 import LevelPicker from './LevelPicker'
 import {setTrainerLevel} from '../actions'
 
@@ -19,10 +22,11 @@ class Intro extends Component {
     const {onProceed} = this.props
     this.onPress = this.onPress.bind(this)
     this.onLevelChange = this.onLevelChange.bind(this)
-    this.state = {}
+    this.state = {readTrainerLevel:false, photoPermStatus:'checking', showErr:false}
     AsyncStorage.getItem('TrainerLevel').then(lvl=>{
       if (lvl) {
-        onProceed(parseInt(lvl,10))
+        this.trainerLevel = parseInt(lvl,10)
+        this.requestPhotoPerm()
       }
       else {
         this.setState({readTrainerLevel:true})
@@ -33,14 +37,41 @@ class Intro extends Component {
     this.setState({chosenLevel:lvl, showErr:false})
   }
   onPress() {
-    const {onProceed} = this.props
     const {chosenLevel} = this.state
     if (!chosenLevel) {return this.setState({showErr:true})}
     AsyncStorage.setItem('TrainerLevel', JSON.stringify(chosenLevel))
-    onProceed(chosenLevel)
+    this.trainerLevel = chosenLevel
+    this.requestPhotoPerm()
+  }
+  requestPhotoPerm(trainerLevel) {
+    const {onProceed} = this.props
+    Permissions.requestPermission('photo').then(response=>{
+      console.log("photo perm", response)
+      if (response == 'authorized') {
+        onProceed(this.trainerLevel)
+      }
+      else {
+        this.setState({photoPermStatus: 'unauthorized'})
+        this.appStateListener = appState=>{
+          if (appState == 'active') {
+            Permissions.getPermissionStatus('photo').then(response=>{
+              if (response == 'authorized') {
+                AppState.removeEventListener('change', this.appStateListener)
+                onProceed(this.trainerLevel)
+              }
+            })
+          }
+        }
+        AppState.addEventListener('change', this.appStateListener)
+      }
+    })
+  }
+  renderPhotoPermUnauthorized() {
+    return <Text>Need Photo Permissions!</Text>
   }
   render() {
-    let {showErr, readTrainerLevel} = this.state
+    let {showErr, readTrainerLevel, photoPermStatus} = this.state
+    if (photoPermStatus == 'unauthorized') {return this.renderPhotoPermUnauthorized()}
     if (!readTrainerLevel || !this.props.uid) {return <Text>Loading...</Text>}
     showErr = showErr && <Text>Please select your Trainer Level!</Text>
     return (
@@ -53,8 +84,6 @@ class Intro extends Component {
         <LevelPicker initialLevel={10} startLevel={1} onValueChange={this.onLevelChange}  />
 
         <View >
-
-
           <Button onPress={this.onPress} style={{alignSelf:'center', marginTop:20}}>Scan Photos</Button>
         </View>
       </View>

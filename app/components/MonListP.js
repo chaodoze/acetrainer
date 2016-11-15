@@ -7,7 +7,6 @@ import {
   AsyncStorage,
   NativeAppEventEmitter,
 } from 'react-native';
-const Permissions = require('react-native-permissions')
 import { connect } from 'react-redux';
 import {Actions} from 'react-native-router-flux'
 
@@ -17,12 +16,6 @@ import Pokemon from '../db/pokemon'
 import {selectMon} from '../actions'
 
 class MonListP extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        status: 'checking'
-    };
-  }
   scanForScreenshots() {
     let {trainerLevel} = this.props
     trainerLevel = parseInt(trainerLevel, 10)
@@ -45,17 +38,9 @@ class MonListP extends Component {
     })
   }
   componentDidMount() {
-    Permissions.getPermissionStatus('photo').then((r)=>console.log('photo perm', r))
-    Permissions.requestPermission('photo').then(response=>{
-      if (response == 'authorized') {
-        this.reactToAppStates()
-        this.setState({status:'good'})
-        this.scanForScreenshots()
-      }
-      else {
-        this.setState({status:'unauthorized'})
-      }
-    })
+    this.reactToAppStates()
+    this.scanForScreenshots()
+
     this.pokeSubscription = NativeAppEventEmitter.addListener('Pokemon', (stats)=>{
       console.log('new stats', stats)
       const {mons} = this.props
@@ -70,13 +55,6 @@ class MonListP extends Component {
   }
 
   render() {
-    const {status} = this.state
-    if (status == 'checking') {
-      return (<Text>checking permissions</Text>)
-    }
-    else if (status=='unauthorized') {
-      return (<Text>Sorry, we don't have permission to access your photos</Text>)
-    }
     const {mons, unknowns, onMonClick, onUnknownClick, onDeleteUnknowns, onOpenDrawer} = this.props
     return <MonList mons={mons} unknowns={unknowns} onMonClick={onMonClick} onUnknownClick={onUnknownClick} onDeleteUnknowns={onDeleteUnknowns} onOpenDrawer={onOpenDrawer}/>
   }
