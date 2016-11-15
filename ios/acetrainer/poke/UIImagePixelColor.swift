@@ -10,18 +10,18 @@ import UIKit
 
 extension UIImage {
   public subscript(x: Int, y: Int) -> (red:Int, green:Int, blue:Int)? {
-    
+
     if x < 0 || x > Int(size.width) || y < 0 || y > Int(size.height) {
       return nil
     }
-    
+
     let cgImage = self.cgImage
     let provider = self.cgImage?.dataProvider
     let providerData = provider?.data
     let data: UnsafePointer<UInt8> = CFDataGetBytePtr(providerData)
     let bitInfo = cgImage?.bitmapInfo.rawValue
     let byteOrder = (cgImage?.bitmapInfo.rawValue)! & CGBitmapInfo.byteOrderMask.rawValue
-    print("image info", cgImage?.alphaInfo.rawValue, cgImage?.bitmapInfo.rawValue)
+    // print("image info", cgImage?.alphaInfo.rawValue, cgImage?.bitmapInfo.rawValue)
     let numberOfComponents = 4
     let pixelData = ((Int(size.width) * y) + x) * numberOfComponents
     return (red:Int(data[pixelData]), green:Int(data[pixelData+1]), blue:Int(data[pixelData+2]))
@@ -33,5 +33,5 @@ extension UIImage {
     //
     //        return UIColor(red: r, green: g, blue: b, alpha: a)
   }
-  
+
 }

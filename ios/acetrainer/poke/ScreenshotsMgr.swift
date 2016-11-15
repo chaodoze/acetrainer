@@ -27,7 +27,7 @@ struct ScreenshotsMgr {
     case imageNotFound
   }
   static let manager = PHImageManager.default()
-  
+
   static func requestUrlForAsset(_ asset:PHAsset)->String {
 //    let options = PHImageRequestOptions()
 //    options.synchronous = true
@@ -42,7 +42,7 @@ struct ScreenshotsMgr {
     let url = "ph://\(identifier)"
     return url
   }
-  
+
   static func requestImageForAsset(_ asset:PHAsset)->UIImage {
     let options = PHImageRequestOptions()
     options.isSynchronous = true
@@ -55,15 +55,14 @@ struct ScreenshotsMgr {
     })
     return image
   }
-  
+
   static func fetch(_ after:Date)->[Screenshot] {
     let options = PHFetchOptions()
     let ssPredicate =  NSPredicate(format:"mediaSubtype == %ld", PHAssetMediaSubtype.photoScreenshot.rawValue)
-    
+
     let datePredicate = NSPredicate(format:"creationDate > %@", after as CVarArg)
     options.predicate = NSCompoundPredicate(type:.and, subpredicates:[ssPredicate, datePredicate])
     let result = PHAsset.fetchAssets(with: .image, options: options)
-    print("@@@", result.count)
     var screens = [Screenshot]()
     result.enumerateObjects({(asset, count, stop) in
       let url = requestUrlForAsset(asset)
@@ -72,7 +71,7 @@ struct ScreenshotsMgr {
     })
     return screens
   }
-  
+
   static func fetchOne(_ url:NSString)->Screenshot? {
     let result = PHAsset.fetchAssets(withLocalIdentifiers: [url as String], options: PHFetchOptions())
     if let asset = result.firstObject {

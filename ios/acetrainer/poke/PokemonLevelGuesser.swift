@@ -26,7 +26,7 @@ class PokemonLevelGuesser {
                              0.752729099732281, 0.75568550825119, 0.758630370209851, 0.761563837528229, 0.76448604959218,
                              0.767397165298462, 0.770297293677362, 0.773186504840851, 0.776064947064992, 0.778932750225067,
                              0.781790050767666, 0.784636974334717, 0.787473608513275, 0.790300011634827]
-  
+
   let screenshot: UIImage
   let width, height, centerX, centerY: Int
   let radius: Double
@@ -34,15 +34,15 @@ class PokemonLevelGuesser {
   var arcX = [Int]()
   var arcY = [Int]()
   var context: CGContext? = nil
-  
+
   static func levelToLevelIndex(_ level:Double)->Int {
     return Int((level-1)*2)
   }
-  
+
   static func levelIndexToLevel(_ index:Int)->Double {
     return Double(index)*0.5+1
   }
-  
+
   init(screenshot:UIImage, trainerLevel:Int) {
     self.screenshot = screenshot
     self.width = Int(screenshot.size.width)
@@ -51,7 +51,7 @@ class PokemonLevelGuesser {
     centerX =  Int(screenshot.size.width*0.5)
     centerY = Int(screenshot.size.height/2.803943)
     radius = Double(screenshot.size.height)/4.3760683
-    
+
     let cpM = PokemonLevelGuesser.cpMultiplier
     let maxLevelIndex = maxMonLevelIndex()
     let baseCpM = cpM[0]
@@ -64,15 +64,15 @@ class PokemonLevelGuesser {
       arcY.append(Int(Double(centerY)+radius*sin(angleInRadians)))
     }
   }
-  
+
   func maxMonLevel()->Double {
     return min(Double(trainerLevel)+1.5, 40)
   }
-  
+
   func maxMonLevelIndex()->Int {
     return PokemonLevelGuesser.levelToLevelIndex(maxMonLevel())
   }
-  
+
   func getScreenshotContext()->CGContext {
     if let context = self.context {
       return context
@@ -87,7 +87,7 @@ class PokemonLevelGuesser {
       return context
     }
   }
-  
+
   func getPixelValue(x:Int, y:Int)-> (red:Int, green:Int, blue:Int)? {
     let context = getScreenshotContext()
     let rawData = context.data
@@ -95,14 +95,14 @@ class PokemonLevelGuesser {
     let pixelData = ((width * y) + x) * 4
     return (red:Int(data[pixelData+0]), green:Int(data[pixelData+1]), blue:Int(data[pixelData+2]))
   }
-  
+
   func guessLevel()->Double {
     var estLevel = maxMonLevel()
     repeat {
       let index = PokemonLevelGuesser.levelToLevelIndex(estLevel)
       let (x,y) = (arcX[index], arcY[index])
       if let pixelValue = getPixelValue(x: x, y: y) {
-        print("pixelValue", x, y, pixelValue.red, pixelValue.green, pixelValue.blue, estLevel)
+        // print("pixelValue", x, y, pixelValue.red, pixelValue.green, pixelValue.blue, estLevel)
         if pixelValue.red>=250 && pixelValue.green>=250 && pixelValue.blue>=250 {
           return estLevel
         }
@@ -111,6 +111,5 @@ class PokemonLevelGuesser {
     } while estLevel > 1.0
     return 1.0
   }
-  
-}
 
+}

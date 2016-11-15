@@ -18,7 +18,7 @@ class ScreenshotOCR: NSObject, G8TesseractDelegate {
   let width: CGFloat
   let height: CGFloat
   let tesseract = G8Tesseract(language: "eng")
-  
+
   init(screenshot:UIImage) {
     self.screenshot = screenshot
     self.width = screenshot.size.width
@@ -29,7 +29,7 @@ class ScreenshotOCR: NSObject, G8TesseractDelegate {
     filter.threshold = 0.9
     tesseract?.image = screenshot.filterWithOperation(filter)
   }
-  
+
 //  func shouldCancelImageRecognition(for tesseract: G8Tesseract!) -> Bool {
 //    print("cancelImage delegate called")
 //    return false
@@ -42,7 +42,7 @@ class ScreenshotOCR: NSObject, G8TesseractDelegate {
 ////    print("preprocessingImage called!")
 ////    return sourceImage.filterWithOperation(filter)
 //  }
-  
+
   func extractText(_ spec: OCRSpec)->String {
     if let blackList = spec.blackList {
       tesseract?.charBlacklist = blackList
@@ -52,7 +52,6 @@ class ScreenshotOCR: NSObject, G8TesseractDelegate {
     }
     if let whiteList = spec.whiteList {
       tesseract?.charWhitelist = whiteList
-      print("got whitelist", whiteList)
     }
     else {
       tesseract?.charWhitelist = ""
@@ -69,7 +68,7 @@ class OCRSpec {
   var whiteList: String? = nil
   var blackList: String? = nil
   let name: String
-  
+
   init(_ name:String, specs:[String:Any]) {
     self.name = name
     self.rect = specs["rect"] as! [CGFloat]
@@ -103,14 +102,13 @@ class PokemonOCR {
       })
     }
   }
-  
+
   init(screenshot:UIImage) {
     self.screenshot = screenshot
     self.ocr = ScreenshotOCR(screenshot: screenshot)
   }
-  
+
   func fetchData()->Promise<[String:String]> {
-    print("in PokemonOCR")
     return PokemonOCR.getAttrsLocs().then {attrsSpecs->[String:String] in
       var attrs = [String:String]()
       for (attr,spec) in attrsSpecs {
@@ -133,9 +131,8 @@ class PokemonScreenshot {
     self.pokemonOcr = PokemonOCR(screenshot: image!)
     self.levelGuesser = PokemonLevelGuesser(screenshot: image!, trainerLevel: trainerLevel)
   }
-  
+
   func fetchData()->Promise<[String:String]> {
-    print("in PokemonScreenshot.fetchData")
     return pokemonOcr.fetchData().then {stats->[String:String] in
       var results = stats
       results["url"] = self.screenshot.url
