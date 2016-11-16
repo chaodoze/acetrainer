@@ -10,6 +10,7 @@ target 'acetrainer' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'Firebase/Crash'
   pod 'TesseractOCRiOS', '4.0.0'
   pod "PromiseKit", "~> 4.0"
   post_install do |installer|

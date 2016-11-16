@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -841,6 +840,7 @@
 				5DE046D672FD10F85A2C021B /* [CP] Embed Pods Frameworks */,
 				E18B8E6B2AA91D920039F29C /* [CP] Copy Pods Resources */,
 				E52684531D999115002B4176 /* CopyFiles */,
+				E5CEA4A01DDBE04600827FD4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1331,6 +1331,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-acetrainer/Pods-acetrainer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E5CEA4A01DDBE04600827FD4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Replace this with the GOOGLE_APP_ID from your GoogleService-Info.plist file\nGOOGLE_APP_ID=1:330376946588:ios:6fed1e101d383120d\n\n# Replace the /Path/To/ServiceAccount.json with the path to the key you just downloaded\n\"${PODS_ROOT}\"/FirebaseCrash/upload-sym \"./acetrainer-ce9c9-firebase-crashreporting-rywo9-f45cea009b.json\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
