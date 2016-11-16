@@ -8,6 +8,11 @@ const uuid = DeviceInfo.getUniqueID()
 let subscribedUid = null
 const monPath = ()=>`/users/${subscribedUid}/mons`
 
+const updateUserTimeStamp = ()=>{
+  const ref = firebase.database().ref(`/users/${subscribedUid}/`)
+  ref.update({lastLoggedInAt:Date.now()})
+}
+
 export const init = (dispatch) => {
   const initUuid = uuid=> {
     if (uuid) {
@@ -17,6 +22,7 @@ export const init = (dispatch) => {
         type:'USER_SIGNIN',
         uid: subscribedUid,
       })
+      updateUserTimeStamp()
       console.log('uuid', subscribedUid)
     }
   }
